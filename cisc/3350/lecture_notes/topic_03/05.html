@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Review of the C Language: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();hljs.initLineNumbersOnLoad();</script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Review of the C Language</h3>
+        <ol start="3">
+            <li>
+                <p style = "margin-bottom: 1vh;">The code of the program <a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/lecture_notes/topic_03/conditions.c"><tt>conditions.c</tt></a>:</p>
+                <pre class="source source-long" style = "height: 60vh;"><code class="language-c">/* A C program that shows how condition
+ *    statements (if, if-else, if-else-if,
+ *    and switch) work.
+ *
+ *    Miriam Briskman, 2/8/2023
+ *    CISC 3350, Brooklyn College
+ *    Licensed under CC BY-NC 4.0
+ */
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main ()
+{
+    unsigned int salary = 58700;
+	
+    // If statement (if the condition is true,
+    //    execute the statement that follows)
+    if (salary &gt;= 50000)
+        printf ("This is a middle-class person.\n");
+
+    // If-else statement (if the 'if' condition
+    //    is false, execute the statement that
+    //    follows the 'else':)
+    if (salary &lt; 32320)
+        printf ("Below NYC's average salary.\n");
+    else
+        printf ("Above NYC's average salary.\n");
+
+    // If-else-if statement:
+    if (salary &lt; 40000)
+        printf ("Tax of 20%%.\n");
+    else if (salary &lt; 50000)
+        printf ("Tax of 25%%.\n");
+    else if (salary &lt; 60000)
+        printf ("Tax of 30%%.\n");
+    else
+        printf ("Tax of 35%%.\n");
+
+    // Follow-up question:
+    // Which salaries fall into the last
+    //    'else' statement above?
+
+    // [Note the double %% above. Since % is used
+    //  to denote format specifiers like %d, it
+    //  means that % is an escape character. To
+    //  print the percentage sign on the screen,
+    //  we need to escape %, which we do with
+    //  %%.]
+
+    // *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+
+    char letter_grade = 'B';
+
+	
+    /* Switch statements are efficient alternatives
+          to if statements in the cases that we want
+          to check for the equality of a variable to
+          some value/number.
+       In C, switch statements can work with char
+          variables and with integers of all kinds!
+    */
+
+    printf ("The letter grade of %c indicates that "
+            "the student ", letter_grade);         
+
+    switch (letter_grade)
+    {
+        case 'F': printf ("Failed!\n"); break;
+        case 'A': printf ("Excellently ");
+        case 'D':
+        case 'C':
+        case 'B': printf ("Passed!\n"); break;
+        case 'W': printf ("Withdrew!\n"); break;
+        case 'P': printf ("Passed!\n"); break;
+        case 'U': printf ("Unsatisfactory!\n"); break;
+        case 'S': printf ("Satisfactory!\n"); break;
+        default:  printf ("Error: this letter doesn't "
+                          "correspond to any grade!\n");
+    }
+
+    // Follow-up question:
+    // In the 'default' case above, why
+    //    isn't there a need to use the 'break;'
+    //    statement?
+
+    return EXIT_SUCCESS;
+}
+</code></pre>
+            </li>
+        </ol>
+                       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

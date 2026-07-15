@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Processes: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3><a href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/lecture_notes/topic_07/child_creation_example.c" target="_blank">child_creation_example.c</a>: Creating a Child Process</h3>
+            <pre class="source source-long"><code class="language-c">/* A C program that forks, executes, and waits upon
+ *    a child process. It demonstrates the use of
+ *    the getpid(), getppid(), fork(), execlp(),
+ *    waitpid(), perror(), fprintf(), atexit(), and
+ *    exit() syscalls/functions.
+ *
+ *    Miriam Briskman, 3/15/2023
+ *    CISC 3350, Brooklyn College
+ *    Licensed under CC BY-NC 4.0
+ */
+
+#include &lt;sys/types.h&gt; // pid_t, gid_t, etc.
+#include &lt;unistd.h&gt;    // Defines some system calls.
+#include &lt;sys/wait.h&gt;  // wait(), waitpid(), etc.
+#include &lt;stdio.h&gt;     // perror(), printf(), fprintf().
+#include &lt;stdlib.h&gt;    // EXIT_SUCCESS, EXIT_FAILURE.
+#include &lt;inttypes.h&gt;  // intmax_t.
+
+// Definition of a function that we call
+//    during a process's termination:
+void bye (void)
+{
+   printf ("Parent: Signing off!\n");
+}
+
+// Definition of another function we call
+//    during a process's termination:
+void out (void)
+{
+   printf ("Parent: atexit() succeeded!\n");
+}
+
+// Follow-up question:
+// Why don't we need to include a copy of
+//    the bye() and out() function declarations
+//    here?
+// Hint: what is the difference between the
+//    bye() and out() functions here and the
+//    functions that we created in 'functions.c'
+//    that we covered several lectures ago?
+
+int main ()
+{
+   printf ("Parent: started executing now!\n");
+
+   // Fork (create) a child process:
+   pid_t childpid = fork();
+   if (childpid == -1)
+   {
+       perror ("fork");
+       exit (EXIT_FAILURE);
+   }
+
+   // We enter this 'if' only inside the parent
+   //    process:
+   if (childpid)
+   {
+       // The function out() and then the function
+       //    bye() will execute automatically right
+       //    before the parent terminates. The
+       //    execution of the functions that atexit()
+       //    registers is in the reversed order of
+       //    the registration (we first register
+       //    bye() and then out(), but they are
+       //    called in the opposite order: out()
+       //    followed by bye().
+       if (atexit (bye) != 0)
+       {
+            fprintf (stderr,
+                     "atexit(): can't register bye().\n");
+            exit (EXIT_FAILURE);
+       }
+       if (atexit (out) != 0)
+       {
+            fprintf (stderr,
+                     "atexit(): can't register out().\n");
+            exit (EXIT_FAILURE);
+       }
+
+       printf ("Parent: My pid = %jd.\n",
+               (intmax_t) getpid ());
+       printf ("Parent: I just forked a child! "
+               "I'll wait for it to terminate.\n");
+
+       int status;
+
+       // Wait for the child with ID of 'childpid'
+       //    to return before continuing the
+       //    parent's execution. The parent will
+       //    pause its execution on the CPU while
+       //    waiting for the child, and the
+       //    waitpid() call will only return when
+       //    the child finished working.
+       pid_t temp = waitpid (childpid, &amp;status, 0);
+       if (temp == -1)
+       {
+           perror ("waitpid");
+           // out() and bye() might be called here:
+           exit (EXIT_FAILURE);
+       }
+
+       printf ("Parent: The child that just returned "
+               "has the pid = %d.\n",
+               temp);
+
+       // Let's check what happened with the child:
+       if (WIFEXITED (status))
+           printf ("Parent: It terminated normally "
+                   "with the exit status = %d.\n",
+                   WEXITSTATUS (status));
+       if (WIFSIGNALED (status))
+           printf ("Parent: It was killed by the "
+                   "signal = %d%s.\n",
+                    WTERMSIG (status),
+                    WCOREDUMP (status) ? " (dumped core)" : "");
+       if (WIFSTOPPED (status))
+           printf ("Parent: It was stopped by the "
+                   "signal = %d.\n",
+                   WSTOPSIG (status));
+       if (WIFCONTINUED (status))
+           printf ("Parent: Its execution "
+                   "continued.\n");
+   }
+   // We enter this 'else' only inside the child
+   //    process:
+   else // Inside the child, 'childpid' is always 0.
+   {
+       printf ("Child: My pid = %jd.\n",
+               (intmax_t) getpid ());
+       printf ("Child: Parent's pid = %jd.\n",
+               (intmax_t) getppid ());
+
+       printf ("Child: I'll call execlp() now and "
+               "replace myself with the 'ls -al' "
+               "command:\n");
+
+       // Execute the command/program: ls -al as the
+       //    child!
+       if (execlp ("ls", "ls", "-al", NULL) == -1)
+       {
+           perror ("execlp");
+           exit (EXIT_FAILURE);
+       }
+
+       // When execlp() executes, the child's
+       //    process will be replaced completely
+       //    with the program "ls -al".
+   }
+
+   // Only the parent calls out() and bye() here:
+   return EXIT_SUCCESS;
+}</code></pre>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

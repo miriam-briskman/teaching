@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Intro to the Linux/UNIX OS Programming: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Files and the Filesystem</h3>
+        <div class = "imagecontainer imagecontainer-side">
+          <a href = "./files.png" target='_blank'><img src="./files.png" title = "The Google Files logo" alt="The Google Files logo" style = "height: 12vh; z-index: 1000;"></a>
+          <p class = "caption" style = "width: 14vh; z-index: 1000;">The <a target='_blank' href="https://play.google.com/store/apps/details?id=com.google.android.apps.nbu.files">Google Files logo</a></p>
+        </div>
+        <p>The rest of these lecture notes will briefly introduce some of the topics that we will cover this semester! First, we will speak about files in Linux, which we will discuss further in Topics 4, 5, 6, and 12.</p>
+        <p><u>Linux treats every entity as a file</u>, even if it doesn't look like one (directories, disks, attached devices, etc.) To access the content of a file, you should open it for reading or writing.</p>
+        <p>Every file has a name (= <b>filename</b>). In addition, every file is associated with a unique ID number called an <b>inode number</b> (also called: <b>i-number</b>). This number distinguishes a file from any other files stored on the Linux device.</p>
+        <p>Every file that is open within a C program is also associated with a unique integer called the <b>file descriptor</b> (also: <b><tt>fd</tt></b>). This number distinguishes an open file from other open files by the same program. C's <tt>open()</tt> syscall would tell us what the <tt>fd</tt> of a file is:</p>
+        <pre><code class="language-c source">int fd = open("data.txt", ...);</code></pre>
+                
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

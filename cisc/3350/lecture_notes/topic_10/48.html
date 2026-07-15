@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Signals: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          table {margin-top: 1vh;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Sending a Signal with a Payload</h3>
+            <ul>
+                <li>With <pre class="source source-inline"><code class="language-c">sa_sigaction</code></pre> as the handler, the <pre class="source source-inline"><code class="language-c">si_value</code></pre> field is an optional payload (data) passed from the signal generator to the signal receiver. This is why we can pass values.</li>
+                <li>The <pre class="source source-inline"><code class="language-c">value</code></pre> variable is a union (see more on unions at <a target="_blank" title="C Unions: Tutorials Point" href="http://www.tutorialspoint.com/cprogramming/c_unions.htm">this tutorial page</a>.)
+                <pre class="source" style = "margin-top: 1vh; margin-bottom: 1vh; line-height: 110%;"><code class="language-c">union sigval {
+    int  sival_int;
+    void *sival_ptr;
+};</code></pre>
+                </li>
+                <li>The example below sends process <pre class="source source-inline"><code class="language-c">1722</code></pre> with a <tt>SIGUSR2</tt> (user-defined) signal with an integer payload of <pre class="source source-inline"><code class="language-c">404</code></pre>: 
+                <pre class="source" style = "margin-top: 1vh; margin-bottom: 1vh; line-height: 110%;"><code class="language-c">sigval value;
+value.sival_int = 404;
+if (sigqueue (1722, SIGUSR2, value)) /* Error */</code></pre>
+                </li>
+                <li>If process <pre class="source source-inline"><code class="language-c">1722</code></pre> handles <tt>SIGUSR2</tt> with an <pre class="source source-inline"><code class="language-c">SA_SIGINFO</code></pre> handler, it will set <pre class="source source-inline"><code class="language-c">signo</code></pre> to <tt>SIGUSR2</tt>, <pre class="source source-inline"><code class="language-c">si-&gt;si_int</code></pre> to <pre class="source source-inline"><code class="language-c">404</code></pre>, and <pre class="source source-inline"><code class="language-c">si-&gt;si_code</code></pre> to <pre class="source source-inline"><code class="language-c">SI_QUEUE</code></pre>.</li>
+            </ul>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

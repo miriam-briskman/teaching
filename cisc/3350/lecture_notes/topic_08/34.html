@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Threads: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3><a href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/lecture_notes/topic_08/synced_bank_withdraw.c" target="_blank">synced_bank<wbr>_withdraw<wbr>.c</a>: Race Condition during Bank Withdrawals Fixed!</h3>
+            <pre class="source source-long"><code class="language-c">/* This program demostrates the prevention
+ *    of the a race condition present in
+ *    unsynched_bank_withdraw.c
+ *
+ *    Miriam Briskman, 4/16/2023
+ *    CISC 3350, Brooklyn College
+ *    Licensed under CC BY-NC 4.0
+ */
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;pthread.h&gt;
+#include &lt;errno.h&gt;
+
+/* Definiting the 'BankAccount' struct: */
+struct BankAccount
+{
+    double balance;
+};
+
+/* Definiting the 'Activity' struct: */
+struct Activity
+{
+    double amount;
+    int thread_num;
+    struct BankAccount * ptr;
+};
+
+// Definiting the mutex type:
+pthread_mutex_t my_mutex = PTHREAD_MUTEX_INITIALIZER;
+
+// A function that performs a bank withdrawal:
+void * withdraw (void * activity)
+{
+    struct Activity * my_activity 
+               = ((struct Activity *) activity);
+    
+    pthread_mutex_lock (&amp;my_mutex); // Locking
+    const double amount = my_activity -&gt; amount,
+                 balance = (my_activity -&gt; ptr) -&gt; balance;
+    const int thread_num = my_activity -&gt; thread_num;
+    printf ("--- Thread %d: [Balance = $%.2f] "
+            "Trying to withdraw $%.2f...\n",
+            thread_num,
+            balance,
+            amount);
+    if (balance &lt; amount)
+    {
+        pthread_mutex_unlock (&amp;my_mutex); // Unlocking
+        pthread_exit ((void *)-1);
+    }
+   
+    (my_activity -&gt; ptr) -&gt; balance = balance - amount;
+    pthread_mutex_unlock (&amp;my_mutex); // Unlocking
+
+    printf ("--- Thread %d: Success: withdrew $%.2f.\n",
+            thread_num,
+            amount);
+
+    pthread_exit ((void *)0);
+}
+
+int main ()
+{
+    pthread_t threads [2];
+    int i = 0, ret;
+    long long result[1], // An array of 1 element.
+              temp = -1;
+    result[0] = -1;
+    struct BankAccount b1 = {500.0};
+    struct Activity a1 = {200.0, 1, &amp;b1},
+                    a2 = {400.0, 2, &amp;b1};
+
+    printf ("In each round of this experiment, "
+            "each one of two threads will attempt "
+            "to withdraw from a balance of $500.\n"
+            "One thread will withdraw $200, while "
+            "another will $400.\n"
+            "Since this program synchronizes "
+            "threads, we are guaranteed to receive "
+            "a warning message from the bank due to "
+            "insufficient balance before the other "
+            "withdrawal.\n\n");
+
+    printf ("We run only 1000 rounds:\n\n");
+
+    // Run the experiment until number is other than
+    //    THREAD_NUM:
+    while ((result[0] == -1 || temp == -1) &amp;&amp; i &lt; 1000)
+    {
+        b1.balance = 500.0;
+
+        printf ("Round %d:\n", i + 1);
+
+        /* Let the threads start running: */
+        ret = pthread_create (&amp;(threads[0]),
+                              NULL,
+                              withdraw,
+                              (void *) &amp;a1);
+        if (ret)
+        {
+            errno = ret;
+            perror ("pthread_create");
+            exit (EXIT_FAILURE);
+        }
+
+        ret = pthread_create (&amp;(threads[1]),
+                              NULL,
+                              withdraw,
+                              (void *) &amp;a2);
+        if (ret)
+        {
+            errno = ret;
+            perror ("pthread_create");
+            exit (EXIT_FAILURE);
+        }
+
+        i++;
+
+        // Wait for the threads to return:
+        ret = pthread_join (threads[0], (void *) &amp;result);
+        if (ret)
+        {
+            errno = ret;
+            perror ("pthread_join");
+            exit (EXIT_FAILURE);
+        }
+
+        temp = *result;
+
+        ret = pthread_join (threads[1], (void *) &amp;result);
+        if (ret)
+        {
+            errno = ret;
+            perror ("pthread_join");
+            exit (EXIT_FAILURE);
+        }
+
+        if (result[0] == -1 || temp == -1)
+            printf ("Round %d: [Result = -1] Error "
+                    "on 2nd withdrawal due to an "
+                    "insufficient balance of $%.2f.\n",
+                    i,
+                    b1.balance);
+    }
+
+    if (result[0] == -1 || temp == -1)
+        printf ("-----------------------------------"
+                "-----\n"
+                "Getting a withdrawal error in each "
+                "of the rounds implies that we "
+                "eliminated the race condition!\n");
+    else
+    {
+        printf ("-----------------------------------"
+                "-----\n"
+                "Round %d: [Result = %lld] Balance = "
+                "$%.2f (no withdrawal error.)\n"
+                "-----------------------------------"
+                "-----\n\n",
+                i,
+                *result,
+                b1.balance);
+        printf ("The reason for this situation is "
+                "a race condition that prevents "
+                "additions\nfrom being done in "
+                "sequential order, thus corrupting "
+                "the result.\n\n");
+
+        printf ("Specifically, the machine instructions "
+                "of 2 or more of the threads \nwere "
+                "interleaved, which caused this "
+                "corruption to happen.\n");
+    }
+
+    return EXIT_SUCCESS;
+}</code></pre>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

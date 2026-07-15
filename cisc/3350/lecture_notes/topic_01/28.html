@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Intro to the Linux/UNIX OS Programming: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Threads and Process Hierarchy</h3>
+        <div class = "imagecontainer imagecontainer-side">
+          <a href = "./threads.jpg" target='_blank'><img src="./threads.jpg" title = "Threads" alt="Threads of different colors" style = "height: 11vh; z-index: 1000;"></a>
+          <p class = "caption" style = "width: 12vh; z-index: 1000;">Taken from <a target='_blank' href="https://www.ecotextile.com/2022020328911/materials-production-news/tailorlux-aware-forge-strategic-partnership.html">Ecotextile News</a></p>
+        </div>
+        <p style = "margin-bottom: 1.5vh;">Each process consists of one or more <b>threads</b> (= units of execution.) Threads are covered in Topic 8.</p>
+        <p>A thread has its own stack, processor state, and instruction pointer, but the code (instructions) of a process, the address space, and the heap are shared by all threads.</p>
+        <p>Back to processes: each process is identified by a unique positive integer - process ID (<tt>pid</tt>).</p>
+        <p><b><tt>init</tt></b> is the grandparent of all the processes: it has the <tt>pid</tt> of 1.</p>
+        <p>Every process, including <tt>init</tt>, can call the <tt>fork()</tt> syscall to create a child process. Useful processes that run in the background, e.g., music playing in the background, are called <b>daemons</b>. Linux runs a lot of daemons at any moment!</p>
+        <p>If a parent process terminates before its child, <tt>init</tt> will become its parent. Parent processes usually wait on terminating children, which allows the child processes to be destroyed. If a process that is about to terminate isn't waited upon by its parent, it is called a <b>zombie</b>. <tt>init</tt> will eventually wait for all zombies and terminate them.</p>
+                       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

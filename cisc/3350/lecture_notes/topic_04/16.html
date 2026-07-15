@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>File I/O: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Writing to Disk</h3>
+        <ul>
+            <li>The Linux OS uses internal memory storage arrays called <b>buffers</b> to temporarily keep changes before saving them to disk. <pre class="source source-inline"><code class="language-c">write()</code></pre> only guarantees copying data from the array (that you pass as the 2nd argument) to this OS buffer, but there is no guarantee that data is written out to disk immediately.
+            <ul>
+                <li>In the background, the OS gathers up the buffers containing data newer than what is on disk, sorts them optimally, and writes them out to disk (writeback) at some later point in time.</li>
+            </ul>
+            </li>
+            <li><b>Why so?</b> Delayed writes allow <pre class="source source-inline"><code class="language-c">write()</code></pre> to return immediately, without waiting for the data to be written to disk. Also, reading from the buffers is faster than reading from disk.
+            <ul>
+                <li>When Linux is more-or-less idle (not very busy), it saves all these buffers to disk in batches (= groups).</li>
+            </ul>
+            </li>
+        <li><b>Problem</b>: in cases of system crashes or I/O errors, programs might get terminated, so the data on the buffers might never make it to disk!</li>
+        <li><b>Solutions:</b>
+        <ul>
+            <li>The OS stores an "age" variable for each buffer and, if a buffer passes the maximum age allowed, the OS writes it right away to disk.</li>
+            <li>We can also force writing to disk via synchronization system calls, as we shall see next.</li>
+        </ul>
+</li>
+        </ul>
+                       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

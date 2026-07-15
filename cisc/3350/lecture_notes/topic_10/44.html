@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Signals: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          table {margin-top: 1vh;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>What Does <pre class="source source-inline"><code class="language-c">si_code</code></pre> Contain?</h3>
+            <ul>
+                <li>The <pre class="source source-inline"><code class="language-c">si_code</code></pre> field indicates the <u>cause</u> of the signal.
+                <ul>
+                    <li>For user-sent signals, it indicates <i>how</i> the signal was sent.</li>
+                    <li>For kernel-sent signals, it indicates <i>why</i> the signal was sent.</li>
+                </ul>
+                </li>
+                <li>Choices of <pre class="source source-inline"><code class="language-c">si_code</code></pre> that are valid for any signal (see <a target="_blank" title="Values of si_code: Linux man page" href="https://man7.org/linux/man-pages/man2/sigaction.2.html#:~:text=the%20following%20list%20shows%20the%20values%20which%0A%20%20%20%20%20%20%20can%20be%20placed%20in%20si_code">this man page</a>):
+                <ul>
+                    <li><pre class="source source-inline"><code class="language-c">SI_ASYNCIO</code></pre> (async I/O finished), <pre class="source source-inline"><code class="language-c">SI_KERNEL</code></pre> (signal raised by kernel), <pre class="source source-inline"><code class="language-c">SI_QUEUE</code></pre>, <pre class="source source-inline"><code class="language-c">SI_TIMER</code></pre>, <pre class="source source-inline"><code class="language-c">SI_SIGIO</code></pre>, <pre class="source source-inline"><code class="language-c">SI_USER</code></pre> (signal was sent by <pre class="source source-inline"><code class="language-c">kill()</code></pre> or <pre class="source source-inline"><code class="language-c">raise()</code></pre>.)</li>
+                </ul>
+                </li>
+                <li>Choices of <pre class="source source-inline"><code class="language-c">si_code</code></pre> that are valid only for <tt>SIGBUS</tt> (bad memory access), indicating what hardware error type occurred: 
+                <ul>
+                    <li><pre class="source source-inline"><code class="language-c">BUS_ADRALN</code></pre> (alignment error), <pre class="source source-inline"><code class="language-c">BUS_ADDRERR</code></pre> (invalid addr), <pre class="source source-inline"><code class="language-c">BUS_OBJERR</code></pre> (object-specific hardware error)</li>
+                </ul>
+                </li>
+                <li>Choices of <pre class="source source-inline"><code class="language-c">si_code</code></pre> that are valid only for <tt>SIGCHLD</tt>, identifying what the child did:
+                <ul>
+                    <li><pre class="source source-inline"><code class="language-c">CLD_CONTINUED</code></pre>, <pre class="source source-inline"><code class="language-c">CLD_DUMPED</code></pre>, <pre class="source source-inline"><code class="language-c">CLD_EXITED</code></pre>, <pre class="source source-inline"><code class="language-c">CLD_KILLED</code></pre>, <pre class="source source-inline"><code class="language-c">CLD_STOPPED</code></pre>, <pre class="source source-inline"><code class="language-c">CLD_TRAPPED</code></pre></li>
+                </ul>
+                </li>
+                <li>Choices of <pre class="source source-inline"><code class="language-c">si_code</code></pre> that are valid only for <tt>SIGFPE</tt> (arithmetic errors):
+                <ul>
+                    <li><pre class="source source-inline"><code class="language-c">FPE_FLTDIV</code></pre> (division by 0), <pre class="source source-inline"><code class="language-c">FPE_FLTOVF</code></pre> (number overflow), <pre class="source source-inline"><code class="language-c">FPE_FLTINV</code></pre>, <pre class="source source-inline"><code class="language-c">FPE_FLTRES</code></pre>, <pre class="source source-inline"><code class="language-c">FPE_FLTSUB</code></pre>, etc.</li>
+                </ul>
+                </li>
+                <li><a target="_blank" title="Values of si_code: Linux man page" href="https://man7.org/linux/man-pages/man2/sigaction.2.html#:~:text=the%20following%20list%20shows%20the%20values%20which%0A%20%20%20%20%20%20%20can%20be%20placed%20in%20si_code">This page</a> also describes choices of <pre class="source source-inline"><code class="language-c">si_code</code></pre> that are valid only for the signals <tt>SIGILL</tt>, <tt>SIGPOLL</tt>, <tt>SIGSEGV</tt>, and <tt>SIGTRAP</tt>.</li>
+            </ul>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

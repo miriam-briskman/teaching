@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+    <title>Topic 7: Processes | CISC 3350 Materials</title>
+    <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+    <link rel="stylesheet" href="..\topic_01\static\styles.css">
+    <script type="text/javascript" src="..\topic_01\static\scripts.js" defer></script>
+  </head>
+  <body style="font-size: x-large;">
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <h1>Materials for Topic 7: Processes</h1>
+    <h2>Full C Programs</h2>
+    <ul>
+        <li><a href="./child_creation_example.c" target="_blank" title="Click to open the source code file in a new tab">child_creation_example.c</a> - a C program that forks, executes, and waits upon a child process. It demonstrates the use of the <tt>getpid()</tt>, <tt>getppid()</tt>, <tt>fork()</tt>, <tt>execlp()</tt>, <tt>waitpid()</tt>, <tt>perror()</tt>, <tt>fprintf()</tt>, <tt>atexit()</tt>, and <tt>exit()</tt> syscalls/functions.</li>
+        <li><a href="./wait_syscall_example.c" target="_blank" title="Click to open the source code file in a new tab">wait_syscall_example.c</a> - a C program that demonstrates how the <tt>wait()</tt> system call is issued on a running child process.</li>
+        <li><a href="./system_syscall_implementation.c" target="_blank" title="Click to open the source code file in a new tab">system_syscall_implementation.c</a> - a C program that implements the <tt>system()</tt> system call and attempts to use it to run the command whose name is passed as the command-line argument to <tt>./system_syscall_implementation</tt>.<br>For example, <tt>./system_syscall_implementation "ls -al"</tt> will cause the <tt>ls -al</tt> command to run in the terminal.</li>
+        <li><a href="./daemon_creation.c" target="_blank" title="Click to open the source code file in a new tab">daemon_creation.c</a> - a C program that creates a daemon process and lets it sleep for 30 seconds. You can confirm that this daemon is running by typing: <tt>ps -xj</tt> in the terminal and seeing that the program <tt>./daemon_creation</tt> has <tt>init</tt> with the process id of 1 as its parent (<tt>PPID = 1</tt>) and that it is not connected to any terminal (<tt>TTY = ?</tt>).</li>
+    </ul>
+    <h2>Runnable Linux Commands</h2>
+    <hr>
+    <h3>Quick Links:</h3>
+    <ul id = "quick-links">
+        <li><a href="#gcc" title="gcc"><tt>gcc</tt></a></li>
+        <li><a href="#short_prompt" title=". ./.short_prompt"><tt>. ./.short_prompt</tt></a></li>
+        <li><a href="#long_prompt" title=". ./.long_prompt"><tt>. ./.long_prompt</tt></a></li>
+        <li><a href="#vi" title="vi"><tt>vi</tt></a></li>
+        <li><a href="#sh" title="/bin/sh"><tt>/bin/sh</tt></a></li>
+        <li><a href="#passwd" title="passwd"><tt>passwd</tt></a></li>
+        <li><a href="#pipe" title="cat myFile.txt | grep Hello | sort"><tt>cat myFile.txt | grep Hello | sort</tt></a></li>
+        <li><a href="#ps" title="ps -xj"><tt>ps -xj</tt></a></li>
+    </ul>
+    <hr>
+
+    <ul id = "target-list">
+        <li id = "gcc"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">gcc -Wall -Wextra -O2 -g -o program program.c</tt>
+            <br>
+            compiles the C source code located inside the file <tt>program.c</tt>. See more details <a href="../topic_01/index.html#gcc" target="_blank">here</a>.</li>
+         <li id = "short_prompt"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">. ./.short_prompt</tt>
+            <br>
+            executes code inside a file named <tt>.short_prompt</tt> and sources it (applies all the changes to the current session.) See more details <a href="../topic_01/index.html#short_prompt" target="_blank">here</a>.
+         </li>
+         <li id = "long_prompt"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">. ./.long_prompt</tt>
+            <br>
+            executes code inside a file named <tt>.long_prompt</tt> and sources it (applies all the changes to the current session.) See more details <a href="../topic_01/index.html#long_prompt" target="_blank">here</a>.
+         </li>
+         <li id = "vi"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">vi /home/text.txt</tt>
+            <br>
+            opens the file at <tt>/home/text.txt</tt> inside the <tt>vi</tt> Linux text editor.</li>
+         <li id = "sh"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">/bin/sh -c someCommand</tt>
+            <br>
+            runs an instance of the <tt>sh</tt> shell interpreter and, within it, executes the Linux command provided by <tt>someCommand</tt>. After the command returns, the <tt>sh</tt> shell interpreter returns (terminates) as well, which returns control to the shell interpreter that was working in the terminal before this command was called (e.g., <tt>bash</tt>.) For instance, typing: <tt style = "border: 2px solid black;">/bin/sh -c ls -al</tt> will run the <tt>ls -al</tt> listing command within that new instance of <tt>sh</tt>.</li>
+         <li id = "passwd"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">passwd</tt>
+            <br>
+            will prompt you to change the password for your Linux user account. You will first type your current password, re-type it, and then type the new password. The <tt>root</tt> privileged user can also change the passwords of other users by typing: <tt>passwd userName</tt>, where <tt>userName</tt> is the username of one of the device's/machine's users.</li>
+         <li id = "pipe"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">cat myFile.txt | grep Hello | sort</tt>
+            <br>
+            alphabetically sorts the search results of the word "Hello" found in the file <tt>myFile.txt</tt>. The way this command works, just as <tt style = "border: 2px solid black;">ls -al | less</tt> does (see more about the <tt>less</tt> content viewer <a href="../topic_12/index.html#less" target="_blank">here</a>), is by piping the output of one command as the input into the next command. That is, we 'project' the content of <tt>myFile.txt</tt> into the pattern-searching command <tt>grep</tt>, which then projects its search results into the <tt>sort</tt> command that sorts that input.</li>
+         <li id = "ps"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">ps -xj</tt>
+            <br>
+            outputs the list of all the processes running by your user, including daemons. Daemon processes will have the parent process ID (<tt>ppid</tt>) of 1 and will have a '<tt>?</tt>' under the <tt>TTY</tt> column, meaning that they aren't connected to any terminals (daemons are background processes that don't show their output in any terminal,) which is the definition of a daemon.</li>
+    </ul>
+
+
+
+    <div class="copyright"><a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' style='border-width:0; height: 15pt; vertical-align: middle;opacity: 1;' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a><span style='vertical-align: middle;'> This website by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> is licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a>.</span></div>
+  </body>
+</html>

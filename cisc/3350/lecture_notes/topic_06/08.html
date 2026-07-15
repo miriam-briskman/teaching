@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Vectored I/O & Memory-Mapping: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          table {margin-top: 1vh;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3><a href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/lecture_notes/topic_06/readv_example.c" target="_blank">readv_example.c</a>: Example of Using <pre class="source source-inline"><code class="language-c">readv()</code></pre></h3>
+        <pre class="source source-long"><code class="language-c">/* This program exemplifies the vectored I/O
+ *    readv() function. It assumes the existence
+ *    of the file 'seasons.txt' within the current
+ *    directory and that it has 3 lines of text in
+ *    it. All 3 lines of text will be read in with
+ *    the single system call readv(). Note that
+ *    readv(), being a system call, works on file
+ *    descriptors (as covered in Topic 4) and not
+ *    on file pointers.
+ *
+ *    Miriam Briskman, 3/8/2023
+ *    CISC 3350, Brooklyn College
+ *    Licensed under CC BY-NC 4.0
+ */
+
+#include &lt;stdio.h&gt;     // printf(), perror()
+#include &lt;stdlib.h&gt;    // EXIT_SUCCESS, EXIT_FAILURE
+#include &lt;fcntl.h&gt;     // open(), O_RDONLY flag
+#include &lt;unistd.h&gt;    // close()
+#include &lt;sys/uio.h&gt;   // readv(), iovec structure
+
+int main ()
+{
+    // To be able to use readv(), we first need
+    //    to know how many characters we will be
+    //    reading from each line:
+    int sizes [3] = {38, 18, 30};
+
+    int file, index;
+
+    // An array of 3 strings. We will store the
+    //    the lines that we read from the file
+    //    in these strings:
+    char * seasons [3];
+
+    // Create those char arrays on the heap:
+    for (index = 0; index &lt; 3; index++)
+        seasons[index] = malloc (sizes[index] * sizeof(char));
+
+    struct iovec arr[3]; // Array of structures.
+
+    // Open the file "seasons.txt" for reading:
+    if ((file = open ("seasons.txt", O_RDONLY)) == -1)
+    {
+        perror ("open");
+        exit (EXIT_FAILURE);
+    }
+
+    // To prepare for writing the 3 strings
+    //    that we read from the file using
+    //    vectored-i/o, we first need to
+    //    fill out the three iovec structures
+    //    that we created at the top of the
+    //    program:
+    for (index = 0; index &lt; 3; index++)
+    {
+        arr[index].iov_base = seasons[index];
+        arr[index].iov_len = sizes[index];
+    }
+
+    // Now, in one shot, we read in all the
+    //    three strings from the file!
+    if (readv (file, arr, 3) == -1)
+    {
+        perror ("readv");
+        exit (EXIT_FAILURE);
+    }
+
+    /* readv() processed each buffer of iov_len bytes
+       completely before moving on to the next buffer,
+       which was done in the following order:
+       iov[0], iov[1], …, iov[count-1].             */
+
+    // Print all the lines that we read in:
+    for (index = 1; index &lt; 4; index++)
+        printf ("%d: %s", index, seasons[index - 1]);
+
+    // Free the allocated 'seasons' arrays:
+    for (index = 0; index &lt; 3; index++)
+        free (seasons[index]);
+
+    // Close the file:
+    if (close (file) == -1)
+    {
+        perror ("close");
+        exit (EXIT_FAILURE);
+    }
+
+    return EXIT_SUCCESS;
+}</code></pre>
+                       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

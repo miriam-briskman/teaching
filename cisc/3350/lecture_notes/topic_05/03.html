@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Buffered File I/O: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Buffered File I/O - Motivation</h3>
+        <p>The Linux command <tt>dd</tt> is used to copy bytes from a file/device into another file. We tell <tt>dd</tt> what the source file ("<tt>if</tt>") and destination file ("<tt>of</tt>") are, how many blocks of data we want to copy ("<tt>count</tt>"), and how many bytes should be in each such block ("<tt>bs</tt>" = <b>b</b>lock <b>s</b>ize).</p>
+        <p>In both commands of the activity on the previous slide, we copied the same overall number of bytes from a Linux device called <tt>/dev/zero</tt>, which provides a stream of null characters: this number is 2097152 bytes.</p>
+        <p><b><i>However, the difference was</i></b> in the division of these bytes into blocks: in the first call, we attempted to copy 2097152 blocks of 1 byte each, and, in the 2nd call, we copied 512 blocks containing 4096 bytes each. The rule is that if the block size is a multiple of the OS's block size and is close in magnitude to the block size, the copying would go much faster!</p>
+        <p>Specifically, if you read data of the sizes of 512, 1024, 2048, etc., bytes, the OS will return you the data <u>much faster</u> than if you were to ask for it character-by-character (since, anyway, the OS will repetitively read in blocks and simply discard the majority of them, so it'll just waste time.) The most common block sizes are 4K = 4096 and 8K = 8192, and reading this number of bytes at a time is usually pretty efficient.</p>
+                       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

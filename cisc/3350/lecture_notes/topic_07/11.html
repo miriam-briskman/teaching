@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Processes: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>The <pre class="source source-inline"><code class="language-c">exec</code></pre> Family of Calls</h3>
+        <ul>
+            <li>Normally, <pre class="source source-inline"><code class="language-c">execl()</code></pre> <b>doesn't</b> return - a successful invocation ends by jumping to the 1st code line of the new program (since this entire, parent-resembling code is replaced by the new program's instructions.)</li>
+            <li>While certain attributes of the process are lost (like pending signals), the <pre class="source source-inline"><code class="language-c">pid</code></pre>, <pre class="source source-inline"><code class="language-c">ppid</code></pre>, priority, and owning user/group are all preserved and are accessible by the child.</li>
+            <li>Open files are inherited as well (with the same <pre class="source source-inline"><code class="language-c">fd</code></pre>s), but this may not be desired. One usually closes files before <pre class="source source-inline"><code class="language-c">exec</code></pre> by using the <pre class="source source-inline"><code class="language-c">O_CLOEXEC</code></pre> flag when calling <pre class="source source-inline"><code class="language-c">open()</code></pre> to open these files.</li> 
+        </ul>
+        <p>Besides <pre class="source source-inline"><code class="language-c">execve()</code></pre>, the other 5 members of the <pre class="source source-inline"><code class="language-c">exec</code></pre> family are functions, not system calls.</p>
+        <p>In those functions' names, the '<tt>l</tt>' and '<tt>v</tt>' endings signify a <b>list</b> or a <b>vector</b> (array) of command-line arguments that are passed to the child, respectively.</p>
+        <p>The '<tt>p</tt>' ending denotes a full path search (just include the filename in <pre class="source source-inline"><code class="language-c">file</code></pre>), and '<tt>e</tt>' denotes that a new environment is supplied for the new process.</p>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

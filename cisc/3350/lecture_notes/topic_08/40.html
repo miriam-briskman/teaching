@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Threads: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+      <!--<style>li { margin: 10px 0;}</style>-->
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3><tt>Pthreads</tt></h3>
+        <p><tt>Pthreads</tt>, as a standard, is just an <a target="_blank" href="https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/" title = "POSIX.1-2017 Specification">official document</a> (not an implementation.)</p>
+        <p>In Linux, the implementation of this standard is provided by <tt>glibc</tt> (the GNU C Library), which provides 2 different implementations of <tt>Pthreads</tt>:</p>
+        <ul>
+            <li><b><tt>LinuxThreads</tt></b> was Linux’s original Pthreads implementation, but had unsatisfactory performance.</li>
+            <li><b>Native POSIX Thread Library</b> (<b>NPTL</b>) superseded LinuxThreads and became the standard Linux <tt>Pthreads</tt> implementation:
+            <ul>
+                 <li>It features a 1:1 threading model based on the <a href="https://man7.org/linux/man-pages/man2/clone.2.html" title = "clone() - Linux manual page"><pre class="source source-inline"><code class="language-c">clone()</code></pre></a> system call and the approach that threads are implemented as lightweight processes that share resources, which is similar to LinuxThreads' approach.</li>
+                 <li>NPTL makes use of new kernel interfaces, including the <a href="https://man7.org/linux/man-pages/man2/futex.2.html" title = "futex() - Linux manual page"><pre class="source source-inline"><code class="language-c">futex()</code></pre></a> syscall for synchronization, the <a href="https://man7.org/linux/man-pages/man2/exit_group.2.html" title = "exit_group() - Linux manual page"><pre class="source source-inline"><code class="language-c">exit_group()</code></pre></a> syscall for terminating all threads, and kernel support for thread-local-storage (TLS).</li>
+                 <li>NPTL improves on LinuxThreads, allowing 1000s of threads in a single process without slowdown issues!</li>
+            </ul>
+            </li>
+        </ul>
+
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

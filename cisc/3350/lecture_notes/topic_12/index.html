@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+    <title>Topic 12: File and Directory Management | CISC 3350 Materials</title>
+    <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+    <link rel="stylesheet" href="..\topic_01\static\styles.css">
+    <script type="text/javascript" src="..\topic_01\static\scripts.js" defer></script>
+  </head>
+  <body style="font-size: x-large;">
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <h1>Materials for Topic 12: File and Directory Management</h1>
+    <h2>Full C Programs</h2>
+    <ul>
+        <li><a href="./get_file_size.c" target="_blank" title="Click to open the source code file in a new tab">get_file_size.c</a> - a C program outputing the size of a file whose name is passed as the 1st argument (<tt>argv[1]</tt>) to the program.</li>
+        <li><a href="./find_file_type.c" target="_blank" title="Click to open the source code file in a new tab">find_file_type.c</a> - a C program outputing the type of a file whose name is passed as the 1st argument (<tt>argv[1]</tt>) to the program.</li>
+        <li><a href="./permissions_changing.c" target="_blank" title="Click to open the source code file in a new tab">permissions_changing.c</a> - a C program changing the permissions of a file and printing the update to the terminal.</li>
+        <li><a href="./extended_attributes.c" target="_blank" title="Click to open the source code file in a new tab">extended_attributes.c</a> - a C program printing all the extended attributes of the file at <tt>argv[1]</tt> and their values.</li>
+        <li><a href="./switch_directories.c" target="_blank" title="Click to open the source code file in a new tab">switch_directories.c</a> - a C program switching the current directory <tt>D</tt> to <tt>argv[1]</tt> and then back to the previous directory <tt>D</tt>.</li>
+        <li><a href="./my_ls.c" target="_blank" title="Click to open the source code file in a new tab">my_ls.c</a> - a C program listing the contents of a directory. If no additional arguments are passed, the contents of the current working directory (.) are printed. Otherwise, the contents of the directory whose path is stored in <tt>argv[1]</tt> are printed.</li>
+        <li><a href="./adding_links.c" target="_blank" title="Click to open the source code file in a new tab">adding_links.c</a> - a C program that creates a hard link and a soft link for a file given at <tt>argv[1]</tt>. Both are created in the same directory where the original file is stored. The program then calls <tt>ls -il</tt> to show that the 2 links were created. Finally, the program removes both links and calls <tt>ls -il</tt> again.</li>
+        <li><a href="./eject_cd_rom.c" target="_blank" title="Click to open the source code file in a new tab">eject_cd_rom.c</a> - a C program using the <tt>CDROMEJECT</tt> request to eject the media tray from a CDROM device, which the user provides as the first argument on the program’s command line.</li>
+    </ul>
+    <h2>Runnable Linux Commands</h2>
+    <hr>
+    <h3>Quick Links:</h3>
+    <ul id = "quick-links">
+        <li><a href="#gcc" title="gcc"><tt>gcc</tt></a></li>
+        <li><a href="#short_prompt" title=". ./.short_prompt"><tt>. ./.short_prompt</tt></a></li>
+        <li><a href="#long_prompt" title=". ./.long_prompt"><tt>. ./.long_prompt</tt></a></li>
+        <li><a href="#ls-i" title="ls -i"><tt>ls -i</tt></a></li>
+        <li><a href="#ls-i*" title="ls -i *"><tt>ls -i *</tt></a></li>
+        <li><a href="#/etc/passwd" title="cat /etc/passwd"><tt>cat /etc/passwd</tt></a></li>
+        <li><a href="#getent_passwd" title="getent passwd &quot;$( id -u )&quot;"><tt>getent passwd &quot;$( id -u )&quot;</tt></a></li>
+        <li><a href="#umask" title="umask"><tt>umask</tt></a></li>
+        <li><a href="#rmdir-r" title="rmdir -r folder"><tt>rmdir -r folder</tt></a></li>
+        <li><a href="#less" title="program | less"><tt>program | less</tt></a></li>
+    </ul>
+    <hr>
+
+    <ul id = "target-list">
+        <li id = "gcc"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">gcc -Wall -Wextra -O2 -g -o program program.c</tt>
+            <br>
+            compiles the C source code located inside the file <tt>program.c</tt>. See more details <a href="../topic_01/index.html#gcc" target="_blank">here</a>.
+        </li>
+        <li id = "short_prompt"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">. ./.short_prompt</tt>
+            <br>
+            executes code inside a file named <tt>.short_prompt</tt> and sources it (applies all the changes to the current session.) See more details <a href="../topic_01/index.html#short_prompt" target="_blank">here</a>.
+        </li>
+        <li id = "long_prompt"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">. ./.long_prompt</tt>
+            <br>
+            executes code inside a file named <tt>.long_prompt</tt> and sources it (applies all the changes to the current session.) See more details <a href="../topic_01/index.html#long_prompt" target="_blank">here</a>.
+        </li>
+        <li id = "getfattr"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">getfattr -d -m ".*" myfile</tt>
+            <br>
+            shows the extended attributes of the file <tt>myfile</tt>.
+        </li>
+        <li id = "ls-i"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">ls -i</tt>
+            <br>
+            shows the i-node number of every file and folder inside the current folder.
+        </li>
+        <li id = "ls-i*"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">ls -i *</tt>
+            <br>
+            shows the i-node number of every file inside the current folder, including those files within nested folders.
+        </li>
+        <li id = "/etc/passwd"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">cat /etc/passwd</tt>
+            <br>
+            prints the content of the <tt>/etc/passwd</tt> to the screen. Each line in this file contains information about users in the Linux system, such as the username, the preferred shell interpreter, and the home directory.
+        </li> 
+        <li id = "getent_passwd"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">getent passwd "$( id -u )"</tt>
+            <br>
+            in case the file <tt>/etc/passwd</tt> doesn't include information about your user, use the command<br><tt>getent passwd "$( id -u )"</tt><br>to search the system for information about your user. It will print a line or a few lines including info only about your user. For example, your instructor sees the following info when calling this command:<br><tt>briskman:x:4846:4846:Miriam Briskman (Miriam Briskman):/u/briskman:/bin/bash</tt><br>
+            The data are separated by colons (:), and there are 7 of them: (1) the username (<tt>briskman</tt>), (2), a placeholder for the password "<tt>x</tt>", (3) the user ID (<tt>4846</tt>), (4) the group ID (<tt>4846</tt>), (5) the name of the user (<tt>Miriam Briskman (Miriam Briskman)</tt>), (6) the home directory (<tt>/u/briskman</tt>), and (7) the default shell (<tt>/bin/bash</tt>).
+        </li>
+        <li id = "umask"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">umask</tt>
+            <br>
+            prints to the terminal the permissions that the OS excludes by default from newly-created files. For example, if the output of this command is:<br><tt>0002</tt><br>it means that other users won't be allowed to write to or execute newly created files (but they can still read (view) the content of the file.)
+        </li>
+        <li id = "rmdir-r"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">rmdir -r folder</tt>
+            <br>
+            deletes all the files and folders inside the <tt>folder</tt> directory and then deletes <tt>folder</tt> itself. Without the <tt>-r</tt> option, the <tt>folder</tt> directory won't be allowed to be deleted until you empty it from files and folders.
+        </li>
+        <li id = "less"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">program | less</tt>
+            <br>
+            displays the output from the command given by <tt>program</tt> in Linux's <tt>less</tt> content viewer. This is a great option especially when the output from <tt>program</tt> is very long and can't fit on the screen all at once.<br>To display the contents of a file (e.g., <tt>myFile.txt</tt>) instead of a program's output, type:<br><tt style = "border: 2px solid black;">less myFile.txt</tt><br>To scroll through the content that <tt>less</tt> displays, press the up or down arrow keys.<br>To exit the <tt>less</tt> content viewer, press the 'Q' key on the keyboard.
+        </li>
+    </ul>
+
+
+    <div class="copyright"><a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' style='border-width:0; height: 15pt; vertical-align: middle;opacity: 1;' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a><span style='vertical-align: middle;'> This website by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> is licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a>.</span></div>
+  </body>
+</html>

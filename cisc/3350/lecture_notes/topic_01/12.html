@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Intro to the Linux/UNIX OS Programming: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Linux Standards</h3>
+        <p>To make UNIX programming orderly and organized, UNIX developers created <b>programming standards</b>, which are documents that instruct system programmers how to implement certain aspects of their utilities. When an operating system follows a standard, it is called <b>standard-compliant</b>.</p>
+        <p>Linux, although being UNIX-based, isn't required to comply with any of UNIX standards (which, in some cases, might cost money if the developers want their system to be officially recognized as standard-compliant.) However, wherever possible, Linux <i>strives</i> to comply with two such UNIX standards:</p>
+        <ol>
+            <li><a href="https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/" target="_blank"><b>POSIX</b></a> (= "Portable Operating System Interface", named by Richard Stallman) was proposed in the mid-1980s by <a href="https://www.ieee.org/" target="_blank">IEEE</a>, defines UNIX APIs, shells (command interpreters), and utilities, and its latest version is <tt>IEEE Std 1003.1-2024</tt>. To be officially recognized as a compliant, the developers of an OS <a href="https://posix.opengroup.org/docs/posix-fee-schedule.pdf" target="_blank">must pay more than $10K for a license</a>.</li>
+            <li><a href="https://www.opengroup.org/austin/papers/single_unix_faq.html" target="_blank"><b>SUS</b></a> (= "Single Unix Specification") was proposed in the early 1990s by <a href="https://www.opengroup.org/" target="_blank">the Open Group</a> (from the merging of two organizations: OSF and X/Open), and the latest version is <tt>SUSv4-2018</tt>. The license of this standard is actually free, and it incorporates the latest POSIX standard. Still, not all Linux distros choose to officially comply with it.</li>
+        </ol>
+
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

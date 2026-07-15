@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Threads: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <style>li { margin: 10px 0;}</style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Race Conditions</h3>
+        <p>Two or more threads may race (= compete with) each other if they attempt to change data at the same moment.</p>
+        <p style="margin-bottom: 0;">A <b>race condition</b> is a situation where the unsynchronized access of a shared resource by two or more threads leads to erroneous program behavior and corrupt data.</p>
+        <div class = 'supercontainer' style="margin-top: 0;">
+        <div>
+            <p>The shared resource could be anything the OS has to offer:</p>
+            <ul>
+                <li>Hardware (e.g., CPU, Memory, Disc Space, I/O devices, etc.)</li>
+                <li>Data in memory: this is the most common form of a race, called a <b>data race</b>.</li>
+            </ul>
+            <p>The part of the code where a race occurs is called a <b>critical region</b>.</p>
+            <p>We can prevent races by <b>synchronizing</b> threads' access (= arranging an orderly and timed access) to critical regions.</p>
+        </div>
+        <div class = "imagecontainer" style = "justify-content: flex-start; float: right;">
+              <a href = "./race_conditions.png" target='_blank'><img src="./race_conditions.png" title = "Example of a race condition." alt="Example of a race condition." style = "width: 35vw; z-index: 1000;"></a>
+              <p class = "caption" style = "width: 35vw; z-index: 1000;">Example of a race condition. Taken from <a href="https://www.software-testing-tutorials-automation.com/2017/09/what-is-race-condition-in-software.html">this blog</a>.</p>
+            </div>
+        </div>
+
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>File and Directory Management: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3><a href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/lecture_notes/topic_12/permissions_changing.c" target="_blank">permissions_changing.c</a>: Setting a File's Permissions</h3>
+            <pre class="source source-long"><code class="language-c">/* A program changing the permissions of a file
+ *    and printing the update to the terminal.
+ *
+ *    Miriam Briskman, 5/8/2023
+ *    CISC 3350, Brooklyn College
+ *    Licensed under CC BY-NC 4.0
+ */
+
+#include &lt;sys/types.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+
+// Function prototype:
+void print_permissions (struct stat);
+int int_to_permissions (int);
+
+int main (int argc, char *argv[])
+{
+    struct stat sb; // The 'statistics' stucture.
+    int ret;
+
+    if (argc &lt; 3)
+    {
+        fprintf (stderr,
+                 "usage: %s &lt;file&gt; &lt;permissions "
+                 "as a number: 777&gt;\n",
+                 argv[0]);
+        exit (EXIT_FAILURE);
+    }
+
+    // Calling stat():
+    ret = stat (argv[1], &amp;sb);
+    if (ret)
+    {
+        perror ("stat");
+        exit (EXIT_FAILURE);
+    }
+
+    printf ("Current file permissions of %s:\n",
+            argv[1]);
+    print_permissions (sb);
+
+    ret = chmod (argv[1],
+                 int_to_permissions (atoi (argv[2])));
+    if (ret)
+    {
+        perror ("chmod");
+        exit (EXIT_FAILURE);
+    }
+
+    // Calling stat():
+    ret = stat (argv[1], &amp;sb);
+    if (ret)
+    {
+        perror ("stat");
+        exit (EXIT_FAILURE);
+    }
+
+    // Print the updated permissions of the file:
+    printf ("Updated file permissions of %s:\n",
+            argv[1]);
+    print_permissions (sb);
+    
+    return EXIT_SUCCESS;
+}
+
+// A function printing the current permissions
+//    of the file:
+void print_permissions (struct stat sb)
+{
+    switch (sb.st_mode &amp; S_IFMT)
+    {
+         case S_IFBLK:  printf("b");
+                        break;
+         case S_IFCHR:  printf("c");
+                        break;
+         case S_IFDIR:  printf("d");
+                        break;
+         case S_IFIFO:  printf("f");
+                        break;
+         case S_IFLNK:  printf("l");
+                        break;
+         case S_IFREG:  printf("-");
+                        break;
+         case S_IFSOCK: printf("s");
+                        break;
+         default:       printf("u");
+    }
+
+    printf ( (sb.st_mode &amp; S_IRUSR) ? "r" : "-");
+    printf ( (sb.st_mode &amp; S_IWUSR) ? "w" : "-");
+    printf ( (sb.st_mode &amp; S_IXUSR) ? "x" : "-");
+    printf ( (sb.st_mode &amp; S_IRGRP) ? "r" : "-");
+    printf ( (sb.st_mode &amp; S_IWGRP) ? "w" : "-");
+    printf ( (sb.st_mode &amp; S_IXGRP) ? "x" : "-");
+    printf ( (sb.st_mode &amp; S_IROTH) ? "r" : "-");
+    printf ( (sb.st_mode &amp; S_IWOTH) ? "w" : "-");
+    printf ( (sb.st_mode &amp; S_IXOTH) ? "x" : "-");
+
+    printf ("\n");
+}
+
+// A function that takes a numerical representation
+//    of permissions, such as 644, and converts it
+//    into a value that the chmod() function
+//    understands.
+// This value (integer) is returned by the function.
+int int_to_permissions (int permissions)
+{
+    int res = 0;
+
+    // First digit for the owner permissions:
+    switch ((permissions % 1000) / 100)
+    {
+        case 0: break;
+        case 1: res = res | S_IXUSR;
+                break;
+        case 2: res = res | S_IWUSR;
+                break;
+        case 3: res = res | S_IXUSR | S_IWUSR;
+                break;
+        case 4: res = res | S_IRUSR;
+                break;
+        case 5: res = res | S_IRUSR | S_IXUSR;
+                break;
+        case 6: res = res | S_IRUSR | S_IWUSR;
+                break;
+        case 7: res = res | S_IRUSR | S_IWUSR | S_IXUSR;
+                break;
+    }
+
+    // 2nd digit for the group permissions:
+    switch ((permissions % 100) / 10)
+    {
+        case 0: break;
+        case 1: res = res | S_IXGRP;
+                break;
+        case 2: res = res | S_IWGRP;
+                break;
+        case 3: res = res | S_IXGRP | S_IWGRP;
+                break;
+        case 4: res = res | S_IRGRP;
+                break;
+        case 5: res = res | S_IRGRP | S_IXGRP;
+                break;
+        case 6: res = res | S_IRGRP | S_IWGRP;
+                break;
+        case 7: res = res | S_IRGRP | S_IWGRP | S_IXGRP; 
+                break;
+    }
+
+    // 3rd digit for the others' permissions:
+    switch (permissions % 10)
+    {
+        case 0: break;
+        case 1: res = res | S_IXOTH;
+                break;
+        case 2: res = res | S_IWOTH;
+                break;
+        case 3: res = res | S_IXOTH | S_IWOTH;
+                break;
+        case 4: res = res | S_IROTH;
+                break;
+        case 5: res = res | S_IROTH | S_IXOTH;
+                break;
+        case 6: res = res | S_IROTH | S_IWOTH;
+                break;
+        case 7: res = res | S_IROTH | S_IWOTH | S_IXOTH;
+                break;
+    }
+
+    return res;
+}</code></pre>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

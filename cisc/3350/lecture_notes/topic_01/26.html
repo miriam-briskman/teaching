@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Intro to the Linux/UNIX OS Programming: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Processes</h3>
+        <div class = "imagecontainer imagecontainer-side">
+          <a href = "./cpu.jpg" target='_blank'><img src="./cpu.jpg" title = "Processes in action!" alt="Processes executing on the CPU" style = "height: 11vh; z-index: 1000;"></a>
+          <p class = "caption" style = "width: 32vh; z-index: 1000;">By <a target='_blank'  href="https://commons.wikimedia.org/wiki/File:Electronics-projects.jpg">James<WBR>mathew<WBR>1840139</a>, <a target='_blank' href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons</p>
+        </div>
+        <p style = "margin-bottom: 1.5vh;"><b>Processes</b> are programs whose machine code was copied to main memory (RAM) to run these programs. In other words, processes are running programs. Each process's memory chunk consists of the following sections:</p>
+        <ul style = "margin-top: 1.5vh; margin-bottom: 1.5vh;">
+            <li>The <b>text</b> section, in which the binary code of the program (the process's instructions) and read-only data (constants) are stored. This section is fixed in size (depending on how long the binary code is.)</li>
+            <li>The <b>data</b> section, in which global and static variables that were initialized are stored. It has a fixed size, too. (<b><i>How do we know that it's fixed in size?</i></b>)</li>
+            <li>The <b>bss</b> (= <b>b</b>lock <b>s</b>tarted by <b>s</b>ymbol) section, in which global and static variables that <i>weren't yet</i> initialized are stored. It has a fixed size, too.</li>
+            <li>The <b>stack</b> section, in which local variables, such as those defined inside functions, are stored, and</li>
+            <li>The <b>heap</b> section, in which variables that were dynamically allocated are stored. <u>Example</u>: when you use the <TT>new</TT> operator in Java or the <tt>malloc()</tt> function in C, your variable (or object) is stored on the heap.</li>
+        </ul>
+        <p style = "margin-top: 1.5vh;">The Linux kernel is responsible for allocating memory for processes, deciding in which order processes run, and ensuring their proper execution. We will cover more on processes in Topics 7 and 9.</p>
+                       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

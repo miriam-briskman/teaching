@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>File and Directory Management: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3><a href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/lecture_notes/topic_12/find_file_type.c" target="_blank">find_file_type.c</a>: Getting a File's Type with <pre class="source source-inline"><code class="language-c">stat()</code></pre></h3>
+            <pre class="source source-long"><code class="language-c">// A program outputing the type of a file whose name is
+//     passed as the 1st argument (argv[1]) to the
+//     program.
+
+// This program is taken from Linux System Programming:
+//     Talking Directly to the Kernel and C Library, 
+//     2nd Edition, by Love. ISNB: 978-1-44933953-1,
+//     pages 244-245.
+
+#include &lt;sys/types.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+
+int main (int argc, char *argv[])
+{
+     struct stat sb; // The 'statistics' stucture.
+     int ret;
+
+     if (argc &lt; 2)
+     {
+         fprintf (stderr,
+                  "usage: %s &lt;file&gt;\n",
+                  argv[0]);
+         exit (EXIT_FAILURE);
+     }
+
+     ret = stat (argv[1], &amp;sb); // Calling stat().
+     if (ret)
+     {
+         perror ("stat");
+         exit (EXIT_FAILURE);
+     }
+
+     printf ("File type of %s: ", argv[1]);
+
+     // Below, we do a bitwise AND (using &amp;) to
+     //    extract only the file type out of the
+     //    st_mode field (which also contains
+     //    information about file permission, but
+     //    we don't need them now so we ignore
+     //    them.)
+     // See a more complete explanation at:
+     //    https://&ZeroWidthSpace;stackoverflow.com&ZeroWidthSpace;/a&ZeroWidthSpace;/31449965&ZeroWidthSpace;/14167156
+     switch (sb.st_mode &amp; S_IFMT)
+     {
+         case S_IFBLK:  printf ("block device node.\n");
+                        break;
+         case S_IFCHR:  printf ("character device node.\n");
+                        break;
+         case S_IFDIR:  printf ("directory.\n");
+                        break;
+         case S_IFIFO:  printf ("FIFO (a queue).\n");
+                        break;
+         case S_IFLNK:  printf ("symbolic link.\n");
+                        break;
+         case S_IFREG:  printf ("regular file.\n");
+                        break;
+         case S_IFSOCK: printf ("socket.\n");
+                        break;
+         default:       printf ("unknown.\n");
+    }
+ 
+    return EXIT_SUCCESS;
+}</code></pre>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

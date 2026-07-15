@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Review of the C Language: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Review of the C Language</h3>
+        <ol style="margin-top: 1vh;" start="6">
+            <li><tt>files.c</tt>:<br><a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/CISC_3350_OER_Course_Packet.pdf#files.c">https:<WBR>//www<WBR>.sci<WBR>.brooklyn<WBR>.cuny<WBR>.edu/<WBR>~briskman/<WBR>cisc/<WBR>3350/<WBR>CISC_3350<WBR>_OER<WBR>_Course<WBR>_Packet<WBR>.pdf<WBR>#files.c</a></li>
+            <li><tt>functions.c</tt>:<br><a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/CISC_3350_OER_Course_Packet.pdf#functions.c">https:<WBR>//www<WBR>.sci<WBR>.brooklyn<WBR>.cuny<WBR>.edu/<WBR>~briskman/<WBR>cisc/<WBR>3350/<WBR>CISC_3350<WBR>_OER<WBR>_Course<WBR>_Packet<WBR>.pdf<WBR>#functions.c</a></li>
+            <li><tt>structs.c</tt>:<br><a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/CISC_3350_OER_Course_Packet.pdf#structs.c">https:<WBR>//www<WBR>.sci<WBR>.brooklyn<WBR>.cuny<WBR>.edu/<WBR>~briskman/<WBR>cisc/<WBR>3350/<WBR>CISC_3350<WBR>_OER<WBR>_Course<WBR>_Packet<WBR>.pdf<WBR>#structs.c</a></li>
+            <li><tt>error_checking.c</tt>:<br><a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/CISC_3350_OER_Course_Packet.pdf#error_checking.c">https:<WBR>//www<WBR>.sci<WBR>.brooklyn<WBR>.cuny<WBR>.edu/<WBR>~briskman/<WBR>cisc/<WBR>3350/<WBR>CISC_3350<WBR>_OER<WBR>_Course<WBR>_Packet<WBR>.pdf<WBR>#error_checking.c</a></li>
+            <li><tt>command&ZeroWidthSpace;_line&ZeroWidthSpace;_arguments&ZeroWidthSpace;.c</tt>:<br><a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/CISC_3350_OER_Course_Packet.pdf#command_line_arguments.c">https:<WBR>//www<WBR>.sci<WBR>.brooklyn<WBR>.cuny<WBR>.edu/<WBR>~briskman/<WBR>cisc/<WBR>3350/<WBR>CISC_3350<WBR>_OER<WBR>_Course<WBR>_Packet<WBR>.pdf<WBR>#command<WBR>_line<WBR>_arguments.c</a></li>
+        </ol>
+        <p><b>Fun fact</b>: You can access the PDF of any program in our course inside the packet by appending the source code file's name to the URL: <tt>https:<WBR>//www<WBR>.sci<WBR>.brooklyn<WBR>.cuny<WBR>.edu/<WBR>~briskman/<WBR>cisc/<WBR>3350/<WBR>CISC_3350<WBR>_OER<WBR>_Course<WBR>_Packet<WBR>.pdf<WBR>#</tt></p>
+                       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

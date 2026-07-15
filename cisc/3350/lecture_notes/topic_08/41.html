@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Threads: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+      <!--<style>li { margin: 10px 0;}</style>-->
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>The <tt>Pthreads</tt> API</h3>
+        <p>Provides over a 100 low-level interfaces to build a multithreaded program.</p>
+        <p>To use the library's function, <pre class="source source-inline"><code class="language-c">#include &lt;pthread.h&gt;</code></pre> in your program's code.</p>
+        <p>Every <tt>Pthreads</tt> function, which BTW starts with <pre class="source source-inline"><code class="language-c">pthread_</code></pre>, belongs to one of 2 categories:</p>
+        <ul>
+            <li><u>Thread management</u>: functions to create, destroy, join (= wait for), and detach threads.</li>
+            <li><u>Synchronization</u>: functions to prevent race conditions; we cover only mutex lock functions in our course.</li>
+        </ul>
+        <p>To make your program compile successfully, early <tt>gcc</tt> compiler versions (before <tt>2.34</tt>) require that you use the <tt>–pthread</tt> command-line flag when compiling a program that uses <tt>Pthreads</tt>. This is because <tt>libpthread</tt> is external to the <tt>libc</tt> standard library and thus requires explicit linking. <a target="_blank" href="https://developers.redhat.com/articles/2021/12/17/why-glibc-234-removed-libpthread#the_developer_view" title = "Article: 'Why glibc 2.34 removed libpthread', December 17, 2021">Newer versions of <tt>gcc</tt></a>, however, don't require including <tt>–pthread</tt> during compilation.</p>
+        <pre><code class="language-bash shell">$ gcc -Wall -Wextra -O2 -g -pthread -o program program.c</code></pre>
+
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

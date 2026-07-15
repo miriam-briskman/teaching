@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>File and Directory Management: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3><a href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/lecture_notes/topic_12/eject_cd_rom.c" target="_blank">eject_cd_rom.c</a>: Unmounting a CD-ROM</h3>
+            <pre class="source source-long"><code class="language-c">// The following program uses the CDROMEJECT request
+//     to eject the media tray from a CDROM device,
+//     which the user provides as the first argument
+//     on the programs command line.
+
+// This program is taken from Linux System Programming:
+//     Talking Directly to the Kernel and C Library, 
+//     2nd Edition, by Love. ISNB: 978-1-44933953-1,
+//     pages 282-283.
+
+#include &lt;sys/types.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;sys/ioctl.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;linux/cdrom.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main (int argc, char *argv[])
+{
+    int fd, ret;
+
+    if (argc &lt; 2)
+    {
+        fprintf (stderr,
+                 "usage: %s &lt;device to eject&gt;\n",
+                 argv[0]);
+        exit (EXIT_FAILURE);
+    }
+
+    // Open the CD-ROM device, read-only.
+    // O_NONBLOCK tells the kernel that we want to
+    //    open the device even if there is no media
+    //    present in the drive.
+    fd = open (argv[1], O_RDONLY | O_NONBLOCK);
+    if (fd &lt; 0)
+    {
+        perror ("open");
+        exit (EXIT_FAILURE);
+    }
+
+    // Send the eject command to the CD-ROM device:
+    ret = ioctl (fd, CDROMEJECT, 0);
+    if (ret)
+    {
+        perror ("ioctl");
+        exit (EXIT_FAILURE);
+    }
+
+    ret = close (fd);
+    if (ret)
+    {
+        perror ("close");
+        exit (EXIT_FAILURE);
+    }
+
+    return EXIT_SUCCESS;
+}</code></pre>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

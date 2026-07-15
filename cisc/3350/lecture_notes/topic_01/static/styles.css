@@ -1,0 +1,135 @@
+body
+    { 
+        font-family: Arial, sans-serif;
+        line-height: 150%;
+        background-size: cover;
+        background-color: rgb(188,255,176);
+        letter-spacing: 0.8pt;
+    }
+    h1
+    {
+        font-size: 24pt;
+        text-align: center;
+        color: rgb(0,65,1);
+    }
+    h2
+    {
+        font-size: 20pt;
+        color: rgb(0,65,1);
+    }
+    h3
+    {
+        font-size: 16pt;
+        color: rgb(0,65,1);
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+    }
+    hr
+    {
+        border: 1px solid black;
+    }
+    a
+    {
+       text-decoration: none;
+       text-decoration: underline;
+       color: rgb(133,0,65);
+       -webkit-transition: all 0.5s; /* Safari */
+       transition: all 0.5s;
+    }
+    a:hover, a:focus
+    {
+       color: black;
+       -webkit-transition: all 0.5s; /* Safari */
+       transition: all 0.5s;
+    }
+    .copyright
+    {
+      width: 100%;
+      font-size: 14pt;
+      text-align: center;
+    }
+    .copyright a
+    {
+       color: rgb(133,0,65);
+       font-weight: normal;
+       line-height: initial;
+       -webkit-transition: all 0.5s;
+       transition: all 0.5s;
+    }
+    .copyright a:hover
+    {
+       color: black;
+       -webkit-transition: all 0.5s;
+       transition: all 0.5s;
+    }
+    .item-start
+    {
+       margin-left: -16px;
+    }
+    #target-list
+    {
+       list-style-position: inside;
+    }
+    #target-list li
+    {
+       padding-left: 40px;
+       margin-left: -40px;
+       text-indent: -16px;
+
+       animation-name: fadeIn;
+       animation-iteration-count: 1;
+       animation-timing-function: ease-in-out;
+       animation-duration: 1s;
+       animation-delay: 1s;
+       animation-fill-mode:forwards;
+    }
+    @keyframes fadeIn
+    {
+        100%
+        {
+            background-color: transparent;
+        }
+    }
+    #quick-links
+    {
+        margin-top: 0;
+        margin-bottom: 2vh;
+    }
+    #columns
+    {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    #myBtn
+    {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 99;
+        border: 2px solid black;
+        outline: none;
+        background-color: rgb(188,255,176);
+        color: rgb(0,65,1);
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 5px;
+        font-size: 20px;
+    }
+
+    #myBtn:hover
+    {
+        background-color: white;
+        -webkit-transition: all 0.5s; /* Safari */
+        transition: all 0.5s;
+    }
+
+    /* Smaller Devices */
+    @media screen and (max-width : 900px)
+    {
+        #columns
+        {
+            display: block;
+        }
+    }

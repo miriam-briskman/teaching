@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Processes: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Sessions and Process Groups</h3>
+            <p>Each process is a member of a <b>process group</b>: a set of one or more processes associated with each other.</p>
+            <ul style = "margin-top: -3vh;">
+                <li>Signals can be sent to all the processes in the group (e.g., terminating them all at once.)</li>
+            </ul>
+            <p>Each process group has a <b>process group ID</b> (<pre class="source source-inline"><code class="language-c">pgid</code></pre>) and a <b>process group leader</b>: the main process in the group.</p>
+            <ul style = "margin-top: -3vh;">
+                <li>The process group will keep existing as long as there is one remaining member in the group. </li>
+                <li>It continues to exist even if the process group leader terminates (a different process becomes the new leader.)</li>
+            </ul>
+            <p>When a new user logs into a Linux machine, the <tt>login</tt> process creates a new <b>session</b> (= a set of one or more process groups) that consists of a single process: the user's shell (e.g., <tt>sh</tt> or <tt>bash</tt>.)</p>
+            <ul style = "margin-top: -3vh;">
+                 <li>The shell becomes the <b>session leader</b> (= the main process in the session.)</li>
+                 <li>The <b>session ID</b> (<pre class="source source-inline"><code class="language-c">sid</code></pre>) is the <pre class="source source-inline"><code class="language-c">pid</code></pre> of the session's leader process.</li>
+                 <li>Sessions control the activities of a logged-in user, and associate the user with a <b>controlling terminal</b> (= the terminal where all these activities take place.)</li>
+            </ul>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

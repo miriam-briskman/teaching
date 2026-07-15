@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>File I/O: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          table {margin-top: 1vh;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Saving Files' Changes to Disk: Synching</h3>
+        <table style = "margin-bottom: 3vh;">
+          <tr>
+            <td><b>Name:</b> <pre class="source source-inline"><code class="language-c">fsync()</code></pre></td>
+            <td><b>System call or function:</b> System call</td>
+            <td><b>Links:</b> <a target="_blank" href="https://man7.org/linux/man-pages/man2/fsync.2.html">Online Manual</a> | <a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/CISC_3350_OER_Course_Packet.pdf#fsync(2)+-+fsync()+and+fdatasync()+-+Linux+man+page">Course Packet</a></td>
+          </tr>
+          <tr>
+            <td colspan=3><b>What it does:</b> flushes (= forces the saving of) both data and metadata of a file from the Linux OS's I/O buffer to disk and returns only after the drive confirms that data were successfully saved to the disk.
+</td>
+          </tr>
+          <tr>
+            <td colspan=3><b>What libraries you must include:</b> <pre class="source source-inline"><code class="language-c">#include &lt;unistd.h&gt; // Defines fsync().
+</code></pre></td>
+          </tr>
+          <tr>
+            <td colspan=3><b>Syntax:</b> <pre class="source source-inline"><code class="language-c">int fsync (int fd);</code></pre></td>
+          </tr>
+          <tr>
+            <td colspan=3><b>Description of arguments:</b> <pre class="source-inline" style = "font-family: inherit;"><pre class="source source-inline"><code class="language-c">fd</code></pre>: file descriptor of a file that was open for writing
+</td>
+          </tr>
+          <tr>
+            <td rowspan="3"><b>What type it returns:</b> <pre class="source source-inline"><code class="language-c">int</code></pre></td>
+            <td colspan=2><b>On success:</b> <pre class="source source-inline"><code class="language-c">0</code></pre></td>
+          </tr>
+          <tr>
+            <td colspan=2><b>On failure:</b> <pre class="source source-inline"><code class="language-c">-1</code></pre></td>
+          </tr>
+          <tr>
+            <td colspan=2><b>If failure, does it set <pre class="source source-inline"><code class="language-c">errno</code></pre>?</b> Yes</td>
+          </tr>
+          <tr>
+            <td colspan=3><b>Quick example:</b> <pre class="source source-inline"><code class="language-c">int return_value = fsync (my_file_fd);</code></pre></td>
+          </tr>
+          <tr>
+            <td colspan=3><b>Other variations:</b> <a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/lecture_notes/topic_04/18.html"><pre class="source source-inline"><code class="language-c">fdatasync()</code></pre></a>, <a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/lecture_notes/topic_04/19.html"><pre class="source source-inline"><code class="language-c">sync()</code></pre></a></td>
+          </tr>
+        </table>
+        <p style = "margin-top: 5vh;">There is a trade-off between performance and the control of when data reaches the disk: in case of large files, the OS might take some time to complete the disk saving of the data, so <pre class="source source-inline"><code class="language-c">fsync()</code></pre> might take time to return.</p>
+                       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Threads: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse;}
+          table {margin-top: 1vh; line-height: 100%;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+          table.align-right-4 td:nth-child(4) { text-align: right; }
+          table.align-right-5 td:nth-child(5) { text-align: right; }
+          table.align-right-6 td:nth-child(6) { text-align: right; }
+          table.align-center td:nth-child(1) { text-align: center; }
+      </style>
+      <!--<style>li { margin: 10px 0;}</style>-->
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Example of a Real-World Race: Withdrawing Money</h3>
+        <p></p>
+        <p>However, here are scenarios in which machine instructions are <u>mixed</u> or execute in parallel: this overwrites <pre class="source source-inline"><code class="language-c">balance</code></pre> and results in <b>corrupted data</b>. <u>Note</u>: we can't know in which order instructions will run, resulting in chaotic consequences!</p>
+        <div class = 'supercontainer' style="justify-content: space-evenly;">
+        <div style="margin: 0; padding: 0; overflow-x: auto; overflow-y: hidden;">
+        <table class = "align-right-4 align-right-5 align-right-6 align-center table-small-details">
+        <caption>Table 3: Interleaved (Mixed) Instructions</caption>
+  <tr>
+    <th>Time</th>
+    <th>Thread 1</th>
+    <th>Thread 2</th>
+    <th><i>R</i><sub>1</sub></th>
+    <th><i>R</i><sub>2</sub></th>
+    <th><pre class="source source-inline"><code class="language-c">balance</code></pre></th>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>Load <pre class="source source-inline"><code class="language-c">balance</code></pre> to <i>R</i><sub>1</sub></td>
+    <td></td>
+    <td><pre class="source source-inline"><code class="language-c">500</code></pre></td>
+    <td></td>
+    <td><span style = "color: green;">$500</span></td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Add <pre class="source source-inline"><code class="language-c">-200</code></pre> to <i>R</i><sub>1</sub></td>
+    <td></td>
+    <td><pre class="source source-inline"><code class="language-c">300</code></pre></td>
+    <td></td>
+    <td><span style = "color: green;">$500</span></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td></td>
+    <td>Load <pre class="source source-inline"><code class="language-c">balance</code></pre> to <i>R</i><sub>2</sub></td>
+    <td><pre class="source source-inline"><code class="language-c">300</code></pre></td>
+    <td><pre class="source source-inline"><code class="language-c">500</code></pre></td>
+    <td><span style = "color: green;">$500</span></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Store <i>R</i><sub>1</sub> to <pre class="source source-inline"><code class="language-c">balance</code></pre></td>
+    <td></td>
+    <td><pre class="source source-inline"><code class="language-c">300</code></pre></td>
+    <td><pre class="source source-inline"><code class="language-c">500</code></pre></td>
+    <td><span style = "color: green;">$300</span></td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td></td>
+    <td>Add <pre class="source source-inline"><code class="language-c">-400</code></pre> to <i>R</i><sub>2</sub></td>
+    <td><pre class="source source-inline"><code class="language-c">300</code></pre></td>
+    <td><pre class="source source-inline"><code class="language-c">100</code></pre></td>
+    <td><span style = "color: green;">$300</span></td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td></td>
+    <td>Store <i>R</i><sub>2</sub> to <pre class="source source-inline"><code class="language-c">balance</code></pre></td>
+    <td><pre class="source source-inline"><code class="language-c">300</code></pre></td>
+    <td><pre class="source source-inline"><code class="language-c">100</code></pre></td>
+    <td><span style = "color: green;">$100</span></td>
+  </tr>
+</table>
+</div>
+        <span style="align-self: flex-end;">, </span>
+        <div style="margin: 0; padding: 0; overflow-x: auto; overflow-y: hidden;">
+        <table class = "align-right-4 align-right-5 align-right-6 align-center table-small-details">
+        <caption>Table 4: Interleaved (Mixed) Instructions</caption>
+  <tr>
+    <th>Time</th>
+    <th>Thread 1</th>
+    <th>Thread 2</th>
+    <th><i>R</i><sub>1</sub></th>
+    <th><i>R</i><sub>2</sub></th>
+    <th><pre class="source source-inline"><code class="language-c">balance</code></pre></th>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td></td>
+    <td>Load <pre class="source source-inline"><code class="language-c">balance</code></pre> to <i>R</i><sub>2</sub></td>
+    <td></td>
+    <td><pre class="source source-inline"><code class="language-c">500</code></pre></td>
+    <td><span style = "color: green;">$500</span></td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Load <pre class="source source-inline"><code class="language-c">balance</code></pre> to <i>R</i><sub>1</sub></td>
+    <td></td>
+    <td><pre class="source source-inline"><code class="language-c">500</code></pre></td>
+    <td><pre class="source source-inline"><code class="language-c">500</code></pre></td>
+    <td><span style = "color: green;">$500</span></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td></td>
+    <td>Add <pre class="source source-inline"><code class="language-c">-400</code></pre> to <i>R</i><sub>2</sub></td>
+    <td><pre class="source source-inline"><code class="language-c">500</code></pre></td>
+    <td><pre class="source source-inline"><code class="language-c">100</code></pre></td>
+    <td><span style = "color: green;">$500</span></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Add <pre class="source source-inline"><code class="language-c">-200</code></pre> to <i>R</i><sub>1</sub></td>
+    <td></td>
+    <td><pre class="source source-inline"><code class="language-c">300</code></pre></td>
+    <td><pre class="source source-inline"><code class="language-c">100</code></pre></td>
+    <td><span style = "color: green;">$500</span></td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td></td>
+    <td>Store <i>R</i><sub>2</sub> to <pre class="source source-inline"><code class="language-c">balance</code></pre></td>
+    <td><pre class="source source-inline"><code class="language-c">300</code></pre></td>
+    <td><pre class="source source-inline"><code class="language-c">100</code></pre></td>
+    <td><span style = "color: green;">$100</span></td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>Store <i>R</i><sub>1</sub> to <pre class="source source-inline"><code class="language-c">balance</code></pre></td>
+    <td></td>
+    <td><pre class="source source-inline"><code class="language-c">300</code></pre></td>
+    <td><pre class="source source-inline"><code class="language-c">100</code></pre></td>
+    <td><span style = "color: green;">$300</span></td>
+  </tr>
+</table>
+</div>
+        <span style="align-self: flex-end;">, </span>
+        </div>
+        <div class = 'supercontainer' style="justify-content: center;">
+            <div style="margin: 0; padding: 0; overflow-x: auto; overflow-y: hidden;">
+            <table class = "align-right-4 align-right-5 align-right-6 align-center table-small-details">
+            <caption>Table 5: Parallel Instructions</caption>
+                <tr>
+    <th>Time</th>
+    <th>Thread 1</th>
+    <th>Thread 2</th>
+    <th><i>R</i><sub>1</sub></th>
+    <th><i>R</i><sub>2</sub></th>
+    <th><pre class="source source-inline"><code class="language-c">balance</code></pre></th>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>Load <pre class="source source-inline"><code class="language-c">balance</code></pre> to <i>R</i><sub>1</sub></td>
+    <td>Load <pre class="source source-inline"><code class="language-c">balance</code></pre> to <i>R</i><sub>2</sub></td>
+    <td><pre class="source source-inline"><code class="language-c">500</code></pre></td>
+    <td><pre class="source source-inline"><code class="language-c">500</code></pre></td>
+    <td><span style = "color: green;">$500</span></td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Add <pre class="source source-inline"><code class="language-c">-200</code></pre> to <i>R</i><sub>1</sub></td>
+    <td>Add <pre class="source source-inline"><code class="language-c">-400</code></pre> to <i>R</i><sub>2</sub></td>
+    <td><pre class="source source-inline"><code class="language-c">300</code></pre></td>
+    <td><pre class="source source-inline"><code class="language-c">100</code></pre></td>
+    <td><span style = "color: green;">$500</span></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Store <i>R</i><sub>1</sub> to <pre class="source source-inline"><code class="language-c">balance</code></pre></td>
+    <td>Store <i>R</i><sub>2</sub> to <pre class="source source-inline"><code class="language-c">balance</code></pre></td>
+    <td><pre class="source source-inline"><code class="language-c">300</code></pre></td>
+    <td><pre class="source source-inline"><code class="language-c">100</code></pre></td>
+    <td><span style = "color: green;">$300</span> or <span style = "color: green;">$100</span></td>
+  </tr>
+            </table>
+            </div>
+            <span style="align-self: flex-end;">, etc.</span>
+        </div>
+
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

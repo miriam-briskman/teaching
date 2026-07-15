@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Processes: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          table {margin-top: 1vh;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Getting the Effective User ID</h3>
+        <table style = "margin-bottom: 3vh;">
+          <tr>
+            <td><b>Name:</b> <pre class="source source-inline function-name"><code class="language-c">geteuid()</code></pre></td>
+            <td><b>System call or function:</b> System Call</td>
+            <td><b>Links:</b> <a target="_blank" href="https://man7.org/linux/man-pages/man2/getuid.2.html">Online Manual</a> | <a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/CISC_3350_OER_Course_Packet.pdf#getuid(2)+-+getuid()+and+geteuid()+-+Linux+man+page">Course Packet</a></td>
+          </tr>
+          <tr>
+            <td colspan=3><b>What it does:</b> returns the effective user ID of the calling process.</td>
+          </tr>
+          <tr>
+            <td colspan=3><b>What libraries you must include:</b> <pre class="source source-inline"><code class="language-c">#include &lt;unistd.h&gt; // Defines geteuid().
+</code></pre></td>
+          </tr>
+          <tr>
+            <td colspan=3><b>Syntax:</b> <pre class="source source-inline"><code class="language-c">uid_t geteuid (void);</code></pre></td>
+          </tr>
+          <tr>
+            <td colspan=3><b>Description of arguments:</b> &ndash; This system call doesn't accept any argument. &ndash;</td>
+          </tr>
+          <tr>
+            <td rowspan="3"><b>What type it returns:</b> <pre class="source source-inline"><code class="language-c">uid_t</code></pre></td>
+            <td colspan=2><b>On success:</b> The effective user ID of the process.</td>
+          </tr>
+          <tr>
+            <td colspan=2><b>On failure:</b> &ndash; This syscall never fails &ndash;</td>
+          </tr>
+          <tr>
+            <td colspan=2><b>If failure, does it set <pre class="source source-inline"><code class="language-c">errno</code></pre>?</b> No</td>
+          </tr>
+          <tr>
+            <td colspan=3><b>Quick example:</b> <pre class="source source-inline"><code class="language-c">printf ("My effective user ID is: %d\n", geteuid());</code></pre></td>
+          </tr>
+          <tr>
+            <td colspan=3><b>Other variations:</b> <a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/lecture_notes/topic_07/48.html"><pre class="source source-inline"><code class="language-c">getuid()</code></pre></a>, <a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/lecture_notes/topic_07/49.html"><pre class="source source-inline"><code class="language-c">getgid()</code></pre></a>, <a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/lecture_notes/topic_07/51.html"><pre class="source source-inline"><code class="language-c">getegid()</code></pre></a></td>
+          </tr>
+        </table>
+
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

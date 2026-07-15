@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Processes: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Processes</h3>
+        <div class = "imagecontainer imagecontainer-side">
+          <a href = "https://static1.thegamerimages.com/wordpress/wp-content/uploads/2020/10/chaos-daemons.jpg" target='_blank'><img src="https://static1.thegamerimages.com/wordpress/wp-content/uploads/2020/10/chaos-daemons.jpg?q=50&fit=crop&w=963&dpr=1.5" title = "Daemon Process!" alt="Daemon Process!" style = "height: 11vh; z-index: 1000;"></a>
+          <p class = "caption" style = "width: 23vh; z-index: 1000;">By <a target='_blank'  href="https://www.thegamer.com/warhammer-40k-best-worst-armies-melee/">thegamer<WBR>.com</a></p>
+        </div>
+        <p></p>
+        <p>The <b>OS Scheduler</b>, also called the <b>idle process</b>, has the <pre class="source source-inline"><code class="language-c">pid</code></pre> of <pre class="source source-inline"><code class="language-c">0</code></pre>. This process runs when no other processes are currently running on the CPU, and makes the decision of what process should run next on the CPU.</p>
+        <p style = "margin-bottom: 2vh;">The process scheduler also launches a process called <TT><b>init</b></TT> (or <TT><b>systemd</b></TT> in newer Linux versions) with the <pre class="source source-inline"><code class="language-c">pid</code></pre> of <pre class="source source-inline"><code class="language-c">1</code></pre>, which runs throughout the entire execution of the OS. <TT><b>init</b></TT> creates all the other processes on the computer, thereby becoming the Great Parent of all processes.</p>
+        <ul style = "margin-top: -2vh; margin-bottom: 0vh;">
+           <li>The Scheduler searches for the code of <TT>init</TT> in one of the following locations, in the given order:
+           <ul style = "margin-top: 0vh;">
+              <li><tt>/sbin/init</tt>: &nbsp;&nbsp;the preferred and most likely location for the <tt>init</tt> program.</li>
+              <li><tt>/etc/init</tt>: &nbsp;&nbsp;&nbsp;&nbsp;another likely choice.</li>
+              <li><tt>/bin/init</tt>: &nbsp;&nbsp;&nbsp;&nbsp;a fallback choice.</li>
+              <li><tt>/bin/sh</tt>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;last choice if the kernel fails to find an init process.</li>
+           </ul>
+           </li>
+           <li>If <TT>init</TT> is found, it initializes the system, starts various vital background services (= <b>daemons</b>), and launches a login process. Otherwise, if all the 4 <TT>init</TT> programs aren't found or fail to launch, the Linux kernel shuts the system down.</li>
+        </ul>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

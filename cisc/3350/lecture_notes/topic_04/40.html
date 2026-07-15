@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>File I/O: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          table {margin-top: 1vh;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Multiplexed I/O - Comparison</h3>
+        <p></p>
+        <p>Benefits of <pre class="source source-inline"><code class="language-c">poll()</code></pre>:</p>
+        <ol>
+            <li>No need to pass in the highest-numbered <pre class="source source-inline"><code class="language-c">fd</code></pre> plus 1: you just pass the overall number of the <pre class="source source-inline"><code class="language-c">fd</code></pre>s you are watching for as the 2nd argument.</li>
+            <li><pre class="source source-inline"><code class="language-c">select()</code></pre>'s <pre class="source source-inline"><code class="language-c">fd</code></pre> sets are statically sized (either too small or wasting space,) whereas <pre class="source source-inline"><code class="language-c">poll()</code></pre> has the exact, right size.</li>
+            <li>The <pre class="source source-inline"><code class="language-c">fd</code></pre> sets for <pre class="source source-inline"><code class="language-c">select()</code></pre> are reconstructed on return, so a subsequent call must reinitialize them, whereas for <pre class="source source-inline"><code class="language-c">poll()</code></pre> the <pre class="source source-inline"><code class="language-c">events</code></pre> and <pre class="source source-inline"><code class="language-c">revents</code></pre> fields are separate.</li>
+            <li>The <pre class="source source-inline"><code class="language-c">timeout</code></pre> field in <pre class="source source-inline"><code class="language-c">select()</code></pre> is modified during <pre class="source source-inline"><code class="language-c">select()</code></pre>'s execution, requiring re-initialization of the <pre class="source source-inline"><code class="language-c">timeout</code></pre> for future calls to <pre class="source source-inline"><code class="language-c">select()</code></pre>.</li>
+        </ol>
+        <p>Benefits of <pre class="source source-inline"><code class="language-c">select()</code></pre>:</p>
+        <ol>
+            <li>More portable - some Unix systems don't support <pre class="source source-inline"><code class="language-c">poll()</code></pre>.</li>
+            <li>Has better timeout resolution (microseconds) instead of <pre class="source source-inline"><code class="language-c">poll()</code></pre>'s milliseconds.</li>
+        </ol>
+                       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

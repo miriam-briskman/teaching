@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+    <title>Topic 3: Review of the C Language | CISC 3350 Materials</title>
+    <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+    <link rel="stylesheet" href="..\topic_01\static\styles.css">
+    <script type="text/javascript" src="..\topic_01\static\scripts.js" defer></script>
+  </head>
+  <body style="font-size: x-large;">
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <h1>Materials for Topic 3: Review of the C Language</h1>
+    <h2>Full C Programs</h2>
+    <ul>
+        <li><a href="./helloworld.c" target="_blank" title="Click to open the source code file in a new tab">helloworld.c</a> - a C program that prints a short message to the terminal and introduces C comments.</li>
+        <li><a href="./variables.c" target="_blank" title="Click to open the source code file in a new tab">variables.c</a> - a C program showing how to work with variables, constants, assignments and basic math, and printf statements.</li>
+        <li><a href="./conditions.c" target="_blank" title="Click to open the source code file in a new tab">conditions.c</a> - a C program that works with if, if-else-if, and switch statements (conditions).</li>
+        <li><a href="./loops.c" target="_blank" title="Click to open the source code file in a new tab">loops.c</a> - a C program that works with for, while, and do-while loops.</li>
+        <li><a href="./char_arrays_and_pointers.c" target="_blank" title="Click to open the source code file in a new tab">char_arrays_and_pointers.c</a> - In C, unlike Java, there are no string objects; instead, we have "C-strings", which are arrays of characters!</li>
+        <li><a href="./files.c" target="_blank" title="Click to open the source code file in a new tab">files.c</a> - a C program that reads and writes to files. We will learn more ways when covering File I/O.</li>
+        <li><a href="./functions.c" target="_blank" title="Click to open the source code file in a new tab">functions.c</a> - a C program that declares and defines several functions and calls them inside <tt>main()</tt>.</li>
+        <li><a href="./structs.c" target="_blank" title="Click to open the source code file in a new tab">structs.c</a> - a C program that introduces C structs (structures).</li>
+        <li><a href="./error_checking.c" target="_blank" title="Click to open the source code file in a new tab">error_checking.c</a> - a C program that reminds us that errors must be checked even after a user entered some input (there are 1000s of ways things can go wrong during a program's execution!)</li>
+        <li><a href="./command_line_arguments.c" target="_blank" title="Click to open the source code file in a new tab">command_line_arguments.c</a> - since we will create programs that take command line arguments (just like gcc does,) we view here how to access the command line arguments that were passed to a C program.</li>
+
+    </ul>
+    <h2>Runnable Linux Commands</h2>
+    <ul id = "target-list">
+        <li id = "gcc"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">gcc -Wall -Wextra -O2 -g -o program program.c</tt>
+            <br>
+            compiles the C source code located inside the file <tt>program.c</tt>. See more details <a href="../topic_01/index.html#gcc" target="_blank">here</a>.</li>
+        <li id = "short_prompt"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">. ./.short_prompt</tt>
+            <br>
+            executes code inside a file named <tt>.short_prompt</tt> and sources it (applies all the changes to the current session.) See more details <a href="../topic_01/index.html#short_prompt" target="_blank">here</a>.
+        </li>
+        <li id = "long_prompt"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">. ./.long_prompt</tt>
+            <br>
+            executes code inside a file named <tt>.long_prompt</tt> and sources it (applies all the changes to the current session.) See more details <a href="../topic_01/index.html#long_prompt" target="_blank">here</a>.
+        </li>
+    </ul>
+
+
+    <div class="copyright"><a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' style='border-width:0; height: 15pt; vertical-align: middle;opacity: 1;' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a><span style='vertical-align: middle;'> This website by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> is licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a>.</span></div>
+  </body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Review of the C Language: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();hljs.initLineNumbersOnLoad();</script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Review of the C Language</h3>
+        <ol start="2">
+            <li>
+                <p style = "margin-bottom: 1vh;">The code of the program <a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/lecture_notes/topic_03/variables.c"><tt>variables.c</tt></a>:</p>
+                <pre class="source source-long" style = "height: 60vh;"><code class="language-c">/* C program showing how to work with variables,
+ *    constants, assignments and basic math,
+ *    and printf statements.
+ *
+ *    Miriam Briskman, 2/15/2023
+ *    CISC 3350, Brooklyn College
+ *    Licensed under CC BY-NC 4.0
+ */
+
+// Include a reference to C's standard input and
+//    output library:
+#include &lt;stdio.h&gt;
+// Library defining some frequently used macros
+//    and functions. We include this library in
+//    this program because we will be using one
+//    of its macros, 'EXIT_SUCCESS', in this
+//    program's code:
+#include &lt;stdlib.h&gt;
+// Library with string-manipulating functions:
+#include &lt;string.h&gt; 
+
+/* Let's talk about constants in C:
+   1. A constant value is set only once and
+      CANNOT be changed throughout the program.
+   2. A constant definition in C begins with
+      the keyword "const". 
+   3. The type of the constant must be specified
+      as well: int, double, char, etc.
+   4. The name of a constant should contain all
+      capital letters, digits, and/or underscores,
+      like PI or THIS_CONST_2.
+   5. As with non-constant variables, the value of
+      the constant is assigned using the = symbol. 
+   6. A good programming practice is to place
+      constants after the #include statements and
+      before the main function.
+      --&gt; This way, any piece of code defined
+          below the constant's definition has
+          access to the constant!  
+*/
+
+// First, we create a constant storing the ratio
+//    of a circle's circumference to its diameter (pi).
+// --&gt; Since pi is a floating point number,
+//     we store it as a 'double' constant:
+const double PI = 3.1415926;
+// Now, let's have a constant storing the number
+//    of months in year.
+// --&gt; A 'short int' constant can store a value
+//     between 0 to 65,535, so it does not consume
+//     as much memory as a regular 'int'.
+const unsigned short int MONTHS_PER_YEAR = 12;
+// How about string constants? Let's store the name
+//    of the 1st month of the year.
+// --&gt; char[] is an array of characters, also called
+//     a string literal.
+// --&gt; Usually, the size of the char array should be
+//     specified. However, since we define the
+//     constant to be "January", a string literal,
+//     the compiler is able to find the size needed
+//     to store all the characters of "January".
+// --&gt; C does not have string objects, which is why
+//     we use char arrays instead.
+// --&gt; Any array in C is stored with a '\0' null
+//     character at its end to let the computer know
+//     where the array ends.
+// --&gt; In our case, MONTH_1 appears in memory as:
+//     +---+---+---+---+---+---+---+----+
+//     | J | a | n | u | a | r | y | \0 |
+//     +---+---+---+---+---+---+---+----+
+//     in bytes (each char in C contains 8-bits.)
+const char MONTH_1 [] = "January";
+
+// Unlike const, which requires extra execution
+//    time since it needs to access main memory,
+//    a define statement makes the compiler
+//    replace each instance of a constant,
+//    MAX_CHARS in the example below, by 1024
+//    before the program is compiled. The #define
+//    statement, therefore, executes much faster
+//    than a constant definition with 'const'.
+//    A 'constant' that is defined with #define
+//    is called a "macro".
+#define MAX_CHARS 1024
+
+// main function
+int main() 
+{ 
+    /* Phew! We covered constants. Now about
+       variables in C:
+       1. Unlike constants, variables can have
+          their values changed throughout the
+          program.
+       2. Variables are declared very similarly
+          to constants: just omit the 'const'
+          keyword from the declaration.
+       3. Variables have scopes: the regions in
+          the program where the variable is
+          visible and accessible.
+          --&gt; If a variable is defined inside
+              main(), it is accessible inside
+              main() and inside other functions
+              that main calls and passes the
+              variable as an argument to those
+              functions.
+    */
+    char   newline_character = '\n',
+           tab_character = '\t',
+           firstEnglishLetter = 'A';
+    unsigned short grade = 100;
+    short  NYC_boroughs = 5;
+    int    whoWantsToBeAMillionaire = 1000000;
+    long   billion = 1000000000;
+    long long trillion = 1000000000000;
+    double my_circle_diameter = 2.5;
+    long double one_ninth = 0.11111111111;
+    // C does not have a boolean data type!
+    // Use:
+    int true = 1,
+        false = 0;
+    // instead.
+
+    // What would the following printing
+    //    statements print to the screen?
+    double circumference = my_circle_diameter * PI;
+    printf ("The circumference of my "
+            "circle is: %f\n", circumference);
+
+    // When the strings that we print are long,
+    //    we can 'chop' them into smaller pieces
+    //    and include them on separate lines,
+    //    just as we did in the printf()
+    //    statement above. The C compiler will
+    //    then implicitly concatenate these
+    //    strings.
+
+    printf ("I%cLove%cNew%cYork%c", newline_character,
+            newline_character, newline_character,
+            newline_character);
+
+    printf ("I%cLove%cNew%cYork%c", tab_character,
+            tab_character, tab_character,
+            newline_character);
+
+    printf ("This fancy restaurant, which has "
+            "locations in all %hd boroughs, received "
+            "the grade of %c.\n",
+            NYC_boroughs, firstEnglishLetter);
+
+    printf ("The 1st of the %d months, %s, "
+            "has %zu letters!\n",
+            MONTHS_PER_YEAR, MONTH_1, strlen(MONTH_1));
+
+    printf ("1/9, rounded to 2 decimal places, "
+            "is: %.2Lf\n", one_ninth);
+
+    printf ("Musk once had a %d, then a %ld, and soon "
+            "he'll have a %lld!\n",
+            whoWantsToBeAMillionaire, billion, trillion);
+
+    printf ("Since a numerical grade is non-negative "
+            "and is a small number, we use an unsigned "
+            "short variable, as with the grade: %hu.\n"
+            "An unsigned int can only store a zero or "
+            "a positive number.\n",
+            grade);
+
+    // Above, character sequences like:
+    //    %f, %c, %d, %s, %u, ... 
+    //    are called format specifiers and tell
+    //    printf() what kind of a variable is being
+    //    printed and at what location within the
+    //    printout the variable should show up. This
+    //    is the way C prints messages to the
+    //    terminal similar to Java's concatenation
+    //    using the plus (+) sign.
+    // You can view the full list of specifiers of
+    //    printf() at:
+    // https://www.tutorialspoint.com/format-specifiers-in-c
+    //
+    // P.S., our course ain't about memorization.
+    //    Whenever you do your homework assignments
+    //    or work on exams, please feel free to
+    //    simply consult the link above to find
+    //    what specifier should be used if, for
+    //    example, you want to print the value of,
+    //    say, an unsigned long integer.
+
+    return EXIT_SUCCESS;
+
+    // The macro 'EXIT_SUCCESS', on most Linux
+    //    computers, is defined as 0. That is,
+    //    somewhere in the library &lt;stdlib.h&gt;,
+    //    we will find the following #define
+    //    statement (or something similar:)
+    //
+    // #define EXIT_SUCCESS 0
+    //
+    // Because there is no guarantee that '0',
+    //    (as in 'return 0;') will keep
+    //    signifying a successful termination
+    //    of a program (e.g., '0' might be
+    //    replaced by '1' in some future Linux
+    //    devices as representing a successful
+    //    termination,) we should, from now on,
+    //    exit programs with:
+    //
+    // return EXIT_SUCCESS;
+    //
+    //    instead of:
+    //
+    // return 0;
+    //
+    //    because 'EXIT_SUCCESS' is a more
+    //    portable (reliable) way of exiting
+    //    the program.
+}
+</code></pre>
+            </li>
+        </ol>
+                       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

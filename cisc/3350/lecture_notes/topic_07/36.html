@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Processes: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3><a href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/lecture_notes/topic_07/wait_syscall_example.c" target="_blank">wait_syscall_example.c</a>: Waiting upon a Child Process</h3>
+            <pre class="source source-long"><code class="language-c">// A program demonstrating the call to wait().
+//
+// This program is taken from Linux System Programming:
+//     Talking Directly to the Kernel and C Library, 
+//     2nd Edition, by Love. ISNB: 978-1-44933953-1,
+//     page 153.
+
+#include &lt;unistd.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;sys/wait.h&gt;
+
+int main (void)
+{
+    int status;
+    pid_t pid;
+
+    // The statement below (1) forks a child process,
+    //    (2) terminates it right away, and (3) makes
+    //    the child return with the return value of 1.
+    // The reason that the child (and not the parent) is
+    //    terminated is that the 'if' statement asks
+    //    whether the returned value from fork() is 0,
+    //    which is only true inside the child's process
+    //    (since, inside the parent, fork() returns the
+    //    pid of the child which is never 0,) so only
+    //    the child enters this 'if' statement, which
+    //    causes it execute 'exit (EXIT_FAILURE)'.
+    if (!fork ())
+        exit (EXIT_FAILURE);
+
+    // The wait() system call waits for any of this
+    //    process's children to return. Since this
+    //    process created only 1 child, we will
+    //    necessaily wait for this one child.
+    if ((pid = wait (&amp;status)) == -1)
+    {
+        perror ("wait");
+        exit (EXIT_FAILURE);
+    }
+
+    printf ("pid = %d\n", pid);
+
+    // The following 'if' statements are commonly used
+    //    to check the status of the returned child.
+    //    Each of the functions WEXITSTATUS(),
+    //    WTERMSIG(), etc., will look into the 'status'
+    //    integer to find whether the bits of 'status'
+    //    indicate that the child returned in some
+    //    either nominal or abnormal way.
+    // It is advised that you include these statements
+    //    after any instance of calling wait(),
+    //    waitpid(), etc., to find the details about
+    //    the return of every child.
+    if (WIFEXITED (status))
+        printf ("Normal termination with the exit "
+                "status = %d.\n",
+                WEXITSTATUS (status));
+    if (WIFSIGNALED (status))
+        printf ("Killed by the signal = %d%s.\n",
+                WTERMSIG (status),
+                WCOREDUMP (status) ? " (dumped core)" : "");
+    if (WIFSTOPPED (status))
+        printf ("Stopped by the signal = %d.\n",
+                WSTOPSIG (status));
+    if (WIFCONTINUED (status))
+        printf ("Continued.\n");
+
+    return EXIT_SUCCESS;
+}</code></pre>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

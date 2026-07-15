@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Intro to the Linux/UNIX OS Programming: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Briefly on Linux and UNIX</h3>
+        <div class = "imagecontainer imagecontainer-side">
+          <a href = "./Tux.svg" target='_blank'><img src="./Tux.svg" title = "Linux’s mascot: Tux the penguin" alt="Linux’s mascot: Tux the penguin" style = "height: 12vh; z-index: 1000;"></a>
+          <p class = "caption" style = "width: 14vh; z-index: 1000;">Linux’s mascot: <a target='_blank' href="https://en.wikipedia.org/wiki/Tux_(mascot)">Tux the penguin</a></p>
+        </div>
+        <p><b>UNIX</b> is a proprietary (non-open-source) operating system developed by AT&amp;T in the 1960s. Its advantage compared to existing OSes was that (1) it allowed several programs to run on the device at the same time, (2) allowed more than one user to access the system at the same time and, most prominently, (3) was able to run on various devices.</p>
+        <p>This 3rd trait is called <b>portability</b>, and the reason that UNIX excelled in it is that UNIX was written in the C language. Once a C source code is compiled on a machine, it is translated into the machine language that the device understands, so it can readily run on that machine.</p>
+        <p>In the 90s, <a href="https://www.internethalloffame.org/inductee/richard-stallman/" target='_blank' title="Internet Hall of Fame: Dr. Richard Stallman">Richard Stallman</a>, a software programmer, wished to create a free, open-source OS similar to UNIX. He started working on open-source programs he collectively named <a href="https://www.gnu.org/gnu/thegnuproject.en.html" target='_blank' title="The GNU Project: About GNU">GNU</a>, but couldn't devise a well-working kernel (the heart of an operating system.) It was the Finnish software engineer <a href="https://www.linkedin.com/in/linustorvalds" target='_blank' title="Linus Torvalds: LinkedIn">Linus Torvalds</a> who coded a productive kernel he called <b>Linux</b>. Joining forces, the Linux operating system was released in 1991.</p>
+        <p><b><i>Follow-up question</i></b>: According to the paragraph above, what is the source of the name "Linux"?</p>
+                
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

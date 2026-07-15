@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>File I/O: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          table {margin-top: 1vh;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Multiplexed I/O: <pre class="source source-inline"><code class="language-c">poll()</code></pre></h3>
+        <p></p>
+        <p>Here are constants representing some of the <pre class="source source-inline"><code class="language-c">events</code></pre> that we are looking for with our files and I/O devices. The full list of events constants that you can use is provided on <a href="https://man7.org/linux/man-pages/man2/poll.2.html" target="_blank">the manual page of <pre class="source source-inline"><code class="language-c">poll()</code></pre></a>:</p>
+        <ul>
+            <li><pre class="source source-inline"><code class="language-c">POLLIN</code></pre>: data is available for reading from that file/device.</li>
+            <li><pre class="source source-inline"><code class="language-c">POLLPRI</code></pre>: some exceptional situation happened with the file descriptor, e.g., there is out-of-band data on a socket device.</li>
+            <li><pre class="source source-inline"><code class="language-c">POLLOUT</code></pre>: the file/device is ready for writing.</li>
+            <li><pre class="source source-inline"><code class="language-c">POLLWRBAND</code></pre>: the file/device is ready to accept the writing of priority data.</li>
+        </ul>
+
+        <p>We can use the above constants both when we set <pre class="source source-inline"><code class="language-c">events</code></pre> before the call to <pre class="source source-inline"><code class="language-c">poll()</code></pre>, and after the call to <pre class="source source-inline"><code class="language-c">poll()</code></pre> when we check out the <pre class="source source-inline"><code class="language-c">revents</code></pre> field to see which files/devices have become available for reading or writing.</p>
+
+        <p>On the next slide is a full C program showing how to use <pre class="source source-inline"><code class="language-c">poll()</code></pre> to check whether the keyboard is available for reading and whether the screen is available for writing.</p>
+                               
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

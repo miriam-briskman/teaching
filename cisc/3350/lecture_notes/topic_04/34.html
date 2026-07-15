@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>File I/O: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          table {margin-top: 1vh;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Multiplexed I/O: <pre class="source source-inline"><code class="language-c">select()</code></pre></h3>
+        <p></p>
+        <p>Remember that <pre class="source source-inline"><code class="language-c">readfds</code></pre>, <pre class="source source-inline"><code class="language-c">writefds</code></pre>, and <pre class="source source-inline"><code class="language-c">exceptfds</code></pre> are sets of <pre class="source source-inline"><code class="language-c">fd</code></pre>s? We call 4 functions to manipulate these sets:</p>
+        <ul>
+            <li><pre class="source source-inline"><code class="language-c">FD_CLR (int fd, fd_set *set); // Removes an fd from a set (rarely used)</code></pre></li>
+            <li><pre class="source source-inline"><code class="language-c">FD_SET (int fd, fd_set *set); // Add an fd to a set</code></pre></li>
+            <li><pre class="source source-inline"><code class="language-c">FD_ZERO (fd_set *set); // Removes all the fds from a set</code></pre></li>
+            <li><pre class="source source-inline"><code class="language-c">FD_ISSET (int fd, fd_set *set); // Checks whether an fd is in the set: returns a nonzero if yes</code></pre></li>
+        </ul>
+
+        <p>We usually call <pre class="source source-inline"><code class="language-c">FD_ZERO()</code></pre> to first clear a set, e.g., <pre class="source source-inline"><code class="language-c">readfds</code></pre>, from all the previously used <pre class="source source-inline"><code class="language-c">fd</code></pre>s in it, and then call <pre class="source source-inline"><code class="language-c">FD_SET()</code></pre> repeatedly on all the files/devices that we want to add to our set.</p>
+        <p><pre class="source source-inline"><code class="language-c">select()</code></pre> will check if any of the files have become available. The available files will remain in their sets, while files that haven't become available will be removed from these sets by <pre class="source source-inline"><code class="language-c">select()</code></pre> itself.</p>
+        <p>After <pre class="source source-inline"><code class="language-c">select()</code></pre> returns, we would call <pre class="source source-inline"><code class="language-c">FD_ISSET()</code></pre> to check which of the files are still in their original sets (that is, which files are now available for I/O!)</p>
+
+                       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

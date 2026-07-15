@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>File I/O: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          table {margin-top: 2vh;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Opening Files</h3>
+        <table>
+          <tr>
+            <td><b>Name:</b> <pre class="source source-inline"><code class="language-c">creat()</code></pre></td>
+            <td><b>System call or function:</b> System call</td>
+            <td><b>Links:</b> <a target="_blank" href="https://man7.org/linux/man-pages/man2/open.2.html">Online Manual</a> | <a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/CISC_3350_OER_Course_Packet.pdf#open(2)+-+open()+and+creat()+-+Linux+man+page">Course Packet</a></td>
+          </tr>
+          <tr>
+            <td colspan=3><b>What it does:</b> Creates a new file and opens it for writing. If a file with the same name already exists, empty (truncate) it before opening it. Same as calling <pre class="source source-inline"><code class="language-c">open()</code></pre> with the 3 flags: <pre class="source source-inline"><code class="language-c">O_WRONLY | O_CREAT | O_TRUNC</tt></code></pre></td>
+          </tr>
+          <tr>
+            <td colspan=3><b>What libraries you must include:</b> <pre class="source source-inline"><code class="language-c">#include &lt;sys/stat.h&gt; // Defines modes such as S_IRUSR
+#include &lt;fcntl.h&gt; // Defines creat()
+</code></pre></td>
+          </tr>
+          <tr>
+            <td colspan=3><b>Syntax:</b> <pre class="source source-inline"><code class="language-c">int creat (const char *name, mode_t mode);</code></pre></td>
+          </tr>
+          <tr>
+            <td colspan=3><b>Description of arguments:</b> <pre class="source-inline" style = "font-family: inherit;"><pre class="source source-inline"><code class="language-c">name</code></pre>: double-quoted name of the file
+<pre class="source source-inline"><code class="language-c">mode</code></pre>: Sets default file permissions, e.g.,: <tt class="wbg">S_IRWXU</tt> (owner: read, write, and execute), <tt class="wbg">S_IRUSR</tt> (owner: read), <tt class="wbg">S_IRGRP</tt> (group: read), <tt class="wbg">S_IROTH</tt> (others: read), etc.</pre>
+</pre></td>
+          </tr>
+          <tr>
+            <td rowspan="3"><b>What type it returns:</b> <pre class="source source-inline"><code class="language-c">int</code></pre></td>
+            <td colspan=2><b>On success:</b> A legit file descriptor (a non-negative integer)</td>
+          </tr>
+          <tr>
+            <td colspan=2><b>On failure:</b> <pre class="source source-inline"><code class="language-c">-1</code></pre></td>
+          </tr>
+          <tr>
+            <td colspan=2><b>If failure, does it set <pre class="source source-inline"><code class="language-c">errno</code></pre>?</b> Yes</td>
+          </tr>
+          <tr>
+            <td colspan=3><b>Quick example:</b> <pre class="source source-inline"><code class="language-c">int file_fd = creat ("text.txt", S_IWUSR | S_IRUSR | S_IXUSR);</code></pre></td>
+          </tr>
+          <tr>
+            <td colspan=3><b>Other variations:</b> <a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/lecture_notes/topic_04/03.html"><pre class="source source-inline"><code class="language-c">open()</code></pre></a></td>
+          </tr>
+        </table>
+                       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

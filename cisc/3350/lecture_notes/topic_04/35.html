@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>File I/O: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          table {margin-top: 1vh;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3><a href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/lecture_notes/topic_04/select_syscall_example.c" target="_blank">select<wbr>_syscall<wbr>_example<wbr>.c</a>: a Full C Program</h3>
+        <pre class="source source-long"><code class="language-c">// The following program exemplifies a call to the
+//     select() system call. We wait (block) only
+//     on one file: the keyboard (fd = 0 = STDIN_FILENO)
+//     for 5 seconds. If the user types some content and
+//     presses ENTER before the 5 seconds end, the 
+//     content will be output to the terminal. Otherwise,
+//     the 5 seconds will elapse, so the system call will
+//     return without gathering input from the user.
+//
+// This program is taken from Linux System Programming:
+//     Talking Directly to the Kernel and C Library, 
+//     2nd Edition, by Love. ISNB: 978-1-44933953-1,
+//     pages 55-56.
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;sys/time.h&gt;
+#include &lt;sys/types.h&gt;
+#include &lt;unistd.h&gt;
+
+#define TIMEOUT 5 /* select timeout in seconds */
+#define BUF_LEN 1024 /* read buffer in bytes */
+
+int main (void)
+{
+    struct timeval tv;
+    fd_set readfds;
+    int ret;
+    
+    /* Wait on stdin for input. */
+    FD_ZERO (&amp;readfds);
+    FD_SET (STDIN_FILENO, &amp;readfds);
+    
+    /* Wait up to five seconds. */
+    tv.tv_sec = TIMEOUT;
+    tv.tv_usec = 0;
+
+    /* All right, now block! */
+    ret = select (STDIN_FILENO + 1,
+                  &amp;readfds,
+                  NULL,
+                  NULL,
+                  &amp;tv);
+
+    if (ret == -1)
+    {
+        perror ("select");
+        exit (EXIT_FAILURE);
+    }
+    else if (!ret)
+    {
+        printf ("%d seconds elapsed.\n", TIMEOUT);
+        return EXIT_SUCCESS;
+    }
+
+   /*
+    * Is our file descriptor ready to read?
+    * (It must be, as it was the only fd that
+    * we provided and the call returned
+    * nonzero, but we will humor ourselves.)
+    */
+    if (FD_ISSET (STDIN_FILENO, &amp;readfds)) {
+        char buf [BUF_LEN + 1];
+        int len;
+
+        /* guaranteed to not block */
+        len = read (STDIN_FILENO, buf, BUF_LEN);
+        if (len == -1)
+	{
+            perror ("read");
+            exit (EXIT_FAILURE);
+        }
+
+        if (len) // Same as if (len != 0)
+	{
+            buf[len] = '\0';
+            printf ("read: %s\n", buf);
+        }
+
+        return EXIT_SUCCESS;
+    }
+
+    fprintf (stderr, "This should not happen!\n");
+    return EXIT_FAILURE;
+}</code></pre>
+                       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Signals: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          table {margin-top: 1vh;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>More Info on the <pre class="source source-inline"><code class="language-c">siginfo_t</code></pre> Structure</h3>
+            <p></p>
+            <p>The <pre class="source source-inline"><code class="language-c">siginfo_t</code></pre> structure provides a lot of information to the signal handler, <pre class="source source-inline"><code class="language-c">sa_sigaction</code></pre>:</p>
+            <pre class="source font-small-screen-reduce" style = "margin-top: -2vh; overflow-x: auto; white-space: pre;"><code class="language-c">typedef struct siginfo_t {
+    int      si_signo;  // Signal number -------------------&gt; Same as the first argument to sa_sigaction.
+    int      si_errno;  // Error value ---------------------&gt; If nonzero, contains the error code associated with this signal.
+    int      si_code;   // Signal code ---------------------&gt; An explanation of why/where the process received the signal.
+    pid_t    si_pid;    // Sending process's PID -----------&gt; For SIGCHLD, the pid of the process that terminated.
+    uid_t    si_uid;    // Sending process's real UID ------&gt; For SIGCHLD, the owner uid of the process that terminated.
+    int      si_status; // Exit value or signal ------------&gt; For SIGCHLD, the exit status of the process that terminated.
+    clock_t  si_utime;  // User time consumed --------------&gt; For SIGCHLD, the user time consumed of the process that terminated.
+    clock_t  si_stime;  // System time consumed ------------&gt; For SIGCHLD, the system time consumed of the process that terminated.
+    sigval   si_value;  // Signal's payload value ----------&gt; A union of si_int and si_ptr (see fields below.)
+    int      si_int;    // POSIX.1b signal -----------------&gt; Payload (data you wish to pass) in a form of an integer.
+    void     *si_ptr;   // POSIX.1b signal -----------------&gt; Payload (data you wish to pass) in a form of a void pointer.
+    void     *si_addr;  // Memory location causeing fault --&gt; For SIGBUS, SIGFPE, SIGILL, SIGSEGV, and SIGTRAP only.
+    long     si_band;   // Band event ----------------------&gt; For SIGPOLL (pollable events), out-of-band/priority info for si_fd.
+    int      si_fd;     // File descriptor -----------------&gt; For SIGPOLL, the fd for the file whose operation completed.
+};</code></pre>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

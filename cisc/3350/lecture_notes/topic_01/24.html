@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Intro to the Linux/UNIX OS Programming: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Files and the Filesystem: Special Files</h3>
+        <p style = "margin-bottom: 1.5vh;">Besides regular and directory files, here are special file types recognized by Linux:</p>
+        <ol style = "margin-top: 1.5vh; margin-bottom: 1.5vh;">
+            <li><b>Block device files</b> represent devices that are connected to the computer whose data can be accessed in chunks (<b>blocks</b>) of multiple bytes at a time. A block is usually a power-of-two multiple of the sector size (512 bytes), e.g., 4096 and 8192. <u>Examples</u>: hard drives (e.g., <tt>/dev/sda</tt>), solid-state drives, and USB flash drives. Each such device is implemented as an array of bytes: you can access the disk at any position (= supports <b>random access</b>).</li>
+            <li><b>Character device files</b> represent devices that are connected to the computer whose data can be accessed one byte at a time. <u>Examples</u>: keyboard, mouse, terminal (e.g., <tt>/dev/tty</tt>), speakers, etc. Each such device is implemented as a queue of bytes: you can access only the first byte at the front of the queue (= supports <b>sequential access</b>).</li>
+            <li><b>Named pipes (FIFOs)</b> are a data structure that allows two programs to communicate with each other (= <b>inter-process communication</b> = <b>IPC</b>). There are two types of pipes: <b>regular pipes</b> are implemented as memory variables, and <b>named pipes</b> are implemented as files on the disk; one program writes data into the pipe (file), and another program reads that data from the pipe.</li>
+            <li><b>Sockets</b> are another IPC technique implemented as files. Unlike pipes, sockets allow programs running on different machines/devices to communicate with one another through a network to which both machines are connected.</li>
+        </ol>
+                       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

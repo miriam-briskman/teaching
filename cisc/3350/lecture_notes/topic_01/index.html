@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+    <title>Topic 1: Intro to the Linux/UNIX OS Programming | CISC 3350 Materials</title>
+    <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+    <link rel="stylesheet" href="..\topic_01\static\styles.css">
+    <script type="text/javascript" src="..\topic_01\static\scripts.js" defer></script>
+  </head>
+  <body style="font-size: x-large;">
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <h1>Materials for Topic 1: Intro to the Linux/UNIX OS Programming</h1>
+    <h2>Full C Programs</h2>
+    <ul>
+        <li><a href="./helloworld.c" target="_blank" title="Click to open the source code file in a new tab">helloworld.c</a> - a C program that prints a short message to the terminal.</li>
+        <li><a href="./errno.c" target="_blank" title="Click to open the source code file in a new tab">errno.c</a> - a C program that shows how to detect and print error messages to the terminal in case a function call or a system call fails.</li>
+    </ul>
+    <h2>Runnable Linux Commands</h2>
+    <hr>
+    <h3>Quick Links:</h3>
+    <ul id = "quick-links">
+        <li><a href="#gcc" title="gcc"><tt>gcc</tt></a></li>
+        <li><a href="#short_prompt" title=". ./.short_prompt"><tt>. ./.short_prompt</tt></a></li>
+        <li><a href="#long_prompt" title=". ./.long_prompt"><tt>. ./.long_prompt</tt></a></li>
+        <li><a href="#ls-i" title="ls -i"><tt>ls -i</tt></a></li>
+        <li><a href="#ls-i*" title="ls -i *"><tt>ls -i *</tt></a></li>
+        <li><a href="#ln" title="ln"><tt>ln</tt></a></li>
+        <li><a href="#ln-s" title="ln -s"><tt>ln -s</tt></a></li>
+    </ul>
+    <hr>
+    <ul id = "target-list">
+        <li id = "gcc"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">gcc -Wall -Wextra -O2 -g -o program program.c</tt>
+            <br>
+            compiles the C source code located inside the file <tt>program.c</tt> and created an executable (= binary) file called <tt>program</tt>. The command <tt>gcc</tt> invokes the <a href = "https://gcc.gnu.org/" target='_blank'>GNU C Compiler</a>. Above, if we were to omit "<tt>-o program</tt>" from the command ("<tt>o</tt>" is the lowercase "Ohh" letter,) the executable's name would be the generic name "<tt>a.out</tt>". The command options "<tt>-Wall</tt>" and "<tt>-Wextra</tt>" let the compiler display all the basic and extra possible compilation warnings to alert the user that a certain part of the program might not execute as intended in case of a warning showing up after running the command. The option "<tt>-O2</tt>" ("<tt>O</tt>" is the uppercase "Ohh" letter) sets the optimization level to 2 (= significant but sane) out of 5 possible optimization levels. Finally, the option "<tt>-g</tt>" allows the user to run the C debugger program, <tt>gdb</tt>, after the compilation in case debugging or program tracing is needed.
+            <br>
+            <span style = "text-decoration: underline;">Example</span>: The command <tt style = "border: 2px solid black;">gcc -Wall -Wextra -O2 -g -o hello helloworld.c</tt> will compile the source code file <tt>helloworld.c</tt> and produce a binary file named <tt>hello</tt> that you can run on the computer. You would run it in the following way: you would type <tt>./hello</tt> into the terminal and then press ENTER/RETURN for the program to run. Programs might prints messages to the terminal, such as <tt>Hello World!</tt>.
+        </li>
+        <li id = "short_prompt"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">. ./.short_prompt</tt>
+            <br>
+            executes code inside a file named <tt>.short_prompt</tt> and sources it (lets the changes indicated by the code take effect by the command line interpreter.)<br>
+            On my device, I put the following 2 lines of code into this file:<br>
+            <tt>PS1="\[\033[0;32m\]\$ \[\033[0;37m\]"</tt><br>
+            <tt>echo "Prompt Updated!"</tt><br>
+            This code changes the terminal prompt to only: "$ ", so that longer commands that we type in the terminal will most likely fit into a single line on the screen.<br>
+            Once you create this file, make it executable by running the following command in the terminal:<br>
+            <tt style = "border: 2px solid black;">chmod u+x .short_prompt</tt><br>
+            Finally, you would run this command by either typing:<br>
+            <tt style = "border: 2px solid black;">. ./.short_prompt</tt><br>
+            or<br>
+            <tt style = "border: 2px solid black;">source ./.short_prompt</tt><br>
+            into the terminal. Otherwise, if you just type: <tt>./.short_prompt</tt>, the change indicated by the code (changing the length of the command prompt) won't take effect in the terminal, and you'll keep seeting your old prompt.<br>
+            The change made by the code in <tt>.short_prompt</tt> is good only for the duration of the current login session into the terminal; once you log out and log back in, you'll see your original, old prompt as before the change by <tt>.short_prompt</tt>.</li>
+        <li id = "long_prompt"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">. ./.long_prompt</tt>
+            <br>
+            behaves similarly to <tt>. ./.short_prompt</tt>, except that you can put code into <tt>.long_prompt</tt> that will make the prompt 'fancier' than just "$ ". On my device, <tt>.long_prompt</tt> contains the following code:<br>
+            <tt>magenta=$(tput setaf 5)</tt><br>
+            <tt>green=$(tput setaf 2)</tt><br>
+            <tt>reset=$(tput setaf 7) # White color</tt><br>
+            <tt>PS1='\[$magenta\][\D{%a %d/%m/%Y, %H:%M:%S}]\[$green\] \u@\h:\w\$ \[$reset\]'</tt><br>
+            <tt>echo "Prompt Updated!"</tt></li>
+        <li id = "ls-i"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">ls -i</tt>
+            <br>
+            shows the i-node number of every file and folder inside the current folder.
+        </li>
+        <li id = "ls-i*"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">ls -i *</tt>
+            <br>
+            shows the i-node number of every file inside the current folder, including those files within nested folders.
+        </li>
+        <li id = "ln"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">ln file1 hardlinkForFile1</tt>
+            <br>
+            creates a hard link for <tt>file1</tt>. The name of the hard link is <tt>hardlinkForFile1</tt>. Once this command executes, two files will reside inside the current directory: <tt>file1</tt> and <tt>hardlinkForFile1</tt> (besides all the other files in the directory.) These two files point at the exact same file. If the contents of the file are changed, this change will be reflected once you access either of <tt>file1</tt> or <tt>hardlinkForFile1</tt>.
+            <br>
+            <span style = "text-decoration: underline;">Example</span>: The command <tt style = "border: 2px solid black;">ln message.txt linkMessage.txt</tt> will create a hard link for <tt>message.txt</tt> called <tt>linkMessage.txt</tt>. Both files point at the exact same content: only one file is stored on the disk, but there are two ways of accessing its content (either by opening <tt>message.txt</tt>, or by opening <tt>linkMessage.txt</tt>.)
+        </li>
+        <li id = "ln-s"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">ln -s file1 softlinkForFile1</tt>
+            <br>
+            creates a soft (= symbolic) link for <tt>file1</tt>. The name of the link is <tt>softlinkForFile1</tt>.<br>
+            One difference between a hard and a soft link is that, when the file that has a soft link is deleted, the soft link still remains on the computer, and turns into what we usually call a 'broken link'. Conversely, if you delete a file that has a hard link, both the file and the hard link are deleted from the device.
+        </li>
+    </ul>
+
+
+    <div class="copyright"><a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' style='border-width:0; height: 15pt; vertical-align: middle;opacity: 1;' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a><span style='vertical-align: middle;'> This website by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> is licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a>.</span></div>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Review of the C Language: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();hljs.initLineNumbersOnLoad();</script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Review of the C Language</h3>
+        <ol start="9">
+            <li>
+                <p style = "margin-bottom: 1vh;">The code of the program <a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/lecture_notes/topic_03/error_checking.c"><tt>error_checking.c</tt></a>:</p>
+                <pre class="source source-long" style = "height: 60vh;"><code class="language-c">/* This program reminds us that errors must be 
+ *    checked after a user entered some input:
+ *    we shouldn't depend on the user's
+ *    attention to detail and integrity when
+ *    requesting data from the user. Whether
+ *    the user makes a mistake and enters an
+ *    incorrect datum, or if they do so
+ *    intentionally, our program must be
+ *    capable of detecting it and, possibly,
+ *    asking the user to re-enter data.
+ *
+ *    Miriam Briskman, 2/8/2023
+ *    CISC 3350, Brooklyn College
+ *    Licensed under CC BY-NC 4.0
+ */
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main ()
+{
+    printf ("Please enter an integer "
+            "larger than 5: &gt;&gt; ");
+
+    int input; // Will store the user's input.
+
+    scanf ("%d", &amp;input); // Read keyboard input.
+
+    // "The additional arguments should point
+    // to already allocated objects of the type
+    // specified by their corresponding format
+    // specifier within the format string."
+    // (Taken from:
+    // http://www.cplusplus.com/reference/cstdio/scanf/)
+    //
+    // The above quote means that, when you decide
+    //    to read in input from the user, ensure
+    //    that you are reading it into an existing
+    //    variable or array, and that the data
+    //    type of the variable or array matches the
+    //    format that you are trying to read in.
+    //    For example, in the above scanf()
+    //    statement, we wish to read in "%d", which
+    //    is the format specifier of an integer,
+    //    and, indeed, 'input' is a variable of the
+    //    type 'integer'.
+
+
+    // Checking whether the correct input has been
+    //    entered:
+    if (input &gt; 5)
+        printf ("The integer you entered "
+                "is: %d.\n", input);
+    else
+    {
+        printf ("Error: you entered %d, "
+                "which is less than 5!\n", input);
+        exit(EXIT_FAILURE);
+    }
+	
+    return EXIT_SUCCESS;
+}
+</code></pre>
+            </li>
+        </ol>
+                       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

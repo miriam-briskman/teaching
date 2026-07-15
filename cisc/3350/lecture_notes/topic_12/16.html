@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>File and Directory Management: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Example of Changing a File's Group</h3>
+        <div class = 'supercontainer'>
+            <pre class="source box-around-code" style = "min-width: 36vw;"><code class="language-c">// getgrnam() returns information on a
+// group, given the group's name:
+struct group *gr = getgrnam ("cats");
+if (!gr) // Probably an invalid group.
+{
+    perror ("getgrnam");
+    exit (EXIT_FAILURE);
+}
+
+// Set info.txt's group to 'cats':
+if (chown("info.txt", -1, gr-&gt;gr_gid))
+    perror ("chown");</code></pre>
+            <span class = "margin-buffer-4-5vh"></span>
+            <div style = "margin-top: 2vh;">
+                <p>The code on the left changes the group of the <tt>info.txt</tt> file to <tt>cats</tt>. The <pre class="source source-inline"><code class="language-c">group</code></pre> data structure is defined as follows:</p>
+                <pre class="source box-around-code"><code class="language-c">struct group {
+    char  *gr_name;   /* group name */
+    char  *gr_passwd; /* group password */
+    gid_t gr_gid;     /* group ID */
+    char  **gr_mem;   /* NULL-terminated pointers array
+                         to names of group members */
+};</code></pre>
+                <p>After running this code, a call to <pre class="shell source-inline"><code class="language-bash">$ ls -l</code></pre> will show that the file's group name indeed changed to <tt>cats</tt>.</p>
+            </div>
+        </div>
+                              
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Intro to the Linux/UNIX OS Programming: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>3 Cornerstones of System Programming</h3>
+        <p>The three ingredients that a system programmer uses to code utilities are:</p>
+        <ol>
+          <li><b>System Calls</b> (also: <b>syscalls</b>): These are very basic C functions that ask the OS to provide various services to the utility. <u>Examples</u>: the <a href = "https://man7.org/linux/man-pages/man2/open.2.html" target='_blank'><tt>open()</tt></a> system call to open a file and <a href="https://man7.org/linux/man-pages/man2/chown.2.html" target='_blank'><tt>chown()</tt></a> to change the owner of a file.<br>
+          90% of all syscalls are shared by all Linux distros. Linux has about <a href="https://man7.org/linux/man-pages/man2/syscalls.2.html" target='_blank'>300 syscalls</a> in total. In contrast, Windows defines ~2000 different syscalls!</li>
+          <li><b>The C Library (<tt>libc</tt>)</b>: In addition to having your utility call syscalls, you will also resort to calling library functions, e.g., <a href="https://man7.org/linux/man-pages/man3/strlen.3.html" target='_blank'><tt>strlen()</tt></a> to find the length of a string. Each library function is built up of syscalls. Library functions exist for your convenience and free you from spending extra time on implementing things like <tt>strlen()</tt> yourself. On modern Linux, the C libraries are provided by <a target='_blank' href="https://www.gnu.org/software/libc/" >GNU libc (<tt>glibc</tt>)</a>. Thank you, Richard Stallman!
+</li>
+          <li><b>The C Compiler</b>: Once you have written the source code, you will proceed to compile it and create an <b>executable</b>/<b>binary</b> file (= a program). You can run it either by double-clicking it or typing its name in the command prompt/terminal window. The compiler's job is to convert the C code into machine code, consisting of a sequence of <tt>0</tt>s and <tt>1</tt>s that the computer understands how to execute. The C compiler, <a href = "https://man7.org/linux/man-pages/man1/gcc.1.html" target='_blank'><tt>gcc</tt></a>, is provided on Linux by the GNU Compiler Collection and stands for "<b>G</b>NU <b>C</b> <b>C</b>ompiler".</li>
+        </ol>
+
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

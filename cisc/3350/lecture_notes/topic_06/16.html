@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Vectored I/O & Memory-Mapping: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          table {margin-top: 1vh;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3><a href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/lecture_notes/topic_06/mmap_example.c" target="_blank">mmap_example.c</a>: Example of Reading from a Memory-Mapped file</h3>
+        <pre class="source source-long"><code class="language-c">// The following program exemplifies the usage of
+//     mmap(), which is used to memory-map a file
+//     into main memory to use it as a variable
+//     and munmap() which cancels this mapping.
+
+// This program is taken from Linux System Programming:
+//     Talking Directly to the Kernel and C Library, 
+//     2nd Edition, by Love. ISNB: 978-1-44933953-1,
+//     pages 109-110.
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;sys/types.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;sys/mman.h&gt;
+
+int main (int argc, char *argv[])
+{
+    struct stat file_info;
+    off_t len;
+    char *p;
+    int file;
+
+    // Check that the right number of arguments was
+    //    passed:
+    if (argc &lt; 2)
+    {
+        fprintf (stderr,
+                 "usage: %s &lt;file&gt;\n",
+                 argv[0]);
+        exit (EXIT_FAILURE);
+    }
+
+    // Open the file whose name was provided
+    //    to the program in the command-line
+    //    argument argv[1]:
+    if ((file = open (argv[1], O_RDONLY)) == -1)
+    {
+        perror ("open");
+        exit (EXIT_FAILURE);
+    }
+
+    // fstat() returns information about the file:
+    if (fstat (file, &amp;file_info) == -1)
+    {
+        perror ("fstat");
+        exit (EXIT_FAILURE);
+    }
+
+    // The S_ISREG() macro checks if the given
+    //    file is a regular file (and not a
+    //    disk, socket, or other special file:)
+    if (!S_ISREG (file_info.st_mode))
+    {
+        fprintf (stderr,
+                 "%s is not a regular file\n",
+                 argv[1]);
+        exit (EXIT_FAILURE);
+    }
+
+    // sb.st_size contains the size of the file
+    //    in bytes:
+    p = mmap (0,
+              file_info.st_size,
+              PROT_READ,
+              MAP_SHARED,
+              file,
+              0);
+    if (p == MAP_FAILED)
+    {
+        perror ("mmap");
+        exit (EXIT_FAILURE);
+    }
+
+    // Since the file was mapped to memory, we
+    //    can start using the file as a variable,
+    //    so we can close the file now.
+    if (close (file) == -1)
+    {
+        perror ("close");
+        exit (EXIT_FAILURE);
+    }
+
+    // We refer to the bytes of the file by
+    //    using array notation p[len]. That is,
+    //    the content of the file can now be
+    //    referred to using array notation! It's
+    //    both fast and convenient to use:
+    for (len = 0; len &lt; file_info.st_size; len++)
+        putchar (p[len]); // Prints a char to screen.
+
+    // Remove the mapping of the file from memory:
+    if (munmap (p, file_info.st_size) == -1)
+    {
+        perror ("munmap");
+        exit (EXIT_FAILURE);
+    }
+
+    return EXIT_FAILURE;
+}</code></pre>
+                       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

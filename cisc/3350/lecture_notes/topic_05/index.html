@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+    <title>Topic 5: Buffered File I/O | CISC 3350 Materials</title>
+    <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+    <link rel="stylesheet" href="..\topic_01\static\styles.css">
+    <script type="text/javascript" src="..\topic_01\static\scripts.js" defer></script>
+  </head>
+  <body style="font-size: x-large;">
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <h1>Materials for Topic 5: Buffered File I/O</h1>
+    <h2>Full C Programs</h2>
+    <ul>
+        <li><a href="../topic_03/files.c" target="_blank" title="Click to open the source code file in a new tab">files.c</a> - a C program using file pointers and calls to the following functions: <tt>fopen()</tt>, <tt>fprintf()</tt>, <tt>getc()</tt>, <tt>fgets()</tt>, and <tt>fclose()</tt>.</li>
+        <li><a href="./buffered_io.c" target="_blank" title="Click to open the source code file in a new tab">buffered_io.c</a> - a C program using: <tt>fopen()</tt>, <tt>fwrite()</tt>, <tt>fread()</tt>, and <tt>fclose()</tt> to read a binary data from and write a binary data into a structure.</li>
+    </ul>
+    <h2>Runnable Linux Commands</h2>
+    <hr>
+    <h3>Quick Links:</h3>
+    <ul id = "quick-links">
+        <li><a href="#gcc" title="gcc"><tt>gcc</tt></a></li>
+        <li><a href="#short_prompt" title=". ./.short_prompt"><tt>. ./.short_prompt</tt></a></li>
+        <li><a href="#long_prompt" title=". ./.long_prompt"><tt>. ./.long_prompt</tt></a></li>
+        <li><a href="#time" title="time"><tt>time</tt></a></li>
+        <li><a href="#dd-1" title="dd bs=1 count=2097152"><tt>dd bs=1 count=2097152</tt></a></li>
+        <li><a href="#dd-1024" title="dd bs=1024 count=2048"><tt>dd bs=1024 count=2048</tt></a></li>
+        <li><a href="#stat" title="stat"><tt>stat</tt></a></li>
+        <li><a href="#xxd" title="xxd"><tt>xxd</tt></a></li>
+    </ul>
+    <hr>
+    <ul id = "target-list">
+        <li id = "gcc"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">gcc -Wall -Wextra -O2 -g -o program program.c</tt>
+            <br>
+            compiles the C source code located inside the file <tt>program.c</tt>. See more details <a href="../topic_01/index.html#gcc" target="_blank">here</a>.
+        </li>
+        <li id = "short_prompt"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">. ./.short_prompt</tt>
+            <br>
+            executes code inside a file named <tt>.short_prompt</tt> and sources it (applies all the changes to the current session.) See more details <a href="../topic_01/index.html#short_prompt" target="_blank">here</a>.
+        </li>
+        <li id = "long_prompt"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">. ./.long_prompt</tt>
+            <br>
+            executes code inside a file named <tt>.long_prompt</tt> and sources it (applies all the changes to the current session.) See more details <a href="../topic_01/index.html#long_prompt" target="_blank">here</a>.
+        </li>
+        <li id = "time"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">time SomeCommand</tt>
+            <br>
+            runs the command given by <tt>SomeCommand</tt> and, after the command finishes running, displays how much time the command executed, provided in terms of the (i) the elapsed real time between invocation and termination, (ii) the user CPU time, and (iii) the system CPU time.
+        </li>
+        <li id = "dd-1"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">dd bs=1 count=2097152 if=/dev/zero of=pirate1</tt>
+            <br>
+            copies 2097152 blocks of size 1 byte each from the file at <tt>/dev/zero</tt> (which is a disk-like file providing an infinite stream of zeros, for testing and debugging purposes) to a file named <tt>pirate1</tt>.
+        </li>
+        <li id = "dd-1024"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">dd bs=1024 count=2048 if=/dev/zero of=pirate2</tt>
+            <br>
+            copies 2048 blocks of size 1024 bytes each from the file at <tt>/dev/zero</tt> (which is a disk-like file providing an infinite stream of zeros, for testing and debugging purposes) to a file named <tt>pirate2</tt>. Since disks process data in terms of blocks (which are usually multiples of 512,) we expect this call to run much faster than the call <tt style = "border: 2px solid black;">dd bs=1 count=2097152 if=/dev/zero of=pirate1</tt>.
+        </li>
+        <li id = "stat"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">stat fileOrDiskName</tt>
+            <br>
+            shows some statistics about the file or disk given by <tt>fileOrDiskName</tt>. For example, <tt style = "border: 2px solid black;">stat /dev/sda</tt> shows some statistics about the disk <tt>sda</tt>. The context in which this command is mentioned in the lecture notes is that it lets you view the block size that the disk uses, such as 4K = 4096.
+        </li>
+        <li id = "xxd"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">xxd myFile</tt>
+            <br>
+            prints the contents of the file <tt>myFile</tt> in hexadecimal. A hexadecimal view allows you to understand what characters exist in the file, even if they are invisible in decimal (normal) view, such as null characters and other special ASCII characters. 
+        </li>
+    </ul>
+
+
+    <div class="copyright"><a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' style='border-width:0; height: 15pt; vertical-align: middle;opacity: 1;' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a><span style='vertical-align: middle;'> This website by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> is licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a>.</span></div>
+  </body>
+</html>

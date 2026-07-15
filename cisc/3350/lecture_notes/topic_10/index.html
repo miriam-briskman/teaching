@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+    <title>Topic 10: Signals | CISC 3350 Materials</title>
+    <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+    <link rel="stylesheet" href="..\topic_01\static\styles.css">
+    <script type="text/javascript" src="..\topic_01\static\scripts.js" defer></script>
+  </head>
+  <body style="font-size: x-large;">
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <h1>Materials for Topic 10: Signals</h1>
+    <h2>Full C Programs</h2>
+    <ul>
+       <li><a href="./division_by_0.c" target="_blank" title="Click to open the source code file in a new tab">division_by_0.c</a> - a C program that catches the <tt>SIGFPE</tt> signal during a division by 0.</li>
+       <li><a href="./handling_sigint.c" target="_blank" title="Click to open the source code file in a new tab">handling_sigint.c</a> - a C program that catches the <tt>SIGINT</tt> signal whenever you press <tt>Ctrl+C</tt> during its execution.</li>
+       <li><a href="./more_signals.c" target="_blank" title="Click to open the source code file in a new tab">more_signals.c</a> - a C program that catches the <tt>SIGINT</tt> signal whenever you press <tt>Ctrl+C</tt>, catches the <tt>SIGTERM</tt> signal whenever another app or terminal calls the <tt>kill</tt> command of the ID of the process, ignores the <tt>SIGHUP</tt> signal, and resets the behavior for <tt>SIGPROF</tt> to the default.</li>
+       <li><a href="./sigaction_example.c" target="_blank" title="Click to open the source code file in a new tab">sigaction_example.c</a> - a C program that ignores the <tt>SIGINT</tt> signal using the <tt>sigaction()</tt> function.</li>
+       <li><a href="./issuing_signals.c" target="_blank" title="Click to open the source code file in a new tab">issuing_signals.c</a> - a C program that creates a child process and sends it the <tt>SIGINT</tt> signal via <tt>kill()</tt>. The child handles the <tt>SIGINT</tt> signal by calling the <tt>write()</tt> system call, which is reentrant. Finally, the parent sends a signal to itself using <tt>raise()</tt>.</li>
+       <li><a href="./payload_sending.c" target="_blank" title="Click to open the source code file in a new tab">payload_sending.c</a> - a C program that creates a child process and sends it the <tt>SIGUSR2</tt> signal with an integer payload that the user types via the terminal using the <tt>sigqueue()</tt> function.</li>
+    </ul>
+    <h2>Runnable Linux Commands</h2>
+    <hr>
+    <h3>Quick Links:</h3>
+    <ul id = "quick-links">
+        <li><a href="#gcc" title="gcc"><tt>gcc</tt></a></li>
+        <li><a href="#short_prompt" title=". ./.short_prompt"><tt>. ./.short_prompt</tt></a></li>
+        <li><a href="#long_prompt" title=". ./.long_prompt"><tt>. ./.long_prompt</tt></a></li>
+        <li><a href="#kill-l" title="kill -l"><tt>kill -l</tt></a></li>
+        <li><a href="#kill-NAME" title="kill -NAME PID"><tt>kill -NAME PID</tt></a></li>
+        <li><a href="#killPID" title="kill PID"><tt>kill PID</tt></a></li>
+    </ul>
+    <hr>
+
+    <ul id = "target-list">
+        <li id = "gcc"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">gcc -Wall -Wextra -O2 -g -o program program.c</tt>
+            <br>
+            compiles the C source code located inside the file <tt>scheduling_examples.c</tt>. See more details <a href="../topic_01/index.html#gcc" target="_blank">here</a>.
+        </li>
+        <li id = "short_prompt"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">. ./.short_prompt</tt>
+            <br>
+            executes code inside a file named <tt>.short_prompt</tt> and sources it (applies all the changes to the current session.) See more details <a href="../topic_01/index.html#short_prompt" target="_blank">here</a>.
+        </li>
+        <li id = "long_prompt"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">. ./.long_prompt</tt>
+            <br>
+            executes code inside a file named <tt>.long_prompt</tt> and sources it (applies all the changes to the current session.) See more details <a href="../topic_01/index.html#long_prompt" target="_blank">here</a>.
+        </li>
+        <li id = "kill-l"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">kill -l</tt>
+            <br>
+            (<tt>- l</tt> is "dash L") display a list of the names of signals supported by the OS. 
+        </li>
+        <li id = "kill-NAME"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">kill -NAME PID</tt>
+            <br>
+            sends the signal <tt>NAME</tt> (e.g., <tt>HUP</tt>) to the process with id of <tt>PID</tt>.
+        </li>
+        <li id = "killPID"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">kill PID</tt>
+            <br>
+            sends the signal <tt>TERM</tt> (i.e., <tt>SIGTERM</tt>) to the process with id of <tt>PID</tt>.
+        </li>
+    </ul>
+
+
+    <div class="copyright"><a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' style='border-width:0; height: 15pt; vertical-align: middle;opacity: 1;' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a><span style='vertical-align: middle;'> This website by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> is licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a>.</span></div>
+  </body>
+</html>

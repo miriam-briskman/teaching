@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Intro to the Linux/UNIX OS Programming: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Error Handling</h3>
+        <div class = "imagecontainer imagecontainer-side">
+          <a href = "./errors.jpg" target='_blank'><img src="./errors.jpg" title = "Errors" alt="Warning about errors in a computer" style = "height: 11vh; z-index: 1000;"></a>
+          <p class = "caption" style = "width: 15vh; z-index: 1000;">Taken from <a target='_blank' href="https://www.getfoundquick.com/do-wordpress-errors-negatively-affect-your-seo/">Boston Web Marketing</a></p>
+        </div>
+        <p style = "margin-bottom: 1.5vh;">A function return value tells whether an error occurred during its execution.</p>
+        <ul>
+            <li>A function in C returns <tt>0</tt> if no errors happened (the execution was successful), and non-zero values in case of an error.</li>
+        </ul>
+        <p>A special variable named <b><tt>errno</tt></b>, which is defined in the C library <tt>&lt;errno.h&gt;</tt> describes what kind of error happened.</p>
+        <pre><code class="language-c source">extern int errno; // This is how errno is defined for us in &lt;errno.h&gt;.</code></pre>
+        <p>After calling a function that changes <tt>errno</tt>, we can check the content of <tt>errno</tt> to find if anything abnormal happened during the function's execution. The check must be done <i>right after</i> the function call in our code (since, otherwise, we may instead see error codes that other functions after our function call have set.) Each <tt>errno</tt> value corresponds to a different type of error. <u>Example</u>: When <tt>errno = 1</tt>, this stands for the <tt>EACCESS</tt> = "Permission denied" error.</p>
+        <p>The C library provides functions translating <tt>errno</tt> to its description: <tt>perror()</tt>, <tt>strerror()</tt>, and <tt>strerror_r()</tt>.</p>
+                       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

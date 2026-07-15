@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Review of the C Language: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();hljs.initLineNumbersOnLoad();</script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Review of the C Language</h3>
+        <ol start="4">
+            <li>
+                <p style = "margin-bottom: 1vh;">The code of the program <a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/lecture_notes/topic_03/loops.c"><tt>loops.c</tt></a>:</p>
+                <pre class="source source-long" style = "height: 60vh;"><code class="language-c">/* A C program that works with for, while,
+ *    and do-while loops.
+ *
+ *    Miriam Briskman, 2/8/2023
+ *    CISC 3350, Brooklyn College
+ *    Licensed under CC BY-NC 4.0
+ */
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main ()
+{
+    unsigned int sum = 0,
+                 num = 5,
+                 moves = 3;
+
+    // Above, we must initialize 'sum' to
+    //    zero before starting to use 'sum'
+    //    because C doesn't automatically
+    //    initialize your variables to zero
+    //    when they are created. It will
+    //    likely contain some random garbage
+    //    value, e.g., 1049472647.
+	
+    // for loop:
+
+    int i;
+
+    for (i = 1; i &lt;= 10; i++)
+    {
+        sum = sum + i;
+    }
+
+    // We could've also written:
+    //    sum += i;
+    // instead of
+    //    sum = sum + i;
+
+    // Note: writing 'int i = 1'
+    //    (i.e., for (int i = 1 ....))
+    //    inside the for loop's header
+    //    is unsupported in earlier
+    //    versions of the C language.
+    //    As such, make sure to declare
+    //    the i variable outside of the
+    //    for loop, just like we did
+    //    above: int i;
+
+    printf ("The young Carl Gauss computed "
+            "the sum of the 1st 10 positive "
+            "integers to be %u in a few "
+            "moments of thought!\n", sum);
+
+    // while loop:
+
+    printf ("Upside-down pyramid:\n");
+
+    while (num &gt; 0)
+    {
+        for (i = num; i &gt; 0; i--)
+            printf ("* ");
+        printf("\n");
+        num--;
+    }
+
+    // do-while loop:
+
+    printf("Claw moves remaining: %d,\n", moves);
+
+    do
+    {
+        moves--;
+        printf("Claw moves remaining: %d,\n",
+               moves);
+    } while (moves &gt; 0);
+
+    printf("Now, send the claw down and "
+           "catch a toy!\n");
+        
+    // *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+
+    /* Follow-up question:
+
+       How will the following while loop behave,
+       if we were to uncomment it?
+
+       int true = 1;
+       while (true)
+       {
+           printf ("Till the world ends!\n");
+       }
+    */
+
+    return EXIT_SUCCESS;
+}
+</code></pre>
+            </li>
+        </ol>
+                       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

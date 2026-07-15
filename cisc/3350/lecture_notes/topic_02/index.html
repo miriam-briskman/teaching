@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+    <title>Topic 2: Useful Linux Commands and Text Editors | CISC 3350 Materials</title>
+    <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+    <link rel="stylesheet" href="..\topic_01\static\styles.css">
+    <script type="text/javascript" src="..\topic_01\static\scripts.js" defer></script>
+  </head>
+  <body style="font-size: x-large;">
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <h1>Materials for Topic 2: Useful Linux Commands and Text Editors</h1>
+    <h2>Full C Programs</h2>
+    <ul>
+        <li><a href="./prog1.c" target="_blank" title="Click to open the source code file in a new tab">prog1.c</a> - a C program that prints a short message about daemons to the terminal using some Linux system calls.</li>
+        <li><a href="./heap_fault.c" target="_blank" title="Click to open the source code file in a new tab">heap_fault.c</a> - a C program that attempts to access an address on the <b>heap</b> that it hasn't allocated, expectedly causing a segmentation fault.</li>
+        <li><a href="./stack_fault.c" target="_blank" title="Click to open the source code file in a new tab">stack_fault.c</a> - a C program that attempts to access an address on the <b>stack</b> that it hasn't allocated, expectedly causing a segmentation fault.</li>
+    </ul>
+    <h2 id = "runnable">Runnable Linux Commands</h2>
+    <hr>
+    <h3>Quick Links:</h3>
+    <div id = "columns">
+        <div>
+            <ul id = "quick-links">
+                <li><a href="#short_prompt" title=". ./.short_prompt"><tt>. ./.short_prompt</tt></a></li>
+                <li><a href="#long_prompt" title=". ./.long_prompt"><tt>. ./.long_prompt</tt></a></li>
+                <li><a href="#pwd" title="pwd"><tt>pwd</tt></a></li>
+                <li><a href="#whoami" title="whoami"><tt>whoami</tt></a></li>
+                <li><a href="#ls" title="ls"><tt>ls</tt></a></li>
+                <li><a href="#ls-a" title="ls -a"><tt>ls -a</tt></a></li>
+                <li><a href="#ls-l" title="ls -l"><tt>ls -l</tt></a></li>
+                <li><a href="#ls-al" title="ls -al"><tt>ls -al</tt></a></li>
+                <li><a href="#lsdir" title="ls dir"><tt>ls dir</tt></a></li>
+                <li><a href="#cd" title="cd"><tt>cd</tt></a></li>
+            </ul>
+        </div>
+        <div>
+            <ul id = "quick-links">
+                <li><a href="#cd.." title="cd .."><tt>cd ..</tt></a></li>
+                <li><a href="#cd." title="cd ."><tt>cd .</tt></a></li>
+                <li><a href="#cd~" title="cd ~"><tt>cd ~</tt></a></li>
+                <li><a href="#cd/" title="cd /"><tt>cd /</tt></a></li>
+                <li><a href="#cddir" title="cd dir"><tt>cd dir</tt></a></li>
+                <li><a href="#mkdir" title="mkdir"><tt>mkdir</tt></a></li>
+                <li><a href="#touch" title="touch"><tt>touch</tt></a></li>
+                <li><a href="#rmdir" title="rmdir"><tt>rmdir</tt></a></li>
+                <li><a href="#rm" title="rm"><tt>rm</tt></a></li>
+                <li><a href="#cat" title="cat"><tt>cat</tt></a></li>
+            </ul>
+        </div>
+        <div>
+            <ul id = "quick-links">
+                <li><a href="#clear" title="clear"><tt>clear</tt></a></li>
+                <li><a href="#cp" title="cp"><tt>cp</tt></a></li>
+                <li><a href="#mv" title="mv"><tt>mv</tt></a></li>
+                <li><a href="#sudo" title="sudo"><tt>sudo</tt></a></li>
+                <li><a href="#su" title="su"><tt>su</tt></a></li>
+                <li><a href="#sudo-i" title="sudo -i"><tt>sudo -i</tt></a></li>
+                <li><a href="#man" title="man"><tt>man</tt></a></li>
+                <li><a href="#info" title="info"><tt>info</tt></a></li>
+                <li><a href="#ping" title="ping"><tt>ping</tt></a></li>
+                <li><a href="#wget" title="wget"><tt>wget</tt></a></li>
+            </ul>
+        </div>
+        <div>
+            <ul id = "quick-links">
+                <li><a href="#grep" title="grep"><tt>grep</tt></a></li>
+                <li><a href="#gcc" title="gcc"><tt>gcc</tt></a></li>
+                <li><a href="#executeProg" title="./executableFile"><tt>./executableFile</tt></a></li>
+                <li><a href="#gdb" title="gdb"><tt>gdb</tt></a></li>
+                <li><a href="#exit" title="exit"><tt>exit</tt></a></li>
+                <li><a href="#vim" title="vim"><tt>vim</tt></a></li>
+                <li><a href="#emacs" title="emacs"><tt>emacs</tt></a></li>
+                <li><a href="#nano" title="nano"><tt>nano</tt></a></li>
+            </ul>
+        </div>
+    </div>
+    <hr>
+    <ul id = "target-list">
+        <li id = "short_prompt"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">. ./.short_prompt</tt>
+            <br>
+            executes code inside a file named <tt>.short_prompt</tt> and sources it (applies all the changes to the current session.) See more details <a href="../topic_01/index.html#short_prompt" target="_blank">here</a>.
+        </li>
+        <li id = "long_prompt"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">. ./.long_prompt</tt>
+            <br>
+            executes code inside a file named <tt>.long_prompt</tt> and sources it (applies all the changes to the current session.) See more details <a href="../topic_01/index.html#long_prompt" target="_blank">here</a>.
+        </li>
+        <li id = "pwd"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">pwd</tt>
+            <br>
+            stands for 'print working directory' and shows the current folder in which the terminal is positioned. An example of output from this command is <tt>/home/cisc3350/Desktop</tt>, which means that the terminal is currently located in the Desktop folder.
+        </li>
+        <li id = "whoami"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">whoami</tt>
+            <br>
+            outputs the username of the user that is currently logged into the device/account and are using this terminal. Examples of outputs from this command are <tt>miriam</tt>, <tt>student</tt>, <tt>admin</tt>, or <tt>root</tt>.
+        </li>
+        <li id = "ls"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">ls</tt>
+            <br>
+            without any additional command-line arguments, stands for 'list' (verb) and shows the contents of the current directory. This includes only the name of the various non-hidden files and folders included in the current folder.
+        </li>
+        <li id = "ls-a"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">ls -a</tt>
+            <br>
+            (note that the <tt>-a</tt> is a command-line argument) shows the name of the various files and folders of the current directory, including all the hidden file. A hidden file (or folder) on Linux is one whose name starts with a dot symbol, and examples of hidden files are: <tt>.</tt> (the link to the current directory [itself!],) <tt>..</tt> (the link to the parent directory of the current directory), <tt>.bashrc</tt>, and the <tt>.git</tt> folder that might be found in your directory.
+        </li>
+        <li id = "ls-l"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">ls -l</tt>
+            <br>
+            (note that the <tt>-l</tt> like 'Larry' is a command-line argument) shows a long printout of the various files and folders of the current directory. In this printout, the information of each file or folder is displayed on a separate line, and includes metadata such as: permissions on using the file, the number of files inside the folder (in case it is a folder,) the username of the user who owns the file, the group of the user who owns the file, the file size in bytes, the recent modification date of the file, and, of course, the name of the file.
+        </li>
+        <li id = "ls-al"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">ls -al</tt>
+            <br>
+            (or <tt style = "border: 2px solid black;">ls -la</tt> or <tt style = "border: 2px solid black;">ls -a -l</tt> or <tt style = "border: 2px solid black;">ls -l -a</tt>) is a combination of <tt style = "border: 2px solid black;">ls -a</tt> and <tt style = "border: 2px solid black;">ls -l</tt>: it shows a long printout of the various files and folders of the current directory, including of all the hidden files.
+        </li>
+        <li id="lsdir"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">ls existingDirectory</tt>
+            <br>
+            lists the contents of a directory whose name (or path to) is <tt>existingDirectory</tt>. You can also add the <tt>-a</tt> or <tt>-l</tt> command-line arguments if wanted before or after <tt>existingDirectory</tt>. Here, <tt>existingDirectory</tt> could be either a relative or an absolute path to a directory. An absolute path is one that starts with the root directory, like <tt>/home/cisc3350/Desktop/</tt>, and a relative path is one without the forward slash to its left, like <tt>Desktop/games/</tt>.
+        </li>
+        <li id = "cd"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">cd</tt>
+            <br>
+            (without any additional command-line arguments) stands for 'change directory'. When typed into the terminal, it will change the current directory of the terminal to your user's home directory. The Linux computer saves the home directories of all the users within the file <tt>/etc/passwd</tt>, which you can view at any time. To change the home directory to a different one, you should contact the system administrator of your Linux device/account to change it, or, if the machine belongs to you, you can use of the suggested commands at <a href = 'https://stackoverflow.com/questions/20797819/command-to-change-the-default-home-directory-of-a-user' target='_blank'>this StackOverflow page</a> to change your home directory to a different one. 
+        </li>
+        <li id="cd.."><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">cd ..</tt>
+            <br>
+            (note that <tt>..</tt> here is a command-line argument) will change the current directory of the terminal to the parent directory of the current folder. For example, if <tt style = "border: 2px solid black;">pwd</tt> says that the current folder is <tt>/home/cisc3350/Desktop/</tt>, typing <tt style = "border: 2px solid black;">cd ..</tt> will change the current directory to <tt>/home/cisc3350/</tt>. Note that the root directory, <tt>/</tt> is special. Theoretically, it doesn't have a parent directory, but if you try doing <tt style = "border: 2px solid black;">cd ..</tt> when inside the root, you will return to ... the root directory itself! So it is like a self-loop.
+        </li>
+        <li id = "cd."><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">cd .</tt>
+            <br>
+            will change the current directory of the terminal to the current directory itself! That is, you won't leave the current directory, and <tt style = "border: 2px solid black;">cd .</tt> serves as a self-loop.
+        </li>
+        <li id = "cd~"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">cd ~</tt>
+            <br>
+            just as <tt style = "border: 2px solid black;">cd</tt> does, will change the current directory of the terminal to your user's home directory. 
+        </li>
+        <li id = "cd/"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">cd /</tt>
+            <br>
+            will change the current directory of the terminal to the computer's root directory, which is the grandparent of all directories in Linux. Note that we might mention the term 'root' in several contexts: not only do we have a directory called 'root', but we also most likely have a user whose name is <tt>root</tt>, which is the ultimately-privileged user of the computer who can perform almost any action, including installing new applications, deleting the disk, and accessing files of other users.
+        </li>
+        <li id = "cddir"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">cd existingDirectory</tt>
+            <br>
+            will change the current directory of the terminal to the directory indicated by <tt>existingDirectory</tt>. Here, <tt>existingDirectory</tt> could be either a relative or an absolute path to a directory. An absolute path is one that starts with the root directory, like <tt>/home/cisc3350/Desktop/</tt>, and a relative path is one without the forward slash to its left, like <tt>Desktop/games/</tt>.
+        </li>
+        <li id = "mkdir"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">mkdir newDirectory</tt>
+            <br>
+            stands for 'make directory' and creates a new directory whose name is <tt>newDirectory</tt> inside the current directory. For example, if the terminal is currently situated inside <tt>/home/cisc3350/Desktop/</tt>, and you type <tt style = "border: 2px solid black;">mkdir games</tt>, a new folder called <tt>games</tt> will be created inside the <tt>Desktop/</tt> directory (in case it is not present there already; if so, an error message that tells that the directory already exists will be displayed to the terminal.)
+        </li>
+        <li id = "touch"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">touch newFile</tt>
+            <br>
+            does the following: if the file named <tt>newFile</tt> already exists in the current directory, its recently modified date will be updated to now. Otherwise, if a file with such a name does not exist, the <tt>touch</tt> will create an empty file called <tt>newFile</tt> in the current directory. For example, typing <tt style = "border: 2px solid black;">touch notes.txt</tt> will create an empty text file called <tt>notes</tt> inside the current directory (in case this file doesn't already exist there.)
+        </li>
+        <li id = "rmdir"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">rmdir existingDirectory</tt>
+            <br>
+            stands for 'remove directory' and will delete the folder named <tt>ExistingFolder</tt> located inside the current directory. If the <tt>existingDirectory</tt> directory contains any files, or if the directory doesn't exist, an error message will be printed to the terminal. In case you wish to erase a non-empty directory, first delete the files inside the directory, and then <tt style = "border: 2px solid black;">rmdir</tt> the directory itself.
+        </li>
+        <li id = "rm"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">rm existingFile</tt>
+            <br>
+            stands for 'remove' and will delete the file named <tt>existingFile</tt> located inside the current directory. If the <tt>existingFile</tt> doesn't exist, an error message will be printed to the terminal. An example would be <tt style = "border: 2px solid black;">rm myfile.txt</tt>, using which we can delete a file called <tt>myfile.txt</tt> inside the current directory. Note that, after a file is deleted, it is permanently erased from the computer, unlike files that are deleted on a Windows or a Mac. A GUI version of Linux might feature a 'garbage bin' that termporarily stores deleted files, but the command-line version doesn't have such a feature by default.
+        </li>
+        <li id = "cat"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">cat existingFile</tt>
+            <br>
+            stands for 'concatenate' and will output the contents of the file named <tt>existingFile</tt> located inside the current directory to the terminal's window. You can't edit the contents of <tt>existingFile</tt> using <tt style = "border: 2px solid black;">cat</tt>, but you can see the file full content, regardless of how large the file is. Once the content of <tt>existingFile</tt> is output, the command prompt (e.g., <tt>student@student:~/Desktop$</tt>, which is the line in Linux that awaits your commands) will return back to you to get further commands from you. The reason that the command is called 'concatenate' is that it can actually take the names of several files and print them to the screen, one after the other, which resembles the concatenation of files. An example of using <tt style = "border: 2px solid black;">cat</tt> with a single file is by typing <tt style = "border: 2px solid black;">cat myfile.txt</tt>, which will show the contents of <tt>myfile.txt</tt> on the screen.
+        </li>
+        <li id = "clear"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">clear</tt>
+            <br>
+            brings the command prompt (e.g., <tt>student@student:~/Desktop$</tt>, which is the line in Linux that awaits your commands) to the top of the terminal in a way that is similar to 'clearing' the commands and data that were previously output to the screen. After typing entering this command, there is going to be nothing on the screen besides the command prompt.
+        </li>
+        <li id = "cp"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">cp path/<WBR>To/<WBR>ExistingFile path/<WBR>To/<WBR>The/<WBR>Newly/<WBR>CreatedCopyFile</tt>
+            <br>
+            stands for 'copy' and creates a copy of the file that is found in the directory <tt>path/To/</tt> called <tt>ExistingFile</tt> in the destination directory <tt>path/<WBR>To/<WBR>The/<WBR>Newly/</tt> under the name <tt>CreatedCopyFile</tt>. That is, the original file <tt>ExistingFile</tt> remains unchanged, and we just create a 'clone' of this file inside a different folder (and, possibly, with a new name.)
+        </li>
+        <li id = "mv"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">mv path/<WBR>To/<WBR>ExistingFile path/<WBR>To/<WBR>The/<WBR>Newly/<WBR>CreatedCopyFile</tt>
+            <br>
+            stands for 'move' and performs two actions: (1) it creates a copy of the file <tt>ExistingFile</tt> that is found in the directory <tt>path/To/</tt> and pastes it in the directory <tt>path/<WBR>To/<WBR>The/<WBR>Newly/</tt> under the name <tt>CreatedCopyFile</tt> (2) afterwards, it deletes the original file <tt>ExistingFile</tt> from the <tt>path/To/</tt> directory. This is essentially the action of 'moving' a file from one place to another, especially if you name the new file with the name of the original one.
+        </li>
+        <li id = "sudo"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">sudo someCommand</tt>
+            <br>
+            stands for '<u>s</u>uper <u>u</u>ser <u>do</u>' and lets you execute the command <tt>someCommand</tt> with elevated privleges. The reason that the execution of some commands, such a those that install a new program, require the call to <tt style = "border: 2px solid black;">sudo</tt> is that these actions are considered sensitive and might bring some danger to the computer if done incorrectly. As such, not all users are permitted to perform such actions. One way to perform such an action is by calling <tt style = "border: 2px solid black;">sudo</tt>, which temporarily elevates the user's privileges to those of the 'super user'. However, not all users can use the <tt style = "border: 2px solid black;">sudo</tt> command: for some of you, typing <tt>sudo</tt> will result in a error message like: "user x is not on the sudoers list", which means that you can't request to elevate your privleges to perform that action. In such a case, if the action is necessary, the user should contact the system administrator and request that they add the user to the sudoers list, if the organization/institution allows. An example of using <tt style = "border: 2px solid black;">sudo</tt> is typing <tt style = "border: 2px solid black;">sudo apt-get update</tt>, which updates all the installed software on the Linux device to the latest versions.
+        <br><br><b>Important Note</b>: If you are a regular/unprivileged Linux user (for example, if you are using your Brooklyn College Linux Account,) you might have no permission to use the <tt>sudo</tt> command, as explained in the paragraph above. No homework assignment or exam will ask you to use the <tt>sudo</tt> command, so don't worry about this current inability to use <tt>sudo</tt>. If you have access to a Linux virtual machine in which you are an administrator user, you should be able to use <tt>sudo</tt>.
+        </li>
+        <li id = "su"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">su</tt>
+            <br>
+            stands for '<u>s</u>uper <u>u</u>ser' and elevates your user privleges until you exit the super user mode with the Linux <tt style = "border: 2px solid black;">exit</tt> command. If, when typing this command, you receive an error message like: <br><tt>su: Authentication failure</tt><br>but you know that your user is on the sudoers list, you might instead type the command <tt>sudo -i</tt> below. If you aren't on the sudoers list, you can't use <tt>su</tt>.
+        </li>
+        <li id = "sudo-i"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">sudo -i</tt>
+            <br>
+            is an alternative to typing <tt style = "border: 2px solid black;">su</tt> and elevates your user privleges until you exit the super user mode with the Linux <tt style = "border: 2px solid black;">exit</tt> command. In many cases, the computer's super user is the user whose name is <tt>root</tt>, so you actually switch to the <tt>root</tt>'s account by entering <tt style = "border: 2px solid black;">sudo -i</tt>. One quick way to recognize that you are in 'super user mode' is to note that the symbol at the end of the command prompt is the number sign, <tt>#</tt>, and not the dollar sign, <tt>$</tt>.
+        </li>
+        <li id = "man"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">man someCommand</tt>
+            <br>
+            stands for 'manual' and opens the manual page for the Linux command <tt>someCommand</tt>. For example, entering <tt>man cp</tt> will show the manual page for the 'copy' command. A manual page includes the description of the command, the list of arguments that the command accepts, and any other essential details for the use of the command. If the manual page is longer than the screen, you can scroll down by pressing and holding the down arrow of your keyboard. To exit the manual page and return to the terminal, press the key 'Q' (stands for 'quit') at any time.
+        </li>
+        <li id = "info"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">info someCommand</tt>
+            <br>
+            opens an information page for the Linux command <tt>someCommand</tt>, which usually contains more information, usage recommendations, and examples about the command than the manual page for this command does. For example, entering <tt style = "border: 2px solid black;">info cp</tt> will show the information page for the 'copy' command. You can navigate an information page in the same way as you do a manual page, by using the arrow keys (to move up and down the page) and the 'Q' key to quit the page.
+        </li>
+        <li id = "ping"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">ping serverName</tt>
+            <br>
+            stands for 'Packet Internet Groper' and checks if the server (essentially, a remote device or webpage) whose name, link, or IP address is <tt>serverName</tt> is responsive over a network, like the Internet. For instance, typing <tt style = "border: 2px solid black;">ping www.google.com</tt> will initiate a connection with the Google website; if the connection is successful, your Linux device and Google will start exchanging data. Otherwise, the data that your Linux device sends won't be 'answered' by Google. This exchange of data will continue endlessly, so you need to press Ctrl + C to finish the exchange and return the command prompt back to you. After you press Ctrl + C, the overall data exchange statistics will be displayed on the terminal before the prompt is returned to you.
+            <br>
+            A different purpose for using the <tt style = "border: 2px solid black;">ping</tt> command is to check if your device is connected to the Internet. For example, since Google is 'up and running' at all times, getting an error message after entering <tt style = "border: 2px solid black;">ping www.google.com</tt> means that the Linux device is not connected to the Internet (since the connection error is not Google's fault.)
+        </li>
+        <li id = "wget"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">wget someRemoteFile</tt>
+            <br>
+            stands for 'web get' and copies over a file whose URL is <tt>someRemoteFile</tt> from a remote server (e.g., a website). This file could be anything, including text files, Word files, C source files, and even HTML pages (webpages). After this command runs, if the output says that "file such and such saved", it means that the file was successfully copies to the current directory where the terminal is located. Otherwise, either the file doesn't exist, a bad URL was typed, or there is no Internet connection. Another possibility is that the <tt style = "border: 2px solid black;">wget</tt> program is not installed on your device, in which case you could install it on your device (if you know you have permissions to use the <tt style = "border: 2px solid black;">sudo</tt> command) by typing <tt style = "border: 2px solid black;">sudo apt-get update</tt> followed by <tt style = "border: 2px solid black;">sudo apt-get install wget</tt> and then following the installation commands on the screen.
+        </li>
+        <li id = "grep"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">grep "pattern" existingDirectory</tt>
+            <br>
+            stands for 'global regular expression print' and output the names of the file where <tt>pattern</tt>, which is either a simply search string or some regular expression, is present within the <tt>existingDirectory</tt> folder. For example, entering <tt style = "border: 2px solid black;">grep "Bla Bla!" *</tt> will show all the files in the current directory where the string <tt>Bla Bla!</tt> is present. This is because the <tt>*</tt> symbol is a 'wild-card' that selects all the files in the current directory for this search. The <tt style = "border: 2px solid black;">grep</tt> command has many useful command-line options, which you can learn more about in the <tt style = "border: 2px solid black;">man grep</tt> or <tt style = "border: 2px solid black;">info grep</tt> manual pages.
+        </li>
+        <li id = "gcc"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">gcc -Wall -Wextra -O2 -g -o program program.c</tt>
+            <br>
+            compiles the C source code located inside the file <tt>program.c</tt>. See more details <a href="../topic_01/index.html#gcc" target="_blank">here</a>.</li>
+        
+        <li id = "executeProg"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">./executableFile</tt>
+            <br>
+            executes (runs) a program whose name is <tt>executableFile</tt> and that is located in the current directory using the terminal. The output that this program produces will be displayed in the terminal. In our class, we will be creating and running C programs after we compile them. For example, entering <tt style = "border: 2px solid black;">./prog1</tt> will run the program/application called <tt>prog1</tt> that is located within the current directory, and entering <tt style = "border: 2px solid black;">./a.out</tt> will run the program/application called <tt>a.out</tt> that is located within the current directory. You may, in a similar way, run programs that are located in other directories on your device/account by replacing the dot <tt>.</tt> with the path to the folder where that program that you are trying to run resides. For example, if a program called <tt>my_app</tt> is located in the folder <tt>/home/cisc3350/Desktop</tt>, you can execute it by typing:<br><tt style = "border: 2px solid black;">/home/cisc3350/Desktop/my_app</tt><br>in the terminal and then pressing ENTER/RETURN.
+        </li>
+        <li id = "gdb"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">gdb ./executableFile</tt>
+            <br>
+            runs the <a href = "https://www.sourceware.org/gdb/" target='_blank'>GNU C Debugger</a> software whose purpose is to run the program located in the current directory whose name is <tt>executableFile</tt> and trace/debug this program. Once you enter this command, you will enter the debugger's menu. To start running the program, type <tt>run</tt>. If an error occurs during the execution, the debugger will pause the execution and show what the error is and where (inside which function and on which line) it happened. You can then type the <tt>backtrace</tt> (or <tt>bt</tt>, in short) command to show the sequence of function calls starting from the <tt>main</tt> function that describes how this faulty statement was reached. To exit the debugger app, press 'Q'. The manual page of <tt style = "border: 2px solid black;">gdb</tt> features the full list of commands that you can use within the debugger, such as printing the values stored in variable, creating breakpoints, and other useful commands that you can use to find bugs faster!
+        </li>
+        <li id = "exit"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">exit</tt>
+            <br>
+            closes the terminal window. This is an alternative to clicking the 'X' button at the top corner of the terminal application window.
+        </li>
+        <li id = "vim"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">vim someFile</tt>
+            <br>
+            either creates an empty file named <tt>someFile</tt> within the current directory (if a file under this name doesn't exist yet) using the <tt style = "border: 2px solid black;">vim</tt> command-line text editor, or opens an existing file named <tt>someFile</tt>. Within the <tt style = "border: 2px solid black;">vim</tt> editor, you can change, delete, and add content. You can find several internet guides and tutorials on <tt style = "border: 2px solid black;">vim</tt> on our Blackboard page under <span style="background-color: #850041; color: #ffffff;">Textbook &amp; Guides</span> &gt; <b><u>Guides</u></b> &gt; "Text Editors -- Tutorials + YouTube + Cheat Sheets". 
+        </li>
+        <li id = "emacs"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">emacs someFile</tt>
+            <br>
+            either creates an empty file named <tt>someFile</tt> within the current directory (if a file under this name doesn't exist yet) using the <tt style = "border: 2px solid black;">emacs</tt> command-line text editor, or opens an existing file named <tt>someFile</tt>. Within the <tt style = "border: 2px solid black;">emacs</tt> editor, you can change, delete, and add content. You can find several internet guides and tutorials on <tt style = "border: 2px solid black;">emacs</tt> on our Blackboard page under <span style="background-color: #850041; color: #ffffff;">Textbook &amp; Guides</span> &gt; <b><u>Guides</u></b> &gt; "Text Editors -- Tutorials + YouTube + Cheat Sheets".
+        </li>
+        <li id = "nano"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">nano someFile</tt>
+            <br>
+            either creates an empty file named <tt>someFile</tt> within the current directory (if a file under this name doesn't exist yet) using the <tt style = "border: 2px solid black;">nano</tt> command-line text editor, or opens an existing file named <tt>someFile</tt>. Within the <tt style = "border: 2px solid black;">nano</tt> editor, you can change, delete, and add content. You can find several internet guides and tutorials on <tt style = "border: 2px solid black;">nano</tt> on our Blackboard page under <span style="background-color: #850041; color: #ffffff;">Textbook &amp; Guides</span> &gt; <b><u>Guides</u></b> &gt; "Text Editors -- Tutorials + YouTube + Cheat Sheets".
+        </li>
+    </ul>
+
+
+    <div class="copyright"><a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' style='border-width:0; height: 15pt; vertical-align: middle;opacity: 1;' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a><span style='vertical-align: middle;'> This website by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> is licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a>.</span></div>
+  </body>
+</html>

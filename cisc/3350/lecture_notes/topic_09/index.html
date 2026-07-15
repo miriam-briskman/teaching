@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+    <title>Topic 9: CPU Scheduling | CISC 3350 Materials</title>
+    <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+    <link rel="stylesheet" href="..\topic_01\static\styles.css">
+    <script type="text/javascript" src="..\topic_01\static\scripts.js" defer></script>
+  </head>
+  <body style="font-size: x-large;">
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <h1>Materials for Topic 9: CPU Scheduling</h1>
+    <h2>Full C Programs</h2>
+    <ul>
+        <li><a href="./scheduling_examples.c" target="_blank" title="Click to open the source code file in a new tab">scheduling_examples.c</a> - a C program that demonstrates the uses of functions mentioned in the Topic 9 lecture notes: <tt>sched_yield()</tt>, <tt>nice()</tt>, <tt>getpriority()</tt>, <tt>setpriority()</tt>, <tt>CPU_ZERO()</tt>, <tt>CPU_ISSET()</tt>, <tt>CPU_SET()</tt>, <tt>CPU_CLR()</tt>, <tt>sched_getaffinity()</tt>, <tt>sched_setaffinity()</tt>, <tt>sched_getscheduler()</tt>, <tt>sched_setscheduler()</tt>, <tt>memset()</tt>, <tt>sched_getparam()</tt>, <tt>sched_get_priority_min()</tt>, <tt>sched_get_priority_max()</tt>, <tt>sched_rr_get_interval()</tt>, <tt>setrlimit()</tt>, and <tt>getrlimit()</tt>.</li>
+    </ul>
+    <h2>Runnable Linux Commands</h2>
+    <hr>
+    <h3>Quick Links:</h3>
+    <ul id = "quick-links">
+        <li><a href="#gcc" title="gcc"><tt>gcc</tt></a></li>
+        <li><a href="#sudo./scheduling_examples" title="sudo ./scheduling_examples"><tt>sudo ./scheduling_examples</tt></a></li>
+        <li><a href="#./scheduling_examples" title="./scheduling_examples"><tt>./scheduling_examples</tt></a></li>
+        <li><a href="#short_prompt" title=". ./.short_prompt"><tt>. ./.short_prompt</tt></a></li>
+        <li><a href="#long_prompt" title=". ./.long_prompt"><tt>. ./.long_prompt</tt></a></li>
+    </ul>
+    <hr>
+
+    <ul id = "target-list">
+        <li id = "gcc"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">gcc -Wall -Wextra -O2 -g -o scheduling_examples scheduling_examples.c</tt>
+            <br>
+            compiles the C source code located inside the file <tt>scheduling_examples.c</tt>. See more details <a href="../topic_01/index.html#gcc" target="_blank">here</a>.
+        </li>
+        <li id = "sudo./scheduling_examples"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">sudo ./scheduling_examples</tt>
+            <br>
+            executes the program <tt>scheduling_examples</tt> as the <tt>root</tt> user. Not all users of Linux are allowed to elevate their privileges to those of the root, so calling <tt>sudo</tt> might not be permitted for your user. However, if you are the owner of a virtual machine, you can call <tt>sudo</tt>, type the password, and view the full execution of this program with no permission limitations.<br>
+            When I run this command on my Linux virtual machine (I am allowed to use <tt>sudo</tt>,) I get the following output:<br>
+            <tt>The current nice value is: 0.<br>
+We increased the nice value to: 5.<br>
+The current nice value is: 5.<br>
+The new nice value is: 6.<br>
+cpu = 0 is set<br>
+cpu = 1 is set<br>
+cpu = 2 is unset<br>
+cpu = 3 is unset<br>
+cpu = 4 is unset<br>
+cpu = 5 is unset<br>
+cpu = 6 is unset<br>
+cpu = 7 is unset<br>
+cpu = 8 is unset<br>
+cpu = 9 is unset<br>
+cpu = 10 is unset<br>
+cpu = 11 is unset<br>
+cpu = 12 is unset<br>
+cpu = 13 is unset<br>
+cpu = 14 is unset<br>
+cpu = 15 is unset<br>
+This device allows checking up to 1024 CPUs.<br>
+cpu = 0 is set<br>
+cpu = 1 is unset<br>
+cpu = 2 is unset<br>
+cpu = 3 is unset<br>
+cpu = 4 is unset<br>
+cpu = 5 is unset<br>
+cpu = 6 is unset<br>
+cpu = 7 is unset<br>
+cpu = 8 is unset<br>
+cpu = 9 is unset<br>
+cpu = 10 is unset<br>
+cpu = 11 is unset<br>
+cpu = 12 is unset<br>
+cpu = 13 is unset<br>
+cpu = 14 is unset<br>
+cpu = 15 is unset<br>
+Policy is normal.<br>
+Policy was changed to round-robin.<br>
+Our priority is 1.<br>
+SCHED_RR priority range is: 1 - 99.<br>
+The time slice is 0 seconds and 100000000 nanosecs.<br>
+setrlimit: Operation not permitted<br>
+RLIMIT_NOFILE limits: soft = 1024 hard = 1048576.</tt><br><br>
+The reason for the <tt>setrlimit: Operation not permitted</tt> error is due to a bug in earlier versions of <tt>sudo</tt>. The version of <tt>sudo</tt> that is installed on my virtual machine is <tt>1.8.21p2</tt>, whereas the bug is fixed only in version <tt>1.8.31p1</tt> and above. I checked the version of the <tt>sudo</tt> command by typing: <tt style = "border: 2px solid black;">sudo -V</tt> into the terminal.
+        </li>
+        <li id = "./scheduling_examples"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">./scheduling_examples</tt>
+            <br>
+            executes the program <tt>scheduling_examples</tt> as your real user. Some of the function calls in this program might return errors because they require elevated permissions, which can only be achieved by calling <tt>sudo ./scheduling_examples</tt>.<br><br><b>Note</b>: If you are a regular/unprivileged Linux user (for example, if you are using your Brooklyn College Linux Account,) you might have no permission to use the <tt>sudo</tt> command. No homework assignment or exam will ask you to use the <tt>sudo</tt> command, so don't worry about this current inability to use <tt>sudo</tt>. If you have access to a Linux virtual machine in which you are an administrator user, you should be able to use <tt>sudo</tt>.</li>
+        <li id = "short_prompt"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">. ./.short_prompt</tt>
+            <br>
+            executes code inside a file named <tt>.short_prompt</tt> and sources it (applies all the changes to the current session.) See more details <a href="../topic_01/index.html#short_prompt" target="_blank">here</a>.
+        </li>
+        <li id = "long_prompt"><span class = "item-start">The command:</span>
+            <br>
+            <tt style = "border: 2px solid black;">. ./.long_prompt</tt>
+            <br>
+            executes code inside a file named <tt>.long_prompt</tt> and sources it (applies all the changes to the current session.) See more details <a href="../topic_01/index.html#long_prompt" target="_blank">here</a>.
+        </li>
+    </ul>
+
+
+    <div class="copyright"><a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' style='border-width:0; height: 15pt; vertical-align: middle;opacity: 1;' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a><span style='vertical-align: middle;'> This website by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> is licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a>.</span></div>
+  </body>
+</html>

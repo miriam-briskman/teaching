@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Intro to the Linux/UNIX OS Programming: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();hljs.initLineNumbersOnLoad();</script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Error Handling</h3>
+        <p>The code of the C program <a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/lecture_notes/topic_01/errno.c"><tt>errno.c</tt></a> is given below (scroll to view the full code:)</p>
+        <pre class="source source-long" style = "height: 60vh;"><code class="language-c">/* A C program that shows how to detect and print
+ *    error messages in various ways.
+ *
+ * We will attempt to issue a system call such
+ *    that it fails, intentionally, to test the
+ *    methods of C to detect errors, including
+ *    (1) checking the returned value of a system
+ *    call, and (2) checking the value of the
+ *    'errno' variable that C uses to indicate
+ *    what specific error happened.
+ *    
+ *    Miriam Briskman, 2/8/2023
+ *    CISC 3350, Brooklyn College
+ *    Licensed under CC BY-NC 4.0
+ */
+
+
+// Include a reference to C's standard input &amp;
+//    output library without which no messages
+//    can be printed to the screen:
+#include &lt;stdio.h&gt;
+// Include the definition of the 'errno' variable
+//    that is set every time an error occurs in a
+//    function call:
+#include &lt;errno.h&gt;
+// Include the library that defines the close()
+//    system call:
+#include &lt;unistd.h&gt;
+// The String library is needed to print error
+//     messages, for example by using strerror().
+#include &lt;string.h&gt;
+
+
+// main function:
+int main() 
+{ 
+    // Print the value of 'errno', which is
+    //    defined in the &lt;errno.h&gt; library that
+    //    was included above, before making any
+    //    system calls:
+    printf ("At the start of the program,"
+            " errno is: %d.\n", errno);
+    printf ("Now, we will attempt a faulty"
+            " call to close().\n");
+
+    // Setting 'errno' to 0 just in case:
+    errno = 0;
+
+    // Now, we attempt to call the close()
+    //    system call, which is a function
+    //    used to close an open file.
+    //    However, to make it fail on purpose,
+    //    we try to close a file that was
+    //    never open. According to the manual
+    //    page on close(), the errno variable
+    //    can be set in a number of ways,
+    //    including when the integer file
+    //    descriptor that is passed to close()
+    //    isn't a valid open file descriptor.
+    //    The reason we decided to save these
+    //    values in variable is that calls to
+    //    perror() and strerror() might set
+    //    errno to different values at any time.
+
+    // A file descriptor can only be 0, 1, 2, 3, ...
+    int return_value = close(-1);
+    int copy_of_errno = errno;
+    
+    // Since the descriptor -1 above can never
+    //    represent an open file, we expect that
+    //    (1) the value of 'return_value' is -1
+    //    since this is the value close()
+    //    returns when it fails, and (2) errno
+    //    was set within close() to a non-zero
+    //    integer, which indicates an error.
+    
+    // Now, we try printing a human-understandable
+    //    statement about the error that happened.
+    //    The message that should be printed to the
+    //    terminal is of the form: "close: such and
+    //    such error happened". The name 'perror'
+    //    means 'print error'.
+    if (return_value == -1)
+        perror ("close");
+
+    // We also print return_value and
+    //    copy_of_errno that we saved earlier:
+    printf ("After the call to close(),"
+            " the returned value by close() was: %d,"
+            " and errno was set to: %d.\n",
+            return_value, copy_of_errno);
+
+    // We also demonstrate how to print the error
+    //    message using the strerror() function,
+    //    which returns a pointer to the error
+    //    string that perror() would print, but
+    //    without printing it. strerror() accepts
+    //    the errno value to be able to return
+    //    the pointer.
+    char * error_string = strerror (copy_of_errno);
+
+    // Now, we print the string the pointer to
+    //    which we obtained:
+    printf ("The error message that strerror()"
+            " returned is: %s.\n", error_string);
+
+    // For the sake of completion, the use of the
+    //    thread-safe function strerror_r() is
+    //    demonstrated:
+
+    // Creation of a 'buf' array of size 1024 bytes:
+    char buf[1024];
+    int strerror_r_returned_value
+        = strerror_r (copy_of_errno, buf, sizeof(buf));
+    printf ("The error message that strerror_r()"
+            " returned is: %s.\n", buf);
+    printf ("strerror_r() itself returned with"
+            " code %d.\n", strerror_r_returned_value);
+
+    // Just as a check, we show what the three
+    //    functions return when there is no error
+    //    (when errno remains zero:)
+    printf ("\nWe now check what perror(), strerror(),"
+            " and strerror_r() return when"
+            " there is no error:\n");
+    errno = 0;
+    perror ("&lt;Place function name here&gt;");
+    printf ("The message that strerror()"
+            " returned is: %s.\n", strerror (0));
+
+    // Another array for strerror_r() to use:
+    char buf2[1024];
+    strerror_r_returned_value
+        = strerror_r (0, buf2, sizeof(buf2));
+    printf ("The message that strerror_r()"
+            " returned is: %s.\n", buf2);
+    printf ("strerror_r() itself returned with"
+            " code %d.\n", strerror_r_returned_value);
+
+    // Exit the program with 0 as a message,
+    //    showing that the execution was successful.
+    return 0; 
+}</code></pre>
+                       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>File I/O: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Reading Files</h3>
+        <p style="margin-bottom: 1vh;">An example of reading an <tt>unsigned long</tt> integer from a file:</p>
+        <pre class="source" style="margin-top: 1vh;"><code class="language-c">unsigned long my_int; // 4-byte type on 32-bit Linux systems, or 8-byte type on 64-bit systems
+ssize_t nr = read (fd, &amp;my_int, sizeof(unsigned long));
+if (nr == -1) // To check for errors</code></pre>
+        <p style="margin-bottom: 1vh;"><b>Notes</b>:</p>
+        <ul style="margin-top: 1vh;">
+            <li>The variable of the array into which we read data must be created (on the stack or the heap) before the call to <pre class="source source-inline"><code class="language-c">read()</code></pre>.</li>
+            <li>The file position is advanced by the number of bytes that are read in. For example, if we read in <pre class="source source-inline"><code class="language-c">"Hello"</code></pre> at the beginning of the file, the file position will become <pre class="source source-inline"><code class="language-c">5</code></pre> after we return from <tt>read()</tt>, so that, for future reads, we can read in the content that comes after <pre class="source source-inline"><code class="language-c">"Hello"</code></pre>.</li>
+            <li>If <pre class="source source-inline"><code class="language-c">read()</code></pre> reads fewer than <pre class="source source-inline"><code class="language-c">len</code></pre> bytes, we either reached the end of a file or a signal interrupted the read midway.</li>
+            <li>When reading from a socket or device file (e.g., the keyboard!), the call will block (wait) if no bytes are available for reading yet and if the open file allows blocking (i.e., <pre class="source source-inline"><code class="language-c">O_NONBLOCK</code></pre> wasn’t used as a flag inside the call to <pre class="source source-inline"><code class="language-c">open()</code></pre>.)</li>
+        </ul>
+                       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Review of the C Language: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Review of the C Language</h3>
+        <p>These lecture notes contain the full code of several C programs, each of which introduces us to a different aspect of the C language, necessary to understand Linux programming aspects that we cover in future topics of the course. Each program includes comments that explain in detail how lines of code in the program work.</p>
+        <p style="margin-bottom: 1vh;">You can (and are encouraged!) to compile and run these programs in your own Linux account, which can be done as follows:</p>
+        <ol style="margin-top: 1vh;">
+            <li>Log into your Brooklyn College Student Linux account (see this guide: <a href="https://forms.gle/HU7Kmghf79WPf9xB9" target="_blank">https<wbr>://forms<wbr>.gle<wbr>/HU7Kmghf79WPf9xB9</a>.)</li>
+            <li>In a directory of your choice, download the C source code of a program using <tt>wget</tt>, for example:
+            <pre class="shell" style="margin: 0; overflow-x: auto; white-space: pre;"><code class="language-bash">$ wget https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/lecture_notes/topic_03/helloworld.c</code></pre>
+</li>
+            <li>Compile the program:
+            <pre class="shell" style="margin: 0;"><code class="language-bash">$ gcc -Wall -Wextra -O2 -g -o helloworld helloworld.c</code></pre>
+            <li>And, finally, run it:
+            <pre class="shell" style="margin: 0;"><code class="language-bash">$ ./helloworld</code></pre>
+</li>
+</li>
+        </ol>
+                       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

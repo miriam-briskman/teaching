@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Buffered File I/O: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          table {margin-top: 1vh;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3><pre class="source source-inline"><code class="language-c">&lt;stdio.h&gt;</code></pre>: I/O Buffers</h3>
+        <p></p>
+        <p><b><i>So, what's the advantage of using the functions of <pre class="source source-inline"><code class="language-c">&lt;stdio.h&gt;</code></pre>?</i></b></p>
+        <p><b>Answer</b>: The <pre class="source source-inline"><code class="language-c">&lt;stdio.h&gt;</code></pre> library conveniently stores and manages a buffer (array) called the <b>user buffer</b> or <b><tt>stdio</tt> buffer</b> in which it keeps a copy of a file's content. This buffer stores multiple blocks of bytes, so there is no need in calling <pre class="source source-inline"><code class="language-c">read()</code></pre> too frequently, so it avoids repetitive copies of huge chunks of bytes from disk.</p>
+        <p><b><i>And disadvantage?</i></b></p>
+        <p><b>Answer</b>: Remember that the OS itself manages a buffer called the <b>kernel buffer</b> in which, for example, changes that we wrote to files are temporarily stored before being saved to the disk.</p>
+        <p>This creates a slight disadvantage for <pre class="source source-inline"><code class="language-c">&lt;stdio.h&gt;</code></pre>: when we need to read a file's content from disk, it is first copied to the kernel buffer, then from the kernel buffer to the user buffer, and then to the char array that we supplied to <pre class="source source-inline"><code class="language-c">fgets()</code></pre>, <pre class="source source-inline"><code class="language-c">fgetc()</code></pre>, etc. The writing case is similar: when we write to a file, the string from our char array is copied to the user buffer, then copied to the kernel buffer, and then eventually to disk. As such, since the same data to several vessels, the execution of the <pre class="source source-inline"><code class="language-c">&lt;stdio.h&gt;</code></pre> functions may be slower than this of the system calls in certain cases.</p>
+
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

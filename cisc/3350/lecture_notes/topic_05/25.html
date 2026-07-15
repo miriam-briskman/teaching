@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Buffered File I/O: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          table {margin-top: 1vh;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3><pre class="source source-inline"><code class="language-c">&lt;stdio.h&gt;</code></pre>: Writing to Streams, as Binary Data</h3>
+        <table style = "margin-bottom: 3vh;">
+          <tr>
+            <td><b>Name:</b> <pre class="source source-inline function-name"><code class="language-c">fwrite()</code></pre></td>
+            <td><b>System call or function:</b> Function</td>
+            <td><b>Links:</b> <a target="_blank" href="https://man7.org/linux/man-pages/man3/fread.3.html">Online Manual</a> | <a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/CISC_3350_OER_Course_Packet.pdf#fread(3)+-+fread()+and+fwrite()+-+Linux+man+page">Course Packet</a></td>
+          </tr>
+          <tr>
+            <td colspan=3><b>What it does:</b> writes up to <pre class="source source-inline"><code class="language-c">nr</code></pre> elements of data, each of <pre class="source source-inline"><code class="language-c">size</code></pre> bytes, to <pre class="source source-inline"><code class="language-c">stream</code></pre> from the array <pre class="source source-inline"><code class="language-c">buf</code></pre>.</td>
+          </tr>
+          <tr>
+            <td colspan=3><b>What libraries you must include:</b> <pre class="source source-inline"><code class="language-c">#include &lt;stdio.h&gt; // Defines fwrite().
+</code></pre></td>
+          </tr>
+          <tr>
+            <td colspan=3><b>Syntax:</b> <pre class="source source-inline"><code class="language-c">size_t fwrite (void *buf, size_t size, size_t nr, FILE *stream);</code></pre></td>
+          </tr>
+          <tr>
+            <td colspan=3><b>Description of arguments:</b> <pre class="source-inline" style = "font-family: inherit;"><pre class="source source-inline"><code class="language-c">buf</code></pre>: an array (or variable's address) from which the binary data is taken
+<pre class="source source-inline"><code class="language-c">size</code></pre>: the size in bytes of each data element that we want to write (e.g., <pre class="source source-inline"><code class="language-c">sizeof(double)</code></pre>)
+<pre class="source source-inline"><code class="language-c">nr</code></pre>: the amount of such data elements to write
+<pre class="source source-inline"><code class="language-c">stream</code></pre>: a file stream that was opened for writing
+</code></pre></td>
+          </tr>
+          <tr>
+            <td rowspan="3"><b>What type it returns:</b> <pre class="source source-inline"><code class="language-c">size_t</code></pre></td>
+            <td colspan=2><b>On success:</b> The amount of elements that were read in (not the number of total bytes)</td>
+          </tr>
+          <tr>
+            <td colspan=2><b>On failure:</b> A number smaller than <pre class="source source-inline"><code class="language-c">nr</code></pre>. There is no end-of-file case when we write to files, so a number smaller than <pre class="source source-inline"><code class="language-c">nr</code></pre> indicates only an error.</td>
+          </tr>
+          <tr>
+            <td colspan=2><b>If failure, does it set <pre class="source source-inline"><code class="language-c">errno</code></pre>?</b> Yes</td>
+          </tr>
+          <tr>
+            <td colspan=3><b>Quick example:</b> <pre class="source source-inline"><code class="language-c">int arr [3] = {-4, 0, 10598};
+size_t num_of_elements_written = fwrite (arr, sizeof(int), 3, stream);</code></pre></td>
+          </tr>
+          <tr>
+            <td colspan=3><b>Other variations:</b> N/A</td>
+          </tr>
+        </table>
+
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

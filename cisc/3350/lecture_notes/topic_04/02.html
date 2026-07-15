@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>File I/O: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>File I/O</h3>
+        <p>In this chapter, we will learn system calls for working with files (and the keyboard/screen, which are special types of files!)</p>
+        <p>The <b>Linux kernel</b> (= the main component of the Linux OS) keeps a list of all the files currently open by every running program. This list is called the <b>file table</b>, and its indexes are <b>file descriptors</b> (<pre class="source source-inline"><code class="language-c">fd</code></pre>s), each uniquely representing a file.</p>
+        <ul style="margin-top: 1vh;">
+            <li>Most file system calls accept an <pre class="source source-inline"><code class="language-c">fd</code></pre> as an argument (since they need to know which file(s) we want to change.)</li>
+            <li>Each file table entry contains a pointer to the file's metadata (inode), including the location of the file's content on disk.</li>
+            <li>Legit <pre class="source source-inline"><code class="language-c">fd</code></pre>s are non-negative integers (<tt>0, 1, 2, ..., n</tt>), so <pre class="source source-inline"><code class="language-c">fd == -1</code></pre> indicates an error. Each process has an upper limit of how many files can be opened at the same time (by default: <tt>n = 1000</tt>), but we can change this limit if wanted.</li>
+            <li>Conventionally, <pre class="source source-inline"><code class="language-c">fd == 0</code></pre> represents <b>standard input</b> (= <pre class="source source-inline"><code class="language-c">stdin</code></pre> = keyboard), <pre class="source source-inline"><code class="language-c">fd == 1</code></pre> is <b>standard output</b> (= <pre class="source source-inline"><code class="language-c">stdout</code></pre> = display), and <pre class="source source-inline"><code class="language-c">fd == 2</code></pre> represents <b>standard error output</b> (= <pre class="source source-inline"><code class="language-c">stderr</code></pre> = also printed to display). All 3 are open by default.</li>
+            <li>Instead of writing <pre class="source source-inline"><code class="language-c">fd == 0</code></pre>, <pre class="source source-inline"><code class="language-c">1</code></pre>, or <pre class="source source-inline"><code class="language-c">2</code></pre>, you can use the already-defined constants: <pre class="source source-inline"><code class="language-c">STDIN_FILENO</code></pre>, <pre class="source source-inline"><code class="language-c">STDOUT_FILENO</code></pre>, and <pre class="source source-inline"><code class="language-c">STDERR_FILENO</code></pre>. Checking <pre class="source source-inline"><code class="language-c">fd == STDIN_FILENO</code></pre> is more portable than checking <pre class="source source-inline"><code class="language-c">fd == 0</code></pre>!
+</li>
+            <li><pre class="source source-inline"><code class="language-c">fd</code></pre>s can also represent special files (devices, disks, sockets, etc.) since Linux treats everything as a file.</li>
+        </ul>
+                       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

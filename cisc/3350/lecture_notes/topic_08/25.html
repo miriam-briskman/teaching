@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Threads: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <!--<style>li { margin: 10px 0;}</style>-->
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Example of a Real-World Race: Withdrawing Money</h3>
+        <p>Suppose a bank uses multi-threading for managing the withdrawal of money from customers' accounts (e.g., when a bill is scheduled to be paid.) If the order of the execution of the threads isn't controlled, serious race conditions will occur, and the result could be disastrous for the bank or the customers!</p>
+        <p>For example, the balance of the checking account of customer Jane Doe is now <span style = "color: green;">$500</span>. She is withdrawing $200 via an ATM, and, at the same time, the bank is processing an electricity bill of $400. Here is what could go wrong:</p>
+        <ul>
+            <li>During the withdrawal of the $200, the thread sees that the balance is $500 (that is, there are enough funds to proceed,) so the withdrawal is processed. At the same time, the other thread that is trying to withdraw $400 sees that the balance is $500 (since it isn't aware of the withdrawal of the $200,) so this withdrawal is processed, too. This will result in a negative balance <span style = "color: red;">-$100</span> in Jane Doe's account!</li>
+            <li>Another bad scenario is that, since the withdrawals happen at the same time, one of them might be cancelled out by the other one. That is, there is a chance that either the $400 or the $200 withdrawal will take effect, but not both, since one of the threads might overwrite the result of the other thread. So the result balance will be either <span style = "color: green;">$100</span> or <span style = "color: green;">$300</span>!</li>
+        </ul>
+
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

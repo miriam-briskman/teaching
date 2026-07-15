@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Signals: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Signal Concepts</h3>
+        <ul>
+            <li>Every signal has a symbolic name that starts with the prefix <tt>SIG</tt>. <u>Examples</u>:
+            <ul>
+                <li><tt>SIGINT</tt>: raised when the user presses <tt>Ctrl+C</tt>.</li>
+                <li><tt>SIGTERM</tt>: raised when a process calls the <pre class="source source-inline"><code class="language-c">exit()</code></pre> function.</li>
+                <li><tt>SIGABRT</tt>: raised when a process calls the <pre class="source source-inline"><code class="language-c">abort()</code></pre> function.</li>
+            </ul>
+            </li>
+            <li>These signals are all defined in <pre class="source source-inline"><code class="language-c">&lt;signal.h&gt;</code></pre> using preprocessor definitions that represent positive integers, e.g., <pre class="source source-inline"><code class="language-c">#define SIGHUP 1</code></pre>.</li>
+            <li>However, the name-to-integer mapping for signals depends on the implementation of every Linux machine (though some are fixed, such as <tt>SIGKILL</tt>, which is always <pre class="source source-inline"><code class="language-c">9</code></pre>). Therefore, a portable program should not use integer values (that is, use: <pre class="source source-inline"><code class="language-c">SIGHUP</code></pre> instead of <pre class="source source-inline"><code class="language-c">1</code></pre>, for example.)</li>
+            <li>There are (at least) 31 signals supported by all Linux distributions, with integer values <pre class="source source-inline"><code class="language-c">1</code></pre> to <pre class="source source-inline"><code class="language-c">31</code></pre>, but only a handful of them are used by most programs. There is no signal with the value <pre class="source source-inline"><code class="language-c">0</code></pre>, which is known generically as the "null signal".
+            <li>The command below will display a list of signals supported by the Linux system you use:
+            <pre style = "margin-top: 1vh;"><code class="language-bash shell">$ kill -l</code></pre>
+            </li>
+        </ul>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

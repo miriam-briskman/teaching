@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Review of the C Language: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();hljs.initLineNumbersOnLoad();</script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Review of the C Language</h3>
+        <ol start="8">
+            <li>
+                <p style = "margin-bottom: 1vh;">The code of the program <a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/lecture_notes/topic_03/structs.c"><tt>structs.c</tt></a>:</p>
+                <pre class="source source-long" style = "height: 60vh;"><code class="language-c">/* A C program introducing C structs (structures).
+ *
+ *    Miriam Briskman, 2/8/2023
+ *    CISC 3350, Brooklyn College
+ *    Licensed under CC BY-NC 4.0
+ */
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt; // String library
+
+// C's 'objects':
+struct Student
+{
+    char name [100];
+    int age;
+    double GPA;
+    char GPA_letter;
+}; // &lt;--- Don't forget the semi-colon here at
+   //      the end of the structure definition!
+  
+
+// No methods can be defined within structs!
+// You can only include variables, arrays,
+//    and other stuctures. These are
+//    collectively called 'data fields'.
+
+int main ()
+{
+    // You may choose to initialize a structure (set
+    //    the data fields of a new struct instance)
+    //    of) inline using curly braces:
+    struct Student std1 = {"Jane Doe", 20, 3.8, 'A'};
+    
+    // Or instantiate one without initializing it
+    //    right away:
+    struct Student std2;
+
+    // At some later point in the program, you can
+    //    start filling out the stucture's data. You
+    //    can access data fields using the dot (.)
+    //    notation:
+    strcpy (std2.name, "Sean Chen");
+    std2.age = 22;
+    std2.GPA = 3.8;
+    std2.GPA_letter = 'A';
+
+    // Data fields of structs are used wherever
+    //    you would use regular variables and
+    //    arrays. For example, we can print them
+    //    out:
+    printf ("The student %s, who is %d years old, "
+            "has %.3f GPA, which is %c.\n",
+             std1.name, std1.age,
+             std1.GPA, std1.GPA_letter);
+
+    // Fact: All the data fields in a struct are
+    //    always 'public': data fields can't be
+    //    set to 'private' or 'protected' modes.
+
+    // Aside from creating new structures,
+    //    programmers in the Linux environment
+    //    also frequently use existing structs
+    //    that are defined in libraries. We will
+    //    encounter more structures in future
+    //    chapters and learn how we can use them!
+    //
+    // For example, when we cover Topic 9, we
+    //    will learn that the time limit that
+    //    a program is allowed to run on a
+    //    Linux computer without being
+    //    interrupted is represented by a struct
+    //    called 'timespec', whose definition is
+    //    already provided by the scheduling
+    //    library of Linux (&lt;sched.h&gt;). The
+    //    definition of this struct is:
+    //
+    //    struct timespec
+    //    {
+    //        time_t tv_sec; // seconds
+    //        long tv_nsec; // nanoseconds
+    //    };
+    //
+    // That is, this struct simply stores
+    //    the duration of that time limit
+    //    in seconds and nanoseconds.
+    // Above, 'time_t' is a data type whose
+    //    purpose is to store a number
+    //    associated with seconds. Whether
+    //    'time_t' is internally defined as
+    //    an 'int', 'float', or 'double' is
+    //    computer-specific (every computer
+    //    might choose to define 'time_t' as
+    //    it wishes.)
+
+    return EXIT_SUCCESS;
+}
+</code></pre>
+            </li>
+        </ol>
+                       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

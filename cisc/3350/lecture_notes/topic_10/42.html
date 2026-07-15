@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Signals: Lecture Notes | CISC 3350</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          table {margin-top: 1vh;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>More Info on the <pre class="source source-inline"><code class="language-c">sigaction</code></pre> Structure</h3>
+            <ol>
+                <li>The <pre class="source source-inline"><code class="language-c">sa_handler</code></pre> field specifies the function to run on receiving the signal, or <tt>SIG_DFL</tt> (default), or <tt>SIG_IGN</tt> (ignore).</li>
+                <li>If you set <pre class="source source-inline"><code class="language-c">sa_flags</code></pre> to <pre class="source source-inline"><code class="language-c">SA_SIGINFO</code></pre>, then <pre class="source source-inline"><code class="language-c">sa_sigaction</code></pre> is used instead of <pre class="source source-inline"><code class="language-c">sa_handler</code></pre>. The function you assign to <pre class="source source-inline"><code class="language-c">sa_sigaction</code></pre> has the prototype:
+                <pre class="source"><code class="language-c">void my_handler (int signo, siginfo_t *si, void *ucontext);</code></pre>
+                <ul>
+                    <li>More information on the <pre class="source source-inline"><code class="language-c">siginfo_t</code></pre> structure is on the next slide.</li>
+                </ul>
+                </li>
+                <li>The <pre class="source source-inline"><code class="language-c">sa_mask</code></pre> field provides a set of signals the system should block while the signal handler is executing. The signal currently being handled is also blocked (if it's in <pre class="source source-inline"><code class="language-c">sa_mask</code></pre>,) unless the <pre class="source source-inline"><code class="language-c">SA_NODEFER</code></pre> flag is set in <pre class="source source-inline"><code class="language-c">sa_flags</code></pre>. However, you cannot block <tt>SIGKILL</tt> or <tt>SIGSTOP</tt>, as we already mentioned.</li>
+                <li>The <pre class="source source-inline"><code class="language-c">sa_flags</code></pre> field is a bitwise <tt>OR</tt>ing of zero, one, or more flags that change the handling of signal <pre class="source source-inline"><code class="language-c">signo</code></pre> (see the full list of flags <a target="_blank" title="A list of all the supported sa_flags flags: Linux man page." href="https://man7.org/linux/man-pages/man2/sigaction.2.html#:~:text=flag%20is%20used.-,sa_flags%20specifies,-a%20set%20of">at this link</a>.)
+                <ul>
+                    <li><tt>SA_SIGINFO</tt>: uses <pre class="source source-inline"><code class="language-c">sa_sigaction</code></pre> instead of <pre class="source source-inline"><code class="language-c">sa_sighandler</code></pre>.</li>
+                </ul>
+                </li>
+                <li>The <pre class="source source-inline"><code class="language-c">sa_restorer</code></pre> field is obsolete and no longer used in Linux: don't use it in your programs.</li>
+            </ol>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>
