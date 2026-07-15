@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Writing Sets">
+      <title>Sets &amp; Sequences: Lecture Notes | CISC 2210</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script>hljs.highlightAll();</script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Ways to Write Out Sets</h3>
+        <ol start = "4">
+            <li>As we saw on the previous slide, the set rule notation consists of two parts within the curly braces: the part <i>before</i> the $|$ symbol, which is the <b>format</b> of the elements in the set, and the part <i>after</i> the $|$ symbol, which imposes <b>rules</b> on the elements of the set. The $|$ symbol, which is called a 'bar' and is written in $\LaTeX$ as <pre class="source source-inline"><code class="language-latex">$|$</code></pre>, is read in English as "such that".<br><br>
+You can include as many rules as you want; also, they can be separated with commas, like in: $\{n\ |\ \text{$n$ is in $\mathbb{P}$, $n &gt; 10$} \}$.<br>
+Here are some examples and their meaning in math and English:
+<ul>
+    <li>$\{n\ |\ \text{$n$ is in $\mathbb{P}$, $n &gt; 10$}\} \;$$= \{11, 12, 13, \dots\}$, "the set of all $n$ such that $n$ is a positive integer, and $n$ is greater than $10$", or "the set of all integers greater than $10$", shortly.</li>
+    <li>$\{n^2\ |\ \text{$n$ is in $\mathbb{N}$}\} \;$$= \{0, 1, 4, 9, 16, \dots\}$, "the set of all numbers $n^2$ such that $n$ is a non-negative integer," or "the set of integer squares", shortly.</li>
+     <li>$\{x^2 + 2x + 1\ |\ $$\text{$x$ is in $\mathbb{R}$}\}$, "the set of all numbers $x^2 + 2x + 1$ such that $x$ is a real number." This is the set of all values that the real quadratic function $x^2 + 2x + 1$ outputs.</li>
+</ul>
+        </ol>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>
