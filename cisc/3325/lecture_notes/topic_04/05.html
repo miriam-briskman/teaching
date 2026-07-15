@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Cryptography: Lecture Notes | CISC 3325</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Cryptography</h3>
+        <p>The main <b>goals</b> of cryptography are to:</p>
+        <ul>
+            <li>Hide data stored in a system/database from thieves or hackers of this database.</li>
+            <li>Establish confidential, untampered, and unforged communication between two people or programs.</li>
+        </ul>
+        <p style = 'margin-bottom: 1vh;'><b>Eavesdropping</b> is the action of tapping on an ongoing communication between two parties. The goal of an eavesdropper is to illegally listen to and obtain data that is supposed to be communicated confidentially. However, when data is encrypted during transfer, an eavesdropper will have no way to understand what those data mean.</p>
+        <div class = "imagecontainer" style = "margin-top: 1vh;">
+          <a href = "https://cs.wellesley.edu/~cs110/reading/cryptography-files/aliceBob.jpg" target='_blank'><img src="aliceBob.jpg" title = "Eve eavesdrops on Alice and Bob." alt="Eve eavesdrops on Alice and Bob" style = "width: 28vw; z-index: 1000;"></a>
+          <p class = "caption" style = "width: 50vw; z-index: 1000;">Eve eavesdrops on Alice and Bob. Taken from <a target='_blank' href = "https://cs.wellesley.edu/~cs110/reading/cryptography-files/handout.html">these lecture notes on Encryption and Security</a>.</p>
+        </div>
+
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Intrusion Detection &amp; Prevention: Lecture Notes | CISC 3325</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Intrusion Detection &amp; Prevention</h3>
+        <p><b>Intrusion</b> is unwanted or unauthorized interference with data, a device, or a system. Being such, intrusion normally comes with bad intentions, such as disrupting a system's activity, stealing sensitive data, or modifying critical information.</p>
+        <p>An <b>Intrusion Detection System</b> (<b>IDS</b>) is a hardware and/or software solution that detects intrusion into a system or network. An IDS usually complements the activity of a firewall installed in the system.</p>
+        <p>An IDS inspects each and every packet by peeling it all the way down to its "data content" part, which is inspected for any malicious code. Afterwards, the packet is reassembled back to its original form and sent on its way.</p>
+        <p><b><i>Why do we use an IDS?</i></b> Just as you don't want to sit the whole day searching youself for malware in a program's code, you'd also wish to 'automate' the process of searching for malware in packets, a goal that an IDS achieves.</p>
+        <p><b><i>Why not just using a firewall?</i></b> Being considered a 'basic guard', a firewall is a necessary of a network security system but is insufficient on its own. Most of the modern networks have IDS as an essential part of the security architecture.</p>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Intrusion Detection &amp; Prevention: Lecture Notes | CISC 3325</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Checksums</h3>
+
+        <ol start = "2">
+            <li><b>A Checksum</b>. This number is the total of all the bits (or bytes) of a data. For example, it could be:
+            <ul>
+                <li>The sum of all the <tt>1</tt> bits.</li>
+                <li>The sum of all the bytes' values (e.g., by converting the characters/bytes into their corresponding <a target="_blank" href="https://www.sciencebuddies.org/science-fair-projects/references/ascii-table" title = "ASCII table">ASCII</a> or <a href="https://asecuritysite.com/coding/asc2" target="_blank" title = "Unicode UTF-16 table">Unicode</a> values.) Here are a <a target="_blank" href="https://www.duplichecker.com/text-to-ascii.php">Text to ASCII</a> and a <a target="_blank" href="https://www.duplichecker.com/text-to-binary.php">Text to Binary</a> converter web apps.
+                <li>[The Checksum in a TCP packet's header] The 16-bit ones' complement of the ones' complement sum of all 16-bit bytes in the header and content of a packet.</li>
+            </ul>
+            </li>
+            The checksum calculation method is provided to the system ahead of time.<br><br>
+            <u>Example</u>: the ASCII-byte (decimal) checksum of <tt>01100101</tt>, the letter <tt>e</tt> in ASCII, is 101, while the checksum of <tt>01001110</tt>, the letter <tt>N</tt> in ASCII, is 78, The parity bit for each of these letters, however, is the same: <tt>0</tt> (<b><i>Why is the parity bit <tt>0</tt>?</i></b>).<br><br>
+            Although a checksum is more reliable than a parity bit, the chance that a transmission error would result in obtaining the same checksum for a modified data isn't small.
+        </ol>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

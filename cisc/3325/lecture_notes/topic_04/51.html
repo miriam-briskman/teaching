@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Cryptography: Lecture Notes | CISC 3325</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Asymetric Key Cryptography & Hashing</h3>
+        <p><b>Note</b>: the full content of this slide can be found at <a href="asym_and_hashing.html" target="_blank" rel="noopener">asym_and_hashing.html</a> and <a href="asym_and_hashing.pdf" target="_blank" rel="noopener">asym_and_hashing.pdf</a>.</p>
+        <hr>
+        <p><span style="font-size: 14pt;">Comparison between properties of Stream ciphers vs. properties of Block ciphers:</span><br /><span style="font-size: 14pt;"><img src="01_stream_vs_block_comparison.jpg" alt="Comparison between properties of Stream ciphers vs. properties of Block ciphers" style="border: 0px solid #000000;" height="288" width="755" /></span><br /><span style="font-size: 14pt;">&nbsp;</span></p>
+<hr />
+<p><span style="font-size: 14pt;">Advantages vs. Disadvantages of Stream and Block ciphers:</span><br /><span style="font-size: 14pt;"><img src="02_stream_vs_block_comparison.jpg" alt="Advantages vs. Disadvantages of Stream and Block ciphers" style="border: 0px solid #000000;" height="370" width="755" /></span><br /><span style="font-size: 14pt;">&nbsp;</span></p>
+<hr />
+<p><span style="font-size: 14pt;">To encrypt a message/data using Asymmetric Key Cryptography, you will use the <span style="text-decoration: underline;">public key</span> of the <span style="text-decoration: underline;">receiver</span>. To decrypt this message, the receiver will use her or his <span style="text-decoration: underline;">private key</span>. We ensure confidentiality because no one besides the receiver of the message can decrypt the message and learn what it means!</span><br /><span style="font-size: 14pt;"><img src="03_assymetric_key_cryptography.jpg" alt="To encrypt a message/data using Asymmetric Key Cryptography, you will use the public key of the receiver. To decrypt this message, the receiver will use her or his private key." style="border: 0px solid #000000;" height="583" width="755" /></span><br /><span style="font-size: 14pt;">&nbsp;</span></p>
+<hr />
+<p><span style="font-size: 14pt;">An example of using Asymmetric Key Cryptography: Alice sends an encrypted message to Bob.</span><br /><span style="font-size: 14pt;"><img src="04_example.jpg" alt="An example of using Asymmetric Key Cryptography: Alice sends an encrypted message to Bob." style="border: 0px solid #000000;" height="536" width="626" /></span><br /><span style="font-size: 14pt;">&nbsp;</span></p>
+<hr />
+<p><span style="font-size: 14pt;">A couple more diagrams:</span><br /><span style="font-size: 14pt;"><img src="05_more_examples.jpg" alt="A couple more diagrams on asymmetric key cryptography." style="border: 0px solid #000000;" height="352" width="755" /></span><br /><span style="font-size: 14pt;">&nbsp;</span></p>
+<hr />
+<p><span style="font-size: 14pt;">Comparison between the properties of Symmetric and Asymmetric key cryptographies:</span><br /><span style="font-size: 14pt;"><img src="06_comparison.jpg" alt="Comparison between the properties of Symmetric and Asymmetric key cryptographies." style="border: 0px solid #000000;" height="386" width="755" /></span><br /><span style="font-size: 14pt;">&nbsp;</span></p>
+<hr />
+<p><span style="font-size: 14pt;">Example of the RSA encryption algorithm, which uses a public and a private key and is based on prime numbers: <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)#Example" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/RSA_(cryptosystem)#Example</a>.</span></p>
+<hr />
+<p><span style="font-size: 14pt;">&nbsp;Embedded Video Player: Asymmetric Encryption - Simply explained</span></p>
+<div style="word-wrap: break-word;">
+<div class="previewDiv ytIframeClass" style="height: 344px; width: 425px;" id="ytEmbed605343dea8b641c6a9b13376770cfa4c" bb-embedded-type="youtube"><iframe width="425" height="344" style="width: 100%;" id="ytObject605343dea8b641c6a9b13376770cfa4c" src="https://www.youtube.com/embed/AQDCe585Lnc?modestbranding=1&amp;fs=1&amp;rel=0&amp;menu=disable&amp;enablejsapi=1&amp;playerapiid=ytEmbed605343dea8b641c6a9b13376770cfa4c" title="Asymmetric Encryption - Simply explained" data-mce-fragment="1">
+      </iframe></div>
+</div>
+<div style="font-size: 15px; font-weight: bold; margin-bottom: 5px;"><span style="font-size: 14pt;">Asymmetric Encryption - Simply explained</span></div>
+<div style="font-size: 11px; margin-bottom: 5px;"><span style="font-size: 14pt;"><strong><br />User:</strong> n/a <strong> - Added: </strong>10/30/17</span></div>
+<div style="font-size: 11px;"><span style="font-size: 14pt;"><strong>YouTube URL:</strong> <a href="http://www.youtube.com/watch?v=AQDCe585Lnc" target="_blank" rel="noopener">http://www.youtube.com/watch?v=AQDCe585Lnc</a></span></div>
+<div style="clear: both;"></div>
+<hr />
+<div><span style="font-size: 14pt;">Asymmetric key cryptography ensures the confidentiality of a message. However, it won't tell anything about the identity of the sender of the message. As such, on an insecure channel, a 3rd person ("Man in the Middle") might send a message to Bob, claiming to be Alice. Bob can't confirm if this message was actually sent by Alice just with Asymmetric key cryptography.</span></div>
+<div><span style="font-size: 14pt;">That is, Alice and Bob need to use another mechanism in addition to Asymmetric key cryptography to ensure Authenticity (the ability to identify the sender of a message.) One such tool is Digital Signatures, which can be used to verify the identity of the sender (and, therefore, prevent cases of "Man in the Middle" attacks.</span></div>
+<div><br /><span style="font-size: 14pt;"><img src="12_man_in_the_middle.jpg" alt="A &quot;Man in the Middle&quot; attack." style="border: 0px solid #000000;" height="718" width="755" /></span><br /><span style="font-size: 14pt;">&nbsp;</span><hr /><span style="font-size: 14pt;">To sign a message/data using Asymmetric Key Cryptography, you will use the <span style="text-decoration: underline;">private key</span> of the <span style="text-decoration: underline;">sender</span> (a.k.a., your private key.) To verify that this message was sent by you, the receiver will use your <span style="text-decoration: underline;">public key</span>. We ensure authenticity because no one besides you has your private key, so if a message was signed using your private key, everyone can verify that this message was sent by you! Verification can be done by anyone because your public key, which is used for the signature verification, is publically-available.</span><br /><span style="font-size: 14pt;"><img src="08_digital_signatures.jpg" alt="Signing a message/data using Asymmetric Key Cryptography." style="border: 0px solid #000000;" height="588" width="640" /></span><br /><span style="font-size: 14pt;">&nbsp;</span><hr /><span style="font-size: 14pt;">A similar diagram as the above about digital signatures: how messages and sent, and how they are verified. As we mentioned, digital signatures ensure authenticity, so the receiver can confirm that the message arrived from the real sender.</span><br /><span style="font-size: 14pt;"><img src="10_digital_sig_cryptography.jpg" alt="Another digital signature diagram." style="border: 0px solid #000000;" height="595" width="755" /></span><br /><span style="font-size: 14pt;">&nbsp;</span><hr /><span style="font-size: 14pt;">A digital signature works by hashing the document, and signing the hash value. Then, both the encrypted file and the encrypted hash (= signature) will be sent out.</span><br /><span style="font-size: 14pt;"><img src="09_signature_diagram.png" alt="Using hashes for digital signatures." style="border: 0px solid #000000;" height="338" width="735" /></span><br /><span style="font-size: 14pt;">&nbsp;</span><hr /><span style="font-size: 14pt;">We can use encryption and digital signatures together: encryption will keep the confidentiality of the message, and the digital signature will be used to verify the sender's identity. One public/private key pair will be used for encryption and decryption, and another pair of keys will be used to sign and then verify the signature.</span><br /><span style="font-size: 14pt;"><img src="11_confidentiality_and_authenticity.jpg" alt="Using both encryption and digital signatures!" style="border: 0px solid #000000;" height="512" width="755" /></span><br /><span style="font-size: 14pt;">&nbsp;</span><hr /><span style="font-size: 14pt;"> An embedded lecture notes slide on Hash functions. Taken from <a href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3320/lecture_notes/topic_02/19.html" target="_blank" rel="noopener">https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3320/lecture_notes/topic_02/19.html</a>.</span></div>
+<div><span style="font-size: 14pt;">See the next slide, Slide 20, as well.</span></div>
+<p><iframe style="width: 100%; height: 700px;" src="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3320/lecture_notes/topic_02/19.html" title="CISC 3320: Hash Functions"></iframe></p>
+<hr />
+<p><span style="font-size: 14pt;">On Linux, to find the hash value (= digest) of a string of data using SHA-256 (Secure Hash Algorithm), type:</span></p>
+<blockquote>
+<p><span style="font-size: 14pt; font-family: 'courier new', courier, monospace;">echo -n data | sha256sum</span></p>
+</blockquote>
+<p><span style="font-size: 14pt;">where "data" above is replaced by the actual data that you want to hash, e.g.:</span></p>
+<blockquote>
+<p><span style="font-size: 14pt; font-family: 'courier new', courier, monospace;">echo -n hello world! | sha256sum</span></p>
+</blockquote>
+<hr />
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: 14pt;">Also, you can use online SHA-256 hash calculators, like this one: <a href="https://xorbin.com/tools/sha256-hash-calculator" target="_blank" rel="noopener">https://xorbin.com/tools/sha256-hash-calculator</a>.</span></p>
+              
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

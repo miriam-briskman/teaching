@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Malware vs. Anti-Virus Software: Lecture Notes | CISC 3325</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Worm</h3>
+        <div class = "imagecontainer imagecontainer-side">
+          <a href = "https://www.whatismyip.com/static/86e978d23fb2f6387b53caeb38f5e8b0/computer-worm.webp" target='_blank'><img src="computer-worm.webp" title = "A worm" alt="A worm" style = "height: 12vh; z-index: 1000;"></a>
+          <p class = "caption" style = "width: 14vh; z-index: 1000;">Taken from <a target="_blank" href="https://www.whatismyip.com/computer-worm/">WhatIsMyIP<WBR>.com</a></p>
+        </div>
+        <ol start = "2" style = "margin-top: 2vw;">
+            <li><b>Definition</b>: A <b>worm</b> is another replicating malware carrying a payload. The difference between a virus and a worm is that a worm doesn't need to attach itself to an existing executable or file. Worms can multiply themselves and can propagate out of the networks, infecting other networks and other systems, thus creating huge havoc or damages.<br><br>
+            Since a worm doesn't depend on a carrier, it doesn't need to have a user activate it: it activates without human interaction.<br><br>
+            <b>Reason for the name</b>: Similarly to viruses, worms are parasitic creatures that infect an organism without attaching themselves to cells.<br>
+            <b>Propagation</b>: The same way as viruses, by launching the payload software that it carries. The difference is that there is no human intervention. Worms propagate by finding and infecting vulnerable hosts.<br>
+            <b>Examples of well-known worms</b>: <a target="_blank" href="https://www.fbi.gov/news/stories/melissa-virus-20th-anniversary-032519">Melissa</a>, <a target="_blank" href="https://www.fbi.gov/news/stories/morris-worm-30-years-since-first-major-attack-on-internet-110218">Morris</a>, <a target="_blank" href="https://usa.kaspersky.com/blog/cybersecurity-history-iloveyou/26869/">ILOVEYOU</a>, and <a target="_blank" href="https://www.wired.com/images_blogs/threatlevel/2010/11/w32_stuxnet_dossier.pdf">W32.Stuxnet</a>.
+            </li>
+        </ol>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

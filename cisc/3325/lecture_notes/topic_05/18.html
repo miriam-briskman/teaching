@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Application &amp; Web Security: Lecture Notes | CISC 3325</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>App Vulnerabilities + Controls</h3>
+        <ol start = "1">
+            <li>Exploiting a buffer overflow flaw isn't an easy thing: an attacker first needs to spot this flaw somewhere in a program, and then carefully plan his or her actions, including how much data to overwrite, and what malicious code to insert. Operating Systems might have installed countermeasures, such as non-executable stacks (which are areas of Main Memory that an attacker can never get to run,) which require greater efforts on the side of the attacker.<br><br>
+            Besides exceeding array boundaries, as witnessed in the previous C program, another common source of buffer overflow are uses of C string functions, such as <a target='_blank' href="https://cplusplus.com/reference/cstring/strcpy/" title="Copies the C string pointed by source into the array pointed by destination.&#013;Link: https://cplusplus.com/reference/cstring/strcpy/"><tt>strcpy()</tt></a>, <a target='_blank' href="https://cplusplus.com/reference/cstdio/gets/" title="Reads characters from the standard input (stdin) and stores them as a C string into str until a newline character or the end-of-file is reached.&#013;Link: https://cplusplus.com/reference/cstdio/gets/"><tt>gets()</tt></a>, <a target='_blank' href="https://cplusplus.com/reference/cstdio/sprintf/" title="Composes a string with the same text that would be printed if format was used on printf, but instead of being printed, the content is stored as a C string in the buffer pointed by str.&#013;Link: https://cplusplus.com/reference/cstdio/sprintf/"><tt>sprintf()</tt></a>, and <a target='_blank' href="https://cplusplus.com/reference/cstring/strcat/" title="Appends a copy of the source string to the destination string.&#013;Link: https://cplusplus.com/reference/cstring/strcat/"><tt>strcat()</tt></a>, which don't perform any boundary checks. This is just a partial list of such functions in C.<br><br>
+Thankfully, C also provides alternative functions that prevent buffer overflow from happening: <a target='_blank' href="https://cplusplus.com/reference/cstring/strncpy/" title="Copies the first n characters of source to destination.&#013;Link: https://cplusplus.com/reference/cstring/strncpy/"><tt>strncpy()</tt></a>, <a target='_blank' href="https://cplusplus.com/reference/cstdio/fgets/" title="Reads characters from stream and stores them as a C string into str until (n - 1) characters have been read or either a newline or the end-of-file is reached, whichever happens first.&#013;Link: https://cplusplus.com/reference/cstdio/fgets/"><tt>fgets()</tt></a>, <a target='_blank' href="https://cplusplus.com/reference/cstdio/snprintf/" title="Composes a string with the same text that would be printed if format was used on printf, but instead of being printed, the content is stored as a C string in the buffer pointed by s (taking n as the maximum buffer capacity to fill).&#013;Link: https://cplusplus.com/reference/cstdio/snprintf/"><tt>snprintf()</tt></a>, and <a target='_blank' href="https://cplusplus.com/reference/cstring/strncat/" title="Appends the first n characters of source to destination.&#013;Link: https://cplusplus.com/reference/cstring/strncat/"><tt>strncat()</tt></a>. These functions take the number of characters, <tt>n</tt>, to be read/written/copied, and thereby don't exceed the target string's size (by the way, this is why the names of some such functions contain an extra letter '<tt>n</tt>'.) It is, therefore, advisable that you use the overflow-safe function versions in your coding.
+             </li>
+        </ol>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

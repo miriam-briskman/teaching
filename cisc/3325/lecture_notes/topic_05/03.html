@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Application &amp; Web Security: Lecture Notes | CISC 3325</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Application &amp; Web Security</h3>
+        <p><a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3325/lecture_notes/topic_03/01.html">Topic 3: Access Control</a> demonstrated how critical it is to secure one's physical assets, and <a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3325/lecture_notes/topic_04/01.html">Topic 4: Cryptography</a> showed that cryptographic methods ensure the confidentiality and/or Authenticity of data.</p>
+        <p>However, these aren't the only realms of computing where security measures must be taken: processing of data (a.k.a., by an application) and transmission of data (via a network) must be secured as well.</p>
+        <p>Moreover, compared to physical/hardware security, for example, making sure that an application is secure (that is, that it handles data securely) is far more difficult due to the enormous number of ways in which 'things can go wrong', such as app misconfiguration, invalidated inputs, errors in coding, man-in-the-middle attacks, man-in-the-browser attacks, session hijacking, weak encryption keys, weak passwords, weak authentication mechanisms, SQL injection, and buffer overflows.</p>
+        <p>In this chapter, we will review the various sorts of issues that can happen with the functionality of an application and the remedies to / prevention of these issues. Later, Topic 8 will touch on network security.</p>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

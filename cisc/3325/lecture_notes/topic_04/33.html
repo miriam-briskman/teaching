@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Cryptography: Lecture Notes | CISC 3325</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Vulnerabilities of Stream Ciphers</h3>
+        <ol start = "1">
+            <li>Some known incidents where key reuse led to attacks on the encryption:
+                <ol type = "a">
+                    <li>During WWI, the U.S. initiated a counterintelligence program named the <u>Venona Project</u>, whose purpose was to decrypt messages transmitted by the intelligence agencies of the Soviet Union.<br>
+                U.S. cryptanalysts discovered that the Soviets produced around 35,000 pages of duplicate keys.</li>
+                    <li>The <u>WEP (Wired Equivalent Privacy) protocol</u>, which was intended to provide security to wireless networks (WiFi), is nowadays deemed insecure because of key reuse, too.<br>
+                    <ul>
+                        <li>Each key in this encryption method is built up of two parts: an <b>Initialization Vector (IV)</b>, which is a random number, and a key (that never changed.) The digits of the vector were appended to the left of the key (in the form: <tt>VVV...VVKKK...KK</tt>,) and this long number, called the <b>seed</b>, was XORed with the plaintext.</li>
+                        <li><b>The problem</b> was that the vector is 24-bit in size, so it repeats every 16 million pages (which actually isn't a lot given a computer's speed.)</li>
+                        <li>This vulnerability was discovered in 2001, 4 years after the protocol was created.</li>
+                        <li>WEP was eventually replaced by WPA2, which is the most secure WiFi encryption solution today.</li>
+                    </ul>
+                     </li>
+                 </ol>
+            </li>
+        </ol>
+        
+       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

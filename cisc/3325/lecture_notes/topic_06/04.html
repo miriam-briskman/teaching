@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Malware vs. Anti-Virus Software: Lecture Notes | CISC 3325</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Virus</h3>
+        <div class = "imagecontainer imagecontainer-side">
+          <a href = "https://healthnewshub.org/wp-content/uploads/2020/03/Newscoronavirusmicroscope.jpg" target='_blank'><img src="Newscoronavirusmicroscope.jpg" title = "A virus (coronavirus)" alt="A virus (coronavirus)" style = "height: 12vh; z-index: 1000;"></a>
+          <p class = "caption" style = "width: 14vh; z-index: 1000;">Taken from <a target="_blank" href="https://hartfordhealthcare.org/about-us/news-press/news-detail?articleId=27681&publicid=395">Hartford Healthcare</a></p>
+        </div>
+        <p>Malware exists in several types, each of which has its own propagation methods and targets:</p>
+        <ol start = "1">
+            <li><b>Definition</b>: A <b>virus</b> is a malicious software that attaches itself to executable files. Viruses replicate (= create copies of themselves) and thereby spread among the files of a device and possibly over the network to which the device is connected.<br><br>
+            This is the most known type of malware and is sometimes used, in layman terms, as a synonym for malware.<br>For instance, we tend to say 'anti-virus' and not 'anti-malware'.<br><br>
+            <b>Reason for the name</b>: Due to the similarity to a biological virus that attaches itself to a living thing's cells and starts replicating.<br>
+            <b>Propagation</b>: Infects and modifies a computer system's files when an executable carrying the virus runs (in many cases, with the help of an unawared user who executes the program.)<br>
+            <b>Examples of well-known viruses</b>: <a target="_blank" href="https://cybernews.com/editorial/the-first-malware-scare-turns-30-the-michelangelo-virus/">Michelangelo</a>, <a target="_blank" href="https://medium.com/geekculture/brain-the-worlds-first-computer-virus-f3758323d894">Brain</a>, <a target="_blank" href="https://www.gordano.com/knowledge-base/what-is-the-klez-virus/">Klez</a>, <a target="_blank" href="https://www.geeksforgeeks.org/what-is-sql-slammer-virus/">SQL Slammer</a>, and <a target="_blank" href="https://www.cybereason.com/blog/what-is-the-blaster-worm">Blaster</a>.
+            </li>
+        </ol>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

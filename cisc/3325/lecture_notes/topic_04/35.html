@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Cryptography: Lecture Notes | CISC 3325</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Vulnerabilities of Stream Ciphers</h3>
+        <ol start = "1">
+            <li>The controls of the key reuse vulnerability are:
+                <ol type = 'a'>
+                    <li>Avoid using an initialization vector: simply generate the whole seed using a pseudo-random number generator (so that no part of the seed repeats.)</li>
+                    <li>Never use a key more than once. For instance, whenever a new network connection is created, use a different key that hasn't been used before.</li>
+                </ol>
+            </li>
+            <li><b>Mallability.</b> The algorithms of a stream cipher don't guarantee integrity and, therefore, won't be able to detect malicious changes to the ciphertext. An attacker might unnoticeably and still meaningfully change the ciphertext! <u>Example</u>:
+            <ul>
+                <li>Eve, an eavesdropper, may suspect that a message from Bob to Alice begins with the words: "FROM: Bob".</li>
+                <li>Eve proceeds to XOR the 9 bytes "FROM: Bob" with the ciphertext, which returns the first 9 bytes of the key.</li>
+                <li>She then uses these 9 key bytes to encrypt: "FROM: Eve" and append it to the ciphertext instead of "FROM: Bob".</li>
+            </ul>
+            This was possible because each byte of ciphertext corresponds to one byte of plaintext, so an attacker can target a specific part of a message, without fully knowing the key. This is a breach of integrity!
+            </li>
+        </ol>
+        
+       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

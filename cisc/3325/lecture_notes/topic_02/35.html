@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Key Terms &amp; Principles in InfoSec: Lecture Notes | CISC 3325</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>8 Fundamental Principles of Information Security</h3>
+        <ol start = "4">
+            <li><b>Principle 4: Systems Owners Have Security Responsibilities Outside Their Own Organization</b>
+                <br>
+                Since an organization serves private and commercial users, it should provide security to systems accessed from the outside by users, and not only to its own employees.
+            </li>
+            <li><b>Principle 5: Computer Security Responsibilities and Accountability Should Be Made Explicit</b>
+                <br>
+                An organization should avoid hiding security incidents and should take responsibility for them, both to avoid loss of reputation from its customers and legal actions.
+            </li>
+            <li><b>Principle 6: Computer Security Requires a Comprehensive and Integrated Approach</b>
+                <br>
+                To maximize efficiency, all the business's systems and related departments must work in perfect harmony.
+            </li>
+            <li><b>Principle 7: Computer Security Should Be Periodically Reassessed</b>
+                <br>
+                Because technology changes rapidly, and because new flaws are discovered now and then, a company must re-think its security approaches from time to time and decide if any changes / updates should be applied.
+            </li>
+            <li><b>Principle 8: Computer Security is Constrained by Societal Factors</b>
+                <br>
+                E.g.: tracking geolocation for security purposes may be limited by privacy laws, which the company must respect.
+            </li>
+        </ol>
+
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

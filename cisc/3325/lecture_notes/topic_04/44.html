@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Cryptography: Lecture Notes | CISC 3325</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Block Ciphers: ECB</h3>
+        <p><u>Example of using ECB</u>: Suppose that your plaintext is: <tt>010 110</tt>, which are two blocks of 3 bits each. Also, suppose that you are given the following encryption function <tt><i>E</i>(<i>b</i>)</tt> as a table:</p>
+        <center>
+        <table width="700" border="1" cellspacing="1" cellpadding="1" style = "text-align: center;">
+      <tr>
+        <th scope="col">Plaintext</th>
+        <td><tt>000</tt></td>
+        <td><tt>001</tt></td>
+        <td><tt>010</tt></td>
+        <td><tt>011</tt></td>
+        <td><tt>100</tt></td>
+        <td><tt>101</tt></td>
+        <td><tt>110</tt></td>
+        <td><tt>111</tt></td>
+      </tr>
+      <tr>
+        <th scope="col">Ciphertext</th>
+        <td><tt>101</tt></td>
+        <td><tt>010</tt></td>
+        <td><tt>000</tt></td>
+        <td><tt>001</tt></td>
+        <td><tt>111</tt></td>
+        <td><tt>100</tt></td>
+        <td><tt>011</tt></td>
+        <td><tt>110</tt></td>
+      </tr>
+    </table>
+        </center>
+        
+        <ul>
+            <li>To <u>encrypt</u> the plaintext, you'll plug each block into the function, separately, to get the ciphertext block.
+            <ul>
+                <li>In our case, we do: <tt><i>E</i>(010) = 000</tt>, and <tt><i>E</i>(110) = 011</tt>, so our ciphertext is: <tt>000 011</tt>.</li>
+            </ul>
+            </li>
+            <li>To <u>decrypt</u> the ciphertext, solve for the block variable <tt><i>b</i></tt> by looking back at the table as follows: <tt><i>E</i>(<i>b</i>) = 000</tt> &rArr; <tt><i>b</i> = 010</tt> and <tt><i>E</i>(<i>b</i>) = 011</tt> &rArr; <tt><i>b</i> = 110</tt>, so we got our plaintext <tt>010 110</tt> back.</li>
+        </ul>
+        <hr>
+        <p><b><i>Fun Class Activity</i></b>: Use the encryption table <tt><i>E</i>(<i>b</i>)</tt> to (a) encrypt the blocks: <tt>101 100</tt> (b) decrypt the blocks: <tt>001 010</tt>.</p>
+              
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

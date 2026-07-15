@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Malware vs. Anti-Virus Software: Lecture Notes | CISC 3325</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Rabbit</h3>
+        <div class = "imagecontainer imagecontainer-side">
+          <a href = "https://lowres.cartooncollections.com/rabbits-bunnies-family_reunions-reunions-family_gatherings-animals-CX903666_low.jpg" target='_blank'><img src="rabbit.jpg" title = "Cartoon about rabbit multiplication." alt="Cartoon about rabbit multiplication." style = "height: 12vh; z-index: 1000;"></a>
+          <p class = "caption" style = "width: 14vh; z-index: 1000;">Taken from <a target="_blank" href="https://www.cartoonstock.com/directory/b/breeding_like_rabbits.asp">Cartoon<WBR>Stock</a></p>
+        </div>
+        <ol start = "10" style = "margin-top: 2vw;">
+            <li><b>Definition</b>: A <b>rabbit</b> (also called a <b><tt>fork()</tt> bomb</b>) is malware whose purpose is to harm the availability of computer (OS) resources, such as memory, disk space, CPU time, and I/O devices (= a <b>denial of service (DoS)</b> attack.) It replicates (just like a virus or worm) without limits, but doesn't carry any payload: its only purpose is to use an OS resource to the greatest extent possible to make it crash. A small example of a memory-exhausting rabbit in the C language:<br>
+            <tt>int main() {<br>
+&nbsp;&nbsp;&nbsp;while(1)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fork();<br>  
+&nbsp;&nbsp;&nbsp;return 0;<br>
+}</tt>
+            <br>
+            
+            <b>Reason for the name</b>: Since rabbits are animals that naturally multiply very fast. <i>Fun fact</i>: the Fibonacci sequence, which we all know grows very fast, was an early attempt to model the growth of the population of rabbits!<br>
+            <b>Propagation</b>: Once installed and triggered, the rabbit will start indefinitely creating copies of itself to clot up the OS.<br>
+            <b>Examples of a rabbit</b>: <a href = "https://research.checkpoint.com/2022/evilplayout-attack-against-irans-state-broadcaster/" target="_blank">an attack against Iran's state broadcaster in 2022</a>.
+            </li>
+        </ol>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

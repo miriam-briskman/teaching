@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Firewalls: Lecture Notes | CISC 3325</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Basic Functions of Firewalls</h3>
+        <ol start = "4">
+            <li><b>Logging</b>: A firewall should generate and save a log of all its activities, especially on data packets it has blocked. This log will be used in the future when the user/administrator of the network would like to audit the firewall activity.</li>
+            <li><b>Speed and transparency</b>: A firewall should perform the aforementioned activities a fast way, transparent to the user.</li>
+        </ol>
+        <p>In the scope of this course, we will elaborate on the packet filtering responsibility of a firewall.</p>
+        <hr>
+        <p>As the name suggests, a <b>packet-filtering firewall</b> filters the packets that are entering and leaving the network. The firewall inspects each IP packet and a decision is made. Each packet is compared with a set of <b>filter rules</b> and based on any match, the packet is either allowed, denied, or the connection is dropped. Packet filtering works on the network layer and transport layer of the OSI model or TCP and IP layer of the TCP/IP model (see <a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3325/lecture_notes/topic_08/14.html" title="Topic 8, Slide 14: OSI vs. TCP/IP: Comparison">Slide 14 of Topic 8: Networks & Network Security</a>.) It does not remember the state of a network (when the connection started, the previous states of the connection, etc.) and hence it is called a <b>stateless firewall</b>.</p>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

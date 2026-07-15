@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Key Terms &amp; Principles in InfoSec: Lecture Notes | CISC 3325</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <style>
+          table {border-collapse: collapse;}
+          td {border: 1px solid black; padding: 0px 10px 0px 10px;}
+          .center-me {text-align: center;}
+          .no-borders {border: 0; padding: 0px 5px 0px 5px;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>The CIA Triad</h3>
+
+        <p>A security model similar to and building up on CIA has not three but five principles.</p>
+        <p>It is named <b>The Five Pillars Of Information Assurance</b>, and it was proposed by the U.S. Department of Defense.</p>
+        <p>The five principles are listed below and are defined as follows:</p>
+        <ol>
+            <li><b>Confidentiality</b> is defined the same way as on <a target='_blank' href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3325/lecture_notes/topic_02/20.html" title="Topic 2, Slide 20: Definition of 'Confidentiality'">slide 20</a>.</li>
+            <li><b>Integrity</b> is defined in a similar way to the one on <a target='_blank' href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3325/lecture_notes/topic_02/22.html" title="Topic 2, Slide 22: Definition of 'Integrity'">slide 22</a>, except that Integrity here doesn't assume the confirmation of a person's identity.</li>
+            <li><b>Availability</b> is defined the same way as on <a target='_blank' href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3325/lecture_notes/topic_02/24.html" title="Topic 2, Slide 24: Definition of 'Availability'">slide 24</a>.</li>
+            <li><b>Authenticity</b> is the ability to confirm a person's (such as a computer user's or a message sender's) identity.</li>
+            <li><b>Non-Repudiation</b> is the ability to obtain proof of a message's delivery in a way that prevents the sender from denying that he or she sent or wrote the message (repudiation = denial of one's actions.)</li>
+        </ol>
+                
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

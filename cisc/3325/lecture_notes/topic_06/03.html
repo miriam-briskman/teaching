@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Malware vs. Anti-Virus Software: Lecture Notes | CISC 3325</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Malware</h3>
+        <p><b>Malware</b> (= <b>mal</b>icious soft<b>ware</b>) is a program or a piece of software whose purpose is to cause unanticipated or undesired effects, mostly causing harm or damage to computer systems, data, or people.</p>
+        <p>Several kinds of malware exist, each of which has its own harm-inflicting goals, including:</p>
+        <ul>
+            <li>Obtaining sensitive information (e.g., <a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3325/lecture_notes/topic_06/09.html" title="Slide 9: Spyware">spyware</a>)</li>
+            <li>Deleting or modifying files (e.g., <a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3325/lecture_notes/topic_06/05.html" title="Slide 5: Virus">virus</a>, <a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3325/lecture_notes/topic_06/06.html" title="Slide 6: Worm">worm</a>, etc.)</li>
+            <li>Harming availability of resources (e.g., <a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3325/lecture_notes/topic_06/15.html" title="Slide 15: Rabbit">rabbits</a>)</li>
+            <li>Spreading ads and spam (e.g., <a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3325/lecture_notes/topic_06/11.html" title="Slide 11: Adware">spamware</a>)</li>
+            <li>Financial exploitation (e.g., <a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~brisk
+man/cisc/3325/lecture_notes/topic_06/14.html" title="Slide 14: Ransomware">ransomware</a>)</li>
+            <li>Other malicious purposes (e.g., cyberbullying, harassment, political activism)</li>
+        </ul>
+        <p>Common ways in which malware is downloaded to a device are via clicking links in suspicious email or text messages, downloading software from untrusted resources, or just visiting malicious webpages <i>without</i> clicking any links on them.</p>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

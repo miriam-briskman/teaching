@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Malware vs. Anti-Virus Software: Lecture Notes | CISC 3325</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Ransomware</h3>
+        <div class = "imagecontainer imagecontainer-side">
+          <a href = "https://www.globalsign.com/application/files/3416/1644/1850/iStock-1022030450.jpg" target='_blank'><img src="ransomware.jpg" title = "Ransomware" alt="Ransomware" style = "height: 12vh; z-index: 1000;"></a>
+          <p class = "caption" style = "width: 14vh; z-index: 1000;">Taken from <a target="_blank" href="https://www.globalsign.com/en/blog/ransomware-attacks-3-considerations-when-deciding-pay-or-not-pay-and-tips-prevention">Global<WBR>Sign</a></p>
+        </div>
+        <ol start = "9" style = "margin-top: 2vw;">
+            <li><b>Definition</b>: We all watched movies in which criminals kidnap people and demand ransom (usually, in the form of a large sum of money) to release them. The same nowadays also happens with devices and data: Software that breaks into a device, encrypts its files, and publishes a ransom request notification to have the data decrypted (= released back to the user) is called <b>ransomware</b>.<br><br>
+            The fear is that, as in real life, there is no guarantee that the attacker actually releases the data. Also, the attacker might sell the data or post it online, regardless of the received ransom. For these reasons, the U.S. government, and specifically the FBI, advises NOT to pay any ransom.<br><br>
+
+            <b>Reason for the name</b>: Abbreviation of <b>ransom</b> mal<b>ware</b>.<br>
+            <b>Propagation</b>: Ransomware first gets access to a device (possibly, with the help of other malware,) encrypts the files on the device, and then posts a ransom request to the user.<br>
+            <b>Examples of well-known ransomware</b>: <a href = "https://www.kaspersky.com/resource-center/threats/ransomware-wannacry" target="_blank">WannaCry</a> and <a href = "https://www.malwarebytes.com/blog/detections/ransom-locky" target="_blank">Locky</a>.
+            </li>
+        </ol>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Access Control: Lecture Notes | CISC 3325</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Authentication: Something One <i>Knows</i></h3>
+        <p>A possible solution to the above tradeoff it to use <b>passphrases</b>, which are a sequence of usually 3 or more English words that are used instead of a password. <b><u>For instance</u></b>: "<TT>unelected-obvious-elbow-disaster-vegan</TT>".</p>
+        <p>A passphrase will be at least as strong as a password only when the words that build up the passphrase are chosen randomly and independent of one another. [That means that "<TT>red-hot-chili-peppers</TT>" or "<TT>i-love-new-york</TT>" aren't strong enough.]</p>
+        <p>When a passphrase's words are random enough, the passphrase is considered strong enough AND the user only needs to remember a few words (3 to 5 on average,) instead of remembering more than 10 random characters of a traditional password, which eliminates the tradeoff.</p>
+        <p>The <a target='_blank' href="https://www.nist.gov/" >US National Institute of Standards and Technology (NIST)</a> in its publication on <a target='_blank' href="https://pages.nist.gov/800-63-3/">Digital Identity Guidelines</a> encourages the use of strong and long enough passphrases as a substition to using passwords. A summary of this publication can be found <a target='_blank' href="https://www.isaca.org/-/media/files/isacadp/project/isaca/articles/journal/2019/volume-1/nists-new-password-rule-book_joa_eng_0119">here</a>.</p>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

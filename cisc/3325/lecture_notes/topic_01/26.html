@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="History of Security Attacks: after 2000">
+      <title>Introduction to Information Security: Lecture Notes | CISC 3325</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides'><div>
+        <h3>History of Security Attacks</h3>
+        <ul start = "4">
+            <li><b>2000s</b>: An increase in attacks, which became financially motivated (pharms, financial, identity theft.) Attackers found out and use personal information about their victims to build trust and lure them into giving out confidential information (e.g., passwords, credit card numbers, etc.,) an activity called <a target='_blank' title = "dni.gov: COUNTERINTELLIGENCE TIPS on SPEAR PHISHING AND COMMON CYBER ATTACKS" href="https://www.dni.gov/files/NCSC/documents/campaign/Counterintelligence_Tips_Spearphishing.pdf">spear-phishing</a>.</li>
+            <li><b>2010s to Present</b>: Attacks, now made by attacker groups rather than individuals, became mainly politically and sometimes financially motivated. They further divide into government-driven attacks, example of which are <a target='_blank' title = "Wired: An Unprecedented Look at Stuxnet, the World's First Digital Weapon" href="https://www.wired.com/2014/11/countdown-to-zero-day-stuxnet/">Stuxnet</a>, <a target='_blank' title = "radware.com: Flame" href="https://www.radware.com/security/ddos-knowledge-center/ddospedia/flame/">Flame</a>, <a target='_blank' title = "cfr.org: Operation Aurora" href="https://www.cfr.org/cyber-operations/operation-aurora">Aurora</a>, and private activism, such as <a target='_blank' title = "Encyclopedia Britannica: Anonymous" href="https://www.britannica.com/topic/Anonymous-hacking-group">Anonymous</a> and <a target='_blank' title = "NBC News: What Is WikiLeaks? Everything you need to know" href="https://www.nbcnews.com/storyline/smart-facts/what-wikileaks-everything-you-need-know-n869556">Wikileaks</a>.</li>
+
+        </ul>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

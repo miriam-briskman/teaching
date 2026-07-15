@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Malware vs. Anti-Virus Software: Lecture Notes | CISC 3325</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Trojan</h3>
+        <div class = "imagecontainer imagecontainer-side">
+          <a href = "https://slideplayer.com/slide/13868773/85/images/6/The+Greeks+built+an+enormous%2C+beautiful+wooden+horse+but+the+body+was+hollow%2C+with+enough+space+to+fit+thirty+men+inside..jpg" target='_blank'><img src="trojan.jpg" title = "A trojan" alt="A trojan" style = "height: 12vh; z-index: 1000;"></a>
+          <p class = "caption" style = "width: 14vh; z-index: 1000;">Taken from <a target="_blank" href="https://www.twinkl.com/teaching-wiki/the-trojans">Twinkl USA</a></p>
+        </div>
+        <ol start = "3" style = "margin-top: 2vw;">
+            <li><b>Definition</b>: A <b>Trojan</b> is a seemingly harmless program that appears to perform a useful task (e.g., a game) but, in the background, performs something with negative consequences, such as spying after a user.<br><br>
+            The program is either actively installed by a computer's user or administrator, not knowing that the program does a malicious activity, or is installed as a payload of a virus or a worm.<br><br>
+            <b>Reason for the name</b>: It is based on the story of the wooden Trojan Horse that was sent by the Greeks into the city of Troy during the Trojan War. The gigantic horse, which was presented to Troy as a gift, was the hiding place of Greek warriors who launched an attack on Troy.<br>
+            <b>Propagation</b>: When a user runs the program, it performs the task that the user intends to do in the foreground while also performing a disguised, malicious task in the background, without the user's awareness.<br>
+            <b>Examples of well-known Trojans</b>: <a target="_blank" href="https://securelist.com/the-flame-questions-and-answers/34344/">Flame</a>, <a target="_blank" href="https://www.cybereason.com/blog/what-is-zeroaccess-malware">Zero Access</a>, <a target="_blank" href="https://www.investopedia.com/terms/b/banker-trojan.asp">Banker</a>, <a target="_blank" href="https://usa.kaspersky.com/resource-center/threats/zeus-virus">Zeus</a>, and <a target="_blank" href="https://sites.psu.edu/trojanblog/2014/04/22/beast/">Beast</a>.
+            </li>
+        </ol>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

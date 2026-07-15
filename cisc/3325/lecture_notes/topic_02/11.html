@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Key Terms &amp; Principles in InfoSec: Lecture Notes | CISC 3325</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>External Threats: Groups and Examples</h3>
+        <style>li {margin-top: 2vh; margin-bottom: 2vh;}</style>
+        <div class = "columns">
+            <div>
+                <p><b>Software Threats</b></p>
+                <ul>
+                    <li>Defects leading to errors</li>
+                    <li>Defects being exploited</li>
+                    <li>Malware: viruses, worms, etc.</li>
+                    <li>Bots or Botnets</li>
+                    <li>Invalidated inputs</li>
+                    <li>Authentication attacks</li>
+                    <li>Exploitation of misconfigurations</li>
+                </ul>
+            </div>
+            <hr>
+            <div>
+                <p><b>Software Threats &ndash; Cont'</b></p>
+                <ul>
+                    <li>Login and session-related issues</li>
+                    <li>Inappropriate error handling by apps</li>
+                    <li>Buffer overflow issues</li>
+                    <li>Mishandled cryptography by apps</li>
+                    <li>Variable manipulations/abuse</li>
+                    <li>OS-related issues and flaws</li>
+                </ul>
+            </div>
+            <hr>
+            <div>
+                <p><b>Human Threats</b></p>
+                <ul>
+                    <li>Social engineering</li>
+                    <li>Hacker attacks</li>
+                    <li>Blackmail, extortion</li>
+                    <li>Espionage (= spying)</li>
+                </ul>
+                <p><b>Compliance Threats</b></p>
+                <ul>
+                    <li>Fees, penalties, and closure<br>of a company when it doesn't<br>follow security laws and rules.</li>
+                </ul>
+            </div>
+        </div>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Networks &amp; Network Security: Lecture Notes | CISC 3325</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+         <h3>TCP/IP Layers: Description</h3>
+         <p style = "margin-bottom: 2vh;"><b>TCP/IP</b> (<b>Transmission Control Protocol/Internet Protocol</b>) was developed by scientists of the <a target="_blank" href="https://www.darpa.mil/" title="Link to https://www.darpa.mil/, DARPA's Homepage.">Defense Advanced Research Projects Agency (DARPA)</a> of the Department of Defense in the 1970s and was officially adopted by the <a target="_blank" href="https://www.techtarget.com/searchnetworking/definition/ARPANET">ARPANET</a> (the world's first public packet-switched computer network and the grandparent of the Internet) in 1983. The four layers of TCP/IP are:</p>
+        <ol reversed style = "margin-top: 2vh;">
+            <li><b>Application Layer</b>: combines the Application, Presentation, and Session layers of OSI. Hands over data received from TCP to the application and makes sure the app is able to interpret the received data.</li>
+            <li><b>Transmission Control Protocol (TCP) Layer</b>: delivers data from the client to the server without errors or loss. Overlaps the functionality of Transport Layer of OSI reference model. TCP ensures that, if a segment of data is lost in transmission, it is resent again until all the data arrives nominally.</li>
+            <li><b>Internet Protocol (IP) Layer</b>: forwards the data segments received from the TCP, referred to as <b>packets</b>, from one node (= device on the network) to the destination node based on the IP address. Overlaps OSI's Network Layer.</li>
+            <li><b>Network Access Layer</b>: Combines the functions of the Data Link and the Physical Layers of OSI. creating data 'frames' for transmitting and receiving data from the physical layer. This function is implemented by a hardware and software Network Interface Card (NIC), an adapter connected to the computer through physical wires or optical fiber cables.</li>
+        </ol>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

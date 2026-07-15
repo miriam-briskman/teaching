@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Cryptography: Lecture Notes | CISC 3325</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Vigenère Cipher: Vigenère Square (= Tabula Recta)</h3>
+        <div style = "display: flex; flex-direction: row; justify-content: space-between;">
+        <div>
+        <center>
+        <table border="1" cellspacing="1" cellpadding="1" style = "text-align: center; line-height: 110%; width: 45vw;">
+      <tr>
+          <th scope="col"><tt></tt></th>
+          <th scope="col"><tt>a</tt></th>
+          <th scope="col"><tt>b</tt></th>
+          <th scope="col"><tt>c</tt></th>
+          <th scope="col"><tt>d</tt></th>
+          <th scope="col"><tt>e</tt></th>
+          <th scope="col"><tt>f</tt></th>
+          <th scope="col"><tt>g</tt></th>
+          <th scope="col"><tt>h</tt></th>
+          <th scope="col"><tt>i</tt></th>
+          <th scope="col"><tt>j</tt></th>
+          <th scope="col"><tt>k</tt></th>
+          <th scope="col"><tt>l</tt></th>
+          <th scope="col"><tt>m</tt></th>
+          <th scope="col"><tt>n</tt></th>
+          <th scope="col"><tt>o</tt></th>
+          <th scope="col"><tt>p</tt></th>
+          <th scope="col"><tt>q</tt></th>
+          <th scope="col"><tt>r</tt></th>
+          <th scope="col"><tt>s</tt></th>
+          <th scope="col"><tt>t</tt></th>
+          <th scope="col"><tt>u</tt></th>
+          <th scope="col"><tt>v</tt></th>
+          <th scope="col"><tt>w</tt></th>
+          <th scope="col"><tt>x</tt></th>
+          <th scope="col"><tt>y</tt></th>
+          <th scope="col"><tt>z</tt></th>
+       </tr>
+       <tr>
+          <th scope="col"><tt>a</tt></th>
+          <td><tt>a</tt></td>
+          <td><tt>b</tt></td>
+          <td><tt>c</tt></td>
+          <td><tt>d</tt></td>
+          <td><tt>e</tt></td>
+          <td><tt>f</tt></td>
+          <td><tt>g</tt></td>
+          <td><tt>h</tt></td>
+          <td><tt>i</tt></td>
+          <td><tt>j</tt></td>
+          <td><tt>k</tt></td>
+          <td><tt>l</tt></td>
+          <td><tt>m</tt></td>
+          <td><tt>n</tt></td>
+          <td><tt>o</tt></td>
+          <td><tt>p</tt></td>
+          <td><tt>q</tt></td>
+          <td><tt>r</tt></td>
+          <td><tt>s</tt></td>
+          <td><tt>t</tt></td>
+          <td><tt>u</tt></td>
+          <td><tt>v</tt></td>
+          <td><tt>w</tt></td>
+          <td><tt>x</tt></td>
+          <td><tt>y</tt></td>
+          <td><tt>z</tt></td>
+       </tr>
+       <tr>
+          <th scope="col"><tt>b</tt></th>
+          <td><tt>b</tt></td>
+          <td><tt>c</tt></td>
+          <td><tt>d</tt></td>
+          <td><tt>e</tt></td>
+          <td><tt>f</tt></td>
+          <td><tt>g</tt></td>
+          <td><tt>h</tt></td>
+          <td><tt>i</tt></td>
+          <td><tt>j</tt></td>
+          <td><tt>k</tt></td>
+          <td><tt>l</tt></td>
+          <td><tt>m</tt></td>
+          <td><tt>n</tt></td>
+          <td><tt>o</tt></td>
+          <td><tt>p</tt></td>
+          <td><tt>q</tt></td>
+          <td><tt>r</tt></td>
+          <td><tt>s</tt></td>
+          <td><tt>t</tt></td>
+          <td><tt>u</tt></td>
+          <td><tt>v</tt></td>
+          <td><tt>w</tt></td>
+          <td><tt>x</tt></td>
+          <td><tt>y</tt></td>
+          <td><tt>z</tt></td>
+          <td><tt>a</tt></td>
+       </tr>
+       <tr>
+          <th scope="col"><tt>c</tt></th>
+          <td><tt>c</tt></td>
+          <td><tt>d</tt></td>
+          <td><tt>e</tt></td>
+          <td><tt>f</tt></td>
+          <td><tt>g</tt></td>
+          <td><tt>h</tt></td>
+          <td><tt>i</tt></td>
+          <td><tt>j</tt></td>
+          <td><tt>k</tt></td>
+          <td><tt>l</tt></td>
+          <td><tt>m</tt></td>
+          <td><tt>n</tt></td>
+          <td><tt>o</tt></td>
+          <td><tt>p</tt></td>
+          <td><tt>q</tt></td>
+          <td><tt>r</tt></td>
+          <td><tt>s</tt></td>
+          <td><tt>t</tt></td>
+          <td><tt>u</tt></td>
+          <td><tt>v</tt></td>
+          <td><tt>w</tt></td>
+          <td><tt>x</tt></td>
+          <td><tt>y</tt></td>
+          <td><tt>z</tt></td>
+          <td><tt>a</tt></td>
+          <td><tt>b</tt></td>
+       </tr>
+       <tr>
+          <th scope="col"><tt>d</tt></th>
+          <td><tt>d</tt></td>
+          <td><tt>e</tt></td>
+          <td><tt>f</tt></td>
+          <td><tt>g</tt></td>
+          <td><tt>h</tt></td>
+          <td><tt>i</tt></td>
+          <td><tt>j</tt></td>
+          <td><tt>k</tt></td>
+          <td><tt>l</tt></td>
+          <td><tt>m</tt></td>
+          <td><tt>n</tt></td>
+          <td><tt>o</tt></td>
+          <td><tt>p</tt></td>
+          <td><tt>q</tt></td>
+          <td><tt>r</tt></td>
+          <td><tt>s</tt></td>
+          <td><tt>t</tt></td>
+          <td><tt>u</tt></td>
+          <td><tt>v</tt></td>
+          <td><tt>w</tt></td>
+          <td><tt>x</tt></td>
+          <td><tt>y</tt></td>
+          <td><tt>z</tt></td>
+          <td><tt>a</tt></td>
+          <td><tt>b</tt></td>
+          <td><tt>c</tt></td>
+       </tr>
+       <tr>
+          <th scope="col"><tt>e</tt></th>
+          <td><tt>e</tt></td>
+          <td><tt>f</tt></td>
+          <td><tt>g</tt></td>
+          <td><tt>h</tt></td>
+          <td><tt>i</tt></td>
+          <td><tt>j</tt></td>
+          <td><tt>k</tt></td>
+          <td><tt>l</tt></td>
+          <td><tt>m</tt></td>
+          <td><tt>n</tt></td>
+          <td><tt>o</tt></td>
+          <td><tt>p</tt></td>
+          <td><tt>q</tt></td>
+          <td><tt>r</tt></td>
+          <td><tt>s</tt></td>
+          <td><tt>t</tt></td>
+          <td><tt>u</tt></td>
+          <td><tt>v</tt></td>
+          <td><tt>w</tt></td>
+          <td><tt>x</tt></td>
+          <td><tt>y</tt></td>
+          <td><tt>z</tt></td>
+          <td><tt>a</tt></td>
+          <td><tt>b</tt></td>
+          <td><tt>c</tt></td>
+          <td><tt>d</tt></td>
+       </tr>
+       <tr>
+          <th scope="col"><tt>f</tt></th>
+          <td><tt>f</tt></td>
+          <td><tt>g</tt></td>
+          <td><tt>h</tt></td>
+          <td><tt>i</tt></td>
+          <td><tt>j</tt></td>
+          <td><tt>k</tt></td>
+          <td><tt>l</tt></td>
+          <td><tt>m</tt></td>
+          <td><tt>n</tt></td>
+          <td><tt>o</tt></td>
+          <td><tt>p</tt></td>
+          <td><tt>q</tt></td>
+          <td><tt>r</tt></td>
+          <td><tt>s</tt></td>
+          <td><tt>t</tt></td>
+          <td><tt>u</tt></td>
+          <td><tt>v</tt></td>
+          <td><tt>w</tt></td>
+          <td><tt>x</tt></td>
+          <td><tt>y</tt></td>
+          <td><tt>z</tt></td>
+          <td><tt>a</tt></td>
+          <td><tt>b</tt></td>
+          <td><tt>c</tt></td>
+          <td><tt>d</tt></td>
+          <td><tt>e</tt></td>
+       </tr>
+       <tr>
+          <th scope="col"><tt>g</tt></th>
+          <td><tt>g</tt></td>
+          <td><tt>h</tt></td>
+          <td><tt>i</tt></td>
+          <td><tt>j</tt></td>
+          <td><tt>k</tt></td>
+          <td><tt>l</tt></td>
+          <td><tt>m</tt></td>
+          <td><tt>n</tt></td>
+          <td><tt>o</tt></td>
+          <td><tt>p</tt></td>
+          <td><tt>q</tt></td>
+          <td><tt>r</tt></td>
+          <td><tt>s</tt></td>
+          <td><tt>t</tt></td>
+          <td><tt>u</tt></td>
+          <td><tt>v</tt></td>
+          <td><tt>w</tt></td>
+          <td><tt>x</tt></td>
+          <td><tt>y</tt></td>
+          <td><tt>z</tt></td>
+          <td><tt>a</tt></td>
+          <td><tt>b</tt></td>
+          <td><tt>c</tt></td>
+          <td><tt>d</tt></td>
+          <td><tt>e</tt></td>
+          <td><tt>f</tt></td>
+       </tr>
+       <tr>
+          <th scope="col"><tt>h</tt></th>
+          <td><tt>h</tt></td>
+          <td><tt>i</tt></td>
+          <td><tt>j</tt></td>
+          <td><tt>k</tt></td>
+          <td><tt>l</tt></td>
+          <td><tt>m</tt></td>
+          <td><tt>n</tt></td>
+          <td><tt>o</tt></td>
+          <td><tt>p</tt></td>
+          <td><tt>q</tt></td>
+          <td><tt>r</tt></td>
+          <td><tt>s</tt></td>
+          <td><tt>t</tt></td>
+          <td><tt>u</tt></td>
+          <td><tt>v</tt></td>
+          <td><tt>w</tt></td>
+          <td><tt>x</tt></td>
+          <td><tt>y</tt></td>
+          <td><tt>z</tt></td>
+          <td><tt>a</tt></td>
+          <td><tt>b</tt></td>
+          <td><tt>c</tt></td>
+          <td><tt>d</tt></td>
+          <td><tt>e</tt></td>
+          <td><tt>f</tt></td>
+          <td><tt>g</tt></td>
+       </tr>
+       <tr>
+          <th scope="col"><tt>i</tt></th>
+          <td><tt>i</tt></td>
+          <td><tt>j</tt></td>
+          <td><tt>k</tt></td>
+          <td><tt>l</tt></td>
+          <td><tt>m</tt></td>
+          <td><tt>n</tt></td>
+          <td><tt>o</tt></td>
+          <td><tt>p</tt></td>
+          <td><tt>q</tt></td>
+          <td><tt>r</tt></td>
+          <td><tt>s</tt></td>
+          <td><tt>t</tt></td>
+          <td><tt>u</tt></td>
+          <td><tt>v</tt></td>
+          <td><tt>w</tt></td>
+          <td><tt>x</tt></td>
+          <td><tt>y</tt></td>
+          <td><tt>z</tt></td>
+          <td><tt>a</tt></td>
+          <td><tt>b</tt></td>
+          <td><tt>c</tt></td>
+          <td><tt>d</tt></td>
+          <td><tt>e</tt></td>
+          <td><tt>f</tt></td>
+          <td><tt>g</tt></td>
+          <td><tt>h</tt></td>
+       </tr>
+       <tr>
+          <th scope="col"><tt>j</tt></th>
+          <td><tt>j</tt></td>
+          <td><tt>k</tt></td>
+          <td><tt>l</tt></td>
+          <td><tt>m</tt></td>
+          <td><tt>n</tt></td>
+          <td><tt>o</tt></td>
+          <td><tt>p</tt></td>
+          <td><tt>q</tt></td>
+          <td><tt>r</tt></td>
+          <td><tt>s</tt></td>
+          <td><tt>t</tt></td>
+          <td><tt>u</tt></td>
+          <td><tt>v</tt></td>
+          <td><tt>w</tt></td>
+          <td><tt>x</tt></td>
+          <td><tt>y</tt></td>
+          <td><tt>z</tt></td>
+          <td><tt>a</tt></td>
+          <td><tt>b</tt></td>
+          <td><tt>c</tt></td>
+          <td><tt>d</tt></td>
+          <td><tt>e</tt></td>
+          <td><tt>f</tt></td>
+          <td><tt>g</tt></td>
+          <td><tt>h</tt></td>
+          <td><tt>i</tt></td>
+       </tr>
+       <tr>
+          <th scope="col"><tt>k</tt></th>
+          <td><tt>k</tt></td>
+          <td><tt>l</tt></td>
+          <td><tt>m</tt></td>
+          <td><tt>n</tt></td>
+          <td><tt>o</tt></td>
+          <td><tt>p</tt></td>
+          <td><tt>q</tt></td>
+          <td><tt>r</tt></td>
+          <td><tt>s</tt></td>
+          <td><tt>t</tt></td>
+          <td><tt>u</tt></td>
+          <td><tt>v</tt></td>
+          <td><tt>w</tt></td>
+          <td><tt>x</tt></td>
+          <td><tt>y</tt></td>
+          <td><tt>z</tt></td>
+          <td><tt>a</tt></td>
+          <td><tt>b</tt></td>
+          <td><tt>c</tt></td>
+          <td><tt>d</tt></td>
+          <td><tt>e</tt></td>
+          <td><tt>f</tt></td>
+          <td><tt>g</tt></td>
+          <td><tt>h</tt></td>
+          <td><tt>i</tt></td>
+          <td><tt>j</tt></td>
+       </tr>
+       <tr>
+          <th scope="col"><tt>l</tt></th>
+          <td><tt>l</tt></td>
+          <td><tt>m</tt></td>
+          <td><tt>n</tt></td>
+          <td><tt>o</tt></td>
+          <td><tt>p</tt></td>
+          <td><tt>q</tt></td>
+          <td><tt>r</tt></td>
+          <td><tt>s</tt></td>
+          <td><tt>t</tt></td>
+          <td><tt>u</tt></td>
+          <td><tt>v</tt></td>
+          <td><tt>w</tt></td>
+          <td><tt>x</tt></td>
+          <td><tt>y</tt></td>
+          <td><tt>z</tt></td>
+          <td><tt>a</tt></td>
+          <td><tt>b</tt></td>
+          <td><tt>c</tt></td>
+          <td><tt>d</tt></td>
+          <td><tt>e</tt></td>
+          <td><tt>f</tt></td>
+          <td><tt>g</tt></td>
+          <td><tt>h</tt></td>
+          <td><tt>i</tt></td>
+          <td><tt>j</tt></td>
+          <td><tt>k</tt></td>
+       </tr>
+       <tr>
+          <th scope="col"><tt>m</tt></th>
+          <td><tt>m</tt></td>
+          <td><tt>n</tt></td>
+          <td><tt>o</tt></td>
+          <td><tt>p</tt></td>
+          <td><tt>q</tt></td>
+          <td><tt>r</tt></td>
+          <td><tt>s</tt></td>
+          <td><tt>t</tt></td>
+          <td><tt>u</tt></td>
+          <td><tt>v</tt></td>
+          <td><tt>w</tt></td>
+          <td><tt>x</tt></td>
+          <td><tt>y</tt></td>
+          <td><tt>z</tt></td>
+          <td><tt>a</tt></td>
+          <td><tt>b</tt></td>
+          <td><tt>c</tt></td>
+          <td><tt>d</tt></td>
+          <td><tt>e</tt></td>
+          <td><tt>f</tt></td>
+          <td><tt>g</tt></td>
+          <td><tt>h</tt></td>
+          <td><tt>i</tt></td>
+          <td><tt>j</tt></td>
+          <td><tt>k</tt></td>
+          <td><tt>l</tt></td>
+       </tr>
+    </table>
+        </center>
+        </div>
+        <div>
+        <center>
+        <table border="1" cellspacing="1" cellpadding="1" style = "text-align: center; line-height: 110%; width: 45vw;">
+        <tr>
+          <th scope="col"><tt></tt></th>
+          <th scope="col"><tt>a</tt></th>
+          <th scope="col"><tt>b</tt></th>
+          <th scope="col"><tt>c</tt></th>
+          <th scope="col"><tt>d</tt></th>
+          <th scope="col"><tt>e</tt></th>
+          <th scope="col"><tt>f</tt></th>
+          <th scope="col"><tt>g</tt></th>
+          <th scope="col"><tt>h</tt></th>
+          <th scope="col"><tt>i</tt></th>
+          <th scope="col"><tt>j</tt></th>
+          <th scope="col"><tt>k</tt></th>
+          <th scope="col"><tt>l</tt></th>
+          <th scope="col"><tt>m</tt></th>
+          <th scope="col"><tt>n</tt></th>
+          <th scope="col"><tt>o</tt></th>
+          <th scope="col"><tt>p</tt></th>
+          <th scope="col"><tt>q</tt></th>
+          <th scope="col"><tt>r</tt></th>
+          <th scope="col"><tt>s</tt></th>
+          <th scope="col"><tt>t</tt></th>
+          <th scope="col"><tt>u</tt></th>
+          <th scope="col"><tt>v</tt></th>
+          <th scope="col"><tt>w</tt></th>
+          <th scope="col"><tt>x</tt></th>
+          <th scope="col"><tt>y</tt></th>
+          <th scope="col"><tt>z</tt></th>
+       </tr>
+       <tr>
+          <th scope="col"><tt>n</tt></th>
+          <td><tt>n</tt></td>
+          <td><tt>o</tt></td>
+          <td><tt>p</tt></td>
+          <td><tt>q</tt></td>
+          <td><tt>r</tt></td>
+          <td><tt>s</tt></td>
+          <td><tt>t</tt></td>
+          <td><tt>u</tt></td>
+          <td><tt>v</tt></td>
+          <td><tt>w</tt></td>
+          <td><tt>x</tt></td>
+          <td><tt>y</tt></td>
+          <td><tt>z</tt></td>
+          <td><tt>a</tt></td>
+          <td><tt>b</tt></td>
+          <td><tt>c</tt></td>
+          <td><tt>d</tt></td>
+          <td><tt>e</tt></td>
+          <td><tt>f</tt></td>
+          <td><tt>g</tt></td>
+          <td><tt>h</tt></td>
+          <td><tt>i</tt></td>
+          <td><tt>j</tt></td>
+          <td><tt>k</tt></td>
+          <td><tt>l</tt></td>
+          <td><tt>m</tt></td>
+       </tr>
+       <tr>
+          <th scope="col"><tt>o</tt></th>
+          <td><tt>o</tt></td>
+          <td><tt>p</tt></td>
+          <td><tt>q</tt></td>
+          <td><tt>r</tt></td>
+          <td><tt>s</tt></td>
+          <td><tt>t</tt></td>
+          <td><tt>u</tt></td>
+          <td><tt>v</tt></td>
+          <td><tt>w</tt></td>
+          <td><tt>x</tt></td>
+          <td><tt>y</tt></td>
+          <td><tt>z</tt></td>
+          <td><tt>a</tt></td>
+          <td><tt>b</tt></td>
+          <td><tt>c</tt></td>
+          <td><tt>d</tt></td>
+          <td><tt>e</tt></td>
+          <td><tt>f</tt></td>
+          <td><tt>g</tt></td>
+          <td><tt>h</tt></td>
+          <td><tt>i</tt></td>
+          <td><tt>j</tt></td>
+          <td><tt>k</tt></td>
+          <td><tt>l</tt></td>
+          <td><tt>m</tt></td>
+          <td><tt>n</tt></td>
+       </tr>
+       <tr>
+          <th scope="col"><tt>p</tt></th>
+          <td><tt>p</tt></td>
+          <td><tt>q</tt></td>
+          <td><tt>r</tt></td>
+          <td><tt>s</tt></td>
+          <td><tt>t</tt></td>
+          <td><tt>u</tt></td>
+          <td><tt>v</tt></td>
+          <td><tt>w</tt></td>
+          <td><tt>x</tt></td>
+          <td><tt>y</tt></td>
+          <td><tt>z</tt></td>
+          <td><tt>a</tt></td>
+          <td><tt>b</tt></td>
+          <td><tt>c</tt></td>
+          <td><tt>d</tt></td>
+          <td><tt>e</tt></td>
+          <td><tt>f</tt></td>
+          <td><tt>g</tt></td>
+          <td><tt>h</tt></td>
+          <td><tt>i</tt></td>
+          <td><tt>j</tt></td>
+          <td><tt>k</tt></td>
+          <td><tt>l</tt></td>
+          <td><tt>m</tt></td>
+          <td><tt>n</tt></td>
+          <td><tt>o</tt></td>
+       </tr>
+       <tr>
+          <th scope="col"><tt>q</tt></th>
+          <td><tt>q</tt></td>
+          <td><tt>r</tt></td>
+          <td><tt>s</tt></td>
+          <td><tt>t</tt></td>
+          <td><tt>u</tt></td>
+          <td><tt>v</tt></td>
+          <td><tt>w</tt></td>
+          <td><tt>x</tt></td>
+          <td><tt>y</tt></td>
+          <td><tt>z</tt></td>
+          <td><tt>a</tt></td>
+          <td><tt>b</tt></td>
+          <td><tt>c</tt></td>
+          <td><tt>d</tt></td>
+          <td><tt>e</tt></td>
+          <td><tt>f</tt></td>
+          <td><tt>g</tt></td>
+          <td><tt>h</tt></td>
+          <td><tt>i</tt></td>
+          <td><tt>j</tt></td>
+          <td><tt>k</tt></td>
+          <td><tt>l</tt></td>
+          <td><tt>m</tt></td>
+          <td><tt>n</tt></td>
+          <td><tt>o</tt></td>
+          <td><tt>p</tt></td>
+       </tr>
+       <tr>
+          <th scope="col"><tt>r</tt></th>
+          <td><tt>r</tt></td>
+          <td><tt>s</tt></td>
+          <td><tt>t</tt></td>
+          <td><tt>u</tt></td>
+          <td><tt>v</tt></td>
+          <td><tt>w</tt></td>
+          <td><tt>x</tt></td>
+          <td><tt>y</tt></td>
+          <td><tt>z</tt></td>
+          <td><tt>a</tt></td>
+          <td><tt>b</tt></td>
+          <td><tt>c</tt></td>
+          <td><tt>d</tt></td>
+          <td><tt>e</tt></td>
+          <td><tt>f</tt></td>
+          <td><tt>g</tt></td>
+          <td><tt>h</tt></td>
+          <td><tt>i</tt></td>
+          <td><tt>j</tt></td>
+          <td><tt>k</tt></td>
+          <td><tt>l</tt></td>
+          <td><tt>m</tt></td>
+          <td><tt>n</tt></td>
+          <td><tt>o</tt></td>
+          <td><tt>p</tt></td>
+          <td><tt>q</tt></td>
+       </tr>
+       <tr>
+          <th scope="col"><tt>s</tt></th>
+          <td><tt>s</tt></td>
+          <td><tt>t</tt></td>
+          <td><tt>u</tt></td>
+          <td><tt>v</tt></td>
+          <td><tt>w</tt></td>
+          <td><tt>x</tt></td>
+          <td><tt>y</tt></td>
+          <td><tt>z</tt></td>
+          <td><tt>a</tt></td>
+          <td><tt>b</tt></td>
+          <td><tt>c</tt></td>
+          <td><tt>d</tt></td>
+          <td><tt>e</tt></td>
+          <td><tt>f</tt></td>
+          <td><tt>g</tt></td>
+          <td><tt>h</tt></td>
+          <td><tt>i</tt></td>
+          <td><tt>j</tt></td>
+          <td><tt>k</tt></td>
+          <td><tt>l</tt></td>
+          <td><tt>m</tt></td>
+          <td><tt>n</tt></td>
+          <td><tt>o</tt></td>
+          <td><tt>p</tt></td>
+          <td><tt>q</tt></td>
+          <td><tt>r</tt></td>
+       </tr>
+       <tr>
+          <th scope="col"><tt>t</tt></th>
+          <td><tt>t</tt></td>
+          <td><tt>u</tt></td>
+          <td><tt>v</tt></td>
+          <td><tt>w</tt></td>
+          <td><tt>x</tt></td>
+          <td><tt>y</tt></td>
+          <td><tt>z</tt></td>
+          <td><tt>a</tt></td>
+          <td><tt>b</tt></td>
+          <td><tt>c</tt></td>
+          <td><tt>d</tt></td>
+          <td><tt>e</tt></td>
+          <td><tt>f</tt></td>
+          <td><tt>g</tt></td>
+          <td><tt>h</tt></td>
+          <td><tt>i</tt></td>
+          <td><tt>j</tt></td>
+          <td><tt>k</tt></td>
+          <td><tt>l</tt></td>
+          <td><tt>m</tt></td>
+          <td><tt>n</tt></td>
+          <td><tt>o</tt></td>
+          <td><tt>p</tt></td>
+          <td><tt>q</tt></td>
+          <td><tt>r</tt></td>
+          <td><tt>s</tt></td>
+       </tr>
+       <tr>
+          <th scope="col"><tt>u</tt></th>
+          <td><tt>u</tt></td>
+          <td><tt>v</tt></td>
+          <td><tt>w</tt></td>
+          <td><tt>x</tt></td>
+          <td><tt>y</tt></td>
+          <td><tt>z</tt></td>
+          <td><tt>a</tt></td>
+          <td><tt>b</tt></td>
+          <td><tt>c</tt></td>
+          <td><tt>d</tt></td>
+          <td><tt>e</tt></td>
+          <td><tt>f</tt></td>
+          <td><tt>g</tt></td>
+          <td><tt>h</tt></td>
+          <td><tt>i</tt></td>
+          <td><tt>j</tt></td>
+          <td><tt>k</tt></td>
+          <td><tt>l</tt></td>
+          <td><tt>m</tt></td>
+          <td><tt>n</tt></td>
+          <td><tt>o</tt></td>
+          <td><tt>p</tt></td>
+          <td><tt>q</tt></td>
+          <td><tt>r</tt></td>
+          <td><tt>s</tt></td>
+          <td><tt>t</tt></td>
+       </tr>
+       <tr>
+          <th scope="col"><tt>v</tt></th>
+          <td><tt>v</tt></td>
+          <td><tt>w</tt></td>
+          <td><tt>x</tt></td>
+          <td><tt>y</tt></td>
+          <td><tt>z</tt></td>
+          <td><tt>a</tt></td>
+          <td><tt>b</tt></td>
+          <td><tt>c</tt></td>
+          <td><tt>d</tt></td>
+          <td><tt>e</tt></td>
+          <td><tt>f</tt></td>
+          <td><tt>g</tt></td>
+          <td><tt>h</tt></td>
+          <td><tt>i</tt></td>
+          <td><tt>j</tt></td>
+          <td><tt>k</tt></td>
+          <td><tt>l</tt></td>
+          <td><tt>m</tt></td>
+          <td><tt>n</tt></td>
+          <td><tt>o</tt></td>
+          <td><tt>p</tt></td>
+          <td><tt>q</tt></td>
+          <td><tt>r</tt></td>
+          <td><tt>s</tt></td>
+          <td><tt>t</tt></td>
+          <td><tt>u</tt></td>
+       </tr>
+       <tr>
+          <th scope="col"><tt>w</tt></th>
+          <td><tt>w</tt></td>
+          <td><tt>x</tt></td>
+          <td><tt>y</tt></td>
+          <td><tt>z</tt></td>
+          <td><tt>a</tt></td>
+          <td><tt>b</tt></td>
+          <td><tt>c</tt></td>
+          <td><tt>d</tt></td>
+          <td><tt>e</tt></td>
+          <td><tt>f</tt></td>
+          <td><tt>g</tt></td>
+          <td><tt>h</tt></td>
+          <td><tt>i</tt></td>
+          <td><tt>j</tt></td>
+          <td><tt>k</tt></td>
+          <td><tt>l</tt></td>
+          <td><tt>m</tt></td>
+          <td><tt>n</tt></td>
+          <td><tt>o</tt></td>
+          <td><tt>p</tt></td>
+          <td><tt>q</tt></td>
+          <td><tt>r</tt></td>
+          <td><tt>s</tt></td>
+          <td><tt>t</tt></td>
+          <td><tt>u</tt></td>
+          <td><tt>v</tt></td>
+       </tr>
+       <tr>
+          <th scope="col"><tt>x</tt></th>
+          <td><tt>x</tt></td>
+          <td><tt>y</tt></td>
+          <td><tt>z</tt></td>
+          <td><tt>a</tt></td>
+          <td><tt>b</tt></td>
+          <td><tt>c</tt></td>
+          <td><tt>d</tt></td>
+          <td><tt>e</tt></td>
+          <td><tt>f</tt></td>
+          <td><tt>g</tt></td>
+          <td><tt>h</tt></td>
+          <td><tt>i</tt></td>
+          <td><tt>j</tt></td>
+          <td><tt>k</tt></td>
+          <td><tt>l</tt></td>
+          <td><tt>m</tt></td>
+          <td><tt>n</tt></td>
+          <td><tt>o</tt></td>
+          <td><tt>p</tt></td>
+          <td><tt>q</tt></td>
+          <td><tt>r</tt></td>
+          <td><tt>s</tt></td>
+          <td><tt>t</tt></td>
+          <td><tt>u</tt></td>
+          <td><tt>v</tt></td>
+          <td><tt>w</tt></td>
+       </tr>
+       <tr>
+          <th scope="col"><tt>y</tt></th>
+          <td><tt>y</tt></td>
+          <td><tt>z</tt></td>
+          <td><tt>a</tt></td>
+          <td><tt>b</tt></td>
+          <td><tt>c</tt></td>
+          <td><tt>d</tt></td>
+          <td><tt>e</tt></td>
+          <td><tt>f</tt></td>
+          <td><tt>g</tt></td>
+          <td><tt>h</tt></td>
+          <td><tt>i</tt></td>
+          <td><tt>j</tt></td>
+          <td><tt>k</tt></td>
+          <td><tt>l</tt></td>
+          <td><tt>m</tt></td>
+          <td><tt>n</tt></td>
+          <td><tt>o</tt></td>
+          <td><tt>p</tt></td>
+          <td><tt>q</tt></td>
+          <td><tt>r</tt></td>
+          <td><tt>s</tt></td>
+          <td><tt>t</tt></td>
+          <td><tt>u</tt></td>
+          <td><tt>v</tt></td>
+          <td><tt>w</tt></td>
+          <td><tt>x</tt></td>
+       </tr>
+       <tr>
+          <th scope="col"><tt>z</tt></th>
+          <td><tt>z</tt></td>
+          <td><tt>a</tt></td>
+          <td><tt>b</tt></td>
+          <td><tt>c</tt></td>
+          <td><tt>d</tt></td>
+          <td><tt>e</tt></td>
+          <td><tt>f</tt></td>
+          <td><tt>g</tt></td>
+          <td><tt>h</tt></td>
+          <td><tt>i</tt></td>
+          <td><tt>j</tt></td>
+          <td><tt>k</tt></td>
+          <td><tt>l</tt></td>
+          <td><tt>m</tt></td>
+          <td><tt>n</tt></td>
+          <td><tt>o</tt></td>
+          <td><tt>p</tt></td>
+          <td><tt>q</tt></td>
+          <td><tt>r</tt></td>
+          <td><tt>s</tt></td>
+          <td><tt>t</tt></td>
+          <td><tt>u</tt></td>
+          <td><tt>v</tt></td>
+          <td><tt>w</tt></td>
+          <td><tt>x</tt></td>
+          <td><tt>y</tt></td>
+       </tr>
+    </table>
+        </center>
+        </div>
+        </div>
+
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

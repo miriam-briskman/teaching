@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Key Terms &amp; Principles in InfoSec: Lecture Notes | CISC 3325</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Risk Management</h3>
+
+        <p><b><u>Example</u></b>: Given information on two threat types in the table below, an organization should prioritize protection against Threat <tt>2</tt> because its risk, which we calculate to be <tt>0.02</tt> * <tt>550,000</tt> = <tt>11,000</tt>, is greater than the risk imposed by Threat <tt>1</tt>, which is <tt>0.91</tt> * <tt>10,000</tt> = <tt>9100</tt>, despite Threat <tt>1</tt>'s probability to occur being much higher:</p>
+        <center>
+        <table width="550" border="1" cellspacing="1" cellpadding="1">
+      <tr>
+        <th scope="col">Threat</th>
+        <th scope="col">Probability of Happening</th>
+        <th scope="col">Cost of Damage</th>
+      </tr>
+      <tr>
+        <td><div align="center">Threat <tt>1</tt></td>
+        <td><div align="center"><tt>0.91</tt></div></td>
+        <td><div align="center">$10,000</div></td>
+      </tr>
+      <tr>
+        <td><div align="center">Threat <tt>2</tt></td>
+        <td><div align="center"><tt>0.02</tt></div></td>
+        <td><div align="center">$550,000</div></td>
+      </tr>
+    </table>
+        </center>
+        <!--<hr style = 'border-top: 1px solid black; border-bottom: 1px solid black;'>-->
+        <p><b><i>Fun Class Activity</i></b>: Which <u>two</u> of the following three threats should receive a company's greatest attention?</p>
+        <center>
+        <table width="550" border="1" cellspacing="1" cellpadding="1">
+      <tr>
+        <th scope="col">Threat</th>
+        <th scope="col">Probability of Happening</th>
+        <th scope="col">Cost of Damage</th>
+      </tr>
+      <tr>
+        <td><div align="center">Threat <tt>X</tt></td>
+        <td><div align="center"><tt>0.36</tt></div></td>
+        <td><div align="center">$100,000</div></td>
+      </tr>
+      <tr>
+        <td><div align="center">Threat <tt>Y</tt></td>
+        <td><div align="center"><tt>0.59</tt></div></td>
+        <td><div align="center">$89,000</div></td>
+      </tr>
+      <tr>
+        <td><div align="center">Threat <tt>Z</tt></td>
+        <td><div align="center"><tt>0.21</tt></div></td>
+        <td><div align="center">$250,000</div></td>
+      </tr>
+    </table>
+        </center>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

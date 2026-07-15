@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <title>Malware vs. Anti-Virus Software: Lecture Notes | CISC 3325</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Bots and Zombies</h3>
+        <div class = "imagecontainer imagecontainer-side">
+          <a href = "https://cystory-images.s3.amazonaws.com/shutterstock_83488540.jpg" target='_blank'><img src="botnet.jpg" title = "Bots" alt="Bots" style = "height: 12vh; z-index: 1000;"></a>
+          <p class = "caption" style = "width: 14vh; z-index: 1000;">Taken from <a target="_blank" href="https://cyware.com/news/types-of-botnets-and-how-they-affect-you-d4d52b95">Hacker News</a></p>
+        </div>
+        <ol start = "8" style = "margin-top: 2vw;">
+            <li><b>Definition</b>: A <b>zombie</b> (sometimes also a <b>bot</b>) is a computer that is controlled remotely, either partially or fully, by an attacker. An attacker would have a network of zombies or a zombie army (sometimes across the world) that are already compromised / infected by attackers and are used for attacking other systems.<br><br>
+            Bots are used to initiate attacks, like denial of service, on other systems. These attacks are carried out by pooling the infected systems so that the impact can match the scale required (that is, to use as many bots as needed to crash the system.) A network of bots is called a <b>botnet</b>, and the attacker is the <b>controller</b> or <b>herder</b> of the bots.<br><br>
+
+            <b>Reason for the name</b>: Bot is a shorthand for 'robot', and zombie is due to the army-like nature of malicious robots.<br>
+            <b>Propagation</b>: A device first gets infected. Then, when the attacker decides so, he or she sends a remote command to the bot to make it start doing its malicious action.<br>
+            <b>Examples of well-known botnets</b>: the <a href = "https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet/" target="_blank">Mirai botnet</a> and the <a href = "https://ieeexplore.ieee.org/document/9845289" target="_blank">Miner botnet</a>.
+            </li>
+        </ol>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>
