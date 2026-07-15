@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Discrete Probability: Conditional Probability">
+      <title>Discrete Probability: Lecture Notes | CISC 2210</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script>hljs.highlightAll();</script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Conditional Probability</h3>
+        <p><u>More examples</u>:</p>
+        <ul>
+            <li>A card is drawn at random from a standard $52$-card deck. Let event $A$ be "the card is a queen" and the event $B$ be "the card is a face card" (there are $12$ face cards: King, Queen, and Jack $\times 4$, and $4$ queens.) Find $P(A \mid B)$.<br>
+            <b>Solution</b>: <span>$P(A \mid B) \;$$= P(\text{queen} \mid \text{face}) \;$$= \frac{P(\text{queen} \cap \text{face})}{P(\text{face})} \;$$= \frac{4/52}{12/52} \;$$= \frac{4}{12} \;$$= \frac{1}{3}$.</li>
+            <li>In a certain region, $10\%$ of users run outdated software. Among them, $40\%$ experience a crash. Find the probability a user experiences a crash given they run outdated software.<br>
+            <b>Solution</b>: <span>$P(\text{crash} \mid \text{outdated}) \;$$= \frac{P(\text{crash} \cap \text{outdated})}{P(\text{outdated})} \;$$= \frac{0.4 \times 0.1}{0.1} \;$$= \frac{4/100}{1/10} \;$$= \frac{4}{10}$.</li>
+            <li>In a dataset, $30\%$ of emails are spam. Among spam emails, $80\%$ contain the word "free". Find the probability that an email contains "free" given that it is spam.<br>
+            <b>Solution</b>: <span>$P(\text{contains "free"}$$\;\mid$$\;\text{spam}) \;$$= \frac{P(\text{contains "free"} \cap \text{spam})}{P(\text{spam})} \;$$= \frac{0.8 \times 0.3}{0.3} \;$$= \frac{0.24}{0.3} \;$$= 0.8$.</li>
+        </ul>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

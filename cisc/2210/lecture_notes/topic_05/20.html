@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="One-To-One Or Not: Horizontal Line Test">
+      <title>Functions: Lecture Notes | CISC 2210</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script>hljs.highlightAll();</script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+          td {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>One-To-One Or Not: Horizontal Line Test</h3>
+        <div class = "supercontainer">
+        <pre class="source source-long" style="width: 48%;"><code class="language-latex">% Code for the left graph:
+\documentclass{standalone}
+\usepackage{pgfplots} % Plotting library
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        xlabel = $x$,
+        ylabel = $f(x)\ {=}\ 2x+3$,
+        y = 1cm,
+        x = 1cm,
+        xmin = -5, xmax = 5, ymin = -2, ymax = 5,
+        axis lines = middle,
+        xlabel style = {anchor = west, xshift = 5pt},
+        ylabel style = {anchor = south, yshift = 5pt}
+    ]
+    
+    \addplot [blue, very thick, samples = 200] {2*x + 3};
+    
+    % Add a bunch of colorful horizontal lines. Notice how each horizontal line intersects only ONCE with the blue curve of f(x) = 2x + 3:
+    \pgfplotsinvokeforeach{0,...,8}{
+        \addplot +[mark = none, very thick] {#1*0.5 + 0.5};
+    }
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}</code></pre>
+        <pre class="source source-long" style="width: 48%;"><code class="language-latex">% Code for the right graph:
+\documentclass{standalone}
+\usepackage{pgfplots} % Plotting library
+\usetikzlibrary{intersections}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        xlabel = $x$,
+        ylabel = $f(x)\ {=}\ x^2$,
+        y = 1cm,
+        x = 1cm,
+        xmin = -5, xmax = 5, ymin = -2, ymax = 5,
+        axis lines = middle,
+        xlabel style = {anchor = west, xshift = 5pt},
+        ylabel style = {anchor = south, yshift = 5pt}
+    ]
+    
+    \addplot [blue, very thick, samples = 200, name path global = Square] {x^2};
+    
+    % Add a red horizontal line at y = 2. Notice that this line intersects TWICE with the blue curve: once at a value of x between -2 and -1 (approx -1.414), and another time at a value of x between 1 and 2 (approx +1.414).
+    \addplot [mark = none, very thick, red, name path global = Line] {2};
+    
+    % Mark intersections:
+    \fill [name intersections = {of = Square and Line, name = i, total = \t}, red, opacity = 1] 
+    \foreach \s in {1,...,\t}{
+        (i-\s) circle (3pt)
+    };
+    
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}</code></pre>
+        </div>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

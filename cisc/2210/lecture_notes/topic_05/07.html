@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Ways of Describing Functions">
+      <title>Functions: Lecture Notes | CISC 2210</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script>hljs.highlightAll();</script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+          td {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Ways of Describing Functions</h3>
+        <p>We can describe a function in one of several ways. We've already seen a few such ways:</p>
+        <ol>
+            <li>By describing the action of the function verbally. For example: "a function $f$ takes positive integers and squares them."</li>
+            <li>By using a math expression, also called <b>formula</b>, e.g., $f(x) = x^2$.<br>This method is unambiguous, very precise, and powerful: to find the output for a certain input $x$, we simply plug $x$ into the formula of $f$ and get the output immediately.</li>
+            <li>By listing the pairs $(x, y)$ of the function, e.g., $f = \{(0, 0), $$\;(1, 1), $$\;(2, 4), $$\;(3, 9), $$\;\dots\}$.</li>
+        </ol>
+        <p>Other ways of describing functions are:</p>
+        <ol start="4">
+            <li>By listing the coordinates of the points of the function in a table, e.g.:
+                            <center>
+        <div style="margin: 0; padding: 0; overflow-x: auto; overflow-y: hidden;">
+        <table border="1" cellspacing="1" cellpadding="1">
+            <tr>
+                <th scope="col">$x$</th>
+                <td>$0$</td>
+                <td>$1$</td>
+                <td>$2$</td>
+                <td>$3$</td>
+                <td>$4$</td>
+                <td>$5$</td>
+                <td>$6$</td>
+                <td>$7$</td>
+                <td>$\dots$</td>
+            </tr>
+            <tr>
+                <th scope="col">$f(x)$</th>
+                <td>$0$</td>
+                <td>$1$</td>
+                <td>$4$</td>
+                <td>$9$</td>
+                <td>$16$</td>
+                <td>$25$</td>
+                <td>$36$</td>
+                <td>$49$</td>
+                <td>$\dots$</td>
+            </tr>
+        </table>
+        </div>
+        </center>
+            </li>
+        </ol>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

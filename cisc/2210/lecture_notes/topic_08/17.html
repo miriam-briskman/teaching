@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Big-O Notation">
+      <title>Recurrence &amp; Recursion: Lecture Notes | CISC 2210</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script>hljs.highlightAll();</script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Function Growth: Big-O Notation</h3>
+        <p>The previous slide taught us that not only are the values of $2^n - 1$ larger than those of $n^2$ for large values of $n$ (specifically, $n \ge 5$), but also that the function $f(n) = 2^n - 1$ growth at a much bigger rate than $g(n) = n^2$. That is, even if we multiply $g(n) = n^2$ by a huge constant, the function $f(n) = 2^n - 1$ will still keep surpassing $g(n) = n^2$ for a large enough $n$.</p>
+        <p>A couple more fun facts:</p>
+        <ul>
+            <li>On the previous slide, we said that $\log_{10} n = \Theta(\log_2 n)$. This is true because $\log_{10} n$ and $\log_2 n$ are constant multiples of one another! We know this because of the "change of base" logarithms formula: $\log_b a = \frac{\log_d a}{\log_d b}$.<br>In our case, we have: $\log_{10} n =$$\; \frac{\log_2 n}{\log_2 10} \Rightarrow$$\; \log_2 10 \cdot \log_{10} n =$$\; \log_2 n \approx$$\; 3.3219 \cdot \log_{10} n =$$\; \log_2 n$.</li>
+            <li>On the other hand, $2^n$ and $e^n$ ($e \approx 2.72$ and is called "Euler's number") are <u>not</u> constant multiples. This means that $e^n$ will grow strictly faster than $2^n$ since $e &gt; 2$. In other words, the following statements are all true: $2^n = \mathcal{O}(e^n)$, $2^n = \mathcal{o}(e^n)$, $e^n = \Omega(2^n)$, and $e^n = \omega(2^n)$.</li>
+        </ul>
+
+
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

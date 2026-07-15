@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Relation: Definition">
+      <title>Relations: Lecture Notes | CISC 2210</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script>hljs.highlightAll();</script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Relations</h3>
+        <p></p>
+        <p>We introduced the idea of <b>Cartesian products</b> on <a href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/2210/lecture_notes/topic_02/18.html" target="_blank" title="Topic 2, Slide 18">slide 18 of Topic 2</a> and said that they are sets of all the possible ordered pairs of the form $(s, t)$, where $s \in S$ and $t \in T$ ($S$ and $T$ are sets of some kinds of elements.) The notation for a cartesian product is $S \times T$ (<pre class="source source-inline"><code class="language-latex">$S \times T$</code></pre>).</p>
+        <p>In our chapter, we will present various sets of ordered pairs. In particular, a <b>relation</b> (also called a <b>binary relation</b>,) denoted by $R$ or some other symbol or name, is a <u>set of ordered pairs</u> of the form $(s, t)$, where $s \in S$ and $t \in T$. It doesn't necessarily contain <i>all</i> the possible pairs $(s, t)$. That is, $R$ is a <u>subset</u> of $S \times T$, and not necessarily equal to $S \times T$. <u>Examples</u>:</p>
+        <ul>
+            <li>For $S = \{$&#128512;$,$ &#128513;$,$ &#128529;$,$ &#128530;$\}$ and $T = \{&#128532;, &#128516;, &#128518;\}$, we can create the relation:<br><div style="margin: 0; padding: 0; overflow-x: auto; overflow-y: hidden;"><span style="display: block; text-align: center; margin-top: 2vh; margin-bottom: 2vh;">$\text{Smiles} = \;$$\{(&#128512;, &#128516;), \,$$(&#128512;, &#128518;), \,$$(&#128513;, &#128516;), \,$$(&#128513;, &#128518;)\}$.</span></div></li>
+            <li>For $\text{Grades} $$\;= \{85, 90, 95, 100\}$ and $\text{Letters} $$\;= \{B-, B, B+, $$\;A-, A, A+\}$, we can create the relation:<br><span style="display: block; text-align: center; margin-top: 2vh;">$\text{CUNYfirst-Grades} = \;$$\{(85, B), \,$$(90, A-), \,$$(95, A), \,$$(100, A+)\}$.</span></li>
+        </ul>
+
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

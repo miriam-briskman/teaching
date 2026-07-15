@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Induction">
+      <title>Recurrence &amp; Recursion: Lecture Notes | CISC 2210</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script>hljs.highlightAll();</script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Induction</h3>
+        <p><u>Example #3</u>: Returning to our example from <a href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/2210/lecture_notes/topic_08/02.html" title="Topic 8, Slide 2" target="_blank">slides 2 &ndash; 3</a>, we'll now prove that $2^n - 1 &gt; n^2$ for $n \ge 5$ using induction.</p>
+        <p><i>Proof:</i></p>
+        <ol style="margin-bottom: 2vh;">
+            <li><b>Base case</b>: For $n=5$, we confirm that $2^n - 1 =$$\; 2^5 - 1 =$$\; 32 - 1 =$$\; 31 &gt;$$\; 25 =$$\; 5^2 =$$\; n^2$.</li>
+            <li><b>Inductive hypothesis</b>: We assume that, for some $k \in \mathbb{P}$ for which $k \ge 5$, we have $2^k - 1 &gt; k^2$.</li>
+            <li><b>Inductive step</b>: We'll now prove that, for $k + 1$, we have $2^{k+1} - 1 &gt; (k+1)^2$. Note that $2^{k+1} - 1 =$$\; 2 \cdot 2^k - 1 &gt;$$\; 2 \cdot 2^k - 2 =$$\; 2(2^k - 1) &gt;$$\; 2(k^2) \;$ [The latter inequality based on the inductive hypothesis]. Now, we need to show that $2(k^2) &gt;$$\; (k+1)^2 =$$\; k^2 + 2k + 1$, or that $k^2 &gt; 2k + 1$ in other words. Indeed, note that plugging any value $k \ge 5$ will make $k^2$ larger than $2k + 1$.</li>
+        </ol>
+        <p style="margin-top: 2vh;">According to our proof by induction above, $2^n - 1 &gt; n^2$ for all $n \ge 5$.<span style = "float: right;">&#9724;</span></p>
+
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>
