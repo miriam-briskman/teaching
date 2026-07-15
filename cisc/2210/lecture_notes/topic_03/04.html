@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Propositional Logic and Operators">
+      <title>Logic &amp; Simple Proof Methods: Lecture Notes | CISC 2210</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script>hljs.highlightAll();</script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          /*table {font-size: calc(1.1vh + 1.1vw); line-height: 90%;}*/
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+          td {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Propositional Logic and Operators</h3>
+        <p>We can <b>combine</b> multiple propositions, which we'll conveniently denote as $p, q, r, s, t$, etc., using <b>logical operators</b>:</p>
+        <center>
+        <div style="margin: 0; padding: 0; overflow-x: auto;">
+            <table class = 'small-table'>
+                <tr><th>Operator</th><th>Name</th><th>Usage Example</th><th>$\LaTeX$</th><th>Read as...</th><th>True when...</th></tr>
+                <tr><td>$\neg$</td><td>Negation ('Not')</td><td>$\neg p$</td><td><pre class="source source-inline"><code class="language-latex">$\neg p$</code></pre></td><td>"Not $p$"</td><td>$p$ is false.</td></tr>
+                <tr><td>$\wedge$</td><td>Conjunction ('And')</td><td>$p \wedge q$</td><td><pre class="source source-inline"><code class="language-latex">$p \wedge q$</code></pre></td><td>"$p$ and $q$"</td><td>both $p$ and $q$ are true.</td></tr>
+                <tr><td>$\vee$</td><td>Disjunction ('Or')</td><td>$p \vee q$</td><td><pre class="source source-inline"><code class="language-latex">$p \vee q$</code></pre></td><td>"$p$ or $q$"</td><td>$p$ or $q$ or both are true.</td></tr>
+                <tr><td>$\oplus$</td><td>Exclusive Or ('Xor')</td><td>$p \oplus q$</td><td><pre class="source source-inline"><code class="language-latex">$p \oplus q$</code></pre></td><td>"$p$ xor $q$"</td><td>$p$ or $q$ are true, but not both.</td></tr>
+                <tr><td>$\rightarrow$</td><td>Implication</td><td>$p \rightarrow q$</td><td><pre class="source source-inline"><code class="language-latex">$p \rightarrow q$</code></pre></td><td>"$p$ implies $q$"</td><td>$p$ is false or $q$ is true.</td></tr>
+                <tr><td>$\leftrightarrow$</td><td>biconditional</td><td>$p \leftrightarrow q$</td><td><pre class="source source-inline"><code class="language-latex">$p \leftrightarrow q$</code></pre></td><td>"$p$ if and only if $q$"</td><td>$p$ and $q$ are both true or both false.</td></tr>
+            </table>
+            </div>
+</center>
+
+        <p></p>
+        <p>In some books, implication is denoted as $p \Rightarrow q$ (<pre class="source source-inline"><code class="language-latex">$p \Rightarrow q$</code></pre>) and the biconditional as $p \Leftrightarrow q$ (<pre class="source source-inline"><code class="language-latex">$p \Leftrightarrow q$</code></pre>), but, in our course, we'll use $\Rightarrow$ and $\Leftrightarrow$ later for a different purpose that also related to logic.</p>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

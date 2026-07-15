@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Equivalences">
+      <title>Logic &amp; Simple Proof Methods: Lecture Notes | CISC 2210</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script>hljs.highlightAll();</script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+          td {text-align: center;}
+          li {margin-bottom: 1vh; margin-top: 1vh;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Equivalences, Part 1</h3>
+        <p></p>
+        <div class = "images">
+        <div class = "imagecontainer" style = "display: block;">
+        <center>
+<div style="margin: 0; padding: 0; overflow-x: auto;">
+<table>
+    <tr><th>Name</th><th>Conjunction ($\boldsymbol{\wedge}$) version</th><th>Disjunction ($\boldsymbol{\vee}$) version</th></tr>
+    <tr><td>Identity Law</td><td>$p \wedge \boldsymbol 1 \Leftrightarrow p$</td><td>$p \vee \boldsymbol 0 \Leftrightarrow p$</td></tr>
+<tr><td>Null Law</td><td>$p \wedge \boldsymbol 0 \Leftrightarrow \boldsymbol 0$</td><td>$p \vee \boldsymbol 1 \Leftrightarrow \boldsymbol 1$</td></tr>
+<tr><td>Idempotent Law</td><td>$p \wedge p \Leftrightarrow p$</td><td>$p \vee p \Leftrightarrow p$</td></tr>
+<tr><td>Complement Law</td><td>$p \wedge \neg p \Leftrightarrow \boldsymbol 0$</td><td>$p \vee \neg p \Leftrightarrow \boldsymbol 1$</td></tr>
+<tr><td>Commutative Law</td><td>$p \wedge q \Leftrightarrow q \wedge p$</td><td>$p \vee q \Leftrightarrow q \vee p$</td></tr>
+<tr><td>Associative Law</td><td>$(p \wedge q) \wedge r \Leftrightarrow p \wedge (q \wedge r)$</td><td>$(p \vee q) \vee r \Leftrightarrow p \vee (q \wedge r)$</td></tr>
+<tr><td>Distributive Law</td><td>$p \vee (q \wedge r) \Leftrightarrow (p \vee q) \wedge (p \vee r)$</td><td>$p \wedge (q \vee r) \Leftrightarrow (p \wedge q) \vee (p \wedge r)$</td></tr>
+<tr><td>Absorption Law</td><td>$p \wedge (p \vee q ) \Leftrightarrow p$</td><td>$p \vee (p \wedge q) \Leftrightarrow p$</td></tr>
+<tr><td>DeMorgan's Law</td><td>$p \wedge q \Leftrightarrow \neg(\neg p \vee \neg q)$</td><td>$p \vee q \Leftrightarrow \neg(\neg p \wedge \neg q)$</td></tr>
+<tr><td>Double Negation Law</td><td colspan=2>$\neg(\neg p) \Leftrightarrow \neg\neg p \Leftrightarrow p$</td></tr>
+</table>
+</div>
+</center>
+</div>
+</div>
+<p></p>
+
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

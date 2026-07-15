@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Simple Proof Methods">
+      <title>Logic &amp; Simple Proof Methods: Lecture Notes | CISC 2210</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script>hljs.highlightAll();</script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+          td {text-align: center;}
+          li {margin-bottom: 1vh; margin-top: 1vh;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Simple Proof Methods</h3>
+        <ol start = "2">
+            <li><b>Theorem.</b> For any set $A$, the following holds:$$A \cap \emptyset = \emptyset.$$
+            <i>Proof</i>. Let $A$ be any set. To show that $A \cap \emptyset = \emptyset$, we need to show that $A \cap \emptyset \subseteq \emptyset$ and that $\emptyset \subseteq A \cap \emptyset$:
+            <ul>
+                <li>[Showing that $A \cap \emptyset \subseteq \emptyset$] Let $x$ be any element in the set $A \cap \emptyset$. This means that $x$ is in the intersection of $A$ and $\emptyset$. This means that $x \in A$ and that $x \in \emptyset$. However, because $\emptyset$ is the empty set and doesn't contain any elements in it, our assumption that $x \in A \cap \emptyset$ is false; specifically, $A \cap \emptyset$ doesn't contain any elements in it. But we know that the set that contains no elements is called $\emptyset$, so $A \cap \emptyset \subseteq \emptyset$.</li>
+                <li>[Showing that $\emptyset \subseteq A \cap \emptyset$] Consider the set $\emptyset$, which doesn't contain any elements in it. The set $A \cap \emptyset$ contains all the elements of $A$ and of $\emptyset$ in it, which, because the set $\emptyset$ is empty, also contains no elements in it. As such, $\emptyset \subseteq A \cap \emptyset$.</li>
+            </ul>
+            Because we showed that $A \cap \emptyset \subseteq \emptyset$ and $\emptyset \subseteq A \cap \emptyset$, we conclude that $A \cap \emptyset = \emptyset$ by the definition of set equality.<span style = "float: right;">&#9724;</span>
+            </li>
+        </ol>
+       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

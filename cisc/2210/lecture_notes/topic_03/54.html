@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Simple Proof Methods">
+      <title>Logic &amp; Simple Proof Methods: Lecture Notes | CISC 2210</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script>hljs.highlightAll();</script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+          td {text-align: center;}
+          li {margin-bottom: 1vh; margin-top: 1vh;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Simple Proof Methods</h3>
+        <ol start = "5">
+            <li><b>Theorem.</b> For any sets $A$ and $B$, the following holds:$$A \cup (A \cap B) = A.$$
+            <i>Proof</i>. Let $A$ and $B$ be any sets. To show that $A \cup (A \cap B) = A$, we need to show that $A \cup (A \cap B) \subseteq A$ and that $A \subseteq A \cup (A \cap B)$:
+            <ul>
+                <li>[Showing that $A \cup (A \cap B) \subseteq A$] Let $x$ be any element in the set $A \cup (A \cap B)$. This means that $x$ is in the union of $A$ and $A \cap B$. This means that $x \in A$ or that $x \in A$ and $x \in B$. In other words, it means that $x \in A$ or $x \in A$, and $x \in A$ or $x \in B$, which is the same as saying $x \in A$ and $x \in A \cup B$. Since $x \in A$, this implies $A \cup (A \cap B) \subseteq A$.</li>
+                <li>[Showing that $A \subseteq A \cup (A \cap B)$] Let $x$ be any element in the set $A$. This means that $x$ is in the union of $A$ with any other set (say, $B$,) so $x \in A \cup B$. This means that $x \in A$ and $x \in A \cup B$. In other words, it means that $x \in A$ or $x \in A$, and $x \in A$ or $x \in B$. This means that $x \in A$ or that $x \in A$ and $x \in B$, so $x$ is in the union of $A$ and $A \cap B$, so $x \in A \cup (A \cap B)$. This implies $A \subseteq A \cup (A \cap B)$.</li>
+            </ul>
+            Therefore, we conclude that $A \cup (A \cap B) = A$ by the definition of set equality.<span style = "float: right;">&#9724;</span>
+            </li>
+        </ol>
+       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

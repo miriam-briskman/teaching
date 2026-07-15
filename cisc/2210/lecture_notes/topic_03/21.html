@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Truth Tables">
+      <title>Logic &amp; Simple Proof Methods: Lecture Notes | CISC 2210</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script>hljs.highlightAll();</script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+          td {text-align: center;}
+          li {margin-bottom: 1vh; margin-top: 1vh;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Truth Tables</h3>
+        <p>Now that we know the behavior of each of the $6$ logical operators, we can build truth tables for any statement / expression as wanted. Let's for example, build the truth table for the expression $(p \vee q) \wedge \neg r \vee p$ that we got on <a href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/2210/lecture_notes/topic_03/04.html" target="_blank" title="Topic 3, Slide 7">slide 7</a>:</p>
+         <div class = "images">
+            <div class = "imagecontainer" style = "display: block;">
+                <center>
+                <div style="margin: 0; padding: 0; overflow-x: auto;">
+                    <table border="1" cellspacing="1" cellpadding="1">
+                        <tr>
+                            <th scope="col">$p$</th>
+                            <th scope="col">$q$</th>
+                            <th scope="col">$r$</th>
+                            <th scope="col">$p \vee q$</th>
+                            <th scope="col">$\neg r$</th>
+                            <th scope="col">$(p \vee q) \wedge \neg r$</th>
+                            <th scope="col">$\boldsymbol{(p \vee q) \wedge \neg r \vee p}$</th>
+                        </tr>
+                        <tr>
+                            <td>$0$</td>
+                            <td>$0$</td>
+                            <td>$0$</td>
+                            <td>$0$</td>
+                            <td>$1$</td>
+                            <td>$0$</td>
+                            <td>$0$</td>
+                        </tr>
+                        <tr>
+                            <td>$0$</td>
+                            <td>$0$</td>
+                            <td>$1$</td>
+                            <td>$0$</td>
+                            <td>$0$</td>
+                            <td>$0$</td>
+                            <td>$0$</td>
+                        </tr>
+                        <tr>
+                            <td>$0$</td>
+                            <td>$1$</td>
+                            <td>$0$</td>
+                            <td>$1$</td>
+                            <td>$1$</td>
+                            <td>$1$</td>
+                            <td>$1$</td>
+                        </tr>
+                        <tr>
+                            <td>$0$</td>
+                            <td>$1$</td>
+                            <td>$1$</td>
+                            <td>$1$</td>
+                            <td>$0$</td>
+                            <td>$0$</td>
+                            <td>$0$</td>
+                        </tr>
+                        <tr>
+                            <td>$1$</td>
+                            <td>$0$</td>
+                            <td>$0$</td>
+                            <td>$1$</td>
+                            <td>$1$</td>
+                            <td>$1$</td>
+                            <td>$1$</td>
+                        </tr>
+                        <tr>
+                            <td>$1$</td>
+                            <td>$0$</td>
+                            <td>$1$</td>
+                            <td>$1$</td>
+                            <td>$0$</td>
+                            <td>$0$</td>
+                            <td>$1$</td>
+                        </tr>
+                        <tr>
+                            <td>$1$</td>
+                            <td>$1$</td>
+                            <td>$0$</td>
+                            <td>$1$</td>
+                            <td>$1$</td>
+                            <td>$1$</td>
+                            <td>$1$</td>
+                        </tr>
+                        <tr>
+                            <td>$1$</td>
+                            <td>$1$</td>
+                            <td>$1$</td>
+                            <td>$1$</td>
+                            <td>$0$</td>
+                            <td>$0$</td>
+                            <td>$1$</td>
+                        </tr>
+                    </table>
+                    <span>Truth table for $(p \vee q) \wedge \neg r \vee p$</span>
+                    </div>
+                </center>
+            </div>
+        </div>
+
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

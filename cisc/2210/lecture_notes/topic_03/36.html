@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Simple Proof Methods">
+      <title>Logic &amp; Simple Proof Methods: Lecture Notes | CISC 2210</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll(); hljs.initLineNumbersOnLoad();</script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Simple Proof Methods</h3>
+        <p>The following $\LaTeX$ source code shows how to create definitions, theorems, proofs, and corollaries:</p>
+        <pre class="source source-long" style = "height: 60vh;"><code class="language-latex">\documentclass[12pt]{article}
+ 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm} % The Theorem library.
+ 
+\setlength{\parskip}{10pt} % Space between paragraphs.
+\setlength\parindent{0pt} % Eliminating paragraph indentation.
+
+% Definitions of the definition, theorem, and corollary environments:
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+
+\begin{document}
+ 
+\begin{definition}
+{\normalfont [Even integers]} An integer $n$ is called \textbf{even} if there exists an integer $k$ such that $n = 2k$.
+\end{definition}
+
+\begin{theorem}
+{\normalfont [Sum of even integers]} If $m$ and $n$ are both even integers, then their sum, $m + n$, is also even.
+\end{theorem}
+
+\begin{proof}
+{[Sum of even integers]} Let $m$ and $n$ be two even integers. According to the definition of even integers, there exists $k_1 \in \mathbb{Z}$ such that $m = 2k_1$ and $k_2 \in \mathbb{Z}$ such that $n = 2k_2$.
+
+Notice that
+$$m + n = 2k_1 + 2k_2 = 2(k_1 + k_2),$$
+which is, by definition, an even integer because $(k_1 + k_2)$ is an integer.
+\end{proof}
+
+\begin{corollary}
+{\normalfont [Square of an odd integer]} If $n$ is an odd integer, then $n^2$ is also odd.
+\end{corollary}
+
+This is a corollary of a probably more general theorem:
+\begin{theorem}
+{\normalfont [Product of odd integers]} If $n_1, n_2, n_3, \dots, n_m$ are odd integers, then their product, $n_1\cdot n_2\cdot n_3\cdot\dots\cdot n_m$, is also odd.
+\end{theorem}
+ 
+\end{document}</code></pre>
+       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>
