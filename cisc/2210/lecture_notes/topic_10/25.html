@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Special Matrices">
+      <title>Matrices: Lecture Notes | CISC 2210</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script>hljs.highlightAll();</script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+          td {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Special Matrices</h3>
+        <ol start = "10">
+           <li>A <b>column vector</b> (also called a <b>column matrix</b>) is a matrix of the size $n \times 1$.
+               <ul>
+                   <li>The number $n$ in a $n \times 1$ column vector is the vector size of the column vector.</li>
+                   <li>Every $n \times m$ matrix consists of at least one column vector.</li>
+                   <li>We use the notation of <a href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/2210/lecture_notes/topic_10/23.html" target="_blank" title = "Topic 10, Slide 23: Special Matrices: Row Vector">row vectors</a> to denote column vectors, too: $\vec{v}$ (<pre class="source source-inline"><code class="language-latex">$\vec{v}$</code></pre>) or $\textbf{v}$ (<pre class="source source-inline"><code class="language-latex">$\textbf{v}$</code></pre>), usually with a subscript, like $\vec{v}_1$ (<pre class="source source-inline"><code class="language-latex">$\vec{v}_1$</code></pre>).
+                    </li>
+               </ul>
+               <br>
+               <u>Examples</u>:
+               <div class = "supercontainer">
+                   <p><a href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/2210/lecture_notes/topic_10/02.html" target="_blank" title = "Topic 10, Slide 2: Matrix Example #2">2</a>. $E = \vec{v}_4 = \begin{bmatrix} &#128512; \\ &#128513; \\ &#128526; \\ &#128540; \end{bmatrix}$</p>
+                   <p><a href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/2210/lecture_notes/topic_10/02.html" target="_blank" title = "Topic 10, Slide 2: Matrix Example #3">3</a>. $S = \vec{v}_5 = \begin{bmatrix} \text{Bla} \end{bmatrix}$</p>
+                   <p>37. $\vec{v}_6 = \begin{bmatrix} x \\ y \end{bmatrix}$</p>
+                   <p>38. $\vec{v}_7 = \begin{bmatrix} &#128308; \\ &#128993; \\ &#128994; \end{bmatrix}$</p>
+                   <p>39. $\vec{v}_8 = \begin{bmatrix} 1 \\ 1 \end{bmatrix}$</p>
+               </div> 
+           </li>
+        </ol>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

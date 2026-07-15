@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Matrix Properties / Features">
+      <title>Matrices: Lecture Notes | CISC 2210</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script>hljs.highlightAll();</script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+          td {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Matrix Properties / Features</h3>
+        <ol start = "3">
+            <li><b>Diagonals</b>. Being a grid of rows and columns, a matrix consists of multiple diagonals, but one diagonal has a special significance: the main diagonal.
+            <br><br>
+            The <b>main diagonal</b> of the matrix $A_{n \times m} = [a_{i,j}]$ is the array of all elements of the form: $a_{i,i}$, where $1 \le i \le \min(n, m)$. That is, <div class="scrollable-div">$\text{diag}(A) = [a_{1,1}, a_{2,2}, a_{3,3}, \dots, a_{\min(n, m), \min(n, m)}]$.</div> <u>Examples</u>:
+            <br><br>
+            <center>
+            <div style="margin: 0; padding: 0; overflow-x: auto; overflow-y: hidden;">
+            <table class = "table-small-font">
+            <tr>
+                <th>Matrix</th>
+                <td>$\begin{bmatrix} \boldsymbol{\color{green}{1}} & 2 & 3 \\ 4 & \boldsymbol{\color{green}{5}} & 6 \end{bmatrix}$</td>
+                <td>$\begin{bmatrix} \color{green}{\bf \text{Bla}} \end{bmatrix}$</td>
+                <td>$\begin{bmatrix} \boldsymbol{\color{green}{a}} & b \\ c & \boldsymbol{\color{green}{d}} \\ e & f \\ g & h \\ i & j \end{bmatrix}$</td>
+                <td>$\begin{bmatrix} \boldsymbol{\color{green}{65.7}} & 62.4 & 73.8 & 76.6 & 75.0 \end{bmatrix}$</td>
+                <td>$\begin{bmatrix} \boldsymbol{\color{green}{1}} & 0 & 0 & 0 \\ 0 & \boldsymbol{\color{green}{1}} & 0 & 0 \\ 0 & 0 & \boldsymbol{\color{green}{1}} & 0 \\ 0 & 0 & 0 & \boldsymbol{\color{green}{1}} \end{bmatrix}$</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>$A_{2 \times 3}$</td>
+                <td>$S_{1 \times 1}$</td>
+                <td>$L_{5 \times 2}$</td>
+                <td>$T_{1 \times 5}$</td>
+                <td>$I_{4 \times 4} = I_4$</td>
+            </tr>
+            <tr>
+                <th>Main Diag</th>
+                <td>$\text{diag}(A) = [1, 5]$</td>
+                <td>$\text{diag}(S) = [\text{Bla}]$</td>
+                <td>$\text{diag}(L) = [a, d]$</td>
+                <td>$\text{diag}(T) = [65.7]$</td>
+                <td>$\text{diag}(I) = [1, 1, 1, 1]$</td>
+            </tr>
+        </table>
+        </div>
+        </center>
+           </li>
+        </ol>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

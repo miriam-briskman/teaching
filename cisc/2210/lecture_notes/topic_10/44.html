@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Matrix Operations">
+      <title>Matrices: Lecture Notes | CISC 2210</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script>hljs.highlightAll();</script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+          td {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Matrix Operations</h3>
+        <ol start = "7">
+            <li><b>Matrix multiplication</b>. Multiply rows of $A$ with columns of $B$.
+                <br><br>
+                <u>Input</u>: $A_{n \times k}$ and $B_{k \times m}$. Note that the number of columns in $A$ must be equal to the number of rows in $B$; otherwise, the multiplication can't be done.
+                <br>
+                <u>Output</u>: $C_{n \times m}$ where $c_{i,j} = \sum_{t=1}^k a_{i,t} \cdot b_{t,j}$.
+                <br><br>
+                <u>Algorithm</u>:
+                <ol>
+                    <li>Create space for the matrix $C_{n \times m}$.</li>
+                    <li>For each $1 \le i \le n$ and $1 \le j \le n$, compute the <a href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/2210/lecture_notes/topic_10/41.html" target="_blank" title = "Topic 10, Slide 41: Matrix Operations: Inner product">inner product</a> of row $i$ and column $j$ as follows: $c_{i,j} = \sum_{t=1}^k a_{i,t} \cdot b_{t,j}$. Then, return matrix $C$.</li>
+                </ol>
+                <u>Runtime analysis</u>: For every value of $i$ and $j$, we perform an inner product computation, which runs from $1$ to $k$, hence takes $\Theta(k)$. We do this inner product $nm$ times (remember the <a href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/2210/lecture_notes/topic_06/08.html" target="_blank" title="Topic 6, Slide 8: Multiplication Principle">Multiplication Principle</a> from the topic on Counting? That's the same idea!), so the runtime is $\Theta(k)\cdot\Theta(nm) =$$\; \Theta(knm)$. <b>Fun fact</b>: for square $A_n$ and $B_n$, it is $\Theta(n^3)$.</li>
+        </ol>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

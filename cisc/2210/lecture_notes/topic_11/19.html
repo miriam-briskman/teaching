@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Graph Properties / Features">
+      <title>Graphs &amp; Trees: Lecture Notes | CISC 2210</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script>hljs.highlightAll();</script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Graph Properties / Features</h3>
+        <ol start = "9">
+            <li><b>Parallel edges</b> (or <b>multiple edges</b>) are distinct edges that connect the same pair of vertices.
+            <br><br>
+            In a digraph, parallel edges would be two distinct edges of the form $(v_1, v_2)$ from a vertex $v_1$ to a vertex $v_2$.
+            <div class="supercontainer">
+                <div class = "imagecontainer" style = "margin-top: 0; width: 48%;">
+                    <a href = "./parallel.svg" target = "_blank"><img src="./parallel.svg" title = "There are two distinct edges connecting vertices 1 and 2 (and, in the digraph, 3 and 4,) so these are parallel edges." alt="There are two distinct edges connecting vertices 1 and 2 (and, in the digraph, 3 and 4,) so these are parallel edges." style = "width: 25vw;"></a>
+                    <p class = "caption" style = "width: 100%;">There are two distinct edges connecting vertices $1$ and $2$ (and, in the digraph, $3$ and $4$,) so these are parallel edges. <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a>, <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a>.</p>
+                </div>
+                <pre class="source source-long" style="width: 48%; height: 35vh;"><code class="language-latex">\documentclass[border=1pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, bending}
+
+\tikzset{
+vertex/.style={draw, circle, very thick, minimum size=1cm},
+edge/.style={very thick},
+arc/.style={very thick, -Triangle},
+}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+\node[vertex] (v1) at (0,0) {$1$};
+\node[vertex] (v2) at (4,0) {$2$};
+
+\draw[edge] (v1) to[bend left=25] (v2);
+\draw[edge] (v1) to[bend right=25] (v2);
+
+\draw (-0.5,-1) -- (4.5,-1);
+
+\node[vertex] (v3) at (0,-2) {$3$};
+\node[vertex] (v4) at (4,-2) {$4$};
+
+\draw[arc] (v3) to[bend left=25] (v4);
+\draw[arc] (v3) to[bend right=25] (v4);
+
+\end{tikzpicture}
+
+\end{document}</code></pre>
+            </div>
+            </li>
+        </ol>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>
