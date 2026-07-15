@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+  <head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+    <meta name="description" content="The instructor's home page of Miriam Briskman, a Brooklyn College Lecturer for Computer and Information Science.">
+    <title>Miriam Briskman - CUNY Brooklyn College Lecturer</title>
+    <link rel="icon" href="./static/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./static/styles/lightstyle.css" id="lightstyle">
+    <link rel="stylesheet" href="./static/styles/darkstyle.css" id="darkstyle">
+    <link rel="stylesheet" href="./static/styles/style.css">
+    <script type="text/javascript" src="./static/scripts/script.js"></script>
+    <script type="text/javascript" src="./static/scripts/observe.js" defer></script>
+  </head>
+  <body style="font-size: x-large;" onload = "scrollBar();">
+    <h1>Welcome!</h1>
+    <p>Instructor's Home Page</p>
+    
+    <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick = "switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+    <script type="text/javascript">getMode();</script>
+    <script type="text/javascript">
+        var pageMode = localStorage.getItem("mode");
+        if (pageMode == "light")
+            document.write('<style> #x' + openTab + '{ opacity: 1; visibility: visible; display: block} #' + openTab + '-tab { border-bottom: 0; color: black; cursor: default;} .tabs.is-pinned { background-color: #f4f9fe; }</style>');
+        else
+            document.write('<style> #x' + openTab + '{ opacity: 1; visibility: visible; display: block} #' + openTab + '-tab { border-bottom: 0; color: white; cursor: default;} .tabs.is-pinned { background-color: #10162a; }</style>');
+    </script>
+    <div class = 'tabs'>
+        <p class = 'tab' id = 'teaching-tab' title = "View Previously and Currently Instructed Courses" onclick = "revealInfo();" onkeydown = "if(event.key === 'Enter') { revealInfo(); }" tabindex="2">Teaching</p>
+        <p class = 'tab' id = 'service-tab' title = "View Instructor's Academic Service and Activities" onclick = "revealInfo();" onkeydown = "if(event.key === 'Enter') { revealInfo(); }" tabindex="3">Service</p>
+        <p class = 'tab' id = 'guides-tab' title = "View Useful Academic Guides Developed by the Instructor" onclick = "revealInfo();" onkeydown = "if(event.key === 'Enter') { revealInfo(); }" tabindex="4">Guides</p>
+        <p class = 'tab' id = 'bio-tab' title = "View Bio, Including Teaching Position and Education" onclick = "revealInfo();" onkeydown = "if(event.key === 'Enter') { revealInfo(); }" tabindex="5">Bio</p>
+        <p class = 'tab' id = 'contact-tab' title = "View Contact Information" onclick = "revealInfo();" onkeydown = "if(event.key === 'Enter') { revealInfo(); }" tabindex="6">Contact</p>
+        <p class = 'tab' id = 'faq-tab' title = "View Frequently Asked Questions and Tips" onclick = "revealInfo();" onkeydown = "if(event.key === 'Enter') { revealInfo(); }" tabindex="7">FAQ</p>
+    </div>
+    <div class = 'content'>
+        <div id = 'xteaching' class = 'contents'>
+            <ul>
+                <li><a href="./cisc/1050/" target="_blank" title="CISC 1050: Introduction to Computer Applications [Folder]">
+                    CISC 1050: Introduction to Computer Applications [Folder]
+                </a></li>
+                <li><a href="./cisc/2210/" target="_blank" title="CISC 2210: Introduction to Discrete Structures [Folder]">
+                    CISC 2210: Introduction to Discrete Structures [Folder]
+                </a></li>
+                <li><a href="./cisc/3310/" target="_blank" title="CISC 3310: Principles of Computer Architecture [Folder]">
+                    CISC 3310: Principles of Computer Architecture [Folder]
+                </a></li>
+                <li><a href="./cisc/3320/" target="_blank" title="CISC 3320: Operating Systems [Folder]">
+                    CISC 3320: Operating Systems [Folder]
+                </a></li>
+                <li><a href="./cisc/3325/" target="_blank" title="CISC 3325: Information Security [Folder]">
+                    CISC 3325: Information Security [Folder]
+                </a></li>
+                <li><a href="./cisc/3350/" target="_blank" title="CISC 3350: Workstation Programming [Folder]">
+                    CISC 3350: Workstation Programming [Folder]
+                </a></li>
+            </ul>
+        </div>
+        <div id = 'xservice' class = 'contents'>
+            <h2>Open Educational Resources (OER) Guides</h2>
+            <ul>
+                <li><a href="https://libguides.brooklyn.cuny.edu/cisc1050-briskman" target="_blank" title="OER Guide for CISC 1050: Introduction to Computer Applications [LibGuides Website]">
+                    OER Guide for CISC 1050: Introduction to Computer Applications [LibGuides Website]
+                </a></li>
+                <li><a href="https://libguides.brooklyn.cuny.edu/cisc2210-briskman" target="_blank" title="OER Guide for CISC 2210: Introduction to Discrete Structures [LibGuides Website]">
+                    OER Guide for CISC 2210: Introduction to Discrete Structures [LibGuides Website]
+                </a></li>
+                <li><a href="https://libguides.brooklyn.cuny.edu/cisc3310-briskman" target="_blank" title="OER Guide for CISC 3310: Principles of Computer Architecture [LibGuides Website]">
+                    OER Guide for CISC 3310: Principles of Computer Architecture [LibGuides Website]
+                </a></li>
+                <li><a href="https://libguides.brooklyn.cuny.edu/cisc3320-briskman" target="_blank" title="OER Guide for CISC 3320: Operating Systems [LibGuides Website]">
+                    OER Guide for CISC 3320: Operating Systems [LibGuides Website]
+                </a></li>
+                <li><a href="https://libguides.brooklyn.cuny.edu/cisc3325" target="_blank" title="OER Guide for CISC 3325: Information Security [LibGuides Website]">
+                    OER Guide for CISC 3325: Information Security [LibGuides Website]
+                </a></li>
+                <li><a href="https://libguides.brooklyn.cuny.edu/cisc3350" target="_blank" title="OER Guide for CISC 3350: Workstation Programming [LibGuides Website]">
+                    OER Guide for CISC 3350: Workstation Programming [LibGuides Website]
+                </a></li>
+            </ul>
+            <h2>Service on Committees</h2>
+            <ul>
+                <li><a target="_blank" href="https://www.brooklyn.edu/faculty-council/">Faculty Council Committees</a>:
+                    <ul>
+                        <li>Member of the Committee on Computer Utilization &amp; Educational Technology (CUET):
+                            <ul>
+                                <li>September 2024 – August 2025,</li>
+                                <li>September 2025 – Present.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a target="_blank" href="https://www.brooklyn.edu/cis/">Computer and Information Science Department</a>:
+                    <ul>
+                        <li>Member of the Computer Center &amp; AIT Liaison Committee:
+                            <ul>
+                                <li>September 2023 – Present.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div id = 'xguides' class = 'contents'>
+            <ul>
+                <li><a href="https://forms.gle/4SUd4aVcht7fzoVV6" target="_blank" title = "Google Forms Guide on Accessing Your College Email [Link to Google Forms]">
+                    Accessing Your Microsoft Outlook 365 College Mailbox: ~3 min Guide - with Pictures! [Google Forms]
+                </a></li>
+                <li><a href="https://forms.gle/HU7Kmghf79WPf9xB9" target="_blank" title = "Google Forms Guide on Accessing Your Brooklyn College Student Linux Account Remotely [Link to Google Forms]">
+                    Accessing Your Brooklyn College Student Linux Account Remotely: ~5 min Guide - with Pictures! [Google Forms]
+                </a></li>
+                <li><a href="./guides/Computer_Internet_Services.pdf" target="_blank" title = "Guide on Getting Free Computer and Internet Services [PDF]">
+                    Getting Free Computer and Internet Services [PDF]
+                </a></li>
+                <li><a href="https://forms.gle/UbJMGRxcMACMBcaU6" target="_blank" title = "Google Forms Guide on Getting Microsoft Office to Your Computer [Link to Google Forms]">
+                    Getting Microsoft Office to Your Computer - with Pictures! [Google Forms]
+                </a></li> 
+                <li><a href="https://www.sci.brooklyn.cuny.edu/~briskman/poll_system/studentaccess" target="_blank" title = "The Poll System Website [Webpage]">
+                    Poll System [Webpage]
+                </a></li>
+                <li><a href="https://www.sci.brooklyn.cuny.edu/~briskman/poll_system/tutorial" target="_blank" title = "Interactive Tutorial on the Poll System Website [Webpage]">
+                    Poll System: Tutorial [Webpage]
+                </a></li>
+            </ul>
+        </div>
+        <div id = 'xbio' class = 'contents'>
+            <h2>Position</h2>
+            <p>Full-Time Lecturer for <a target="_blank" href="https://www.brooklyn.edu/cis/" title = "Brooklyn College CISC Department Home Page">Computer and Information Science</a> at <a target="_blank" href="https://www.brooklyn.edu/" title = "Brooklyn College Website">CUNY Brooklyn College</a>.</p>
+            <h2>Faculty Profile Page</h2>
+            <ul>
+                <li><a target="_blank" href="https://www.brooklyn.edu/faculty-staff/miriam-briskman/" title = "Faculty Profile on the New Brooklyn College Website">https://<wbr>www.brooklyn.edu/<wbr>faculty-staff/miriam-briskman/</a></li>
+            </ul>
+            <h2>Education</h2>
+            <ul>
+                <li>Ph.D., <i>Computer Science</i>, <a target="_blank" href="https://www.gc.cuny.edu/computer-science" title = "Graduate Center's CS Department Home Page">CUNY Graduate Center</a>, Fall 2022 – Present.
+                <ul>
+                    <li>Student Profile: <a target="_blank" href="https://www.gc.cuny.edu/people/miriam-briskman" title = "Briskman, Miriam | CUNY Graduate Center">https://<wbr>www.gc.cuny.edu/<wbr>people/<wbr>miriam-briskman</a></li>
+                </ul>
+                </li>
+                <li>M.A., <i>Computer Science</i>, CUNY Brooklyn College, completed Jun 2022.</li>
+                <li>B.S., <i>Computer Science; Mathematics, Applied Mathematics Concentration; Computational Mathematics, Computational Concentration</i> (triple major), <i>Summa Cum Laude</i>, CUNY Brooklyn College, completed Jun 2020.</li>
+            </ul>
+            <h2>Professional Training</h2>
+            <ul>
+                <li><a target="_blank" href = "https://assessmentcouncilcuny.commons.gc.cuny.edu/?page_id=638">Assessment 101: CUNY's Online Assessment Course</a> Brightspace Course, November 2025.</li>
+                <li><a target="_blank" href = "https://employees.brooklyn.edu/base/cuny-cybersecurity-awareness-training/">Brooklyn College Cybersecurity Awareness Training FY25-26</a> Brightspace Course, September 2025.</li>
+                <li><a target="_blank" href = "https://employees.brooklyn.edu/base/cuny-cybersecurity-awareness-training/">Brooklyn College Cybersecurity Awareness Training FY24-25</a> Blackboard Course, November 2024.</li>
+                <li><a target="_blank" href = "https://employees.brooklyn.edu/base/cuny-cybersecurity-awareness-training/">Brooklyn College Cybersecurity Awareness Training FY23-24</a> Blackboard Course, November 2023.</li>
+                <li><a target="_blank" href = "https://transform.commons.gc.cuny.edu/2023/05/06/pedagogy-in-practice-intensive-at-brooklyn-college-tlh-ctl-project-recap/">Pedagogy in Practice</a> Conference and Practicum, The Roberta S. Matthews Center for Teaching &amp; Learning Center, Brooklyn College, June 2023.</li>
+                <li><a target="_blank" href = "https://www.cuny.edu/about/administration/offices/legal-affairs/policies-resources/ethics/upcoming-ethics-trainings/">Comprehensive Ethics Training Course</a>, delivered by Ethics Officer Sarah Luke, Esq., Office of Legal Affairs and Labor Relations, Brooklyn College, January 2023.</li>
+                <li><a target="_blank" href = "https://www.theremotesummit.org/">REMOTE - The Connected Faculty Summit</a> and Professional Development, Arizona State University, July 2022.</li>
+                <li><a target="_blank" href = "https://sps.cuny.edu/cuny-online-teaching-essentials">Online Teaching Essentials</a> Workshop,  School of Professional Studies, City University of New York, January 2021.</li>
+            </ul>
+            <h2>Professional Memberships</h2>
+            <ul>
+                <li><a target="_blank" href = "https://upe.acm.org/">Upsilon Pi Epsilon (ΥΠΕ)</a> Honor Society for the Computing Sciences, since 2020.</li>
+            </ul>
+        </div>
+        <div id = 'xcontact' class = 'contents'>
+            <table>
+                <tr>
+			<th>Email</th>
+			<td><a href="mailto:miriam.briskman@brooklyn.cuny.edu" title = "Email">miriam.<wbr>briskman@<wbr>brooklyn<wbr>.cuny.edu</a></td>
+		</tr>
+		<tr>
+			<th>Response Time</th>
+			<td>Within 24 &ndash; 48 hours, between 12 PM to 9:30 PM</td>
+		</tr>
+                <tr>
+                        <th>Office Location</th>
+                        <td>Ingersoll Hall, room 2112b (<a target="_blank" href="https://www.brooklyn.cuny.edu/web/abo_misc/CampusMap.pdf" title = "Brooklyn College Campus Map [PDF]">Brooklyn College Campus</a>)</td>
+                </tr>
+                <tr>
+                        <th>Office Phone</th>
+                        <td><a href = "tel:718-951-5000;2046" title = "Office Phone">(718) 951-5000, extension 2046</a></td>
+                </tr>
+		<tr>
+			<th>Office Hours</th>
+			<td>Wednesdays, 07:30 PM &ndash; 09:30 PM, online (Zoom)</td>
+		</tr>
+            </table>
+            <h2>Notes</h2>
+            <ul>
+               <li>Email is the best and fastest way to reach me.</li>
+               <li>My previous email address, <tt>briskman<wbr>@sci<wbr>.brooklyn<wbr>.cuny<wbr>.edu</tt>, no longer receives emails due to a recent change by the Brooklyn College ITS. Please send all emails to <tt>miriam.briskman<wbr>@brooklyn<wbr>.cuny<wbr>.edu</tt>.</li>
+               <li>If I am not at my office while you are calling, please contact the Computer and Information Science Department's main office at <a href = "tel:718-951-5657" title = "CISC Main Office Phone">(718) 951-5657</a> during regular office hours and ask to leave a message.</li>
+               <li>For students taking my classes:
+                   <ul>
+                       <li>All office hours are optional.</li>
+                       <li>You are welcome to visit any of the sessions held this semester as wanted.</li>
+                       <li>You can find the link to the office hours sessions on Brightspace (CUNY's Learning Management System, created by D2L.)</li>
+                   </ul>
+               </li>
+               <li>All the office hours this semester are held <u>online</u>.
+                   <ul>
+                       <li>They will be delivered from home, so don't arrive at my office room at the hours specified above.</li>
+                   </ul>
+               </li>
+               <li>If you aren't taking classes with me this semester, or if you are a student but can't make it to the office hours above, please email me to schedule an alternative office hours session.
+                   <ul>
+                       <li>I will email you a link to a Zoom session that is set at a time convenient to you.</li>
+                       <li>Alternatively, if you prefer to speak with me in person, indicate so in your email. I'll be glad to schedule a meeting with you on any day I am on campus. The meeting's location will be at the CISC's department office at Ingersoll Hall, room 2109, at the time of your choice.</li>
+                   </ul>
+               </li>
+            </ul>
+        </div>
+        <div id = 'xfaq' class = 'contents'>
+            <div id = "searchBarDiv">
+                <input type="text" id="FAQSearchBar" onkeyup="FAQSearch()" placeholder="&#128269; Search for content..." title="Start typing some text for the search to begin."><button id="eraseSearch" title="Clear Search" onclick="eraseSearch(); FAQSearch()">&#10006;</button>
+            </div>
+            <ul id = "list-of-FAQ">
+                <li><b>Question: <i>I consider to registering for an in-person class you teach next semester, but my job shift(s) overlap with class time. Will I be excused from attending lectures?</i></b><br><br><b>Answer: </b><b>No &ndash; you won't be excused.</b> According to the class syllabus (of all in-person classes I teach, regardless of the class you plan on taking,) having a regular weekly or biweekly shift that overlaps with the lectures and prevents you from attending lectures <b>won't</b> excuse you from the lectures. That is, you will lose attendance and participation points, which together are worth at least 25% of the course grade. This means you will earn a C for the course in the best case.<br><b>Bottom line: </b>if you will be working at shifts that prevent you from regularly attending the lectures of the class, or if you consider applying for and landing a job that will prevent you from attending lectures, please take a different course.</li>
+                <li><b>Question: <i>I am interested in doing undergrad research, e.g., by taking <a href="https://websql.brooklyn.cuny.edu/courses/ShowCourse.do?dsc=CISC.&crs_num=5001&div=U" target="_blank" title="CISC 5001 Independent Study and Research I class of Brooklyn College">CISC 5001</a>, in an area of Computer Science that you are teaching &ndash; can you become my research/CISC 5001 supervisor?</i></b><br><br><b>Answer: </b>Due to being a lecturer at our CISC, and since research isn't one of the academic obligations of a Lecturer, unfortunately, I don't conduct any research: I only teach. As such, I can't become your research supervisor.<br><b>My recommendation</b>: Please check out all of our faculty members whose titles include the word "Professor": each one of these faculty members is obligated by Brooklyn College to conduct research, and many indeed have active research projects. Contact such faculty first. If you contacted all the Professors you planned, and can't find anyone among them with a project that you'd like to work on, only then speak to the other faculty members: lecturers, adjuncts, etc. Although lecturers and adjuncts aren't required to do research, some of them work on personal or PhD-related research projects and will definitely benefit from an assistant's help. Here is the <a href="https://www.brooklyn.edu/faculty-staff/?department=Computer-and-Information-Science" target="_blank" title="Faculty and Staff of the CISC department">list of all of our CISC full-time faculty members</a>.</li>
+                <li><b>Question: <i>I am looking for a <a href="https://websql.brooklyn.cuny.edu/courses/ShowCourse.do?dsc=CISC.&crs_num=4900&div=U" target="_blank" title="CISC 4900 Independent and Group Projects class of Brooklyn College">CISC 4900</a> project supervisor. Could you supervise my project?</i></b><br><br><b>Answer: </b>Due to an intense teaching and PhD schedule, I am not available for supervising any 4900 projects, unfortunately, until further notice.</li>
+                <li><b>Question: <i>I am taking one of your classes this semester. Can I do an honors project for this class?</i></b><br><br><b>Answer: </b>Yes! Whether you have an idea of a project you'd like to do or are searching for ideas, I will be glad to assist you in completing an honors project for this course. Make sure to speak to me early on into the semester as soon as you know you'll be doing an honors project so that we decide what the project will be about and other relevant details.</li>
+                <li><b>Question: <i>Will exams in the course be open book?</i></b><br><br><b>Answer: </b>It depends on the course you are asking about. In some courses, the exam is computerized (is taken on a computer,) and students are allowed to use any paper and digital materials during the exam. In other classes, the exams are oral, and people are allowed to use any paper materials only (not digital materials.) A prep guide that explain what materials you are allowed and disallowed to use will be shared with the class shortly before each exam. In either case, students are <u>disallowed</u> to communicate with anyone during the exam, neither in-person nor digitally (calls, messaging, etc,) and will receive a 0 for their exam if they do.</li>
+                 <li><b>Question: <i>What courses/sections are you teaching next semester? Will you be teaching a class that I am looking forward to taking?</i></b><br><br><b>Answer: </b> Check out <a href="https://globalsearch.cuny.edu/" target="_blank" title="CUNY Global Class Search">CUNY's Global Class Search Tool</a> to view which classes I am teaching next semester (if next semester's schedule was already posted.) To have the tool show only the sections that a specific instructor is teaching, enter the instructor's last name into the search form.</li>
+                 <li><b>Question: <i>I am trying to register for a class that you are teaching next semester, but the class is full. Could you, please, enroll me in your class?</i></b><br><br><b>Answer: </b>It could be great to have you in class! The issue is that if the section has no available seats, the CISC department does not allow overtallies for any courses, with no exceptions. As an instructor, I have no say in this case and can't add or ask the college to add students to my class, even if you are on the class's waitlist. I truly apologize for the inconvenience that this situation causes.</li>
+                  <li><b>Question: <i>I emailed you at your <tt>sci.brooklyn.cuny.edu</tt> email address, but didn't get a response from you. What should I do?</i></b><br><br><b>Answer: </b>I apologize for not receiving your previous message. Due to a technical issue at Brooklyn College's info-tech services (ITS), my <tt>sci.brooklyn.cuny.edu</tt> mailbox no longer receives emails since February 2025. Please resend your email message at <a href="mailto:miriam.briskman@brooklyn.cuny.edu" title = "Email">miriam.<wbr>briskman@<wbr>brooklyn<wbr>.cuny.edu</a>: I will respond to it as soon as possible.</li>
+                  <li><b>Question: <i>I didn't take the exam that took place yesterday. Will I be allowed to take a make-up exam on another day?</i></b><br><br><b>Answer: </b>If you spoke to me in-person or contacted me by email <u>at least 3 hours before the exam started</u> (unless, G-d forbid, in an unconscious state in a hospital &ndash; in that case, email me as soon as you gain consciousness and your doctor lets you,) <u>and</u> you have a documented, serious emergency reason for missing the exam (e.g., illness, major holiday, hospitalization, major life event of yours or a first-degree relative or grandparent/grandchild,) <u>and</u> you attach that supporting document to the email you sent, you are eligible for taking a make-up exam on a day convenient to you. I will reply to your email, letting you know whether the situation you are encountering is consider excused or not; in case it's not excused, you will need to arrive to take the exam with the rest of the class on the exam day. <br>Otherwise, if you contact me after 3 hours prior to the exam start time, such as during the exam or the next day, or miss the exam for a non-emergency reason, or if you can't provide a supporting document, you won't be allowed to take a make-up exam, with no exceptions, which means that the grade you will get for this exam is 0.</li>
+                 <li><b>Question: <i>I travel or go on a vacation, and will miss an exam. Will I be allowed to take a make-up exam on another day?</i></b><br><br><b>Answer: </b><b>No &ndash; you won't be allowed to take a make-up exam</b> in that case, since a vacation or trip isn't considered an emergency reason according to the syllabus, even if you purchased non-refundable flight, train, or cruise tickets. If you don't arrive on campus to take your in-person exam on the day of the exam, you will receive a grade of 0 for the exam.</li>
+                 <li><b>Question: <i>I plan on attending an educational or job-related conference and will miss an exam. Will I be allowed to take a make-up exam on another day?</i></b><br><br><b>Answer: </b><b>No &ndash; you won't be allowed to take a make-up exam</b> in that case, since attending a conference isn't considered an emergency reason according to the syllabus, even if you already purchased non-refundable conference tickets or tarvel tickets, or reserved a hotel room. If you don't arrive on campus to take your in-person exam on the day of the exam, you will receive a grade of 0 for the exam.</li>
+            </ul>
+            <span id="noSearchResults">&mdash; No results found &mdash;</span>
+            <br>
+        </div>
+    </div>
+
+    <div class = 'footer'>
+        <hr>
+
+        <p>&ndash; Miriam Briskman</p>
+        <p id="demo">Last modified on: <script>document.write(document.lastModified)</script></p>
+        <div class="copyright"><a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' style='border-width:0; height: 15pt; vertical-align: middle;opacity: 1;' src='./static/images/by-nc.svg' /></a><span style='vertical-align: middle;'> This webpage by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> is licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a>.</span></div>
+    </div>
+  </body>
+</html>

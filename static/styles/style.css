@@ -1,0 +1,262 @@
+body
+{ 
+    font-family: Arial, sans-serif;
+    line-height: 150%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    letter-spacing: 0.8pt;
+}
+img
+{
+    opacity: 0.5;
+}
+h1
+{
+    font-size: 1.5em;
+}
+h2
+{
+    font-size: 1em;
+}
+hr
+{
+    margin-top: 0;
+    border-bottom: 0;
+}
+.tabs
+{
+    /*max-width: 100vw !important;*/
+    max-width: fit-content !important;
+    overflow-x: auto;
+    display: flex;
+    white-space: nowrap;
+    position: sticky;
+    top: -1px;
+}
+.tabs.is-pinned
+{
+    background-color: gray;
+    border-top: 1pt solid;
+}
+.tab
+{
+    font-size: 1.17em;
+    font-weight: bold;
+    display: inline;
+    padding: 2pt;
+    cursor: pointer;
+    -webkit-transition: color 0.33s linear;
+    transition: color 0.33s linear;
+    margin: 0;
+    margin-left: 7pt;
+}
+.tabs > p:first-child
+{
+    margin-left: 0;
+}
+.contents
+{
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: opacity 0.33s linear, visibility 0.33s linear;
+    transition: opacity 0.33s linear, visibility 0.33s linear;
+    grid-area: inner-div;
+    width: 100%;
+    display: none;
+}
+.content
+{
+    display: grid;
+    place-items: start;
+    grid-template-areas: "inner-div";
+}
+a
+{
+    text-decoration: none;
+    -webkit-transition: all 0.5s; /* Safari */
+    transition: all 0.5s;
+}
+a:hover, a:focus
+{
+    -webkit-transition: all 0.5s; /* Safari */
+    transition: all 0.5s;
+}
+.copyright
+{
+    width: 100%;
+    font-size: 14pt;
+    text-align: center;
+}
+.copyright a
+{
+    font-weight: normal;
+    line-height: initial;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.copyright a:hover
+{
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+th, td
+{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+th
+{
+    font-weight: normal;
+    white-space: nowrap;
+    overflow: hidden;
+}
+td
+{
+    padding-left: 2vw;
+}
+table, th, td
+{
+    border-collapse: collapse;
+}
+table
+{
+    margin-top: 1em;
+    width: 100%;
+}
+.switch-container
+{
+    position: absolute;
+    display: flex;
+    top: min(1.5vh, 1.5vw);
+    right: min(1.5vh, 1.5vw);
+    border: 2px dashed transparent;
+    align-items: center;
+}
+.switch
+{
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+.switch input
+{
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider
+{
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #850041;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+}
+.slider:before
+{
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #d7d102;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+input:checked + .slider
+{
+    background-color: rgb(235, 222, 86);
+}
+input:checked + .slider:before
+{
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+    background-color: #717171;
+}
+
+#searchBarDiv
+{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 60pt;
+}
+
+#FAQSearchBar
+{
+  background-color: transparent;
+  width: 100%;
+  font-size: 14pt;
+  padding: 8pt 10pt 8pt 10pt;
+  border: 1pt solid;
+  margin-top: 10pt;
+  margin-bottom: 10pt;
+  vertical-align: middle;
+  letter-spacing: 0.8pt;
+}
+
+#list-of-FAQ
+{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14pt;
+  border-bottom: 0;
+}
+
+#list-of-FAQ li
+{
+  border: 1pt solid;
+  margin-top: -1pt;
+  margin-left: 0;
+  padding: 10pt;
+  display: block;
+}
+
+#noSearchResults
+{
+  display: none; 
+  text-align: center; 
+  font-size: 16pt; 
+  margin-bottom: -10pt;
+}
+
+#eraseSearch
+{
+  background-color: transparent;
+  font-size: 14pt;
+  padding: 7pt 10pt 7pt 10pt;
+  border: 1pt solid black;
+  margin-top: 10pt;
+  margin-bottom: 10pt;
+  color: red;
+  cursor: pointer;
+  vertical-align: middle;
+  margin-left: -1pt;
+  -webkit-transition: all 0.5s; /* Safari */
+  transition: all 0.5s;
+}
+
+#eraseSearch:hover
+{
+  background-color: lightgray;
+  -webkit-transition: all 0.5s; /* Safari */
+  transition: all 0.5s;
+}
+
+#eraseSearch:active
+{
+  background-color: darkgray;
+  -webkit-transition: all 0.5s; /* Safari */
+  transition: all 0.5s;
+}

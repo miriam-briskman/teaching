@@ -1,0 +1,62 @@
+    body
+    {
+        background-image: url('../images/bc_night.jpg');
+        background-color: rgb(32, 32, 32);
+        background-blend-mode: overlay;
+        color: white;
+    }
+    h1, h2, h3
+    {
+        color: rgb(235, 222, 86);
+    }
+    /*.tabs.is-pinned
+    {
+        background-color: #10162a;
+    }*/
+    .tab
+    {
+        color: rgb(235, 222, 86);
+        border: 1pt solid white;
+    }
+    .tab:hover, .tab:active
+    {
+        color: white;
+    }
+    a
+    {
+        color: rgb(235, 222, 86);
+    }
+    a:hover, a:focus
+    {
+        color: white;
+    }
+    .copyright a
+    {
+        color: rgb(235, 222, 86);
+    }
+    .copyright a:hover
+    {
+        color: white;
+    }
+    table, th, td
+    {
+        border: 1pt solid white;
+    }
+    hr
+    {
+        border-top: 1pt solid white;
+    }
+    #FAQSearchBar
+    {
+        border-color: white !important;
+        color: white !important;
+    }
+    #eraseSearch
+    {
+        border-color: white !important;
+    }
+    ::placeholder
+    {
+       color: #dbdbdb;
+       opacity: 1;
+    }

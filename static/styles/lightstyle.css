@@ -1,0 +1,57 @@
+    body
+    {
+        background-image: url('../images/bc_day.jpg');
+        background-color: rgba(255,255,255,0.7);
+        background-blend-mode: lighten;
+        color: black;
+    }
+    h1, h2, h3
+    {
+        color: rgb(133, 0, 65);
+    }
+    /*.tabs.is-pinned
+    {
+        background-color: #f4f9fe;
+    }*/
+    .tab
+    {
+        color: rgb(133, 0, 65);
+        border: 1pt solid black;
+    }
+    .tab:hover, .tab:active
+    {
+        color: black;
+    }
+    a
+    {
+        color: rgb(133, 0, 65);
+    }
+    a:hover, a:focus
+    {
+        color: black;
+    }
+    .copyright a
+    {
+        color: rgb(133, 0, 65);
+    }
+    .copyright a:hover
+    {
+        color: black;
+    }
+    table, th, td
+    {
+        border: 1pt solid black;
+    }
+    hr
+    {
+        border-top: 1pt solid black;
+    }
+    #FAQSearchBar, #eraseSearch
+    {
+        border-color: black;
+    }
+    ::placeholder
+    {
+       color: #242424;
+       opacity: 1;
+    }
