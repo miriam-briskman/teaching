@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Thread Libraries available on various OS systems">
+      <title>Threads: Lecture Notes | CISC 3320</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Thread Libraries</h3>
+
+        <p>With the help of thread libraries, programmers can implement multi-threading in their programs. Libraries could be either user space (C++, Java, etc.) or kernel space (system calls.)</p>
+
+        <p style = "margin-bottom:2pt;">The three most popular thread libraries are:</p>
+        <ol style = "margin-top:2pt;">
+            <li><a target='_blank' title = "POSIX Pthreads - Linux Manual Pages" href="https://man7.org/linux/man-pages/man7/pthreads.7.html">POSIX Pthreads</a> – A Linux (user or kernel) library that is provided as an extension to the POSIX standard.</li>
+            <li><a target='_blank' title = "Multiple Threads - microsoft.com" 
+href="https://learn.microsoft.com/en-us/windows/win32/procthread/multiple-threads">Win32 threads</a> – provided as a kernel-level library on Windows systems.</li>
+            <li><a target='_blank' title = "Oracle Article: 'Defining and Starting a Thread'" 
+href="https://docs.oracle.com/javase/tutorial/essential/concurrency/runthread.html">Java threads</a> – since the execution of Java programs depends on the OS on which the JVM is running, the underlying library will be either POSIX Pthreads or Win32 threads.</li>
+        </ol>
+
+        <p>Here are links to screenshots with sample C programs that use the <a target='_blank' title = "A C program using the POSIX Pthreads library" href="https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter4/4_09_PThreadsAPI.jpg">POSIX Pthreads library</a> and the <a target='_blank' title = "A C program using the Win32 threads library" href="https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter4/4_10_Win32API.jpg">Win32 threads library</a>.</p>
+
+        <p>In the next slides, we describe and illustrate how a Java threads example works.</p>
+
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

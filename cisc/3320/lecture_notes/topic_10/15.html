@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Handling Deadlocks: Avoidance Example">
+      <title>Deadlock: Lecture Notes | CISC 3320</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small' style = "font-size: calc(1vh + 1vw);"><div>
+        <h3>Handling Deadlocks: Avoidance</h3>
+
+        <p>Consider the following state with 3 processes and 12 disks. We avoid deadlock by following the steps below the table:</p>
+        <center>
+        <table width="800" border="1" cellspacing="1" cellpadding="1">
+      <tr>
+        <th scope="col">Process</th>
+        <th scope="col">Maximum Needed:</th>
+        <th scope="col">Currently Allocated:</th>
+        <th scope="col">Available:</th>
+      </tr>
+      <tr>
+        <td><div align="center"><tt><i>P</i><sub>0</sub></tt></div></td>
+        <td><div align="center">10</div></td>
+        <td><div align="center">5</div></td>
+        <td style = "border: none;"><div align="center">3</div></td>
+      </tr>
+      <tr>
+        <td><div align="center"><tt><i>P</i><sub>1</sub></tt></div></td>
+        <td><div align="center">4</div></td>
+        <td><div align="center">2</div></td>
+      </tr>
+      <tr>
+        <td><div align="center"><tt><i>P</i><sub>2</sub></tt></div></td>
+        <td><div align="center">9</div></td>
+        <td><div align="center">2</div></td>
+      </tr>
+    </table>
+        </center> 
+        <ol>
+            <li>Process <tt><i>P</i><sub>1</sub></tt> needs to access a total of 4 disks, 2 of which it already accesses. Since there are 3 available disks, we can safely let <tt><i>P</i><sub>1</sub></tt> access 2 more disks. After <tt><i>P</i><sub>1</sub></tt> finishes accessing all 4 disks, there will be 2 + 2 + 1 = 5 available disks.</li>
+            <li>Next, notice that process <tt><i>P</i><sub>0</sub></tt> needs to access a total of 10 disks, 5 of which it already accesses. Since there are now 5 available disks, we can safely let <tt><i>P</i><sub>0</sub></tt> access these 5 available disks. After <tt><i>P</i><sub>0</sub></tt> finishes accessing all 10 disks, there will be 10 available disks.</li>
+            <li>Finally, process <tt><i>P</i><sub>2</sub></tt> needs to access a total of 9 disks, 2 of which it already accesses. Since there are now 10 available disks, we can safely let <tt><i>P</i><sub>2</sub></tt> access 7 of the available disks. After <tt><i>P</i><sub>2</sub></tt> finishes accessing all 9 disks, there will be 12 available disks, so we avoid deadlocks!</li>
+        </ol>
+
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

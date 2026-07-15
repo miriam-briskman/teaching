@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Polling I/O: A typical output communication cycle (handshake) between an output device and the operating system">
+      <title>I/O and Interrupts: Lecture Notes | CISC 3320</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>I/O Handling Methods</h3>
+        <p><b>How does the CPU get notified of an I/O event?</b></p>
+        <ol>
+            <li>An OS is said to implement <b>Polling I/O</b> when the CPU continuously polls (= checks) whether an I/O device is ready to transfer data. Two main bits are involved in this procedure: the <b><TT>busy</TT> bit</b> in the <TT>status</TT> register, and the <b><TT>command-ready</TT> bit</b> in the <TT>control</TT> register. A typical output communication cycle (handshake) goes as follows:
+            <ol type = "a">
+                <li>The CPU keeps looking into the <TT>busy</TT> bit until it turns to 0 (1 means busy and 0 means not busy anymore.)</li>
+                <li>The CPU changes the <TT>write</TT> bit in the <TT>control</TT> register to 1, and writes the data to the <TT>data-out</TT> register.</li>
+                <li>The CPU also changes the <TT>command-ready</TT> bit to 1 to indicate that it finished preparing data for the device.</li>
+                <li>The device controller notices that <TT>write</TT> is on, so it reads the <TT>data-out</TT> register and performs the I/O action with the device (e.g., if the device is the screen, data is printed to the screen.)</li>
+                <li>Finally, the controller puts 0 in the <TT>command-ready</TT> bit, puts 0 in the <TT>error</TT> bit to indicate that no errors happened, and puts 0 in the <TT>busy</TT> bit to indicate that the device is ready for new commands from the CPU.</li>
+            </ol>
+            </li>
+        </ol>
+               
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

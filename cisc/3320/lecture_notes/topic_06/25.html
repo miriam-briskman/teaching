@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Scheduling Algorithms: Round-Robin Scheduling: Example">
+      <title>CPU Scheduling: Lecture Notes | CISC 3320</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Scheduling Algorithms</h3>
+        <p style="margin-bottom:2vh;"><u>Example</u>: Suppose that 3 processes, <tt><i>P</i><sub>1</sub></tt>, <tt><i>P</i><sub>2</sub></tt>, and <tt><i>P</i><sub>3</sub></tt>, arrive at the ready queue:</p>
+        <center>
+        <table width="400" border="1" cellspacing="1" cellpadding="1">
+      <tr>
+        <th scope="col">Process</th>
+        <th scope="col">Burst Time (in milliseconds)</th>
+      </tr>
+      <tr>
+        <td><div align="center" style="line-height: 100%;"><tt><i>P</i><sub>1</sub></tt></div></td>
+        <td><div align="center">24</div></td>
+      </tr>
+      <tr>
+        <td><div align="center" style="line-height: 100%;"><tt><i>P</i><sub>2</sub></tt></div></td>
+        <td><div align="center">3</div></td>
+      </tr>
+      <tr>
+        <td><div align="center" style="line-height: 100%;"><tt><i>P</i><sub>3</sub></tt></div></td>
+        <td><div align="center">3</div></td>
+      </tr>
+    </table>
+        </center>
+        <p style="margin-top:2vh; margin-bottom:2vh;">If we set the time slice to be 4 ms, the processes will run in the order below:</p>
+        <div class = "imagecontainer">
+          <a href = "https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter6/6_RoundRobinChart.jpg" target='_blank'><img src="6_RoundRobinChart.jpg" title = "The schedule of the 3 processes under RR." alt="The schedule of the 3 processes under RR." style = "width: 55vw; z-index: 1000;"></a>
+          <p class = "caption" style = "width: 65vw; z-index: 1000;">The schedule of the 3 processes under RR. Taken from <a href = "https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/6_CPU_Scheduling.html" title = "CPU Scheduling" target='_blank'>Bell, John T. "CPU Scheduling." University of Illinois, Chicago</a>.</p>
+        </div> 
+
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

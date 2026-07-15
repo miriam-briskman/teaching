@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="List of hardware components that some computers have: external storage/drives.">
+      <title>Overview of Operating Systems: Lecture Notes | CISC 3320</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides'><div>
+        <h3>Hardware</h3>
+        <ol start="2">
+            <li>
+            <ol type="i" start="3">
+                <li>Given that both hard disk drives and solid-state drives are situated inside the computer, we could also resort to <b>external storage</b> devices, such as portable hard disk or solid-state drives, or such transportable plug-and-play devices as a <b>USB flash drive</b> and an <b>optical disc</b> (CD, DVD, Blu-ray, etc.)</li>
+            </ol>
+            </li>
+        </ol>
+            <div class = "images">
+                <div class = "imagecontainer">
+                    <a href="https://upload.wikimedia.org/wikipedia/commons/4/42/Portable_Hard_Disk_1TB_Western_Digital.jpg" target = "_blank"><img src="./Portable_Hard_Disk_1TB_Western_Digital.jpg" title = "External Hard Drive" alt="A red, rectangular External Hard Drive connected to a black cable." style = "height: 12vh; width: fit-content;"></a>
+                    <p class = "caption">External Hard Drive. <a href="https://commons.wikimedia.org/wiki/File:Portable_Hard_Disk_1TB_Western_Digital.jpg" target = "_blank" title = "File:Portable Hard Disk 1TB Western Digital.jpg on Wikimedia Commons">Harke</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0" target = "_blank" title = "Creative Commons BY-SA 3.0 License: Attribution-ShareAlike 3.0 Unported">CC BY-SA 3.0</a>, via Wikimedia Commons.</p>
+                </div>
+                <div class = "imagecontainer">
+                    <a href = "https://upload.wikimedia.org/wikipedia/commons/1/17/SanDisk-Cruzer-USB-4GB-ThumbDrive.jpg" target = "_blank"><img src="./SanDisk-Cruzer-USB-4GB-ThumbDrive.jpg" title = "USB Flash Drive" alt="A thin, rectangular USB Flash Drive stick" style = "height: 12vh; width: fit-content;"></a>
+                    <p class = "caption">USB Flash Drive. <a href="https://commons.wikimedia.org/wiki/File:SanDisk-Cruzer-USB-4GB-ThumbDrive.jpg" target = "_blank" title = "File:SanDisk-Cruzer-USB-4GB-ThumbDrive.jpg on Wikimedia Commons">Evan-Amos</a>, Public domain, via Wikimedia Commons.</p>
+                </div>
+                <div class = "imagecontainer">
+                    <a href = "https://upload.wikimedia.org/wikipedia/commons/d/db/OD_Compact_disc.svg" target = "_blank"><img src="OD_Compact_disc.svg" title = "Optical Compact Disk (CD)" alt="A flat, circular, shiny, donut-shaped Optical Compact Disk (CD)" style = "height: 12vh; width: fit-content;"></a>
+                    <p class = "caption" style = "width: 30vw;">Optical Compact Disk (CD). <a href="https://commons.wikimedia.org/wiki/File:OD_Compact_disc.svg" target = "_blank" title = "File:OD Compact disc.svg on Wikimedia Commons">Original uploader: Sakurambo</a>, <a href="https://creativecommons.org/licenses/by-sa/2.5" target = "_blank" title = "Creative Commons BY-SA 2.5 License: Attribution-ShareAlike 2.5 Generic">CC BY-SA 2.5</a>, via Wikimedia Commons.</p>
+                </div>
+            </div>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

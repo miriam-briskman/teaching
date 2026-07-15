@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Details about how the pseudocode Peterson's Solution">
+      <title>Process Coordination & Semaphores: Lecture Notes | CISC 3320</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small' style = "font-size: calc(1.05vh + 1.05vw);"><div>
+        <h3>Peterson's Solution</h3>
+        <p>In the above pseudocode, process <tt><i>i</i></tt> wants to enter their critical section (<tt>flag[<i>i</i>] = TRUE</tt>), but first lets process <tt><i>j</i></tt> enter their critical section if its wants to (<tt>turn = <i>j</i></tt>). After process <tt><i>j</i></tt> executes the code if wanted (<tt>while (flag[<i>j</i>] &amp;&amp; turn = <i>j</i>);</tt>), process <tt><i>i</i></tt> is finally allowed to enter their critical section. Once process <tt><i>i</i></tt> completes the execution inside the critical section, it lowers the flag (<tt>flag[<i>i</i>] = FALSE</tt>).</p>
+        <p style="margin-bottom: 1vh;">To prove that the solution is correct, we must examine the three conditions listed previously:</p>
+        <ol style="margin-top: 1vh;">
+            <li><b>Mutual Exclusion</b>: If one process is executing their critical section when the other wishes to do so, the second process will become blocked by the <tt>flag</tt> of the first process. If both processes attempt to enter at the same time, the last process to execute <tt>turn = <i>j</i></tt> will be blocked. So, this condition holds.</li>
+            <li><b>Progress</b>: The shared variable <tt>turn</tt> assures that only one process at a time can be blocked, and the <tt>flag</tt> variable allows one process to release the other when exiting their critical section. Since one of the processes will continue executing, there is progress and this condition holds.</li>
+            <li><b>Bounded Waiting</b>: As each process enters their entry section, they set the <tt>turn</tt> variable to be the other processes turn. Since no process ever sets it back to their own turn, this ensures that each process will have to let the other process go first <i>at most one time</i> before it becomes their turn again, so this condition holds.</li>
+        </ol>
+
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

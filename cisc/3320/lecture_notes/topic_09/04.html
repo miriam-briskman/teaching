@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Producer and Consumer programs example">
+      <title>Process Coordination & Semaphores: Lecture Notes | CISC 3320</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Process Coordination & Semaphores</h3>
+
+        <p>Background: consider the following <b>Producer</b> and <b>Consumer</b> programs, which share access to the <tt>buffer</tt> array:</p>
+        <div class = 'images normal-size' style = "font-size: calc(0.8vh + 0.8vw);">
+        <div>
+        <tt>
+        item nextProduced;
+<br style = 'display: block; content: ""; margin-top: 3vh;'>
+while( true ) {
+<br style = 'display: block; content: ""; margin-top: 0vh;'>
+&nbsp;&nbsp;&nbsp;&nbsp;/* Produce an item and store it in nextProduced */<br style = 'display: block; content: ""; margin-top: 0vh;'>
+&nbsp;&nbsp;&nbsp;&nbsp;nextProduced = makeNewItem( . . . );<br style = 'display: block; content: ""; margin-top: 3vh;'>
+
+&nbsp;&nbsp;&nbsp;&nbsp;/* Wait for space to become available */<br style = 'display: block; content: ""; margin-top: 0vh;'>
+&nbsp;&nbsp;&nbsp;&nbsp;while( ( ( in + 1 ) % BUFFER_SIZE ) == out )<br style = 'display: block; content: ""; margin-top: 0vh;'>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      ; /* Do nothing */<br style = 'display: block; content: ""; margin-top: 3vh;'>
+
+&nbsp;&nbsp;&nbsp;&nbsp;/* And then store the item and repeat the loop. */<br style = 'display: block; content: ""; margin-top: 0vh;'>
+&nbsp;&nbsp;&nbsp;&nbsp;buffer[ in ] = nextProduced;<br style = 'display: block; content: ""; margin-top: 0vh;'>
+&nbsp;&nbsp;&nbsp;&nbsp;in = ( in + 1 ) % BUFFER_SIZE;<br style = 'display: block; content: ""; margin-top: 0vh;'>
+}
+        </tt>
+        </div>
+        <hr class = 'portrait-separator'>
+        <div>
+        <tt>
+item nextConsumed;<br style = 'display: block; content: ""; margin-top: 3vh;'>
+
+while( true ) {<br style = 'display: block; content: ""; margin-top: 0vh;'>
+
+&nbsp;&nbsp;&nbsp;&nbsp;/* Wait for an item to become available */<br style = 'display: block; content: ""; margin-top: 0vh;'>
+&nbsp;&nbsp;&nbsp;&nbsp;while( in == out )<br style = 'display: block; content: ""; margin-top: 0vh;'>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      ; /* Do nothing */<br style = 'display: block; content: ""; margin-top: 3vh;'>
+
+&nbsp;&nbsp;&nbsp;&nbsp;/* Get the next available item */<br style = 'display: block; content: ""; margin-top: 0vh;'>
+&nbsp;&nbsp;&nbsp;&nbsp;nextConsumed = buffer[ out ];<br style = 'display: block; content: ""; margin-top: 0vh;'>
+&nbsp;&nbsp;&nbsp;&nbsp;out = ( out + 1 ) % BUFFER_SIZE;<br style = 'display: block; content: ""; margin-top: 3vh;'>
+
+&nbsp;&nbsp;&nbsp;&nbsp;/* Consume the item in nextConsumed<br style = 'display: block; content: ""; margin-top: 0vh;'>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     ( Do something with it ) */<br style = 'display: block; content: ""; margin-top: 0vh;'>
+}
+        </tt>
+        </div>
+        </div>
+
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="File Mounting and Paths: cont'">
+      <title>File Management: Lecture Notes | CISC 3320</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>File Mounting and Paths</h3>
+
+        <p>A <b>path</b> to a file or directory is a sequence of directories separated by a <tt>/</tt> symbol (in UNIX/Linux/Mac) or a <tt>\</tt> symbol (in Windows) that tells where the files resides inside a file system.</p>
+        <p>An <b>absolute path</b> is one that starts with the root directory "<tt>/</tt>" (in UNIX/Linux/Mac) or "<tt>C:\</tt>"  (in Windows). Examples: "<tt>/home/seth/Pictures/penguin.jpg</tt>" or "<tt>C:\Users\Staff\Music</tt>".</p>
+        <p>A <b>relative path</b> is one that starts with the current directory, usually with the symbols <tt>.</tt> (current directory) or <tt>..</tt> (parent directory). Examples: "<tt>../CISC3320/diagram.jpg</tt>" (access <tt>diagram.jpg</tt>, which reside in the 'sibiling' directory to the current one) or "<tt>../.././</tt>" (access the 'grandparent' directory ("<tt>../../</tt>") and stay there ("<tt>./</tt>")).</p>
+        <p>There exist <i>infinitely many</i> absolute and relative paths to any directory or file. Here is how: if the name of some directory inside the path is, say, <tt>Music</tt>, you can add infinitely many of the following 'back and forth' subsequences into the path: "<tt>Music/../Music/ ... /../Music/</tt>" &#128513;. However, each file's <b>shortest absolute path</b> is one and unique.</p>
+            
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

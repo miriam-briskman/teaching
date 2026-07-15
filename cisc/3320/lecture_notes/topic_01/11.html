@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Examples of programs included in application software.">
+      <title>Overview of Operating Systems: Lecture Notes | CISC 3320</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides'><div>
+        <h3>Software Types</h3>
+        <p>Examples of programs included in <b>application software</b>:</p> 
+        <ul>
+          <li><b>Office productivity apps</b>: <a href = 'https://www.microsoft.com/en-us/microsoft-365/microsoft-office' title = "Microsoft 365: Homepage" target='_blank'>Microsoft Office</a>, <a href = 'https://www.libreoffice.org/' title = "LibreOffice: Homepage" target='_blank'>LibreOffice</a>, <a href = 'https://workspace.google.com/' title = "Google Workspace: Homepage" target='_blank'>Google's G Suite</a>, etc.
+          <li><b>Gaming apps</b>: <a href = 'https://www.minecraft.net/en-us' title = "Minecraft: Homepage (minecraft.net)" target='_blank'>Minecraft</a>, <a href = 'https://www.1001games.com/goldminer' title = "Various versions of the Gold Miner game on www.1001games.com" target='_blank'>Gold Miner</a>, <a href = 'https://spacing.ca/toronto/2014/08/13/meet-bertie-brain-worlds-first-arcade-game-built-toronto/' title = "Article on spacing.ca about the history of the game 'Bertie the Brain'" target='_blank'>Bertie the Brain</a>, etc.
+          <li><b>Music apps</b>: <a href = 'https://www.spotify.com/us/download/' title = "Spotify's download page" target='_blank'>Spotify</a>, <a href = 'https://www.pandora.com/desktop' title = "Pandora's download page" target='_blank'>Pandora</a>, <a href = 'https://music.youtube.com/youtube_premium' title = "YouTube Premium's registration page" target='_blank'>YouTube Music</a>, etc.</li>
+          <li><b>Video conference apps</b>: <a href = 'https://zoom.us/' title = "Zoom: Homepage" target='_blank'>Zoom</a>, <a href = 'https://www.skype.com/en/' title = "Skype: Homepage" target='_blank'>Skype</a>, <a href = 'https://www.class.com/collaborate/' title = "Class Collaborate: Homepage" target='_blank'>Class Collaborate</a>, <a href = 'https://www.microsoft.com/en-us/microsoft-teams/group-chat-software' title = "Microsoft Teams: Homepage" target='_blank'>Microsoft Teams</a>, etc.</li>
+          <li><b>Emails transfer apps</b>: <a href = 'https://support.google.com/mail/answer/56256?hl=en' title = "How to Create a Gmail account: Gmail Support Page" target='_blank'>Gmail</a>, <a href = 'https://mail.yahoo.com/' title = "Yahoo! Mail: Homepage" target='_blank'>Yahoo! Mail</a>, <a href = 'https://www.thunderbird.net/en-US/' title = "Thunderbird: Homepage" target='_blank'>Thunderbird</a>, <a href = 'https://www.microsoft.com/en-us/microsoft-365/outlook/email-and-calendar-software-microsoft-outlook' title = "Microsoft Outlook: Homepage" target='_blank'>Microsoft Outlook</a>, etc.</li>
+        </ul>
+
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

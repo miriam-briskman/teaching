@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Scheduling Algorithms: Preemptive Shortest-Job-First: Calculating the average waiting time">
+      <title>CPU Scheduling: Lecture Notes | CISC 3320</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Scheduling Algorithms</h3>
+        <p style="margin-bottom:1.5vh; line-height: 100%;">In the diagram above, process <tt><i>P</i><sub>1</sub></tt>, which arrives first, will start running on the CPU. At millisecond 1, when process <tt><i>P</i><sub>2</sub></tt> with a shorter burst time arrives, the Scheduler will forcefully remove <tt><i>P</i><sub>1</sub></tt> from the CPU and let <tt><i>P</i><sub>2</sub></tt> run instead. Since the next arriving processes, <tt><i>P</i><sub>3</sub></tt> and <tt><i>P</i><sub>4</sub></tt>, have longer burst times than this of <tt><i>P</i><sub>2</sub></tt>, the Scheduler won't remove <tt><i>P</i><sub>2</sub></tt> from the CPU. After <tt><i>P</i><sub>2</sub></tt> finishes running, the Scheduler will run the remaining processes as follows: <tt><i>P</i><sub>4</sub></tt> (since its burst time is 5 ms,) then <tt><i>P</i><sub>1</sub></tt> (since its remaining burst time is 8 - 1 = 7 ms,) and finally <tt><i>P</i><sub>3</sub></tt> (since its burst time is the longest: 9 ms.)</p>
+        <p style="margin-top: 1.5vh; margin-bottom:1.5vh;">Because the preemptive version of the SJF algorithm relies on the remaining burst time, we often call this algorithm the <b>shortest remaining time first (SRTF) scheduling</b>.</p>
+        <p style="margin-top: 1.5vh; margin-bottom:1.5vh;">Finally, the average waiting time in this schedule is ((0 - 0) + (10 - 1) + (1 - 1) + (17 - 2) + (5 - 3)) / 4 = 26 / 4 = 6.5 ms. The reason we do subtraction inside the parentheses is that we subtract the arrival times from the wait times. If we use the cooperative version of SJF, the average waiting time would be 7.75 ms, and for FCFS it would be 8.75 ms.</p>
+        <p style="margin-top: 1.5vh;">The average resopnse time is ((0 - 0) + (1 - 1) + (5 - 3) + (17 - 2)) / 4 = 4.25 ms.</p>
+
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

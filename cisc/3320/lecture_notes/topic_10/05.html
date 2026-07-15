@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Four conditions that are necessary for a deadlock to exist">
+      <title>Deadlock: Lecture Notes | CISC 3320</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Deadlock</h3>
+
+        <p>There are four conditions that are necessary for a deadlock to exist. If even one of these conditions isn't true, there is no deadlock:</p>
+        <ol>
+            <li><b>Mutual Exclusion</b>: At least one resource is held in a non-sharable mode by some process/thread. If any other process requests this resource, then this 2nd process must wait for the resource to be released by the holder.</li>
+            <li><b>Hold and Wait</b>: A process must be simultaneously holding at least one resource and waiting for at least one resource that is currently being held by some other process.</li>
+            <li><b>No preemption</b>: Once a process is holding a resource (i.e. once its request has been granted), that resource cannot be taken away from that process until the process voluntarily releases it. In other words, the OS won't forcefully take a resource held by any process from it.</li>
+            <li><b>Circular Wait</b>: There exists a group of processes that are waiting for each other's resources. Mathematically, the group of processes is <tt>{<i>P</i><sub>0</sub>, <i>P</i><sub>1</sub>, <i>P</i><sub>2</sub>, ..., <i>P</i><sub><i>N</i></sub>}</tt>, and each process <tt><i>P</i><sub><i>i</i></sub></tt> is waiting for the resource that <tt><i>P</i><sub><i>i</i>+1</sub></tt> holds. (Note: Circular Wait implies that Hold and Wait is true, but it is easier to consider the four conditions separately.)</li>
+        </ol>
+
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>
