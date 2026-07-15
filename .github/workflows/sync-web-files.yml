@@ -1,0 +1,46 @@
+name: Hourly Website Sync
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  scrape-and-update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download Website Assets Recursively
+        run: |
+          # Dynamically assemble the URL to prevent interface formatting bugs
+          DOMAIN="www.sci.brooklyn.cuny.edu"
+          USER_PATH="~briskman"
+          FULL_TARGET="https://${DOMAIN}/${USER_PATH}"
+
+          # 1. Download root file
+          wget -N -nH --cut-dirs=1 "${FULL_TARGET}/index.html"
+
+          # 2. Download folders recursively
+          wget -r -N -nH --cut-dirs=1 --no-parent "${FULL_TARGET}/cisc/"
+          wget -r -N -nH --cut-dirs=1 --no-parent "${FULL_TARGET}/guides/"
+          wget -r -N -nH --cut-dirs=1 --no-parent "${FULL_TARGET}/static/"
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@://github.com"
+          
+          if [ -n "$(git status --porcelain)" ]; then
+            git add .
+            git commit -m "Automated Sync: Updated static, cisc, guides, and index.html assets"
+            git push
+          else
+            echo "No changes found on the server. Skipping commit."
+          fi
