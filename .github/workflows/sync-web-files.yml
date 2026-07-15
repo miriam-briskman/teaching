@@ -32,6 +32,12 @@ jobs:
           wget -r -N -nH --cut-dirs=1 --no-parent "${FULL_TARGET}/guides/"
           wget -r -N -nH --cut-dirs=1 --no-parent "${FULL_TARGET}/static/"
 
+      - name: Fix Parent Directory Links for GitHub Pages
+        run: |
+          # Find all index.html files inside the folders
+          # If a line contains "Parent Directory" or "[PARENTDIR]", replace /~briskman/ with /teaching/
+          find cisc guides static -name "index.html" -type f -exec sed -i '/Parent Directory\|\[PARENTDIR\]/s|/~briskman/|/teaching/|g' {} +
+
       - name: Commit and Push Changes
         run: |
           git config --global user.name "github-actions[bot]"
