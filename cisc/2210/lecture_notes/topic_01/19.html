@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Intro to LaTeX">
+      <title>Discrete Structures: Overview: Lecture Notes | CISC 2210</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();hljs.initLineNumbersOnLoad();</script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Paragraph settings</h3>
+        <p>The following source code shows how to make paragraph-related changes:</p>
+        <pre class="source source-long" style = "height: 60vh;"><code class="language-latex">\documentclass{article}
+ 
+% Imported packages:
+\PassOptionsToPackage{hyphens}{url} % Special hyperref package option that breaks long links across several lines.
+\usepackage{hyperref} % For hyperlinks (e.g., \url{})
+ 
+%-----------------------------------------
+ 
+% Changing Document Settings:
+\setlength{\parskip}{10pt} % Set the space between paragraphs to 10pt.
+\setlength\parindent{0pt} % Eliminating paragraph indentation.
+\hypersetup{ % Change of hyperlink colors
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,      
+    urlcolor=blue,
+}
+ 
+\begin{document}
+ 
+This code example contains commands for changing paragraph-related settings.
+ 
+\textbf{Note}: For each of the below, there may be more than one way in \LaTeX\ to achieve the shown changes.
+ 
+\hrulefill
+ 
+To start text on a new line (that is, to begin a paragraph,) leave an empty line between the current and the previous paragraph:
+\begin{verbatim}
+This is the 1st paragraph
+
+This is the 2nd paragraph
+\end{verbatim}
+Result:
+
+This is the 1st paragraph
+
+This is the 2nd paragraph
+ 
+\hrulefill
+
+Note that
+\begin{verbatim}
+This is the 1st paragraph
+This is the 2nd paragraph
+\end{verbatim}
+results in:
+
+This is the 1st paragraph
+This is the 2nd paragraph
+
+\hrulefill
+
+A way to move text to the next line is to use the command
+\begin{verbatim}
+\\
+\end{verbatim}
+as in
+\begin{verbatim}
+This is the 1st paragraph\\This is the 2nd paragraph
+\end{verbatim}
+to get:
+
+This is the 1st paragraph\\This is the 2nd paragraph
+
+\hrulefill
+
+To move to a new page, use the command:
+
+\begin{verbatim}
+\newpage
+\end{verbatim}
+
+\hrulefill
+ 
+To create a list of unordered items, use the \texttt{itemize} environment
+\begin{verbatim}
+\begin{itemize}
+    \item Apple
+    \item Banana
+    \item Cherry
+\end{itemize}
+\end{verbatim}
+to get the bulleted list:
+ 
+\begin{itemize}
+\item Apple
+\item Banana
+\item Cherry
+\end{itemize}
+ 
+\hrulefill
+
+Here is a nested bulleted list:
+
+\begin{verbatim}
+\begin{itemize}
+    \item Fruits
+    \begin{itemize}
+        \item Apple
+        \begin{itemize}
+            \item Red
+            \item Green
+            \begin{itemize}
+                \item Golden Delicious
+            \end{itemize}
+            \item Yellow
+        \end{itemize}
+        \item Banana
+        \item Cherry
+    \end{itemize}
+    \item Vegetables
+\end{itemize}
+\end{verbatim}
+
+to get:
+
+\begin{itemize}
+    \item Fruits
+    \begin{itemize}
+        \item Apple
+        \begin{itemize}
+            \item Red
+            \item Green
+            \begin{itemize}
+                \item Golden Delicious
+            \end{itemize}
+            \item Yellow
+        \end{itemize}
+        \item Banana
+        \item Cherry
+    \end{itemize}
+    \item Vegetables
+\end{itemize}
+
+\textbf{Note}: For changing the bullet style, see \url{https://tex.stackexchange.com/questions/13463/specifying-bullet-type-when-using-itemize}
+
+\hrulefill
+
+To create a list of ordered items, use the \texttt{enumerate} environment
+\begin{verbatim}
+\begin{enumerate}
+    \item First
+    \item Second
+    \item Third
+\end{enumerate}
+\end{verbatim}
+to get the numbered list:
+ 
+\begin{enumerate}
+    \item First
+    \item Second
+    \item Third
+\end{enumerate}
+ 
+\hrulefill
+
+Here is a nested numbered list:
+
+\begin{verbatim}
+\begin{enumerate}
+    \item Fruits
+    \begin{enumerate}
+        \item Apple
+        \begin{enumerate}
+            \item Red
+            \item Green
+            \begin{enumerate}
+                \item Golden Delicious
+            \end{enumerate}
+            \item Yellow
+        \end{enumerate}
+        \item Banana
+        \item Cherry
+    \end{enumerate}
+    \item Vegetables
+\end{enumerate}
+\end{verbatim}
+
+to get:
+
+\begin{enumerate}
+    \item Fruits
+    \begin{enumerate}
+        \item Apple
+        \begin{enumerate}
+            \item Red
+            \item Green
+            \begin{enumerate}
+                \item Golden Delicious
+            \end{enumerate}
+            \item Yellow
+        \end{enumerate}
+        \item Banana
+        \item Cherry
+    \end{enumerate}
+    \item Vegetables
+\end{enumerate}
+
+\textbf{Note}: For changing the number style, see \url{https://tex.stackexchange.com/questions/2291/how-do-i-change-the-enumerate-list-format-to-use-letters-instead-of-the-defaul}
+
+\hrulefill
+
+To indent a line, use
+\begin{verbatim}
+\hspace{\parindent} Hello World
+\end{verbatim}
+as in
+
+\hspace{\parindent} Hello World
+
+\hrulefill
+
+To remove indentation before a paragraph, use
+\begin{verbatim}
+\noindent Hello World
+\end{verbatim}
+as in
+
+\noindent Hello World
+
+or, to remove indentation from the entire document, add the following code in the preamble:
+\begin{verbatim}
+\setlength\parindent{0pt}
+\end{verbatim}
+
+
+\hrulefill
+
+To center text, use:
+\begin{verbatim}
+\begin{center}
+Hello World
+\end{center}
+\end{verbatim}
+to get
+\begin{center}
+Hello World
+\end{center}
+
+\hrulefill
+
+To right-align text, use:
+\begin{verbatim}
+\begin{flushright}
+Hello World
+\end{flushright}
+\end{verbatim}
+to get
+\begin{flushright}
+Hello World
+\end{flushright}
+
+\hrulefill
+
+To put text in a box (= add borders around text,) use:
+\begin{verbatim}
+\fbox{\parbox{\textwidth}{Hello World}}
+\end{verbatim}
+to get
+
+\fbox{\parbox{\textwidth}{Hello World}}
+
+or
+\begin{verbatim}
+\fbox{Hello World}
+\end{verbatim}
+to get
+
+\fbox{Hello World}
+
+ 
+\hrulefill
+ 
+For our class, you won't need to change indentation, right-align text, or use borders.
+ 
+\end{document}</code></pre>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

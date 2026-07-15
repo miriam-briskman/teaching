@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Intro to LaTeX">
+      <title>Discrete Structures: Overview: Lecture Notes | CISC 2210</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script>hljs.highlightAll();</script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>More $\LaTeX$ Resources</h3>
+        <ul style = "margin-bottom: 0;">
+            <li>[Tutorial] A LaTeX tutorial for academics and non-academics - Practical Typesetting with TeX Live: <a href="https://firexfly.com/practical-typesetting/" title="A LaTeX tutorial for academics and non-academics" target="_blank" rel="noopener">https://<WBR>firexfly<WBR>.com<WBR>/practical<WBR>-typesetting/</a></li>
+            <li>[Guide/Tutorial] LaTeX guide for beginners: <a href="https://ptmartins.info/latex/" title="LaTeX guide for beginners" target="_blank" rel="noopener">https://<WBR>ptmartins<WBR>.info<WBR>/latex/</a></li>
+            <li>[Guide/Tutorial] A Minimalist Introduction to LaTeX: <a href="https://www.geneseo.edu/~baldwin/reference/MinimalLatex/min_latex.php" title="https://www.geneseo.edu/~baldwin/reference/MinimalLatex/min_latex.php" target="_blank" rel="noopener">https://<WBR>www<WBR>.geneseo<WBR>.edu/<WBR>~baldwin<WBR>/reference<WBR>/MinimalLatex<WBR>/min_latex<WBR>.php</a></li>
+            <li>[Guide/Tutorial] The Not So Short Introduction to LATEX 2&epsilon;: <a href="https://tug.ctan.org/info/lshort/english/lshort.pdf" title="The Not So ShortIntroduction to LATEX 2&epsilon;" target="_blank" rel="noopener">https://<WBR>tug<WBR>.ctan<WBR>.org<WBR>/info<WBR>/lshort<WBR>/english<WBR>/lshort.pdf</a></li>
+            <li>[Guide/Tutorial] Learn LaTeX in Y minutes: <a href="https://learnxinyminutes.com/docs/latex/" title="Learn LaTeX in Y minutes" target="_blank" rel="noopener">https://<WBR>learnxinyminutes<WBR>.com<WBR>/docs<WBR>/latex/</a></li>
+            <li>[Guide/Tutorial] Workshop - Introduction to LaTeX: <a href="https://eps-libraries-berkeley.github.io/volt/LaTeX/latex_workshop.html" title="Workshop - Introduction to LaTeX" target="_blank" rel="noopener">https://<WBR>eps<WBR>-libraries<WBR>-berkeley<WBR>.github<WBR>.io<WBR>/volt<WBR>/LaTeX<WBR>/latex_workshop.html</a></li>
+            <li>[Guide/Tutorial] LaTeX on the Web: <a href="https://www.malinc.se/math/latex/latexontheweben.php" title="LaTeX on the Web" target="_blank" rel="noopener">https://<WBR>www<WBR>.malinc<WBR>.se<WBR>/math<WBR>/latex<WBR>/latexontheweben<WBR>.php</a></li>
+        </ul>
+        <hr style = "border: 1px solid black;">
+        <ul style = "margin-top: 0;">
+            <li>[YouTube Tutorial video; 90 min] Just Enough LaTeX to Survive - Full LaTeX Tutorial Series Compilation: <a href="https://www.youtube.com/watch?v=lRD_7PSiRAc" title="Just Enough LaTeX to Survive - Full LaTeX Tutorial Series Compilation" target="_blank" rel="noopener">https://<WBR>www<WBR>.youtube<WBR>.com<WBR>/watch?<WBR>v=<WBR>lRD_7PSiRAc</a></li>
+            <li>[YouTube Tutorial video; 58 min] Learn LaTeX for Beginners - Full Course: <a href="https://www.youtube.com/watch?v=p5Yr0dkrKG8" title="Learn LaTeX for Beginners - Full Course" target="_blank" rel="noopener">https://<WBR>www<WBR>.youtube<WBR>.com<WBR>/watch?<WBR>v=<WBR>p5Yr0dkrKG8</a></li>
+        </ul>
+                
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

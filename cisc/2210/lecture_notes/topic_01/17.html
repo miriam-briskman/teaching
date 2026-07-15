@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Intro to LaTeX">
+      <title>Discrete Structures: Overview: Lecture Notes | CISC 2210</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();hljs.initLineNumbersOnLoad();</script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Font settings</h3>
+        <p>The following source code shows how to make font-related changes:</p>
+        <pre class="source source-long" style = "height: 60vh;"><code class="language-latex">\documentclass{article}
+
+% This part (between \documentclass{article} and \begin{document}) is called the preamble of the LaTeX document.
+% Here you will (1) import packages whose commands you'll use in the document, (2) define your own functions/commands (which are also called `macros' in LaTeX), and (3) change any settings, such as indentation, margins, etc., which will affect the entire document.
+
+
+%-----------------------------------------
+
+% Imported packages:
+\usepackage{soul} % Needed for the \st (strikethrough) command.
+\usepackage{xcolor} % Needed for \colorbox and more colors.
+\usepackage{hyperref} % For hyperlinks (e.g., \url{})
+
+%-----------------------------------------
+
+% Changing Document Settings:
+\setlength{\parskip}{10pt} % Set the space between paragraphs to 10pt.
+\setlength\parindent{0pt} % Eliminating paragraph indentation.
+\hypersetup{ % Change of hyperlink colors
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,      
+    urlcolor=blue,
+}
+
+\begin{document}
+% The area between '\begin{document}' and '\end{document}' is called the body of the document.
+
+This code example contains commands for changing font-related settings.
+
+\textbf{Note}: For each of the below, there is more than one way in \LaTeX\ to achieve the shown changes.
+
+\hrulefill % A horizontal line/rule.
+
+To write `normal' text, there is no need for any command. Just write is out, as in: hello world.
+
+\hrulefill
+
+For boldface text, use the command
+% Here is an environment to print code as is (= verbatim)
+\begin{verbatim}
+\textbf{hello world}
+\end{verbatim}
+to get:
+
+\textbf{hello world}
+
+\hrulefill
+
+For italics, use the command
+\begin{verbatim}
+\textit{hello world}
+\end{verbatim}
+to get:
+
+\textit{hello world}
+
+\hrulefill 
+
+For an underline, use the command
+\begin{verbatim}
+\underline{hello world}
+\end{verbatim}
+to get:
+
+\underline{hello world}
+
+\hrulefill 
+
+For a strikethrough line, import the \texttt{soul} package before \texttt{\textbackslash begin\{document\}} by writing:
+\begin{verbatim}
+\usepackage{soul}
+\end{verbatim}
+Then, inside the body of the document, use the command
+\begin{verbatim}
+\st{Hello World}
+\end{verbatim}
+to get:
+
+\st{Hello World}
+
+\hrulefill
+
+For a subscript text, use the command 
+\begin{verbatim}
+\textsubscript{Hello World}
+\end{verbatim}
+as in:
+
+Wow\textsubscript{Hello World}
+
+or
+
+H\textsubscript{2}O
+
+\hrulefill
+
+For a superscript text, use the command 
+\begin{verbatim}
+\textsuperscript{Hello World}
+\end{verbatim}
+as in:
+
+Wow\textsuperscript{Hello World}
+
+or
+
+15\textsuperscript{th}
+
+\hrulefill
+
+For a colored text, import the \texttt{xcolor} package:
+\begin{verbatim}
+\usepackage{xcolor}
+\end{verbatim}
+Then, inside the body of the document, use the command 
+\begin{verbatim}
+{\color{orange} Hello World}
+\end{verbatim}
+as in:
+
+{\color{orange} Hello World}
+
+\textbf{Note}: More colors you can use without importing extra packages are: red, green, blue, cyan, magenta, yellow, black, gray, white, darkgray, lightgray, brown, lime, olive, orange, pink, purple, teal, and violet.
+
+\hrulefill
+
+For a highlighted text (= adding background color), import the \texttt{xcolor} package:
+\begin{verbatim}
+\usepackage{xcolor}
+\end{verbatim}
+Then, inside the body of the document, use the command 
+\begin{verbatim}
+\colorbox{orange}{Hello World}
+\end{verbatim}
+as in:
+
+\colorbox{orange}{Hello World}
+
+\textbf{Note}: For more color names see: \url{https://www.overleaf.com/learn/latex/Using_colors_in_LaTeX}
+
+\hrulefill
+
+To turn a text into all uppercase letters, use the command 
+\begin{verbatim}
+\uppercase{Hello World}
+\end{verbatim}
+as in:
+
+\uppercase{Hello World}
+
+\hrulefill
+
+To turn a text into all lowercase letters, use the command 
+\begin{verbatim}
+\lowercase{Hello World}
+\end{verbatim}
+as in:
+
+\lowercase{Hello World}
+
+\hrulefill
+
+The default font in \LaTeX\ is called Computer Modern. If you want to use a different font for your document, see: \url{https://tug.org/FontCatalogue/} for the names, examples, and needed packages of other \LaTeX-supported fonts.
+
+\hrulefill
+
+The default font size is 10pt.
+
+To change the font size for the entire document, you can either add an optional argument to the \texttt{\textbackslash documentclass\{article\}} command as follows:
+\begin{verbatim}
+\documentclass[10pt]{article}
+\end{verbatim}
+and then change 10pt to 11pt or 12 pt, or use the following font-size changing commands for selected pieces of text:
+\begin{verbatim}
+{\tiny Hello World}
+{\scriptsize Hello World}
+{\footnotesize Hello World}
+{\small Hello World}
+{\normalsize Hello World}
+{\large Hello World}
+{\Large Hello World}
+{\LARGE Hello World}
+{\huge Hello World}
+{\Huge Hello World}
+\end{verbatim}
+as in:
+
+{\tiny Hello World}
+
+{\scriptsize Hello World}
+
+{\footnotesize Hello World}
+
+{\small Hello World}
+
+{\normalsize Hello World}
+
+{\large Hello World}
+
+{\Large Hello World}
+
+{\LARGE Hello World}
+
+{\huge Hello World}
+
+{\Huge Hello World}
+
+\hrulefill
+
+For our class, you won't need to change the font, font-size, font-color, or font background color: you will use the default ones.
+
+\end{document}</code></pre>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

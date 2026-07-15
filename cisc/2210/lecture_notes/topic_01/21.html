@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Intro to LaTeX">
+      <title>Discrete Structures: Overview: Lecture Notes | CISC 2210</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();hljs.initLineNumbersOnLoad();</script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Adding Other Objects</h3>
+        <p>The following source code shows how to add other items to your document:</p>
+        <pre class="source source-long" style = "height: 60vh;"><code class="language-latex">\documentclass{article}
+ 
+% Imported packages:
+\PassOptionsToPackage{hyphens}{url} % Special hyperref package option that breaks long links across several lines.
+\usepackage{hyperref} % For hyperlinks (e.g., \url{})
+\usepackage{amsmath} % For the align environment.
+\usepackage{graphicx} % For \includegraphics.
+ 
+%-----------------------------------------
+ 
+% Changing Document Settings:
+\setlength{\parskip}{10pt} % Set the space between paragraphs to 10pt.
+\setlength\parindent{0pt} % Eliminating paragraph indentation.
+\hypersetup{ % Change of hyperlink colors
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,      
+    urlcolor=blue,
+}
+ 
+\begin{document}
+ 
+This code example contains commands for adding more objects, like tables, images, equations, and hyperlinks.
+ 
+\textbf{Note}: For each of the below, there may be more than one way in \LaTeX\ to achieve the shown changes.
+ 
+\hrulefill
+ 
+It's possible to write math as simple text: 1+2=3. However, \LaTeX has a math mode, which is just putting the math between two \$ dollar signs:
+\begin{verbatim}
+$1+2=3$
+\end{verbatim}
+To get $1+2=3.$
+ 
+\hrulefill
+
+If you add two \$ signs on each side, the math will move to the next line and will be centered, as though it is on `display':
+\begin{verbatim}
+$$1+2=3$$
+\end{verbatim}
+as in $$1+2=3.$$
+
+(Make sure to put the period (.) before the closing \$\$; otherwise, the period will be printed on the next line.)
+
+\hrulefill
+
+In math/display mode, to create a subscript, use the underscore character
+\begin{verbatim}
+$a_i &lt; a_j$
+\end{verbatim}
+as in $a_i &lt; a_j$.
+
+\hrulefill
+
+To create a superscript, use the caret (roof) character \^{}
+\begin{verbatim}
+$a^2 + b^2 = c^2$
+\end{verbatim}
+as in $a^2 + b^2 = c^2$.
+
+\hrulefill
+
+More math:
+\begin{verbatim}
+$\sqrt{4}$ \\
+$\sqrt[3]{8}$ \\
+$\frac{2}{3}$ \\
+$$c = \frac{x\cdot y+z}{a-\sqrt{b}}$$ \\
+$\alpha$ \\ % (lowercase Greek alpha)
+$\Sigma$ \\ % (uppercase Greek sigma)
+$\infty$ \\ % (infinity)
+$\cos 2 \theta$ \\ % (cosine of 2 times theta [another Greek letter])
+$\ln x$ \\ % Natural log of x
+$\log_2 x$ \\ % Log base 2 of x
+$\max \{2, 5\}$ \\ % The maximum of 2 or 5
+$\min \{2, 5\}$ \\ % The minimum of 2 or 5
+\end{verbatim}
+
+which creates:
+
+$\sqrt{4}$ \\
+$\sqrt[3]{8}$ \\
+$\frac{2}{3}$ \\
+$$c = \frac{x\cdot y+z}{a-\sqrt{b}}$$ \\
+$\alpha$ \\ % (lowercase Greek alpha)
+$\Sigma$ \\ % (uppercase Greek sigma)
+$\infty$ \\ % (infinity)
+$\cos 2 \theta$ \\ % (cosine of 2 times theta [another Greek letter])
+$\ln x$ \\ % Natural log of x
+$\log_2 x$ \\ % Log base 2 of x
+$\max \{2, 5\}$ \\ % The maximum of 2 or 5
+$\min \{2, 5\}$ \\ % The minimum of 2 or 5
+
+\hrulefill
+
+To start a section, do:
+\begin{verbatim}
+\section{Topic 1}
+\end{verbatim}
+as in \section{Topic 1}\label{this-location}
+
+\hrulefill
+
+To start a subsection, do:
+\begin{verbatim}
+\subsection{Part A}
+\end{verbatim}
+as in \subsection{Part A}
+
+\hrulefill
+
+To start a subsubsection, do:
+\begin{verbatim}
+\subsubsection{Remark I}
+\end{verbatim}
+as in \subsubsection{Remark I}
+
+\hrulefill
+
+To align equations or inequalities, first import the package
+\begin{verbatim}
+\usepackage{amsmath}
+\end{verbatim}
+and then, in the body of the document, do:
+\begin{verbatim}
+\begin{align}
+x &amp;= 1 + 2 + 3\\
+&amp;= 3 + 3\\
+&amp;= 6
+\end{align}
+\end{verbatim}
+as in
+\begin{align}
+x &amp;= 1 + 2 + 3\\
+&amp;= 3 + 3\\
+&amp;= 6
+\end{align}
+
+If you don't want to assign numbers to these equations, use the `starred' environment of \texttt{align}:
+\begin{verbatim}
+\begin{align*}
+x &amp;= 1 + 2 + 3\\
+&amp;= 3 + 3\\
+&amp;= 6
+\end{align*}
+\end{verbatim}
+as in
+\begin{align*}
+x &amp;= 1 + 2 + 3\\
+&amp;= 3 + 3\\
+&amp;= 6
+\end{align*}
+
+The \&amp; sign is the place where the equations on each line get aligned at.
+
+\hrulefill
+
+To add and center figures/images, first import the package
+\begin{verbatim}
+\usepackage{graphicx}
+\end{verbatim}
+and then, in the body of the document, write:
+\begin{verbatim}
+\begin{figure}[htbp] 
+\begin{center}
+\includegraphics[width=3in]{Honeycrisp-Apple.JPG}
+\caption{An apple.}
+\end{center}
+\end{figure}
+\end{verbatim}
+
+to get:
+
+\begin{figure}[htbp] 
+\begin{center}
+\includegraphics[width=3in]{Honeycrisp-Apple.JPG}
+\caption{An apple.}
+\end{center}
+\end{figure}
+
+\newpage
+
+\textbf{Note}: The image or figure you are adding must be located in the same folder as the \LaTeX\ source code file.
+
+\hrulefill
+
+To add and center a table:
+
+\begin{verbatim}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Item &amp; Quantity &amp; Price (\$) \\ \hline
+        Apple &amp; 2 &amp; 1.50 \\ \hline 
+        Banana &amp; 5 &amp; 3.00 \\ \hline 
+        Orange &amp; 3 &amp; 2.25 \\ \hline
+    \end{tabular}
+    \caption{A sample table of fruit prices}
+\end{table}
+\end{verbatim}
+
+to get:
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Item &amp; Quantity &amp; Price (\$) \\ \hline
+        Apple &amp; 2 &amp; 1.50 \\ \hline 
+        Banana &amp; 5 &amp; 3.00 \\ \hline 
+        Orange &amp; 3 &amp; 2.25 \\ \hline
+    \end{tabular}
+    \caption{A sample table of fruit prices}
+\end{table}
+
+\newpage
+
+or
+
+\begin{verbatim}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{l c r}
+        \hline
+        Item &amp; Quantity &amp; Price (\$) \\ \hline \hline
+        Apple &amp; 2 &amp; 1.50 \\ 
+        Banana &amp; 5 &amp; 3.00 \\ 
+        Orange &amp; 3 &amp; 2.25 \\ \hline
+    \end{tabular}
+    \caption{A sample table of fruit prices}
+\end{table}
+\end{verbatim}
+
+to get
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{l c r}
+        \hline
+        Item &amp; Quantity &amp; Price (\$) \\ \hline \hline
+        Apple &amp; 2 &amp; 1.50 \\ 
+        Banana &amp; 5 &amp; 3.00 \\ 
+        Orange &amp; 3 &amp; 2.25 \\ \hline
+    \end{tabular}
+    \caption{A sample table of fruit prices}
+\end{table}
+
+or any other similar table.
+
+\hrulefill
+
+To add links, make sure you first import the package
+\begin{verbatim}
+\usepackage{hyperref}
+\end{verbatim}
+and then use the following in the body of the document:
+\begin{verbatim}
+\url{https://www.google.com}
+\end{verbatim}
+
+to get \url{https://www.google.com}, or
+
+\begin{verbatim}
+\href{https://www.google.com}{Google Search}
+\end{verbatim}
+
+to get \href{https://www.google.com}{Google Search}.
+
+\hrulefill
+
+You can also create a link to any place inside the PDF document. Just put a label, like
+\begin{verbatim}
+\label{this-location}
+\end{verbatim}
+
+anywhere inside the document, an equation, a table, a section, etc., and then create a link to it by using:
+\begin{verbatim}
+\ref{this-location}
+\end{verbatim}
+
+The label above was placed somewhere in this document, and here is the link to it: \ref{this-location}.
+
+What part of the document does this link jump to?
+ 
+\end{document}</code></pre>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

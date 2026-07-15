@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Intro to LaTeX">
+      <title>Discrete Structures: Overview: Lecture Notes | CISC 2210</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script>hljs.highlightAll();</script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Hello $\LaTeX$!</h3>
+        <p>In the source code on the previous slide:</p>
+        <ul>
+            <li>The command: <pre class="source source-inline"><code class="language-latex">\documentclass{article}</code></pre> defines the document type, which is an article in this case (can also be <pre class="source source-inline"><code class="language-latex">book</code></pre>, <pre class="source source-inline"><code class="language-latex">report</code></pre>, etc.).
+            <ul>
+                <li>Above, <pre class="source source-inline"><code class="language-latex">article</code></pre> is a required argument to the command <pre class="source source-inline"><code class="language-latex">\documentclass{}</code></pre>.</li>
+                <li>Some commands accept no arguments at all (like <pre class="source source-inline"><code class="language-latex">\LaTeX</code></pre>), while others may also accept optional arguments, too. <u>Example</u>: <pre class="source source-inline"><code class="language-latex">\documentclass[12pt]{article}</code></pre> will set the font size of the entire document to $12$ points.</li>
+            </ul>
+            </li>
+            <li>You can create a comment by putting a <pre class="source source-inline"><code class="language-latex">%</code></pre> (percentage sign) before it.
+            <ul>
+                <li>A comment can also start in the middle of a line:
+                <pre style="margin: 2pt;"><code class="language-latex source">\documentclass[12pt]{article} % An article with a font size of 12 points.</code></pre>
+                </li>
+            </ul>
+            </li>
+            <li>The pair of commands: <pre class="source source-inline"><code class="language-latex">\begin{}</code></pre> and <pre class="source source-inline"><code class="language-latex">\end{}</code></pre> are called an <b>environment</b>, which is type of scope in your code. Specifically, <pre class="source source-inline"><code class="language-latex">\begin{document}</code></pre> and <pre class="source source-inline"><code class="language-latex">\end{document}</code></pre> define the document scope: everything between these two will be output to the PDF document.
+             </li>
+        </ul>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>
