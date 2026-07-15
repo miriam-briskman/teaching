@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Cache Features">
+      <title>Intro to Computer Architecture: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Cache Features</h3>
+        <p>We learned that <b>cache</b> is a small storage container (chip) that the CPU uses to store some frequently used variables and data. The CPU accesses data in cache much faster than accessing data in main memory because cache is located closer to the CPU than memory is and, the closer the storage container is to the CPU, the faster the CPU will access it. Nowadays, cache is built inside the CPU chipset box for best performance.</p>
+        <!--<p>A quick analogy to the idea of cache is that, when you go on vacation, you bring luggage with yourself, especially if you travel to a different country or area. However, when you want to walk to the beach or a food place, you won't take the entire luggage with yourself: you'll just bring a small bag with the most important stuff, like your phone, wallet, water, mirror, etc., in order to avoid running back to the hotel for anything little you need during the walk. Luggage in this example is main memory, while the small bag is cache.</p>-->
+        <ul>
+            <li>After performing some testing on CPUs, manufacturers found out that the CPU will benefit from having several levels of cache: <b>Level 1</b>, or <b>L1</b> for short, is the fastest and closest cache to the CPU. Each core has its own Level 1 cache storage; <b>Level 2</b> (<b>L2</b>) cache is slightly larger, slower, and further away from the CPU, and, again, every core has its own L2 storage; <b>Level 3</b> (<b>L3</b>) cache is the largest, slowest, and furthest. Unlike L1 and L2, all the cores share the same one L3 cache storage.</li>
+            <li>Each cache storage has its own size. For example, <b>64KB L1</b> means that each core has a level 1 cache of the size of 64 kilobytes. <b>33MB L3</b> means that there is one, large level 3 cache memory of 33 megabytes shared by all the cores. The listed L2 cache size sometimes stands for the total of L2 sizes for all the cores, but at other times, it indicates the cache size per core. Since <b>28MB L2</b> is closer in size to the L3 cache size, this is the total L2 cache size across all cores.</li>
+        </ul>
+ 
+               
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

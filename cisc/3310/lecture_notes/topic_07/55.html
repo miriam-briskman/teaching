@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Cache Schemes">
+      <title>Memory: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Cache Schemes: Set-Associative Cache</h3>
+        <p>In a <b>set-associative</b> cache, we divide cache blocks into <b>sets</b> of blocks, and every block of RAM can be mapped to one of the blocks inside a particular set of cache blocks.</p>
+        <p>Because a specific RAM block could only be found inside a limited set of cache blocks, we don't need to search the entire cache: we just need to search that one set of cache blocks. The resulting cache is both cheaper because we don't need to use as many comparator circuits (we just need a number of comparator circuits equal to the number of sets, not the number of all cache blocks) and uses less electricity. In other words, a set-associative cache is more efficient than a fully associative cache.</p>
+        <p>One reason for deciding to use a set-associative cache over a direct-mapped cache is that, in a direct-mapped cache, if we need to access a variable $x$ from a RAM block that maps to cache block #2, for example, and then need to access a different variable $y$ from another RAM block that maps to the same cache block #2, we will need to remove the 1st memory block and replace it with the 2nd one. If, at some point, we need to access $x$, then $y$, then $x$ again, then $y$ again, etc., we will find ourselves replacing the memory block each time, which takes time and slows down the work of the computer. However, with a set-associative cache, we can include <u>both</u> memory blocks in cache blocks that belong to the same set.</p>
+                
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

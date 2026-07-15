@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Converting between bases">
+      <title>Data Representation: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+          td {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Converting between Bases</h3>
+        <p><b><i>Fun fact</i></b>: Converting between bases of powers of $2$ is even easier!</p>
+        <ul>
+            <li>To convert a number from base $2$ to base $16$, group every 4 bits together, and simply convert them to the respective hexadecimal symbol. Here is a shorthand table with all possible 4-bit configurations:
+            <center>
+        <div style="margin: 0; padding: 0; overflow-x: auto; overflow-y: clip;">
+        <table border="1" cellspacing="1" cellpadding="1">
+            <tr>
+                <th scope="col">$N_{16}$</th>
+                <td>$0$</td>
+                <td>$1$</td>
+                <td>$2$</td>
+                <td>$3$</td>
+                <td>$4$</td>
+                <td>$5$</td>
+                <td>$6$</td>
+                <td>$7$</td>
+                <td>$8$</td>
+                <td>$9$</td>
+                <td>$\mathrm A$</td>
+                <td>$\mathrm B$</td>
+                <td>$\mathrm C$</td>
+                <td>$\mathrm D$</td>
+                <td>$\mathrm E$</td>
+                <td>$\mathrm F$</td>
+            </tr>
+            <tr>
+                <th scope="col">$N_2$</th>
+                <td>$0000$</td>
+                <td>$0001$</td>
+                <td>$0010$</td>
+                <td>$0011$</td>
+                <td>$0100$</td>
+                <td>$0101$</td>
+                <td>$0110$</td>
+                <td>$0111$</td>
+                <td>$1000$</td>
+                <td>$1001$</td>
+                <td>$1010$</td>
+                <td>$1011$</td>
+                <td>$1100$</td>
+                <td>$1101$</td>
+                <td>$1110$</td>
+                <td>$1111$</td>
+            </tr>
+        </table>
+        </div>
+        </center>
+            <p style = "margin-top: 2vh; margin-bottom: 2vh;"><u>Example</u>: $011111000010_2 = $<span style = "border: 5px dotted red; padding: 2px;">$0111$</span><span style = "border: 5px solid blue; padding: 2px;">$1100$</span><span style = "border: 5px dashed green; padding: 2px;">$0010$</span>$_2$ = <span style = "border: 5px dotted red; padding: 2px;">$7$</span><span style = "border: 5px solid blue; padding: 2px;">$\mathrm C$</span><span style = "border: 5px dashed green; padding: 2px;">$2$</span>$_{16} = 7\mathrm C2_{16}$.</p>
+            </li>
+            <hr style = "border: 1px solid black;">
+            <li>
+                Similarly, to convert from base $2$ to base $8$, group every 3 bits together and convert them to an octal digit:
+                <center>
+        <div style="margin: 0; padding: 0; overflow-x: auto; overflow-y: clip;">
+        <table border="1" cellspacing="1" cellpadding="1">
+            <tr>
+                <th scope="col">$N_{8}$</th>
+                <td>$0$</td>
+                <td>$1$</td>
+                <td>$2$</td>
+                <td>$3$</td>
+                <td>$4$</td>
+                <td>$5$</td>
+                <td>$6$</td>
+                <td>$7$</td>
+            </tr>
+            <tr>
+                <th scope="col">$N_2$</th>
+                <td>$000$</td>
+                <td>$001$</td>
+                <td>$010$</td>
+                <td>$011$</td>
+                <td>$100$</td>
+                <td>$101$</td>
+                <td>$110$</td>
+                <td>$111$</td>
+            </tr>
+        </table>
+        </div>
+        </center>
+            <p style = "margin-top: 2vh; margin-bottom: 2vh;"><u>Example</u>: $011111000010_2 = $<span style = "border: 5px double orange; padding: 2px;">$011$</span><span style = "border: 5px dotted red; padding: 2px;">$111$</span><span style = "border: 5px solid blue; padding: 2px;">$000$</span><span style = "border: 5px dashed green; padding: 2px;">$010$</span>$_2$ = <span style = "border: 5px double orange; padding: 2px;">$3$</span><span style = "border: 5px dotted red; padding: 2px;">$7$</span><span style = "border: 5px solid blue; padding: 2px;">$0$</span><span style = "border: 5px dashed green; padding: 2px;">$2$</span>$_{8} = 3702_8$.</p>
+            </li>
+        </ul>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

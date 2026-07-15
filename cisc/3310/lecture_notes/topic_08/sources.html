@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Sources for the lecture notes on 'I/O'">
+      <title>I/O: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+  </head>
+  <body>
+
+     <div class = "slide-header">
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+
+     <div class = 'slides hanging-indent'><div>
+        <h3>I/O: Sources</h3>
+        <p>CS301: Computer Architecture. <a href="https://learn.saylor.org/course/view.php?id=71&sectionid=15543#:~:text=and%20RAID%20technology.-,7.1%3A%20I/O%20Devices,-Introduction%20to%20I" target="_blank" title = "Unit 7.1: I/O Devices">Unit 7.1</a>, <a href="https://learn.saylor.org/course/view.php?id=71&sectionid=15543#:~:text=7.2%3A%20Connecting%20I/O%20Devices%20to%20the%20Processor" target="_blank" title = "Unit 7.2: Connecting I/O Devices to the Processor">Unit 7.2</a>, and <a href="https://learn.saylor.org/course/view.php?id=71&sectionid=15543#:~:text=7.4%3A%20Redundant%20Array%20of%20Inexpensive%20Disks%20(RAID)" target="_blank" title = "Unit 7.4: Redundant Array of Inexpensive Disks (RAID)">Unit 7.4</a>. <i>Saylor Academy</i>, 2010. License: <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" title = "CC BY 3.0: Attribution 3.0 Unported">CC BY: Attribution</a>.</p>
+        <p>Wienand, Ian. (2019). <a href="https://www.bottomupcs.com/csbu.pdf#page=78" target="_blank" title = "Section 3.3: Peripherals and Buses">Section 3.3</a>. <i>Computer Science from the Bottom Up</i>. License: <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" title = "CC BY-SA 3.0: Attribution-ShareAlike 3.0 Unported">CC BY-SA: Attribution<WBR>-ShareAlike</a>.</p>
+                
+        </div><div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div>
+     </div>
+  </body>
+</html>

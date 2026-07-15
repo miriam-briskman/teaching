@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Instructions">
+      <title>Computer Instructions: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Computer Instructions: Number  &amp; Length of Operands</h3>
+        <pre style = "margin-bottom: 1vh; margin-top: 1vh; text-align: center; padding: 0; overflow-x: auto; overflow-y: hidden; white-space: pre;"><code>      Opcode             Operand #1               Operand #2           Operand #3
++---+---+---+---+    +---+---+---+---+    +---+---+---+---+---+---+    +---+---+
+| 1 | 0 | 1 | 1 |    | 0 | 1 | 1 | 0 |    | 0 | 0 | 0 | 1 | 1 | 0 |    | 1 | 0 |
++---+---+---+---+    +---+---+---+---+    +---+---+---+---+---+---+    +---+---+</code></pre>
+        <p style = "margin-top: 1vh;">Most architectures today support instructions that contain between $0$ to $3$ operands. The operands don't even have to be all of the same length and don't have to have fixed length:</p>
+        <ul>
+            <li>Instructions whose operands have <b>fixed length</b> (e.g., each operand must contain exactly 4 bits) are fast and result in better execution performace. The cons are that they waste memory and disk space (if certain operands are short, we still must use that fixed size.)</li>
+            <li>Instructions whose operands have <b>variable length</b> result in space savings but will take longer time to decode and execute.</li>
+        </ul>
+        <p>In reality, a modern computer will support $2-3$ instruction patterns, e.g., one 64-bit instruction with 1 operand of size 32 bits, another 64-bit instruction with 2 16-bit operands , and a 3rd, 86-bit instruction with 1 64-bit operand.</p>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Floats: Converting Numbers">
+      <title>Data Representation: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+          td {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Representing Numbers in the Floating-Point Format</h3>
+        <ol start = "4">
+            <li>Analysis for $-0.25$: (1) it is negative, so the sign bit will be $1$. (2) The binary form for $0.25$ is computed as follows:
+            <ul>
+                <li>$0.25 \times 2 = 0.5$. The integer part in the result is <span style = "border: 5px solid blue; padding: 2px; padding-top: 0; padding-bottom: 0;">$0$</span>, so use $0.5 - 0 = 0.5$ for the next step.</li>
+                <li>$0.5 \times 2 = 1.0$. The integer part in the result is <span style = "border: 5px dashed green; padding: 2px; padding-top: 0; padding-bottom: 0;">$1$</span>, so use $1.0 - 1 = 0.0$ for the next step.</li>
+                <li>Since $0.0$ is just $0$, we stop here.</li>
+            </ul>
+            The integer parts from the steps above make up the fraction part of the binary number we are looking for. As such, the binary form for $0.25$, from top to bottom, is $0.$<span style = "border: 5px solid blue; padding: 2px; padding-top: 0; padding-bottom: 0;">$0$</span><span style = "border: 5px dashed green; padding: 2px; padding-top: 0; padding-bottom: 0;">$1$</span>$ $$\;= 0.01 \times 2^0 $$\;= 0.1 \times 2^{-1}$. The significand will, thus, be $10000$. (3) Finally, for the exponent, we stopped at $2^{-1}$, whose exponent is $-1$. When we add the bias of $15$, we get $-1 + 15 = 14$, which makes our exponent equal to $01110$. The number $-0.25$, therefore, in its floating-point form is:
+            <pre style = "margin-top: 1vh; margin-bottom: 1vh; overflow-x: auto; white-space: pre;"><code>+---+   +---+---+---+---+---+   +---+---+---+---+---+
+| 1 |   | 0 | 1 | 1 | 1 | 0 |   | 1 | 0 | 0 | 0 | 0 | = -0.25_{10}
++---+   +---+---+---+---+---+   +---+---+---+---+---+</code></pre>
+            [Note: we may have also noticed that $0.25 $$\;= \frac{1}{4} $$\;= \frac{1}{2^2} $$\;= 2^{-2} $$\;= 0.01_2.$.]
+            </li>
+        </ol>
+               
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

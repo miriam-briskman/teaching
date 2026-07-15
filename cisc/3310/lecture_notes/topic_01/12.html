@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Hardware Components: CPU">
+      <title>Intro to Computer Architecture: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Hardware Components of a Computer</h3>
+        <ol start = "2">
+            <li>The <b>CPU</b> (= Central Processing Unit), also referred to sometimes as the <b>processor</b> or <b>microprocessor</b>, is the brain of the computer that calculates things (e.g., adding numbers,) makes decisions (e.g., executes <tt>if-else</tt> statements,) and, in general, runs a program's instructions.
+            <br>
+            A CPU might contain multiple <b>cores</b>, each of which, like an independent brain, can perform computations and execute instructions independently and in parallel to the other cores. A quad-core CPU, for example, contains 4 cores.
+            <div class = "images">
+                <div class = "imagecontainer">
+                    <a href = "./motherboard_cpu_closeup.jpg" target = "_blank"><img src="https://miriam-briskman.github.io/poll-system-static-files/CISC-3310/./motherboard_cpu_closeup.jpg" title = "A closeup of the CPU case on the motherboard." alt="A closeup view of the square, nearly-flat silver-colored metal cpu chip, fixed inside its closed case on the computer's motherboard." style = "height: 35vh; width: fit-content;"></a>
+                    <p class = "caption">Closeup of the CPU on the Motherboard. <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a>, <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a>.</p>
+                </div>
+                <div class = "imagecontainer">
+                    <a href = "./cpu_top.jpg" target = "_blank"><img src="https://miriam-briskman.github.io/poll-system-static-files/CISC-3310/./cpu_top.jpg" title = "The CPU chipset after it was taken out of the motherboard, top view" alt="A top view of the square, nearly-flat silver-colored metal cpu chip: Intel Core i5-2300, 2.80GHZ, Made in Costa Rica." style = "height: 35vh; width: fit-content;"></a>
+                    <p class = "caption">The CPU chip, Top (Outer) View. <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a>, <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a>.</p>
+                </div>
+                <div class = "imagecontainer">
+                    <a href = "./cpu_bottom.jpg" target = "_blank"><img src="https://miriam-briskman.github.io/poll-system-static-files/CISC-3310/./cpu_bottom.jpg" title = "The CPU chipset after it was taken out of the motherboard, bottom view" alt="A bottom (inner) view of the square, nearly-flat silver-colored metal cpu chip: the small copper touchpoints all across this surface are visible." style = "height: 35vh; width: fit-content;"></a>
+                    <p class = "caption">The CPU chip, Bottom (Inner) View. <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a>, <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a>.</p>
+                </div>
+            </div>
+            </li>
+        </ol>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

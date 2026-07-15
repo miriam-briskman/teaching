@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Units of Measure">
+      <title>Intro to Computer Architecture: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Units of Measure</h3>
+        <p>Before we continue explaining the rest of the terms, we need to see some common units of measure:</p>
+        <center>
+        <div style="margin: 0; padding: 0; overflow-x: auto;">
+        <table border="1" cellspacing="1" cellpadding="1">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Symbol</th>
+                <th scope="col">Power of 10</th>
+                <th scope="col">Power of 2</th>
+                <th scope="col">Name</th>
+                <th scope="col">Symbol</th>
+                <th scope="col">Power of 10</th>
+                <th scope="col">Power of 2</th>
+            </tr>
+            <tr>
+                <td>Kilo</td>
+                <td style = "text-align: center;">K</td>
+                <td>1 thousand = $10^{3}$</td>
+                <td>$2^{10} = 1024$</td>
+                <td>Milli</td>
+                <td style = "text-align: center;">m</td>
+                <td>1 thousandth = $10^{–3} = \frac{1}{10^{3}}$</td>
+                <td>$2^{-10} = \frac{1}{2^{10}}$</td>
+            </tr>
+            <tr>
+                <td>Mega</td>
+                <td style = "text-align: center;">M</td>
+                <td>1 million = $10^{6}$</td>
+                <td>$2^{20}$</td>
+                <td>Micro</td>
+                <td style = "text-align: center;">$\mu$</td>
+                <td>1 millionth = $10^{-6}$</td>
+                <td>$2^{-20}$</td>
+            </tr>
+            <tr>
+                <td>Giga</td>
+                <td style = "text-align: center;">G</td>
+                <td>1 billion = $10^{9}$</td>
+                <td>$2^{30}$</td>
+                <td>Nano</td>
+                <td style = "text-align: center;">n</td>
+                <td>1 billionth = $10^{-9}$</td>
+                <td>$2^{-30}$</td>
+            </tr>
+            <tr>
+                <td>Tera</td>
+                <td style = "text-align: center;">T</td>
+                <td>1 trillion = $10^{12}$</td>
+                <td>$2^{40}$</td>
+                <td>Pico</td>
+                <td style = "text-align: center;">p</td>
+                <td>1 trillionth = $10^{-12}$</td>
+                <td>$2^{-40}$</td>
+            </tr>
+            <tr>
+                <td>Peta</td>
+                <td style = "text-align: center;">P</td>
+                <td>1 quadrillion = $10^{15}$</td>
+                <td>$2^{50}$</td>
+                <td>Femto</td>
+                <td style = "text-align: center;">f</td>
+                <td>1 quadrillionth = $10^{-15}$</td>
+                <td>$2^{-50}$</td>
+            </tr>
+            <tr>
+                <td>Exa</td>
+                <td style = "text-align: center;">E</td>
+                <td>1 quintillion = $10^{18}$</td>
+                <td>$2^{60}$</td>
+                <td>Atto</td>
+                <td style = "text-align: center;">a</td>
+                <td>1 quintillionth = $10^{-18}$</td>
+                <td>$2^{-60}$</td>
+            </tr>
+            <tr>
+                <td>Zetta</td>
+                <td style = "text-align: center;">Z</td>
+                <td>1 sextillion = $10^{21}$</td>
+                <td>$2^{70}$</td>
+                <td>Zepto</td>
+                <td style = "text-align: center;">z</td>
+                <td>1 sextillionth = $10^{-21}$</td>
+                <td>$2^{-70}$</td>
+            </tr>
+            <tr>
+                <td>Yotta</td>
+                <td style = "text-align: center;">Y</td>
+                <td>1 septillion = $10^{24}$</td>
+                <td>$2^{80}$</td>
+                <td>Yocto</td>
+                <td style = "text-align: center;">y</td>
+                <td>1 septillionth = $10^{-24}$</td>
+                <td>$2^{-80}$</td>
+            </tr>
+        </table>
+        </div>
+        </center>
+
+               
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

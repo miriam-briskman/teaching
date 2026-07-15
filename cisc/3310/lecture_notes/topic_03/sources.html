@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Sources for the lecture notes on 'Boolean Algebra & Logic Gates'">
+      <title>Boolean Algebra &amp; Logic Gates: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+  </head>
+  <body>
+
+     <div class = "slide-header">
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+
+     <div class = 'slides hanging-indent'><div>
+        <h3>Boolean Algebra &amp; Logic Gates: Sources</h3>
+        <p>CS301: Computer Architecture. <a href="https://learn.saylor.org/course/view.php?id=71&sectionid=15512" target="_blank" title = "Unit 3: Fundamentals of Digital Logic Design">Unit 3</a>. <i>Saylor Academy</i>, 2010. License: <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" title = "CC BY 3.0: Attribution 3.0 Unported">CC BY: Attribution</a>.</p>
+        <p>Bergmann, Seth D. (2018). <a href="https://rdw.rowan.edu/cgi/viewcontent.cgi?article=1008&context=oer#section.6.1" target="_blank" title = "Chapter 6, Section 6.1: Notation for Boolean Functions">Section 6.1</a> and <a href="https://rdw.rowan.edu/cgi/viewcontent.cgi?article=1008&context=oer#section.6.2" target="_blank" title = "Chapter 6, Section 6.2: Basic Logic Gates">Section 6.2</a>. <i>Computer Organization with MIPS</i>. License: <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title = "CC BY-NC-ND 4.0: Attribution-NonCommercial-NoDerivs 4.0 International">CC BY<WBR>-NC-ND: Attribution<WBR>-NonCommercial<WBR>-NoDerivs</a>.</p>
+        <p>Tarnoff, David. (2020). Episodes <a href="https://dc.etsu.edu/computer-organization-design-oer/29/" target="_blank" title = "Episode 4.01 – Intro to Logic Gates">4.01</a>, <a href="https://dc.etsu.edu/computer-organization-design-oer/30/" target="_blank" title = "Episode 4.02 – Truth Tables">4.02</a>, <a href="https://dc.etsu.edu/computer-organization-design-oer/31/" target="_blank" title = "Episode 4.03 – Combinational Logic">4.03</a>, <a href="https://dc.etsu.edu/computer-organization-design-oer/32/" target="_blank" title = "Episode 4.04 – NAND, NOR, and Exclusive-NOR Logic">4.04</a>, <a href="https://dc.etsu.edu/computer-organization-design-oer/33/" target="_blank" title = "Episode 4.05 – Introduction to Boolean Algebra">4.05</a>, <a href="https://dc.etsu.edu/computer-organization-design-oer/34/" target="_blank" title = "Episode 4.06 – Properties of Boolean Algebra">4.06</a>, <a href="https://dc.etsu.edu/computer-organization-design-oer/35/" target="_blank" title = "Episode 4.07 – Identities of Boolean Algebra">4.07</a>, <a href="https://dc.etsu.edu/computer-organization-design-oer/36/" target="_blank" title = "Episode 4.08 – DeMorgan’s Theorem">4.08</a>, <a href="https://dc.etsu.edu/computer-organization-design-oer/2/" target="_blank" title = "Episode 4.09 - Simplification of Boolean Expressions">4.09</a>, <a href="https://dc.etsu.edu/computer-organization-design-oer/37/" target="_blank" title = "Episode 4.10 – More Boolean Simplifications">4.10</a>, <a href="https://dc.etsu.edu/computer-organization-design-oer/38/" target="_blank" title = "Episode 5.01 – The Sum-of-Products Expression">5.01</a>, <a href="https://dc.etsu.edu/computer-organization-design-oer/39/" target="_blank" title = "Episode 5.02 – NAND Logic">5.02</a>, <a href="https://dc.etsu.edu/computer-organization-design-oer/40/" target="_blank" title = "Episode 5.03 – The Product-of-Sums Expression">5.03</a>, <a href="https://dc.etsu.edu/computer-organization-design-oer/41/" target="_blank" title = "Episode 6.01 – Introduction to Karnaugh Maps">6.01</a>, <a href="https://dc.etsu.edu/computer-organization-design-oer/42/" target="_blank" title = "Episode 6.02 – Two- and Four-Variable Karnaugh Maps">6.02</a>, <a href="https://dc.etsu.edu/computer-organization-design-oer/43/" target="_blank" title = "Episode 6.03 – Makin’ Rectangles">6.03</a>, <a href="https://dc.etsu.edu/computer-organization-design-oer/44/" target="_blank" title = "Episode 6.04 – Four-Variable Karnaugh Map Example">6.04</a>, <a href="https://dc.etsu.edu/computer-organization-design-oer/45/" target="_blank" title = "Episode 6.05 – Don’t Cares, the Logical Kind">6.05</a>, <a href="https://dc.etsu.edu/computer-organization-design-oer/46/" target="_blank" title = "Episode 6.06 – Don’t Cares as Inputs">6.06</a>, and <a href="https://dc.etsu.edu/computer-organization-design-oer/47/" target="_blank" title = "Episode 6.07 – 7-Segment Display Driver Design">6.07</a>. <i>Computer Organization and Design Fundamentals Series</i>. License: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title = "CC BY-NC-SA 4.0: Attribution-NonCommercial-ShareAlike 4.0 International">CC BY<WBR>-NC-SA: Attribution<WBR>-NonCommercial<WBR>-ShareAlike</a>.</p>
+
+                
+        </div><div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div>
+     </div>
+  </body>
+</html>

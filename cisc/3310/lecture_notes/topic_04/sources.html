@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Sources for the lecture notes on 'Circuits'">
+      <title>Circuits: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+  </head>
+  <body>
+
+     <div class = "slide-header">
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+
+     <div class = 'slides hanging-indent'><div>
+        <h3>Circuits: Sources</h3>
+        <p>Parthasarathi, Ranjani. <a target="_blank" href="https://ebooks.inflibnet.ac.in/csp2/chapter/fixed-point-arithmetic-unit-i/" title="5. Fixed Point Arithmetic Unit 1">Chapter 5</a> and <a target="_blank" href="https://ebooks.inflibnet.ac.in/csp2/chapter/81/" title="6. Fixed Point Arithmetic Unit 2">Chapter 6</a>. <i>Computer Architecture</i>. INFLIBNET Centre, 24 July 2018. License: <a target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/" title="CC BY-NC 4.0: Attribution-NonCommercial 4.0 International">CC BY-NC: Attribution<wbr>-NonCommercial.</a></p>
+        <p>CS301: Computer Architecture. <a href="https://learn.saylor.org/course/view.php?id=71&sectionid=15520" target="_blank" title = "Unit 4: Computer Arithmetic">Unit 4</a>. <i>Saylor Academy</i>, 2010. License: <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" title = "CC BY 3.0: Attribution 3.0 Unported">CC BY: Attribution</a>.</p>
+        <p>Bergmann, Seth D. (2018). <a href="https://rdw.rowan.edu/cgi/viewcontent.cgi?article=1008&context=oer#section.6.3" target="_blank" title = "Chapter 6, Section 6.3: Combinational Circuits">Section 6.3</a> and <a href="https://rdw.rowan.edu/cgi/viewcontent.cgi?article=1008&context=oer#section.6.4" target="_blank" title = "Chapter 6, Section 6.4: Sequential Circuits">Section 6.4</a>. <i>Computer Organization with MIPS</i>. License: <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title = "CC BY-NC-ND 4.0: Attribution-NonCommercial-NoDerivs 4.0 International">CC BY<WBR>-NC-ND: Attribution<WBR>-NonCommercial<WBR>-NoDerivs</a>.</p>
+        <p>Tarnoff, David. (2020). Episodes <a href="https://dc.etsu.edu/computer-organization-design-oer/48/" target="_blank" title = "Episode 6.08 – Binary Decoders">6.08</a>, <a href="https://dc.etsu.edu/computer-organization-design-oer/49/" target="_blank" title = "Episode 6.09 – Multiplexers">6.09</a>, <a href="https://dc.etsu.edu/computer-organization-design-oer/50/" target="_blank" title = "Episode 6.10 – Demultiplexers">6.10</a>, <a href="https://dc.etsu.edu/computer-organization-design-oer/51/" target="_blank" title = "Episode 7.01 – The Need for Bitwise Operations">7.01</a>, <a href="https://dc.etsu.edu/computer-organization-design-oer/52/" target="_blank" title = "Episode 7.02 – Clearing Bits using the Bitwise-AND">7.02</a>, <a href="https://dc.etsu.edu/computer-organization-design-oer/53/" target="_blank" title = "Episode 7.03 – Coding Bitwise Operations">7.03</a>, <a href="https://dc.etsu.edu/computer-organization-design-oer/54/" target="_blank" title = "Episode 7.04 – Setting Bits using the Bitwise-OR">7.04</a>, <a href="https://dc.etsu.edu/computer-organization-design-oer/55/" target="_blank" title = "Episode 7.05 – Flipping Bits using the Bitwise Inverse and Bitwise-XOR">7.05</a>, and <a href="https://dc.etsu.edu/computer-organization-design-oer/56/" target="_blank" title = "Episode 7.06 – Stupid Binary Tricks">7.06</a>. <i>Computer Organization and Design Fundamentals Series</i>. License: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title = "CC BY-NC-SA 4.0: Attribution-NonCommercial-ShareAlike 4.0 International">CC BY<WBR>-NC-SA: Attribution<WBR>-NonCommercial<WBR>-ShareAlike</a>.</p>
+
+                
+        </div><div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div>
+     </div>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Instructions">
+      <title>Computer Instructions: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Computer Instructions: Types of Operations</h3>
+        <ol start = "4">
+            <li>Data Movement (= Data Flow) Operations:
+                <ul>
+                    <li><b><tt>MOV</tt></b>: ("move") copies the contents of a register to memory, or vice versa. <u>Example</u>: <tt>MOV R1, X</tt> copies the variable <tt>X</tt> to the register <tt>R1</tt>.</li>
+                    <li><b><tt>MVR</tt></b>: ("move registers") copies the content of one register to another. <u>Example</u>: <tt>MVR R1, R2</tt> copies <tt>R2</tt> to <tt>R1</tt>.</li>
+                    <li><b><tt>LOD</tt></b>: ("load") copies the content of a memory variable to a register. <u>Example</u>: <tt>LOD X</tt> copies the content of <tt>X</tt> into the accumulator register <tt>Ac</tt>.</li>
+                    <li><b><tt>STO</tt></b>: ("store") copies the content of a register into a memory variable. <u>Example</u>: <tt>STO X</tt> copies the content of the accumulator register <tt>Ac</tt> into the variable <tt>X</tt>.</li>
+                    <li><b><tt>PUSH</tt></b>: adds ("pushes") a number onto the stack data structure of the program stored in main memory. <u>Example</u>: <tt>PUSH R1</tt> pushes <tt>R1</tt> to the stack.</li>
+                    <li><b><tt>POP</tt></b>: removes ("pops") a number from the stack into a register/variable. <u>Example</u>: <tt>POP R1</tt> pops an item from the stack and saves it in <tt>R1</tt>.</li>
+                    <li><b><tt>EXC</tt></b>: swaps ("exchanges") two contents. <u>Example</u>: <tt>EXC R1, X</tt> exchanges <tt>X</tt> with <tt>R1</tt>.</li>
+                </ul>
+            </li>
+        </ol>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

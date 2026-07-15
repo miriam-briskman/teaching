@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Boolean Symbols and Expressions">
+      <title>Boolean Algebra &amp; Logic Gates: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+          td {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Boolean Identities</h3>
+        <p style = "margin-bottom: 2vh;">Sometimes, a given Boolean expression isn't written in its simplest form, but we can simplify it. This table contains several <b>identities</b>, which are pairs of expressions that are equivalent to each other and can be used to simplify Boolean expressions:</p>
+<center>
+<div style="margins: 0; padding: 0; overflow-x: auto;">
+<table>
+    <tr><th>Name</th><th>AND version</th><th>OR version</th></tr>
+    <tr><td>Identity Law</td><td>$1x = x$</td><td>$0 + x = x$</td></tr>
+<tr><td>Null Law</td><td>$0x = 0$</td><td>$1 + x = 1$</td></tr>
+<tr><td>Idempotent Law</td><td>$xx = x$</td><td>$x + x = x$</td></tr>
+<tr><td>Inverse Law</td><td>$xx' = 0$</td><td>$x + x' = 1$</td></tr>
+<tr><td>Commutative Law</td><td>$xy = yx$</td><td>$x + y = y + x$</td></tr>
+<tr><td>Associative Law</td><td>$(xy)z = x(yz)$</td><td>$(x + y) + z = x + (y + z)$</td></tr>
+<tr><td>Distributive Law</td><td>$x + yz = (x + y)(x + z)$</td><td>$x(y + z) = xy + xz$</td></tr>
+<tr><td>Absorption Law</td><td>$x(x + y) = x$</td><td>$x + xy = x$</td></tr>
+<tr><td>DeMorgan's Law</td><td>$(xy)' = x' + y'$</td><td>$(x + y)' = x'y'$</td></tr>
+<tr><td>Double Complement Law</td><td colspan=2>$(x')'= x'' = x$</td></tr>
+</table>
+</div>
+</center>        
+                       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

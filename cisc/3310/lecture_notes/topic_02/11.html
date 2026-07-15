@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Converting between bases">
+      <title>Data Representation: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Converting between Bases</h3>
+        <p style = "margin-bottom: 2vh;">Another example, with a concise solution:</p>
+        <p style = "text-align: center; margin-top: 2vh; margin-bottom: 2vh;">$1758_{10} $$\;= 1024 $$\:+\:512 $$\:+\:128 $$\:+\:64 $$\:+\:16 $$\:+\:8 $$\:+\:4 $$\:+\:2 = 2^{10} $$\:+\:2^9 $$\:+\:2^7 $$\:+\:2^6 $$\:+\:2^4 $$\:+\:2^3 $$\:+\:2^2 $$\:+\:2^1$</p>
+        <p style = "margin-top: 2vh; margin-bottom: 2vh;">The powers we've used are $10, 9, 7, 6, 4, 3, 2,$ and $1$, so the result is:</p>
+        <p style = "text-align: center; margin-top: 2vh; margin-bottom: 2vh;">$11011011110_2$</p>
+        <p style = "margin-top: 2vh;"><u>Conclusion</u>: $1758_{10}$ is $11011011110_2$ in base 2.</p>
+        <hr>
+        <p>To convert from base $2$ to base $10$, you do the opposite actions, from right to left:</p>
+        <p style = "text-align: center; margin-top: 2vh; margin-bottom: 2vh;">$110111010_2 $$\;= 0\cdot2^0 $$\:+\:1\cdot2^1 $$\:+\:0\cdot2^2 $$\:+\:1\cdot2^3 $$\:+\:1\cdot2^4 $$\:+\:1\cdot2^5 $$\:+\:0\cdot2^6 $$\:+\:1\cdot2^7 $$\:+\:1\cdot2^8$</p>
+        <p style = "text-align: center; margin-top: 2vh; margin-bottom: 2vh;">$= 2 $$\:+\:8 $$\:+\:16 $$\:+\:32 $$\:+\:128 $$\:+\:256 $$\;= 442_{10}$</p>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

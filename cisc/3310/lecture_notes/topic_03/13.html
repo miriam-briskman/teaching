@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Logic Gates">
+      <title>Boolean Algebra &amp; Logic Gates: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+          td {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Logic Gates: OR</h3>
+        <p>The <b>OR</b> logic gate takes two bits as an input. Its output follows the rule: "if at least one of the bits is $1$, output $1$; otherwise, output $0$." This gate acts exactly as the "or" operator in programming does: given the Boolean variables <tt>x</tt> and <tt>y</tt>, then: <tt>x || y</tt> means "<tt>x</tt> or <tt>y</tt>". You may also use the bitwise <tt>|</tt> operator: <tt>x | y</tt>.</p>
+<p style = "margin-bottom: 0;">Below is the black-box representation of the OR gate, one way in which we can build it with transistors, and its truth table.</p>
+        <div class = "images">
+                <div class = "imagecontainer" style = "margin-top: 0;">
+                    <a href = "./OR_gate.jpg" target = "_blank"><img src="./OR_gate.jpg" title = "OR Gate: black-box representation." alt="OR Gate: black-box representation." style = "height: 35vh; width: fit-content;"></a>
+                    <p class = "caption" style = "width: 30vw;">OR Gate: black-box representation. <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a>, <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a>.</p>
+                </div>
+                <div class = "imagecontainer">
+                    <a href = "./OR_gate_transistors.webp" target = "_blank"><img src="./OR_gate_transistors.webp" title = "One way to build an OR Gate from transistors" alt="One way to build an OR Gate from transistors." style = "height: 35vh; width: fit-content;"></a>
+                    <p class = "caption" style = "width: 30vw;">One way to build an OR Gate from transistors. Taken from <a href="https://www.learnelectronicsindia.com/post/or-gate-using-transistor" target = "_blank" title = "OR Gate using Transistor">this article</a> by nithya7rns.</p>
+                </div>
+                <div class = "imagecontainer">
+                    <center>
+                    <table border="1" cellspacing="1" cellpadding="1">
+                        <tr>                
+                            <th scope="col" colspan=2>Input</th>
+                            <th scope="col">Output</th>
+                        </tr>
+                        <tr>
+                            <th scope="col"><tt>x</tt></th>
+                            <th scope="col"><tt>y</tt></th>
+                            <th scope="col"><tt>x + y</tt></th>
+                        </tr>
+                        <tr>
+                            <td>$0$</td>
+                            <td>$0$</td>
+                            <td>$0$</td>
+                        </tr>
+                        <tr>
+                            <td>$0$</td>
+                            <td>$1$</td>
+                            <td>$1$</td>
+                        </tr>
+                        <tr>
+                            <td>$1$</td>
+                            <td>$0$</td>
+                            <td>$1$</td>
+                        </tr>
+                        <tr>
+                            <td>$1$</td>
+                            <td>$1$</td>
+                            <td>$1$</td>
+                        </tr>
+                    </table>
+                    <span>OR truth table</span>
+                    </center>
+                </div>
+            </div>
+                       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

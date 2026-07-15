@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Logic Gates">
+      <title>Boolean Algebra &amp; Logic Gates: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+          td {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Logic Gates: NOT</h3>
+        <p>The <b>NOT</b> logic gate, also known as the <b>invertor</b> gate, takes one bit as an input, and outputs the opposite bit: for the input $0$, it outputs $1$, and for the input of $1$, it outputs $0$. This gate acts exactly as the "not" operator in programming does: given the Boolean variable <tt>x</tt>, then: <tt>!x</tt> means "not <tt>x</tt>". You may also use the bitwise <tt>~</tt> operator: <tt>~x</tt>.</p>
+        <p style = "margin-bottom: 0;">Below is the graphical ("black-box") representation of the NOT gate, one way in which we can build it with transistors, and the truth table for this gate.</p>
+        <div class = "images">
+                <div class = "imagecontainer" style = "margin-top: 0;">
+                    <a href = "./NOT_gate.jpg" target = "_blank"><img src="./NOT_gate.jpg" title = "NOT Gate: black-box representation." alt="NOT Gate: black-box representation." style = "height: 35vh; width: fit-content;"></a>
+                    <p class = "caption" style = "width: 30vw;">NOT Gate: black-box representation. <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a>, <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a>.</p>
+                </div>
+                <div class = "imagecontainer">
+                    <a href = "./NOT_Gate_transistors.png" target = "_blank"><img src="./NOT_Gate_transistors.png" title = "One way to build a NOT Gate from transistors" alt="One way to build a NOT Gate from transistors." style = "height: 35vh; width: fit-content;"></a>
+                    <p class = "caption" style = "width: 30vw;">One way to build a NOT Gate from transistors. Created by <a target = _blank" href="https://commons.wikimedia.org/wiki/File:RTL_NOT_Gate.svg" title="File:RTL NOT Gate.svg">Tim Mathias</a>, <a target = "_blank" href="https://creativecommons.org/licenses/by-sa/4.0" title="Creative Commons BY-SA 4.0 License: Attribution-ShareAlike 4.0 International">CC BY-SA 4.0</a>, via Wikimedia Commons.</p>
+                </div>
+                <div class = "imagecontainer">
+                    <center>
+                    <table border="1" cellspacing="1" cellpadding="1">
+                        <tr>                
+                            <th scope="col">Input</th>
+                            <th scope="col">Output</th>
+                        </tr>
+                        <tr>
+                            <th scope="col"><tt>x</tt></th>
+                            <th scope="col"><tt>x'</tt></th>
+                        </tr>
+                        <tr>
+                            <td>$0$</td>
+                            <td>$1$</td>
+                        </tr>
+                        <tr>
+                            <td>$1$</td>
+                            <td>$0$</td>
+                        </tr>
+                    </table>
+                    <span>NOT truth table</span>
+                    </center>
+                </div>
+            </div>
+                       
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

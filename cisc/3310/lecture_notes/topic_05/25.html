@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Instructions">
+      <title>Computer Instructions: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Computer Instructions: Types of Operations</h3>
+        <p>We can divide instructions into several type categories:</p>
+        <ol start = "1">
+            <li>Arithmetic Operations (involving integers or floating-point numbers):
+                <ul>
+                    <li><b><tt>ADD</tt></b>: Adds up 2 or 3 numbers. <u>Example</u>: <tt>ADD R1, R2</tt> to add the number in register <tt>R2</tt> to the number in register <tt>R1</tt>.</li>
+                    <li><b><tt>SUB</tt></b>: Subtracts numbers. <u>Example</u>: <tt>SUB R1, X, Y</tt> to subtract the memory variables <tt>X</tt> and <tt>Y</tt> from register <tt>R1</tt>.</li>
+                    <li><b><tt>MUL</tt></b>: Multiplies numbers. <u>Example</u>: <tt>MUL X</tt> to multiply the variable <tt>X</tt> by a specific accumulator register.</li>
+                    <li><b><tt>DIV</tt></b>: Divides numbers. <u>Example</u>: <tt>DIV X, Y</tt> to divide the variable <tt>X</tt> by the variable <tt>Y</tt>, and store the result in <tt>X</tt>.</li>
+                    <li><b><tt>INC</tt></b>: Increments a number (= add $1$ to it.) <u>Example</u>: <tt>INC R1</tt> to add $1$ to the register <tt>R1</tt>.</li>
+                    <li><b><tt>DEC</tt></b>: Decrements a number (= subtract $1$ from it.) <u>Example</u>: <tt>DEC X</tt> to subtract $1$ from the variable <tt>X</tt>.</li>
+                    <li><b><tt>NEG</tt></b>: Changes the sign of a number from positive to negative and vice versa. <u>Example</u>: <tt>NEG R2</tt> to negate <tt>R2</tt>.</li>
+                </ul>
+            </li>
+        </ol>
+        <p>[Note that an instruction's name on one computer may differ from its name on another computer. E.g., a computer may call the multiplication instruction as <tt>MUL</tt>, <tt>MULT</tt>, or <tt>MULTIPLY</tt>: it depends on the decision of the computer's architecturers.]</p>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

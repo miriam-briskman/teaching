@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Practical Example: Which Desktop to Buy?">
+      <title>Intro to Computer Architecture: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Practical Example: Which Desktop to Buy?</h3>
+        <p><b>Scenario</b>: Johnny, a heavy computer gamer, wants to purchase a desktop that will <u>run high-quality video games smoothly, without games freezing or suddenly crashing</u>. Which of these 3 desktops should Johnny consider buying, and why?</p>
+        <div style="margin: 0; padding: 0; overflow-x: auto;">
+        <table border="1" cellspacing="1" cellpadding="1">
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Desktop &#x2116;1</th>
+                <th scope="col">Desktop &#x2116;2</th>
+                <th scope="col">Desktop &#x2116;3</th>
+            </tr>
+            <tr>
+                <th>Display</th>
+                <td>23'', LCD, 16:10, 3840 x 2160</td>
+                <td>20.5'', LED, 16:9, 2560 x 1440</td>
+                <td>27'', Curved, 21:9, 1920 x 1200</td>
+            </tr>
+            <tr>
+                <th>CPU</th>
+                <td>Intel i7, 4.3 GHz, 20 cores, 28 threads</td>
+                <td>AMD Ryzen 9, 4.9 GHz, 16 cores, 32 threads</td>
+                <td>Intel i9, 3.2 GHz, 24 cores, 32 threads</td>
+            </tr>
+            <tr>
+                <th>Cache</th>
+                <td>64KB L1, 28MB L2, 33MB L3</td>
+                <td>256KB L1, 4MB L2, 68MB L3</td>
+                <td>128KB L1, 20MB L2, 24MB L3</td>
+            </tr>
+            <tr>
+                <th>RAM</th>
+                <td>3200 MHz, 16GB, DDR4, 2Rx8</td>
+                <td>1700 MHz, 8GB, DDR3, 1Rx16</td>
+                <td>5600 MHz, 64GB, DDR5, 1Rx8</td>
+            </tr>
+            <tr>
+                <th>Storage</th>
+                <td>7000 RPM SATA 2TB HDD</td>
+                <td>SAS 850GB SSD</td>
+                <td>6500 RPM SCSI 1TB HDD</td>
+            </tr>
+        </table>
+        </div>
+        <p>The above table contains so many details! We first need to explain what they mean before advising anything to Johnny.</p>
+
+               
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

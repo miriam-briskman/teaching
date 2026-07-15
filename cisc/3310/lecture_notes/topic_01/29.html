@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Memory Features">
+      <title>Intro to Computer Architecture: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Memory Features</h3>
+        <ul>
+            <li><b>3200 MHz</b> is the <b>speed of the bus</b> that carries data from the CPU to memory and vice versa. 3200 MHz is equal to 3200 megabytes transferred per second, but this rate might be even larger, as we explain further below.</li>
+            <li><b>16GB</b> is the size of the RAM installed on the computer: 16 gigabytes. The greater the RAM size is, the more responsive the programs running on the computer will be. That is, a large app won't be lagging and won't crash the larger main memory is.</li>
+            <li><b>SDRAM</b>, standing for "synchronous dynamic RAM", was invented in 1988 and worked faster than conventional RAM by automatically synchronizing with the CPU clock, thus preventing the CPU from needlessly waiting between memory accesses. However, this tech, by itself, allows only 1 transfer per cycle. <b>DDR</b>, or "Double Data Rate", is a technique from 2000 that lets RAM transfer data <b>twice</b> per clock cycle (= 2 bits instead of 1.) <b>DDR2</b> (from 2003) is 2 times faster (4 bits) than DDR because of an enhanced input/output bus signal and uses less power. <b>DDR3</b> (from 2007) is 2 times faster (8 bit transfers) than DDR2 and features a 40% power use reduction. <b>DDR4</b> uses bank groups of memory, each of which can tranfser 8-bits independently. E.g., 8 groups means transfers of 8x8 = 64 bits = 8 bytes at a time. Finally, <b>DDR5</b> is 2 times faster (16 bits per bank) than DDR4 and features channel efficiency, improved power management, and optimized performance. If our DDR4 RAM has 8 groups, it means that our transfer speed is 3200 x 8 bytes = 51.2 gigabytes transferred per second!</li>
+        </ul>
+ 
+               
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Memory Features">
+      <title>Intro to Computer Architecture: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Memory Features</h3>
+        <ul>
+            <li><b>2Rx8</b>, generally written as "MRxN", where M and N are powers of 2, is the rank and width of RAM and represents the number of memory <b>chips</b> and their arrangement on the RAM stick. Each chip is a container of data. DDR2, DDR3, and DDR4 RAMs require that each rank has a 64-bit-wide data bus. The rank doesn't affect the speed of RAM, but has a few other effects on the behavior of the memory stick, including (1) Price, since memory sticks with certain rank arrangements are more expensive to produce, and (2) Performance: some ranks cause an increase in latency, negatively affecting RAM performance.
+                <ul>
+                    <li><b>1Rx16</b>: the memory stick has 4 chips on it (64-bit-wide bus/16 = 4), and all these 4 chips are located on 1 side of the stick. This configuration is known for higher latency, so avoiding using such a stick is advised.</li>
+                    <li><b>2Rx16</b>: 4 chips on both sides (8 chips in total), so this stick has a greater memory capacity (latency is still high.)</li>
+                    <li><b>1Rx8</b>: 8 chips (64/8 = 8) on one side. Better performance than 1Rx16 and is also cost-effective. <u>2nd-to-best choice</u>.</li>
+                    <li><b>2Rx8</b>: 8 chips (64/8 = 8) on both sides of the stick. It can fit more data than 1Rx8. <u>Best choice</u>.</li>
+                    <li><b>1Rx4</b>: 16 chips (64/4 = 16) on one side. It is more expensive, but has a slightly better performance.</li>
+                    <li><b>2Rx4</b>: 16 chips (64/4 = 16) on both sides. Can contain as twice much data as 1Rx4, but is expensive.</li>
+                    <li><b>4Rx4</b>: 16 chips (64/4 = 16) on 2 rows on each side. Can contain as twice much data as 2Rx4, but is expensive.</li>
+                </ul>
+
+            </li>
+
+        </ul>
+ 
+               
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

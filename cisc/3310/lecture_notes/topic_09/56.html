@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="NASM Coding: More Programs">
+      <title>Intro to Assembly Language: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>NASM Coding: More Programs</h3>
+        <ol start = "5">
+        <li>
+        <pre class="source source-long"><code class="language-x86asm">; A program that takes an input (integer) from the user, and prints its square to stdout.
+; Example: If the user entered 3 as the input, the output will be:
+; 9
+
+section .data
+    newline db 10
+
+section .bss
+    buffer resb 32  ; input buffer
+    outbuf resb 32  ; output buffer
+
+section .text
+    global _start
+
+_start:
+
+    ; Read the input
+    mov rax, 0      ; sys_read
+    mov rdi, 0      ; stdin
+    mov rsi, buffer
+    mov rdx, 32
+    syscall         ; rax = number of bytes read
+
+    ; ASCII to integer
+    mov rsi, buffer
+    xor rax, rax    ; result = 0
+
+convert_loop:
+    movzx rbx, byte [rsi]
+
+    cmp rbx, 10     ; newline?
+    je convert_done
+
+    cmp rbx, 0      ; null terminator?
+    je convert_done
+
+    ; Convert character, e.g., '5', to 5d
+    sub rbx, '0'
+
+    imul rax, 10
+    add rax, rbx
+
+    inc rsi
+    jmp convert_loop
+
+convert_done:
+
+    ; Square the number
+    imul rax, rax          ; rax = rax * rax
+
+    ; Integer to string
+    mov rbx, 10
+    ; lea: store the address [outbuf + 31] (not the content) in rdi
+    lea rdi, [outbuf + 31] ; point to end of buffer
+
+    mov byte [rdi], 0      ; optional null terminator
+    dec rdi                ; move back for digits
+
+    ; handle zero explicitly
+    cmp rax, 0
+    jne convert_out
+
+    mov byte [rdi], '0'
+    dec rdi
+    jmp conversion_done
+
+convert_out:
+    xor rdx, rdx
+    div rbx                ; rax = quotient, rdx = remainder
+
+    add rdx, '0'
+    mov [rdi], dl
+
+    dec rdi
+
+    cmp rax, 0
+    jne convert_out
+
+conversion_done:
+    inc rdi                ; rdi now points to start of string
+
+    ; Compute string length
+    mov rsi, rdi           ; start of string
+
+    ; lea: store the address [outbuf + 32] (not the content) in rdx
+    lea rdx, [outbuf + 32]
+    sub rdx, rsi           ; length = end - start
+
+    ; Print square result
+    mov rax, 1             ; sys_write
+    mov rdi, 1             ; stdout
+    syscall
+
+    ; Print newline
+    mov rax, 1
+    mov rdi, 1
+    mov rsi, newline
+    mov rdx, 1
+    syscall
+
+    ; Exit
+    mov rax, 60
+    xor rdi, rdi ; Same as rdi = 0;
+    syscall</code></pre>
+                
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

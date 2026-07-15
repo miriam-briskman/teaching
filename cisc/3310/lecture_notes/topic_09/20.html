@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="NASM Coding: Basics">
+      <title>Intro to Assembly Language: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>NASM Coding: Basics - Examples</h3>
+        <ul>
+            <li><pre class="source"><code class="language-x86asm">msg db "Hello", 0</code></pre>
+In the code line above, we define a variable named <pre class="source source-inline"><code class="language-x86asm">msg</code></pre> whose content is the string literal <pre class="source source-inline"><code class="language-x86asm">Hello</code></pre> followed by the null character (<pre class="source source-inline"><code class="language-x86asm">0</code></pre>) whose purpose is to act as the string's endpoint. The directive (= pseudo-instruction) <pre class="source source-inline"><code class="language-x86asm">db</code></pre> tells the computer to store that data as raw 8-bit bytes in the <b>.data</b> section of the executable.</li>
+            <li><pre class="source"><code class="language-x86asm">buffer resb 64</code></pre>
+This line in the <b>.bss</b> section declares a variable with the name <pre class="source source-inline"><code class="language-x86asm">buffer</code></pre>, and tells the computer to reserve <pre class="source source-inline"><code class="language-x86asm">64</code></pre> bytes of space for it using the <pre class="source source-inline"><code class="language-x86asm">resb</code></pre> directive, whose purpose is to "Reserve Byte(s)".</li>
+            <li><pre class="source"><code class="language-x86asm">mov rax, 1</code></pre>
+Here, we copy the number <pre class="source source-inline"><code class="language-x86asm">1</code></pre> into the <pre class="source source-inline"><code class="language-x86asm">rax</code></pre> 64-bit register in the CPU using the <pre class="source source-inline"><code class="language-x86asm">mov</code></pre> instruction, which you will find in the <b>.text</b> section.</li>
+        </ul>
+                
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

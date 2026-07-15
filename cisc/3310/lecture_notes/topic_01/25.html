@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Computer Display">
+      <title>Intro to Computer Architecture: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Computer Display</h3>
+        <ul>
+            <li><b>23''</b>, or 23 inches, is the <b>diagonal size of the display in inches</b>. It indicates how large the computer screen is.
+            <div class = "imagecontainer imagecontainer-floatright">
+                <a href = "https://commons.wikimedia.org/wiki/File:Display_size_measurements.png" target='_blank'><img src="https://miriam-briskman.github.io/poll-system-static-files/CISC-3310/./display_size_measurements.png" title = "File:Display size measurements.png (Click image to open in enlarged form in a new tab)" alt="The green, dashed line going from one corner to the opposite represents the diagonal size of the computer screen." style = "width: 15vw;"></a>
+                <p class = "caption" style = "width: unset; margin-left: 10px;">Image by <a target='_blank' title = "File:Display size measurements.png" href="https://commons.wikimedia.org/wiki/File:Display_size_measurements.png">florisla</a>, <a target='_blank' title = "Creative Commons BY-SA 2.0 License" href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a>, via Wikimedia Commons</p>
+            </div>
+            </li>
+            <li><b>16:10</b> is the ratio of the screen's width to the screen's height, called the <b>aspect ratio</b>. It tells how large the width is with respect to the height. [<b><i>Challenge question</i></b>: If you know both the diagonal size and the aspect ratio, what famous math theorem will you use to find the sizes of the width and height in inches? <b><i>Hint</i></b>: there are 90 degrees between two adjacent edges of the screen.]</li>
+            <li><b>3840 x 2160</b> is the <b>pixel resolution</b>. Bigger numbers mean more pixels built into the display, a higher resolution, and, therefore, much sharper quality of the displayed images.</li>
+            <li><b>LCD</b>, <b>LED</b>, and <b>Curved</b> are 3 monitor types, representing the technologies used to build the display. LCD ("liquid crystal display") uses a liquid crystal solution between two layers of polarizing material. When an electric current is passed through the liquid, it either blocks or allows light to pass through, which forms images. LED ("light emitting diode") is an LCD using LED backlights instead of fluorescent lights. A curved display uses LCD or LED but has an inward-curved screen. LCDs are more affordable, and LEDs are thinner, brighter, and more energy-efficient than traditional LCDs, with better contrast ratios and more vivid colors.</li>
+        </ul>
+ 
+               
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

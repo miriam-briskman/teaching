@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="CPU Features">
+      <title>Intro to Computer Architecture: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>CPU Features</h3>
+        <ul>
+            <li><b>Intel</b> and <b>AMD</b> are CPU chipset manufacturers/brands, producing most of the CPUs available in the market. Both companies produce high-quality CPUs; however, the differences between them are that Intel CPUs have greater performance per core, are more power efficient, and have high clock tick speeds, while AMD CPUs are less expensive, stay cooler than Intel CPUs, come with larger cache, and have better onboard graphics chips.
+            <!--<div class = "imagecontainer imagecontainer-floatright">
+                <a href = "https://commons.wikimedia.org/wiki/File:Display_size_measurements.png" target='_blank'><img src="./display_size_measurements.png" title = "File:Display size measurements.png (Click image to open in enlarged form in a new tab)" alt="The green, dashed line going from one corner to the opposite represents the diagonal size of the computer screen." style = "width: 15vw;"></a>
+                <p class = "caption" style = "width: unset; margin-left: 10px;">Image by <a target='_blank' title = "File:Display size measurements.png" href="https://commons.wikimedia.org/wiki/File:Display_size_measurements.png">florisla</a>, <a target='_blank' title = "Creative Commons BY-SA 2.0 License" href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a>, via Wikimedia Commons</p>
+            </div>-->
+            </li>
+            <li><b>i7</b> and <b>i9</b> are <b>brand modifiers</b>: the greater the number, the more powerful the tasks that this CPU can perform are. Similarly, <b>Ryzen 9</b> is a <b>brand and level</b> number of the AMD CPUs.</li>
+            <li><b>4.3 GHz</b> is the <b>CPU's speed</b>. "GHz" is read as "Giga Hertz", where hertz is a unit of frequency measuring the number of clock cycles per second. During 1 clock cycle, the CPU can run up to several computer instructions, so the more cycles there are, the more instructions it can run. 4.3 Giga Hertz means that the CPU can run at least 4.3 billion of instructions per second!</li>
+            <li>Each CPU <b>core</b> can run instructions in parallel and independently of other cores. Some cores can run 2 sequences of instructions (= <b>threads</b>) at the same time, called <b>dual-threaded</b> or <b>hyper-threaded</b> cores, while those that can run only 1 sequence at a time are <b>singly-threaded</b>. A CPU with 20 cores and 28 threads means 28 - 20 = 8 cores are hyper-threaded, and 20 - 8 = 12 are singly-threaded. Such a device can run at least 20 programs simultaneously!</li>
+        </ul>
+ 
+               
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

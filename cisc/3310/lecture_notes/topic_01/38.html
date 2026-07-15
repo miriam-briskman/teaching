@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Topics in this Course">
+      <title>Intro to Computer Architecture: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Topics in this Course</h3>
+        <p>We will learn about most of the mentioned computer layers as we advance throughout the course:</p>
+<ul>
+    <li><b>Transistors</b>, which are simple electric switches, and <b>Logic Gates</b>, which are small structures made of transistors and wires and used for redirecting electric currents,  are covered in <u>Topic 3: Boolean Algebra &amp; Logic Gates</u>.</li>
+    <li><b>Circuits</b>, which are meaningful, more complex structures made of logic gates, are studied in <u>Topic 4: Circuits</u>.</li>
+    <li><b>Chips</b>, which are complex structures made of circuits, as well as <b>Systems</b>, such as the memory and I/O systems, are studied across <u>Topic 5: Computer Instructions</u>, <u>Topic 6: MARIE: Architecture Example</u>, <u>Topic 7: Memory</u>, and <u>Topic 8: I/O</u>.</li>
+    <li>In <u>Topic 9: Intro to Assembly Language</u>, we will code in a popular <b>assembly language</b> called NASM ("Netwide Assembler"), a low-level language sitting above machine language, which controls computer hardware directly.</li>
+    <li>In <u>Topic 10: Performance &amp; Architecture Types</u>, we will see ways to improve a computer's performance by making changes to its hardware and learn about popular architecture types in the market.</li>
+    <li>In <u>Topic 11: Intro to Operating Systems</u> we will leave the hardware world and find out about the software that sits on top of the hardware: a computer's operating system.</li>
+</ul>
+               
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="MARIE Intro">
+      <title>MARIE: Architecture Example: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: left;}
+          /*td {text-align: center;}*/
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>MARIE: Instructions</h3>
+        <p>Here is MARIE's instruction set (each instruction has an opcode and up to $1$ operand:)</p>
+        <center>
+        <div style="margin: 0; padding: 0; overflow-x: auto; overflow-y: hidden;">
+        <table>
+            <tr><th style = "text-align: center;">Opcode</th><th style = "text-align: center;">Syntax</th><th style = "text-align: center;">Description</th></tr>
+            <tr><td>0001</td><th><tt>LOAD X</tt></th><td>Loads the value at address <tt>X</tt> into the <tt>AC</tt>.</td></tr>
+            <tr><td>0010</td><th><tt>STORE X</tt></th><td>Stores the value in the <tt>AC</tt> into address <tt>X</tt> in memory.</td></tr>
+            <tr><td>0011</td><th><tt>ADD X</tt></th><td>Adds the value at address <tt>X</tt> to the <tt>AC</tt>.</td></tr>
+            <tr><td>0100</td><th><tt>SUBT X</tt></th><td>Subtracts the value at address <tt>X</tt> from the <tt>AC</tt>.</td></tr>
+            <tr><td>0101</td><th><tt>INPUT</tt></th><td>Takes input from the user and places it into the <tt>AC</tt>.</td></tr>
+            <tr><td>0110</td><th><tt>OUTPUT</tt></th><td>Outputs the value in the <tt>AC</tt> to the user.</td></tr>
+            <tr><td>0111</td><th><tt>HALT</tt></th><td>Stops the execution of the program.</td></tr>
+            <tr><td>1000</td><th><tt>SKIPCOND</tt></th><td>Skips the next instruction based on a condition in the <tt>AC</tt>.</td></tr>
+            <tr><td>1001</td><th><tt>JUMP X</tt></th><td>Sets the <tt>PC</tt> to <tt>X</tt>, causing the program to jump to the specified address.</td></tr>
+            <tr><td>1010</td><th><tt>JNS X</tt></th><td>Jumps to the instruction at address <tt>X</tt>.</td></tr>
+            <tr><td>1011</td><th><tt>JUMPI X</tt></th><td>Indirectly jumps to the address stored at address <tt>X</tt>.</td></tr>
+        </table>
+        </div>
+        </center>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

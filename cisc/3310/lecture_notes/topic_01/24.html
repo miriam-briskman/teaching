@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Practical Example: Which Desktop to Buy?">
+      <title>Intro to Computer Architecture: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Practical Example: Which Desktop to Buy?</h3>
+        <p>We will first explain what the terms and abbreviations in the <span style = "border: 4px solid red;">red boxes</span> mean, and then proceed to deciding which device is best for Johnny's lifestyle.</p>
+        <div style="margin: 0; padding: 0; overflow-x: auto;">
+        <table border="1" cellspacing="1" cellpadding="1">
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Desktop &#x2116;1</th>
+                <th scope="col">Desktop &#x2116;2</th>
+                <th scope="col">Desktop &#x2116;3</th>
+            </tr>
+            <tr>
+                <th>Display</th>
+                <td><span style = "border: 4px solid red;">23''</span>, <span style = "border: 4px solid red;">LCD</span>, <span style = "border: 4px solid red;">16:10</span>, <span style = "border: 4px solid red;">3840 x 2160</span></td>
+                <td>20.5'', <span style = "border: 4px solid red;">LED</span>, 16:9, 2560 x 1440</td>
+                <td>27'', <span style = "border: 4px solid red;">Curved</span>, 21:9, 1920 x 1200</td>
+            </tr>
+            <tr>
+                <th>CPU</th>
+                <td><span style = "border: 4px solid red;">Intel</span> <span style = "border: 4px solid red;">i7</span>, <span style = "border: 4px solid red;">4.3 GHz</span>, 20 <span style = "border: 4px solid red;">cores</span>, 28 <span style = "border: 4px solid red;">threads</span></td>
+                <td><span style = "border: 4px solid red;">AMD</span> <span style = "border: 4px solid red;">Ryzen 9</span>, 4.9 GHz, 16 cores, 32 threads</td>
+                <td>Intel i9, 3.2 GHz, 24 cores, 32 threads</td>
+            </tr>
+            <tr>
+                <th>Cache</th>
+                <td>64<span style = "border: 4px solid red;">KB</span> <span style = "border: 4px solid red;">L1</span>, 28<span style = "border: 4px solid red;">MB</span> <span style = "border: 4px solid red;">L2</span>, 33MB <span style = "border: 4px solid red;">L3</span></td>
+                <td>256KB L1, 4MB L2, 68MB L3</td>
+                <td>128KB L1, 20MB L2, 24MB L3</td>
+            </tr>
+            <tr>
+                <th>RAM</th>
+                <td><span style = "border: 4px solid red;">3200 MHz</span>, 16<span style = "border: 4px solid red;">GB</span>, <span style = "border: 4px solid red;">DDR4</span>, <span style = "border: 4px solid red;">2Rx8</span></td>
+                <td>1700 MHz, 8GB, DDR3, 1Rx16</td>
+                <td>5600 MHz, 64GB, DDR5, 1Rx8</td>
+            </tr>
+            <tr>
+                <th>Storage</th>
+                <td><span style = "border: 4px solid red;">7000 RPM</span> <span style = "border: 4px solid red;">SATA</span> 2<span style = "border: 4px solid red;">TB</span> <span style = "border: 4px solid red;">HDD</span></td>
+                <td><span style = "border: 4px solid red;">SAS</span> 850GB <span style = "border: 4px solid red;">SSD</span></td>
+                <td>6500 RPM <span style = "border: 4px solid red;">SCSI</span> 1TB HDD</td>
+            </tr>
+        </table>
+        </div>
+        <p>First thing first: let's begin with the display.</p>
+
+               
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="NASM Coding: Trace Tables">
+      <title>Intro to Assembly Language: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          table {width: max-content;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+          td {text-align: unset;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>NASM Coding: Trace Tables</h3>
+        <p>One way to keep track of what is happening with a program that we are working with is by creating a <b>trace table</b> for it: a table what keep track of the input, output, register, variable, and exit code values as the program keeps executing.</p>
+        <ul>
+            <li>The table will feature one row per each instruction that we run (if we have a loop, we might run the same instruction more than once, so there will be multiple rows per that instruction.)</li>
+            <li>You may create this table using any convenient app, e.g., Microsoft Excel or Google Sheets.</li>
+        </ul>
+        <p>Here is the trace table for the short program on <a href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3310/lecture_notes/topic_09/37.html" target="_blank" title="Topic 9, slide 37: a NASM program that terminates">slide 37</a>:</p>
+        <center>
+        <div style="margin: 0; padding: 0; overflow-x: auto; overflow-y: hidden;">
+        <table>
+  <thead>
+    <tr>
+      <th>Instruction</th>
+      <th><pre class="source source-inline"><code class="language-x86asm">stdin</code></pre></th>
+      <th><pre class="source source-inline"><code class="language-x86asm">rax</code></pre></th>
+      <th><pre class="source source-inline"><code class="language-x86asm">rdi</code></pre></th>
+      <th><pre class="source source-inline"><code class="language-x86asm">stdout</code></th>
+      <th>Exit Code</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><pre class="source source-inline"><code class="language-x86asm">mov rax, 60</code></pre></td>
+      <td></td>
+      <td><pre class="source source-inline"><code class="language-x86asm">60d</code></pre></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><pre class="source source-inline"><code class="language-x86asm">mov rdi, 0</code></pre></td>
+      <td></td>
+      <td><pre class="source source-inline"><code class="language-x86asm">60d</code></pre></td>
+      <td><pre class="source source-inline"><code class="language-x86asm">0</code></pre></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><pre class="source source-inline"><code class="language-x86asm">syscall</code></pre></td>
+      <td></td>
+      <td><pre class="source source-inline"><code class="language-x86asm">60d</code></pre></td>
+      <td><pre class="source source-inline"><code class="language-x86asm">0</code></pre></td>
+      <td></td>
+      <td><pre class="source source-inline"><code class="language-x86asm">0</code></pre></td>
+      <td><pre class="source source-inline"><code class="language-c">exit(0);</code></pre></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</center>
+
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

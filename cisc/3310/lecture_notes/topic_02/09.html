@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Converting between bases">
+      <title>Data Representation: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+          td {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Converting between Bases</h3>
+        <p>The <b>subtraction method</b> works as follows: keep subtracting powers of the destination base from the number, until you get 0. Take note of which powers were used. Finally, write the multiples of all these subtracted powers in a string, which is your result!</p>
+        <p>Since we will frequently convert numbers to base $2$, it is useful to keep a handy list of some common powers of $2$:</p>
+        <center>
+        <div style="margin: 0; padding: 0; overflow-x: auto;">
+        <table border="1" cellspacing="1" cellpadding="1">
+            <tr>
+                <th scope="col">$2^0$</th>
+                <th scope="col">$2^1$</th>
+                <th scope="col">$2^2$</th>
+                <th scope="col">$2^3$</th>
+                <th scope="col">$2^4$</th>
+                <th scope="col">$2^5$</th>
+                <th scope="col">$2^6$</th>
+                <th scope="col">$2^7$</th>
+                <th scope="col">$2^8$</th>
+                <th scope="col">$2^9$</th>
+                <th scope="col">$2^{10}$</th>
+                <th scope="col">$2^{11}$</th>
+                <th scope="col">$2^{12}$</th>
+                <th scope="col">$2^{13}$</th>
+                <th scope="col">$2^{14}$</th>
+                <th scope="col">$2^{15}$</th>
+                <th scope="col">$2^{16}$</th>
+            </tr>
+            <tr>
+                <td>$1$</td>
+                <td>$2$</td>
+                <td>$4$</td>
+                <td>$8$</td>
+                <td>$16$</td>
+                <td>$32$</td>
+                <td>$64$</td>
+                <td>$128$</td>
+                <td>$256$</td>
+                <td>$512$</td>
+                <td>$1,024$</td>
+                <td>$2,048$</td>
+                <td>$4,096$</td>
+                <td>$8,192$</td>
+                <td>$16,384$</td>
+                <td>$32,768$</td>
+                <td>$65,536$</td>
+            </tr>
+        </table>
+        </div>
+        </center>
+        <p><u>Example</u>: To convert $2619_{10}$ to base 2, we do the following:</p>
+        <p>Note that the biggest power of $2$ that goes into $2619_{10}$ is $2^{11} = 2048$, so we subtract to get $2619 - 2048 = 571$. The biggest power that goes into $571$ is $2^9 = 512$, so we get $571 - 512 = 59$. Keeping this way, we see that $59 - 32 = 27$, $27 - 16 = 11$, $11 - 8 = 3$, $3 - 2 = 1$, $1 - 1 = 0$. Next on, we will build up the resulting number.</p>
+
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

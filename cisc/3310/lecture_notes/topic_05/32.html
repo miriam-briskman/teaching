@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Instructions">
+      <title>Computer Instructions: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Computer Instructions: Locations of Data</h3>
+        <p>The CPU may store data in various places:</p>
+        <ol>
+            <li><b>Accumulator architecture</b>: the accumulator register <tt>AC</tt> always implicitely participates in an operation. For instance, <tt>ADD R1</tt> adds the contents of <tt>R1</tt> to <tt>AC</tt>, <tt>LOD X</tt> copy the contents of <tt>X</tt> to <tt>AC</tt>, etc.</li>
+            <li><b>Stack architecture</b>: operands and data is found inside the stack, which is a LIFO data stucture stored in main memory. This architecture features a great number of calls to the <tt>POP</tt> and <tt>PUSH</tt> instructions to extract and put data inside the stack and use that data for calculations. For instance, <tt>POP R1</tt> pops a number from the top of the stack and pastes it into <tt>R1</tt>, <tt>ADD R1</tt> pops a number from the top of the stack and adds it to <tt>R1</tt>, etc.</li>
+            <li><b>General-purpose register architecture</b> (<b>GPR</b>): data is located in various general-purpose registers, so we are not limited to only an accumulator or a stack. This is the most common type of architecture, and can further be classified as:
+            <ol type = "a">
+                <li><b>Memory-Memory architecture</b>: all the operands are memory variables, e.g., <tt>X</tt>, <tt>VAR</tt>, etc.</li>
+                <li><b>Register-register architecture</b>: all the operands must be stored inside registers, e.g., <tt>R1</tt>, <tt>AC</tt>, etc.</li>
+                <li><b>Register-Memory architecture</b>: some operands are memory variables, while others are registers.</li>
+            </ol>
+            </li>
+            
+        </ol>
+        
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

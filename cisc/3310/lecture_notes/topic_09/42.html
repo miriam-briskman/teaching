@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="NASM Coding: Volatile Registers">
+      <title>Intro to Assembly Language: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>NASM Coding: Volatile Registers</h3>
+        <p></p>
+        <p>Throughout the execution of a NASM program, the contents of some registers will be 'wiped out' by the operating system.</p>
+        <p>Specifically, when we use the instruction <pre class="source source-inline"><code class="language-x86asm">syscall</code></pre>, the contents of the following registers will be erased (or replaced by 'garbage' values:) <pre class="source source-inline"><code class="language-x86asm">rcx</code></pre> and <pre class="source source-inline"><code class="language-x86asm">r11</code></pre>.</p>
+        <p>This means that we should avoid keeping values in a long-term fashion in these two registers.</p>
+        <p>Moreover, since the registers <pre class="source source-inline"><code class="language-x86asm">rax</code></pre>, <pre class="source source-inline"><code class="language-x86asm">rdi</code></pre>, <pre class="source source-inline"><code class="language-x86asm">rsi</code></pre>, <pre class="source source-inline"><code class="language-x86asm">rdx</code></pre>, <pre class="source source-inline"><code class="language-x86asm">r10</code></pre>, <pre class="source source-inline"><code class="language-x86asm">r8</code></pre>, and <pre class="source source-inline"><code class="language-x86asm">r9</code></pre> are used by us to store arguments to syscalls, we shouldn't keep important values in these registers in a long-term fashion, either.</p>
+         <p><b><i>In which registers can we keep values long-term?</i></b></p>
+         <p>Answer: the registers <pre class="source source-inline"><code class="language-x86asm">rbx</code></pre>, <pre class="source source-inline"><code class="language-x86asm">r12</code></pre>, <pre class="source source-inline"><code class="language-x86asm">r13</code></pre>, <pre class="source source-inline"><code class="language-x86asm">r14</code></pre>, and <pre class="source source-inline"><code class="language-x86asm">r15</code></pre> are guaranteed to never be modified by the operating system, so if we wish to store values for long duration throughout the execution of our NASM program, these $5$ registers are the right place.</p>
+                
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

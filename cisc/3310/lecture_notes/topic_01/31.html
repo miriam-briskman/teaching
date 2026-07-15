@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Storage Features">
+      <title>Intro to Computer Architecture: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Storage Features</h3>
+        <ul>
+            <li><b>SSD</b> is the abbreviation of a Solid-State Drive, and <b>HDD</b> is the abbreviation of a Hard Disk Drive. See a smaller comparison between the two on <a href = "https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3310/lecture_notes/topic_01/17.html" title = "Topic 1, Slide 17" target = "_blank">slide 17</a>. An HDD, since it is a disk, works by rotation for information to be retrieved from one of the disk's <b>sectors</b> (= areas.) An SSD, on the other hand, looks more like a memory stick and doesn't rotate or move to operate (which is why it is in 'solid state'.)</li>
+            <li><b>7000 RPM</b> is the number of rotations per minute of a disk and tells the <b>speed of the disk</b>. This only applies to disks, like Hard Disk Drives and Magnetic Tapes, which work by rotation. The higher this number is, the greater the disk's speed is.</li>
+            <li><b>2TB</b> (2 terabytes = 2 trillions of bytes) is the size of that secondary storage device. The greater the storage's size is, the more files, images, videos, etc., you can store on it.</li>
+            <li><b>SATA</b>, <b>SAS</b>, and <b>SCSI</b> are 3 common connectivity technologies of secondary storage devices. A certain computer might support only 1 of them, so you need to know which technology is supported by your computer before replacing secondary storage. <a href="https://www.servermonkey.com/default/blog/servers-101-hdd-interface-comparison-sata-vs-scsi-vs-sas.html" target="_blank" title = "Servers 101: HDD Interface Comparison – SATA vs SCSI vs SAS">This article</a> and <a href="https://www.hp.com/us-en/shop/tech-takes/sas-vs-sata" target="_blank" title = "SAS vs SATA: A Comprehensive Guide to Storage Interface Technologies">this article</a> compare the advantages and disadvantages of these technologies.</li>
+        </ul>
+ 
+               
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

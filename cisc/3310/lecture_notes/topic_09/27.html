@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="NASM Coding: Basics">
+      <title>Intro to Assembly Language: Lecture Notes | CISC 3310</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <script src="..\static\scripts\highlight.js"></script>
+      <script src="..\static\scripts\highlightjs-line-numbers.js"></script>
+      <script>hljs.highlightAll();</script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial;}
+          table {margin-top: 1vh;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>NASM Coding: Basics - Examples</h3>
+        <p></p>
+        <p>More info on the <pre class="source source-inline"><code class="language-c">read()</code></pre> syscall in C:</p>
+        <table>
+          <tr>
+            <td><b>Name:</b> <pre class="source source-inline"><code class="language-c">read()</code></pre></td>
+            <td><b>System call or function:</b> System call</td>
+            <td><b>Links:</b> <a target="_blank" href="https://man7.org/linux/man-pages/man2/read.2.html">Online Manual</a> | <a target="_blank" href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/3350/CISC_3350_OER_Course_Packet.pdf#read(2)+-+Linux+man+page">Course Packet</a></td>
+          </tr>
+          <tr>
+            <td colspan=3><b>What it does:</b> reads data from a file into an array, and returns the # of read bytes.</td>
+          </tr>
+          <tr>
+            <td colspan=3><b>What libraries you must include:</b> <pre class="source source-inline"><code class="language-c">#include &lt;unistd.h&gt; // Defines read() and the size_t, ssize_t types.
+</code></pre></td>
+          </tr>
+          <tr>
+            <td colspan=3><b>Syntax:</b> <pre class="source source-inline"><code class="language-c">ssize_t read (int fd, void *buf, size_t len); // ssize_t = signed size_t</code></pre></td>
+          </tr>
+          <tr>
+            <td colspan=3><b>Description of arguments:</b> <pre class="source-inline" style = "font-family: inherit;"><pre class="source source-inline"><code class="language-c">fd</code></pre>: file descriptor of an open file
+<pre class="source source-inline"><code class="language-c">buf</code></pre>: The array name (or address of a variable, e.g., <tt>&amp;var</tt>) into which data is read.
+<pre class="source source-inline"><code class="language-c">len</code></pre>: Maximum number of bytes we can or wish read.</td>
+          </tr>
+          <tr>
+            <td rowspan="2"><b>What type it returns:</b> <pre class="source source-inline"><code class="language-c">ssize_t</code></pre></td>
+            <td colspan=2><b>On success:</b> A non-negative integer indicating how many bytes we read in. This number will be equal to or smaller than <pre class="source source-inline"><code class="language-c">len</code></pre>, and could also be <pre class="source source-inline"><code class="language-c">0</code></pre> (end-of-file case.)</td>
+          </tr>
+          <tr>
+            <td colspan=2><b>On failure:</b> <pre class="source source-inline"><code class="language-c">-1</code></pre></td>
+          </tr>
+          <tr>
+            <td colspan=3><b>Quick example:</b> <pre class="source source-inline"><code class="language-c">ssize_t number_of_chars_read_in = read (fd, arr, 100);</code></pre></td>
+          </tr>
+        </table>
+                
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>
