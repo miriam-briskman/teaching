@@ -1,0 +1,41 @@
+name: Purge Apache Junk Files
+
+on:
+  # Allows you to run this manually from the GitHub "Actions" tab
+  workflow_dispatch:
+  
+  # Runs automatically whenever a push happens (or after your download workflow)
+  push:
+    branches:
+      - main  # Change this if your default branch is different (e.g., master)
+
+jobs:
+  clean-up:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Check out your repository code
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # 2. Find and delete all files matching the pattern globally
+      - name: Delete index.html query files
+        run: |
+          echo "Searching for junk files..."
+          find . -type f -name "index.html\?*" -print -delete
+          echo "Cleanup complete!"
+
+      # 3. Commit and push the changes back to GitHub if files were deleted
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@://github.com"
+          
+          git add -A
+          
+          # Only commit if there are actually changes to prevent workflow errors
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "chore: auto-purge apache sorting junk files [skip ci]"
+            git push
+          else
+            echo "No junk files found. Repository is already clean."
+          fi
