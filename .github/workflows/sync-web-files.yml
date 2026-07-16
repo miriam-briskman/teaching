@@ -1,9 +1,10 @@
 name: Hourly Website Sync
 
 on:
-  repository_dispatch:
+  workflow_run:
+    workflows: ["Hourly Alarm Trigger"]
     types:
-      - external-hourly-trigger
+      - completed
   workflow_dispatch:
 
 jobs:
