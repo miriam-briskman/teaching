@@ -2,7 +2,6 @@ name: Hourly Alarm Trigger
 
 on:
   schedule:
-    # Fired at minute 37 to completely dodge top-of-the-hour bottlenecks
     - cron: '25 * * * *'
   workflow_dispatch:
 
