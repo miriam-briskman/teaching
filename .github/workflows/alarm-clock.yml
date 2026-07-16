@@ -1,0 +1,13 @@
+name: Hourly Alarm Trigger
+
+on:
+  schedule:
+    # Fired at minute 37 to completely dodge top-of-the-hour bottlenecks
+    - cron: '37 * * * *'
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wake Up Main Sync
+        run: echo "Alarm triggered successfully."
