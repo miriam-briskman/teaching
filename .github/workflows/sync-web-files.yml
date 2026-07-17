@@ -41,12 +41,6 @@ jobs:
           wget -N -r -nH --cut-dirs=1 --no-parent --reject-regex='\?C=' "${FULL_TARGET}/guides/" || true
           wget -N -r -nH --cut-dirs=1 --no-parent --reject-regex='\?C=' "${FULL_TARGET}/static/" || true
 
-          # Merge into repository
-          rsync -a "$TEMP_DIR/" .
-
-          # Remove temporary files
-          rm -rf "$TEMP_DIR"
-
       - name: Fix Parent Directory Links for GitHub Pages
         run: |
           # Find all index.html files inside the folders
