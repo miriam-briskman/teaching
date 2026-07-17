@@ -19,12 +19,10 @@ jobs:
         with:
           fetch-depth: 0
 
+      # GitHub Actions checkout resets file mtimes.
+      # Restore Git commit times so wget -N can detect newer server files.
       - name: Restore Git file timestamps
         uses: chetan/git-restore-mtime-action@v2
-
-      - name: Verify restored timestamp
-        run: |
-          stat cisc/3320/lecture_notes/topic_10/07.html
 
       - name: Download Website Assets Recursively
         run: |
