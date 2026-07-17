@@ -19,6 +19,13 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Restore Git file timestamps
+        uses: chetan/git-restore-mtime-action@v2
+
+      - name: Verify restored timestamp
+        run: |
+          stat cisc/3320/lecture_notes/topic_10/07.html
+
       - name: Download Website Assets Recursively
         run: |
           # Dynamically assemble the URL to prevent interface formatting bugs
@@ -26,18 +33,13 @@ jobs:
           USER_PATH="~briskman"
           FULL_TARGET="https://${DOMAIN}/${USER_PATH}"
 
-          # Create temporary download area
-          TEMP_DIR="/tmp/site-sync"
-          rm -rf "$TEMP_DIR"
-          mkdir -p "$TEMP_DIR"
-
           # 1. Download root file
-          wget -nH --cut-dirs=1 "${FULL_TARGET}/index.html" -O index.html
+          wget -N -nH --cut-dirs=1 "${FULL_TARGET}/index.html"
 
           # 2. Download folders recursively
-          wget -r -nH --cut-dirs=1 --no-parent --reject-regex='\?C=' -P "$TEMP_DIR" -R 'CISC_3350_OER_Course_Packet.pdf,Lumen-Learning-Computer-Applications-for-Managers.pdf' "${FULL_TARGET}/cisc/"
-          wget -r -nH --cut-dirs=1 --no-parent --reject-regex='\?C=' -P "$TEMP_DIR" "${FULL_TARGET}/guides/"
-          wget -r -nH --cut-dirs=1 --no-parent --reject-regex='\?C=' -P "$TEMP_DIR" "${FULL_TARGET}/static/"
+          wget -N -r -nH --cut-dirs=1 --no-parent --reject-regex='\?C=' -R 'CISC_3350_OER_Course_Packet.pdf,Lumen-Learning-Computer-Applications-for-Managers.pdf' "${FULL_TARGET}/cisc/"
+          wget -N -r -nH --cut-dirs=1 --no-parent --reject-regex='\?C=' "${FULL_TARGET}/guides/"
+          wget -N -r -nH --cut-dirs=1 --no-parent --reject-regex='\?C=' "${FULL_TARGET}/static/"
 
           # Merge into repository
           rsync -a "$TEMP_DIR/" .
