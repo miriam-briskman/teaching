@@ -37,9 +37,9 @@ jobs:
           wget -N -nH --cut-dirs=1 "${FULL_TARGET}/index.html"
 
           # 2. Download folders recursively
-          wget -N -r -nH --cut-dirs=1 --no-parent --ignore-errors --reject-regex='\?C=' "${FULL_TARGET}/cisc/"
-          wget -N -r -nH --cut-dirs=1 --no-parent --ignore-errors --reject-regex='\?C=' "${FULL_TARGET}/guides/"
-          wget -N -r -nH --cut-dirs=1 --no-parent --ignore-errors --reject-regex='\?C=' "${FULL_TARGET}/static/"
+          wget -N -r -nH --cut-dirs=1 --no-parent --reject-regex='\?C=' "${FULL_TARGET}/cisc/" || true
+          wget -N -r -nH --cut-dirs=1 --no-parent --reject-regex='\?C=' "${FULL_TARGET}/guides/" || true
+          wget -N -r -nH --cut-dirs=1 --no-parent --reject-regex='\?C=' "${FULL_TARGET}/static/" || true
 
           # Merge into repository
           rsync -a "$TEMP_DIR/" .
