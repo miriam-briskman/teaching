@@ -30,9 +30,9 @@ jobs:
           wget -nH --cut-dirs=1 "${FULL_TARGET}/index.html"
 
           # 2. Download folders recursively
-          wget -r -nH --cut-dirs=1 --no-parent --reject-regex='\?C=' "${FULL_TARGET}/cisc/"
-          wget -r -nH --cut-dirs=1 --no-parent --reject-regex='\?C=' "${FULL_TARGET}/guides/"
-          wget -r -nH --cut-dirs=1 --no-parent --reject-regex='\?C=' "${FULL_TARGET}/static/"
+          wget -r -nH --cut-dirs=1 --no-parent --reject-size=5m --reject-regex='\?C=' "${FULL_TARGET}/cisc/"
+          wget -r -nH --cut-dirs=1 --no-parent --reject-size=5m --reject-regex='\?C=' "${FULL_TARGET}/guides/"
+          wget -r -nH --cut-dirs=1 --no-parent --reject-size=5m --reject-regex='\?C=' "${FULL_TARGET}/static/"
 
       - name: Fix Parent Directory Links for GitHub Pages
         run: |
