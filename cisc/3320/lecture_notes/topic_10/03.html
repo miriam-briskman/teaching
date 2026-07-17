@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
       <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
-      <meta name="description" content="Deadlock: intro">
-      <title>Deadlock: Lecture Notes | CISC 3320</title>
+      <meta name="description" content="Deadlocks: intro">
+      <title>Deadlocks: Lecture Notes | CISC 3320</title>
       <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
       <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
       <link rel="stylesheet" href="..\static\styles\mystyles.css">
@@ -23,7 +23,7 @@
      <script type="text/javascript">getMode();</script>
      <script>enumSlide();</script>
      <div class = 'slides slides-small'><div>
-        <h3>Deadlock</h3>
+        <h3>Deadlocks</h3>
 
         <p>Suppose that processes <tt><i>P</i><sub>0</sub></tt> and <tt><i>P</i><sub>1</sub></tt> are executing. Process <tt><i>P</i><sub>0</sub></tt> is accessing and holding the lock on the computer's printer, and process <tt><i>P</i><sub>1</sub></tt> is accessing and holding the lock on the disk. <tt><i>P</i><sub>0</sub></tt> will only release the printer if it gets access to the disk, and <tt><i>P</i><sub>1</sub></tt> will only release the disk if it gets access to the printer. This is an example of a deadlock.</p>
         <p>A <b>deadlock</b> is a situation in which two or more processes or threads are waiting forever for the resources that other processes hold and refuse to release until they get their friends' resources.</p>
