@@ -1,0 +1,149 @@
+    .slides, .slideMenuInterElem, #inst p
+    {
+        background-image: url('../images/old_map.png');
+        background-color: rgba(255,255,255,0.1);
+        background-blend-mode: lighten;
+    }
+    #inst p
+    {
+        border: 1pt solid black;
+        -webkit-box-shadow: 0 0 5pt black;
+        box-shadow: 0 0 7pt black;
+    }
+    .wbg, #slideMenu
+    {
+        background-color: white !important;
+    }
+    h1, h2, h3
+    {
+        /*color: rgb(133, 0, 65);*/
+        color: rgb(25, 25, 25);
+    }
+    .sticky-table-header
+    {
+        background-color: #f7ecce;
+    }
+    .box-around-text
+    {
+        border: 1px solid black;
+    }
+    .thick-box-around-text
+    {
+        border: 2px solid black;
+    }
+    .box-around-code
+    {
+        border: 1px solid black;
+    }
+    .slideMenuHeader
+    {
+        border-bottom: 1pt solid black;
+    }
+    .slideMenuButtons
+    {
+         border-top: 1pt solid black;
+    }
+    #slidePreviewPopup, #slidePreviewFrame
+    {
+        background-color: white;
+    }
+    .next, .next-topic, .prev-topic, #slideMenuButton, #slideMenuClose, #slideMenuPDF, .slideMenuButtons button
+    {
+        color: black;
+        background-color: #deb887;
+        -webkit-box-shadow: 0 0 5pt black;
+        box-shadow: 0 0 7pt black;
+    }
+    .next:hover, .next-topic:hover, .prev-topic:hover, #slideMenuButton:hover, #slideMenuPDF:hover, #slideMenuClose:hover, .slideMenuButtons button:hover
+    {
+        -webkit-box-shadow: 0 0 3pt black;
+        box-shadow: 0 0 3pt black;
+    }
+    .next:focus, .next-topic:focus, .prev-topic:focus, #slideMenuButton:focus, #slideMenuClose:focus, #slideMenuPDF:focus, .slideMenuButtons button:focus
+    {
+        -webkit-box-shadow: 0 0 0pt black;
+        box-shadow: 0 0 0pt black;
+    }
+    a
+    {
+        color: rgb(133, 0, 65);
+    }
+    a:hover, a:focus
+    {
+        color: black;
+    }
+    .copyright a
+    {
+        color: rgb(133, 0, 65);
+    }
+    .copyright a:hover
+    {
+        color: black;
+    }
+    hr
+    {
+        border: 0.5pt solid black;
+    }
+    .portrait-separator
+    {
+        border: 1px solid black;
+    }
+    .source
+    {
+        background-color: white;
+    }
+    .source .hljs-type, .source .hljs-keyword
+    {
+        color: blue;
+    }
+    .source .hljs-comment
+    {
+        color: #580762;
+    }
+    .source-long .hljs-comment
+    {
+        color: #580762 !important;
+    }
+    .hljs-string
+    {
+        color: green;
+    }
+    .hljs-literal
+    {
+        color: #800080;
+    }
+    @media screen and (orientation: portrait)
+    {
+        body, #slideMenu
+        {
+             background-image: url('../images/old_map.png');
+             background-color: rgba(255,255,255,0.1) !important;
+             background-blend-mode: lighten;
+        }
+        .slides, .slideMenuInterElem
+        {
+            background-image: unset;
+            background-color: unset;
+            background-blend-mode: unset;
+        }
+    }
+    /* Smaller Devices */
+    @media screen and (min-width : 320px) and (max-width : 1200px) and (orientation : landscape)
+    {
+        body, #slideMenu
+        {
+             background-image: url('../images/old_map.png');
+             background-color: rgba(255,255,255,0.1) !important;
+             background-blend-mode: lighten;
+        }
+        .slides, .slideMenuInterElem
+        {
+            background-image: unset;
+            background-color: unset;
+            background-blend-mode: unset;
+        }
+        .function-name > :first-child
+        {
+            background-color: white;
+        }
+    }

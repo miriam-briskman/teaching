@@ -1,4 +1,4 @@
-Below are the proper names (+ casing) of the lecture notes files, so that they match the links on Blackboard:
+Below are the proper names (+ casing) of the lecture notes files, so that they match the links on Brightspace:
 
 https://www.sci.brooklyn.cuny.edu/~briskman/cisc/1050/lecture_notes/word/basic/Lecture_Notes_Intro_To_Computers.docx
 https://www.sci.brooklyn.cuny.edu/~briskman/cisc/1050/lecture_notes/word/basic/Lecture_Notes_Internet_Research.docx

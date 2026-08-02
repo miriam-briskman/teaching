@@ -1,0 +1,140 @@
+    body, #inst p
+    {
+        color: rgb(212, 212, 212);
+        background-color: rgb(43, 43, 43);
+    }
+    #inst p
+    {
+        border: 1pt solid white;
+        -webkit-box-shadow: 0 0 5pt white;
+        box-shadow: 0 0 7pt white;
+    }
+    #inst p span
+    {
+        color: rgb(235, 222, 86);
+    }
+    .wbg
+    {
+        background-color: rgb(68, 68, 68) !important;
+    }
+    h1, h2, h3
+    {
+        color: rgb(235, 222, 86);
+    }
+    .sticky-table-header
+    {
+        background-color: rgb(43, 43, 43);
+    }
+    .box-around-text
+    {
+        border: 1px solid rgb(212, 212, 212);
+    }
+    .thick-box-around-text
+    {
+        border: 2px solid rgb(212, 212, 212);
+    }
+    .box-around-code
+    {
+        border: 1px solid rgb(212, 212, 212);
+    }
+    #slideMenu
+    {
+        background-color: rgb(43, 43, 43);
+    }
+    .slideMenuHeader
+    {
+        border-bottom: 1pt solid rgb(212, 212, 212);
+    }
+    .slideMenuButtons
+    {
+         border-top: 1pt solid rgb(212, 212, 212);
+    }
+    #slidePreviewPopup, #slidePreviewFrame
+    {
+        background-color: rgb(43, 43, 43);
+    }
+    .next, .next-topic, .prev-topic, #slideMenuButton, #slideMenuClose, #slideMenuPDF, .slideMenuButtons button
+    {
+        color: rgb(235, 222, 86);
+        background-color: rgb(43, 43, 43);
+        -webkit-box-shadow: 0 0 5pt white;
+        box-shadow: 0 0 7pt white;
+    }
+    .next:hover, .next-topic:hover, .prev-topic:hover, #slideMenuButton:hover, #slideMenuClose:hover, #slideMenuPDF:hover, .slideMenuButtons button:hover
+    {
+        -webkit-box-shadow: 0 0 3pt white;
+        box-shadow: 0 0 3pt white;
+    }
+    .next:focus, .next-topic:focus, .prev-topic:focus, #slideMenuButton:focus, #slideMenuClose:focus, #slideMenuPDF:focus, .slideMenuButtons button:focus
+    {
+        -webkit-box-shadow: 0 0 0pt white;
+        box-shadow: 0 0 0pt white;
+    }
+    a, .copyright a
+    {
+        color: rgb(235, 222, 86);
+    }
+    a:hover, a:focus, .copyright a:hover
+    {
+        color: rgb(212, 212, 212);
+    }
+    table, th, td
+    {
+        border-color: rgb(212, 212, 212) !important;
+    }
+    img
+    {
+        background-color: white;
+    }
+    hr
+    {
+        border: 0.5pt solid rgb(212, 212, 212);
+    }
+    .portrait-separator
+    {
+        border: 1px solid rgb(235, 222, 86);
+    }
+    .source
+    {
+        background-color: rgb(68, 68, 68);
+    }
+    .source .hljs-type, .source .hljs-keyword
+    {
+        color: #00b6ff;
+    }
+    .source .hljs-comment
+    {
+        color: #aa66dd;
+    }
+    .source-long .hljs-comment
+    {
+        color: #aa66dd !important;
+    }
+    .hljs-string
+    {
+        color: #00d800;
+    }
+    .hljs-literal
+    {
+        color: #bd00bd;
+    }
+    .hljs-title.function, .hljs-title.function.invoke, .function_
+    {
+        color: rgb(80, 80, 80);
+    }
+    .language-latex
+    {
+        color: lightgray;
+    }
+    ::-webkit-scrollbar, iframe
+    {
+        background-color: rgb(212, 212, 212);
+    }
+    /* Smaller Devices */
+    @media screen and (min-width : 320px) and (max-width : 1200px) and (orientation : landscape)
+    {
+        .function-name > :first-child
+        {
+            background-color: rgb(68, 68, 68);
+        }
+    }
