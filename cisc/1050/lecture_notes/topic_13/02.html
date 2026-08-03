@@ -2,33 +2,40 @@
 <html lang="en">
   <head>
       <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
-      <meta name="description" content="Sources for the lecture notes on 'Intro to Computers'">
-      <title>Intro to Computers: Lecture Notes | CISC 1050</title>
+      <meta name="description" content="Notes for this Topic Haven't been Created Yet.">
+      <title>Access, Intermediate Skills: Lecture Notes | CISC 1050</title>
       <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
       <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
       <link rel="stylesheet" href="..\static\styles\mystyles.css">
-      <script src="..\static\scripts\myscripts.js"></script>
       <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
   </head>
   <body>
-
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
      <div class = "slide-header">
+         <div class = 'pagenum'></div>
          <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
      </div>
      <script type="text/javascript">getMode();</script>
-
-     <div class = 'slides hanging-indent'><div>
-        <h3>Intro to Computers: Sources</h3>
-        <p>Briskman, Miriam. "<a href="https://www.sci.brooklyn.cuny.edu/~briskman/cisc/1050/lecture_notes/intro_to_computers_and_internet_research/Lecture_Notes_Intro_To_Computers.docx" target="_blank" title='Lecture Notes: Intro to Computers'>Lecture Notes: Intro to Computers</a>." 27 Aug. 2022. Word Document. License: <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" title = "CC BY-NC 4.0: Attribution-NonCommercial 4.0 International">CC BY-NC: Attribution-NonCommercial</a>.</p>
-        <p><a href="https://courses.lumenlearning.com/wm-computerapplicationsmgrs-2/chapter/why-it-matters-introduction-to-computers/" target="_blank" title='Module 1: Introduction to Computers'>Module 1: Introduction to Computers</a>. Authored by: Lumen Learning. License: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title = "CC BY 4.0: Attribution 4.0 International">CC BY: Attribution</a>.</p>
-     <hr>
-     <p style="padding-left: 0; text-indent: 0;"><b>Note</b>: Unless otherwise noted, all images and documents embedded in these lecture notes were created by Miriam Briskman and are licensed <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" title = "CC BY-NC 4.0: Attribution-NonCommercial 4.0 International">CC BY-NC: Attribution-NonCommercial</a>.</p>
-
-     </div><div class="copyright">
+     <script>enumSlide();</script>
+     <div class = 'slides'><div>
+        <h3>Access, Intermediate Skills</h3>
+        <p style = 'text-align: center; margin-top: 30vh; font-size: xx-large;'><b>Note</b>: Lecture notes for this topic will be added here soon!</p>
+                
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next-topic" title = "Go to the next Topic">Topic &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
             <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
             <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
             </span>
-        </div>
+        </div></div>
      </div>
   </body>
 </html>

@@ -824,10 +824,11 @@ const SlideNavigator =
                 if (!response.ok)
                     nextTopicExists = 0;
             })
-            .catch(error => {nextTopicExists = 0});
+            .catch(error => {nextTopicExists = 0;});
 
         if (nextTopicExists !== 0)
         {
+            alert('Exists! ' + nextTopicExists);
             next =
                 document.createElement("button");
 
