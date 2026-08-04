@@ -817,68 +817,62 @@ const SlideNavigator =
         separator.style.margin = 0;
         separator.style.padding = 0;
 
-        var nextTopicExists = 1;
-
         fetch("../topic_" + String(topicNum + 1).padStart(2,"0") + "/01.html", { method: 'HEAD' })
             .then(response => {
-                if (!response.ok)
-                    nextTopicExists = 0;
+                if (response.ok)
+                {
+                     next = document.createElement("button");
+
+                     next.id = "NextTopicButton";
+
+                     const nextTopicString = (topicNum + 1) + "";
+
+                     next.textContent = "Topic " + nextTopicString + " →";
+
+                     next.title = "Go to Topic " + nextTopicString + ", Slide 1";
+
+                     next.tabIndex = -1;
+
+                     next.onclick =
+                         () =>
+                         {
+                             this.changeTopic(1);
+                         };
+
+                     next.addEventListener(
+                         "mouseenter",
+                         (event) =>
+                         {
+                            this.startPreview(
+                                "../topic_" + nextTopicString.padStart(2,"0") + "/01",
+                                1,
+                                nextTopicString,
+                                event
+                            );
+                         }
+                     );
+
+                     next.addEventListener(
+                         "mouseleave",
+                         () =>
+                         {
+                             this.hidePreview();
+                          }
+                     );
+
+                     if (topicNum !== 1)
+                         navigation.appendChild(previous);
+                     if (topicNum !== 1)
+                         navigation.appendChild(separator);
+                     navigation.appendChild(next);
+                }
+                else
+                {
+                     if (topicNum !== 1)
+                         navigation.appendChild(previous);
+                }
             })
-            .catch(error => {nextTopicExists = 0;});
-
-        if (nextTopicExists !== 0)
-        {
-            alert('Exists! ' + nextTopicExists);
-            next =
-                document.createElement("button");
-
-            next.id =
-                "NextTopicButton";
-
-            const nextTopicString = (topicNum + 1) + "";
-
-            next.textContent =
-                "Topic " + nextTopicString + " →";
-
-            next.title =
-                "Go to Topic " + nextTopicString + ", Slide 1";
-
-            next.tabIndex = -1;
-
-            next.onclick =
-                () =>
-                {
-                   this.changeTopic(1);
-                };
-
-            next.addEventListener(
-                "mouseenter",
-                (event) =>
-                {
-                    this.startPreview(
-                        "../topic_" + nextTopicString.padStart(2,"0") + "/01",
-                        1,
-                        nextTopicString,
-                        event
-                    );
-                }
-            );
-
-            next.addEventListener(
-                "mouseleave",
-                () =>
-                {
-                    this.hidePreview();
-                }
-            );
-        }
-
-        if (topicNum !== 1)
-            navigation.appendChild(previous);
-        if (topicNum !== 1 && nextTopicExists !== 0)
-            navigation.appendChild(separator);
-        if (nextTopicExists !== 0)
-            navigation.appendChild(next);
+            .catch(error => {navigation.appendChild(previous);});
 
         interelem.appendChild(navigation);
     },
