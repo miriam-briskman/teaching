@@ -397,6 +397,23 @@ const SlideNavigator =
             }
         );
 
+        document.addEventListener(
+	    "click",
+	    (event) =>
+	    {
+
+		if(!this.MENU.classList.contains("open"))
+		    return;
+
+		if(this.MENU.contains(event.target))
+		    return;
+
+		if(this.BUTTON.contains(event.target))
+		    return;
+
+		this.closeMenu();
+	    }
+	);
     },
 
     detectCurrentSlide()

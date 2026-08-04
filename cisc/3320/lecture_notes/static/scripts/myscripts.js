@@ -388,6 +388,23 @@ const SlideNavigator =
             }
         );
 
+        document.addEventListener(
+	    "click",
+	    (event) =>
+	    {
+
+		if(!this.MENU.classList.contains("open"))
+		    return;
+
+		if(this.MENU.contains(event.target))
+		    return;
+
+		if(this.BUTTON.contains(event.target))
+		    return;
+
+		this.closeMenu();
+	    }
+	);
     },
 
     detectCurrentSlide()
@@ -818,7 +835,7 @@ const SlideNavigator =
 
                      const nextTopicString = (topicNum + 1) + "";
 
-                     next.textContent = "Topic " + nextTopicString + " â†’";
+                     next.textContent = "Topic " + nextTopicString + " →";
 
                      next.title = "Go to Topic " + nextTopicString + ", Slide 1";
 
