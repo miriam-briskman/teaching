@@ -34,6 +34,11 @@
     {
         padding-top: 2vh;
     }
+    h4
+    {
+        font-weight: normal;
+        text-decoration: underline;
+    }
     /*ol
     {
         padding-inline-start: 1.3em;
@@ -709,7 +714,7 @@
     {
         font-size: calc(0.8vh + 0.8vw);
         line-height: normal;
-        width: 20vw;
+        width: 90%;
         margin: 0;
         text-align: justify;
     }
