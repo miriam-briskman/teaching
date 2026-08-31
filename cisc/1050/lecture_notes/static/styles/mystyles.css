@@ -724,6 +724,11 @@
         line-height: 130%;
         letter-spacing: normal;
     }
+    .inline-image
+    {
+        height: calc(1.2vh + 1.2vw);
+        width: auto !important;
+    }
     .hanging-indent p
     {
         padding-left: 0.5in;
@@ -885,6 +890,11 @@
         {
             font-size: 7vw !important;
             line-height: initial;
+        }
+        .inline-image
+        {
+            height: 7vw !important;
+            width: auto !important;
         }
         .titleslide
         {
@@ -1134,6 +1144,11 @@
         {
             font-size: 22pt !important;
             line-height: initial;
+        }
+        .inline-image
+        {
+            height: 22pt !important;
+            width: auto !important;
         }
         .titleslide
         {
