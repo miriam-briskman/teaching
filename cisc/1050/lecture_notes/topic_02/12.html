@@ -9,6 +9,12 @@
       <link rel="stylesheet" href="..\static\styles\mystyles.css">
       <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
       <script src="..\static\scripts\myscripts.js"></script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial; margin: auto;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+          td {text-align: center;}
+      </style>
   </head>
   <body>
      <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
@@ -24,12 +30,43 @@
      <script>enumSlide();</script>
      <div class = 'slides slides-small'><div>
         <h3>Basic Searches</h3>
-        <p>First, let&rsquo;s watch a short video about internet searches:</p>
-        <div class = 'videocontainer'>
-            <iframe title = "YouTube Video: Evaluating Web Sources" class = 'video' src="https://www.youtube.com/embed/bYCh8Tc7Xwc?cc_load_policy=1&iv_load_policy=3&rel=0" frameborder="0" allowfullscreen></iframe>
-            <p class = "videocaption"><a href="https://www.youtube.com/watch?v=bYCh8Tc7Xwc" target="_blank" title = "YouTube Video: Evaluating Web Sources">https://<wbr>www.youtube.com/<wbr>watch<wbr>?v=bYCh8Tc7Xwc</a></p>
-        </div>
-                        
+        <p>After you opened a browser, you usually navigate to a <strong>search engine</strong>, which is a website where you can search the Internet.</p>
+        <p>Here are some search engine examples:</p>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Search Engine Name</th>
+                    <th>Logo</th>
+                    <th>Link</th>
+                </tr>
+                <tr>
+                    <td>Google</td>
+                    <td>&nbsp;</td>
+                    <td><a href="https://www.google.com/" target = "_blank" title = "The Google Search Engine">https://<wbr>www<wbr>.google<wbr>.com/</a></td>
+                </tr>
+                <tr>
+                    <td>Bing</td>
+                    <td> or </td>
+                    <td><a href="https://www.bing.com/" target = "_blank" title = "The Bing Search Engine">https://<wbr>www<wbr>.bing<wbr>.com/</a></td>
+                </tr>
+                <tr>
+                    <td>Yahoo</td>
+                    <td> or </td>
+                    <td><a href="https://www.yahoo.com/" target = "_blank" title = "The Yahoo Search Engine">https://<wbr>www<wbr>.yahoo<wbr>.com/</a></td>
+                </tr>
+                <tr>
+                    <td>Ask.com</td>
+                    <td>&nbsp;</td>
+                    <td><a href="https://www.ask.com/" target = "_blank" title = "The Ask.com Search Engine">https://<wbr>www<wbr>.ask<wbr>.com/</a></td>
+                </tr>
+                <tr>
+                    <td>AOL.com</td>
+                    <td>&nbsp;</td>
+                    <td><a href="https://www.aol.com/" target = "_blank" title = "The AOL (America On-Line) Search Engine">https://<wbr>www<wbr>.aol<wbr>.com/</a></td>
+                </tr>
+            </tbody>
+        </table>
+                
         </div><div class = 'footer'><div class = "buttons">
             <a class="next" title = "Open the previous slide">&larr; Prev</a>
             <!--<a class="next-topic" title = "Go to the next Topic">Topic &rarr;</a>-->
