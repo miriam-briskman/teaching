@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
       <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
-      <meta name="description" content="Basic searches using search engines.">
+      <meta name="description" content="Advanced searches using search engines.">
       <title>Internet Research: Lecture Notes | CISC 1050</title>
       <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
       <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
@@ -29,48 +29,54 @@
      <script type="text/javascript">getMode();</script>
      <script>enumSlide();</script>
      <div class = 'slides slides-small'><div>
-        <h3>Basic Searches</h3>
-        <p>After you opened a browser, you usually navigate to a <strong>search engine</strong>, which is a website where you can search the Internet.</p>
-        <p>Here are some search engine examples:</p>
-        <center>
-        <div style="margin: 0; padding: 0; overflow-x: auto;">
+        <h3>Advanced Searches</h3>
+        <h4>Keywords and Special Symbols</h4>
+        <p>Besides just searching for a pure set of words, you can refine the search using a few techniques that involve special keywords or symbols:</p>
         <table>
             <tbody>
                 <tr>
-                    <th>Search Engine Name</th>
-                    <th>Logo</th>
-                    <th>Link</th>
+                    <th>Keyword / Symbol</th>
+                    <th>Purpose</th>
+                    <th>Example</th>
                 </tr>
                 <tr>
-                    <td>Google</td>
-                    <td><a href="./google.png" target="_blank" title="The Google Logo" class = "inline-image-link"><img src="./google.png" title = "The Google Logo" alt = "The Google Logo" class="inline-image" style="height: 30pt !important;"></a></td>
-                    <td><a href="https://www.google.com/" target = "_blank" title = "The Google Search Engine">https://<wbr>www<wbr>.google<wbr>.com/</a></td>
+                    <td><tt>AND</tt></td>
+                    <td>Results containing both items</td>
+                    <td><tt>pizza AND cola</tt></td>
                 </tr>
                 <tr>
-                    <td>Bing</td>
-                    <td> or </td>
-                    <td><a href="https://www.bing.com/" target = "_blank" title = "The Bing Search Engine">https://<wbr>www<wbr>.bing<wbr>.com/</a></td>
+                    <td><tt>OR</tt></td>
+                    <td>Results containing either or both/all items</td>
+                    <td><tt>England OR Ireland</tt></td>
                 </tr>
                 <tr>
-                    <td>Yahoo</td>
-                    <td> or </td>
-                    <td><a href="https://www.yahoo.com/" target = "_blank" title = "The Yahoo Search Engine">https://<wbr>www<wbr>.yahoo<wbr>.com/</a></td>
+                    <td><tt>NOT</tt></td>
+                    <td>Results excluding the phrase/word that follows</td>
+                    <td><tt>college NOT community</tt></td>
                 </tr>
                 <tr>
-                    <td>Ask.com</td>
-                    <td>&nbsp;</td>
-                    <td><a href="https://www.ask.com/" target = "_blank" title = "The Ask.com Search Engine">https://<wbr>www<wbr>.ask<wbr>.com/</a></td>
+                    <td><tt>-</tt> (minus sign)</td>
+                    <td>Results excluding the phrase/word that follows</td>
+                    <td><tt>college -community</tt></td>
                 </tr>
                 <tr>
-                    <td>AOL.com</td>
-                    <td>&nbsp;</td>
-                    <td><a href="https://www.aol.com/" target = "_blank" title = "The AOL (America On-Line) Search Engine">https://<wbr>www<wbr>.aol<wbr>.com/</a></td>
+                    <td><tt>" "</tt> (quotations)</td>
+                    <td>Results containing exactly this phrase</td>
+                    <td><tt>"red jelly beans"</tt></td>
+                </tr>
+                <tr>
+                    <td><tt>*</tt> (asterisk)</td>
+                    <td>Results with various characters in place of <tt>*</tt></td>
+                    <td><tt>*th grade exams</tt></td>
+                </tr>
+                <tr>
+                    <td><tt>()</tt> (parentheses)</td>
+                    <td>Results with imposed order</td>
+                    <td><tt>(red OR sore) AND gums</tt></td>
                 </tr>
             </tbody>
         </table>
-        </div>
-        </center>
-                
+                        
         </div><div class = 'footer'><div class = "buttons">
             <a class="next" title = "Open the previous slide">&larr; Prev</a>
             <!--<a class="next-topic" title = "Go to the next Topic">Topic &rarr;</a>-->

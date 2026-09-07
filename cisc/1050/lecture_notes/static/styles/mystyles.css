@@ -729,6 +729,12 @@
         height: calc(1.2vh + 1.2vw);
         width: auto !important;
     }
+    .inline-image-link
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     .hanging-indent p
     {
         padding-left: 0.5in;
