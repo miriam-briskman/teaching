@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Basic Text Formatting">
+      <title>Word, Basic Skills: Lecture Notes | CISC 1050</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Basic Text Formatting</h3>
+        <h4>Selecting and Moving Text Around</h4>
+        <p style="margin-top: -1.5ex;">To copy, paste, cut, or apply style changes to text, you must first <strong>select</strong> it. Word lets you select text in several ways:</p>
+        <ul>
+            <li>To select a single line in the document:
+                 <ol>
+                     <li>Move the pointer to the extreme left of the screen, until it looks like <a href="./cursor.png" target="_blank" title="Cursor."><img src="./cursor.png" title = "Cursor." alt = "Cursor." class="inline-image"></a></li>
+                     <li>Click once. On touchpad, tap twice to the left of the line.</li>
+                 </ol>
+             </li>
+             <li>To select a whole paragraph, triple-click over it.</li>
+             <li>To select multiple lines:
+                 <ol>
+                     <li>At the top of text, move the pointer to the extreme left of the screen, until it looks like <a href="./cursor.png" target="_blank" title="Cursor."><img src="./cursor.png" title = "Cursor." alt = "Cursor." class="inline-image"></a></li>
+                     <li>Click, hold, and drag the pointer down until all text is highlighted.</li>
+                 </ol>
+             </li>
+             <li>To select just several words:
+                 <ol>
+                     <li>Position pointer to the left of the first letter to highlight.</li>
+                     <li>Click, hold, and drag to the right until the group of words is highlighted.</li>
+                 </ol>
+             </li>
+        </ul>
+                
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>

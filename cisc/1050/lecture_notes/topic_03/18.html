@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
+      <meta name="description" content="Basic Text Formatting">
+      <title>Word, Basic Skills: Lecture Notes | CISC 1050</title>
+      <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
+      <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
+      <link rel="stylesheet" href="..\static\styles\mystyles.css">
+      <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
+      <script src="..\static\scripts\myscripts.js"></script>
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial; margin: auto;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+      </style>
+  </head>
+  <body>
+     <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
+     <div id="slideMenu"></div>
+     <div id="slidePreviewPopup">
+        <iframe id="slidePreviewFrame"></iframe>
+     </div>
+     <div class = "slide-header">
+         <div class = 'pagenum'></div>
+         <span class="switch-container" id="switch-container"><span title = "light mode" alt = "emoji of a smiling sun">&#127774;</span><label class="switch"><input id="switch-input" tabindex="1" type="checkbox" onclick="switch_work();" onfocus = "switchFocus();" onfocusout = "switchFocusOut();" onkeydown = "if(event.key === 'Enter') { switch_work(); getMode(); switchFocus(true); }"><span title = "Change to light/dark mode" class="slider" id="slider"></span></label><span title = "dark mode" alt = "emoji of a smiling moon">&#127770;</span></span>
+     </div>
+     <script type="text/javascript">getMode();</script>
+     <script>enumSlide();</script>
+     <div class = 'slides slides-small'><div>
+        <h3>Basic Text Formatting</h3>
+        <h4>Bold, Italics, Underline, Strikethrough, and Scripts</h4>
+        <p>A few extremely useful text-editing buttons are on the Home tab inside the Font group:</p>
+        <center>
+        <div style="margin: 0; padding: 0; overflow-x: auto;">
+        <table>
+            <tbody>
+                <tr>
+                    <th>Button Name</th>
+                    <th>Button Screenshot</th>
+                    <th>Effect on Text</th>
+                    <th>Shortcut</th>
+                </tr>
+                <tr>
+                    <td>Bold</td>
+                    <td><a href="./bold.png" target="_blank" title="Bold button." class = "inline-image-link"><img src="./bold.png" title = "Bold button." alt = "Bold button." class="inline-image"></a></td>
+                    <td><strong>Some Text</strong></td>
+                    <td><strong>Ctrl</strong> + <strong>B</strong> (Mac: <strong>Cmnd</strong> + <strong>B</strong>)</td>
+                </tr>
+                <tr>
+                    <td>Italics</td>
+                    <td><a href="./italics.png" target="_blank" title="Italics button." class = "inline-image-link"><img src="./italics.png" title = "Italics button." alt = "Italics button." class="inline-image"></a></td>
+                    <td><em>Some Text</em></td>
+                    <td><strong>Ctrl</strong> + <strong style="font-family: 'Times New Roman', Times, serif;">I</strong> (Mac: <strong>Cmnd</strong> + <strong style="font-family: 'Times New Roman', Times, serif;">I</strong>)</td>
+                </tr>
+                <tr>
+                    <td>Underline</td>
+                    <td><a href="./underline.png" target="_blank" title="Underline button." class = "inline-image-link"><img src="./underline.png" title = "Underline button." alt = "Underline button." class="inline-image"></a></td>
+                    <td><u>Some Text</u></td>
+                    <td><strong>Ctrl</strong> + <strong>U</strong> (Mac: <strong>Cmnd</strong> + <strong>U</strong>)</td>
+                </tr>
+                <tr>
+                    <td>Strikethrough</td>
+                    <td><a href="./strikethrough.png" target="_blank" title="Strikethrough button." class = "inline-image-link"><img src="./strikethrough.png" title = "Strikethrough button." alt = "Strikethrough button." class="inline-image"></a></td>
+                    <td><span style="text-decoration: line-through;">Some Text</span></td>
+                    <td><strong>Alt &rarr; H &rarr; 4</strong> (Mac: <strong>Cmnd</strong> + <strong>Shift</strong> + <strong>X</strong>)</td>
+                </tr>
+                <tr>
+                    <td>Subscript</td>
+                    <td><a href="./subscript.png" target="_blank" title="Subscript button." class = "inline-image-link"><img src="./subscript.png" title = "Subscript button." alt = "Subscript button." class="inline-image"></a></td>
+                    <td>H<sub>2</sub>O (Water molecule)</td>
+                    <td><strong>Ctrl</strong> + <strong>=</strong> (Mac: <strong>Cmnd</strong> + <strong>Shift</strong> + <strong>=</strong>)</td>
+                </tr>
+                <tr>
+                    <td>Superscript</td>
+                    <td><a href="./superscript.png" target="_blank" title="Superscript button." class = "inline-image-link"><img src="./superscript.png" title = "Superscript button." alt = "Superscript button." class="inline-image"></a></td>
+                    <td>Ca<sup>+2</sup> (Calcium ion)</td>
+                    <td><strong>Ctrl</strong> + <strong>Shift</strong> + <strong>+</strong> (Mac: <strong>Cmnd</strong> + <strong>Shift</strong> + <strong>+</strong>)</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        </center>
+                
+        </div><div class = 'footer'><div class = "buttons">
+            <a class="next" title = "Open the previous slide">&larr; Prev</a>
+            <a class="next" title = "Open the next slide">Next &rarr;</a>
+            <script>navigation();</script>
+        </div>
+        <div class="copyright">
+            <a target='_blank' rel='license' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'><img alt='Creative Commons License' class = 'CClogo' src='../../../../static/images/by-nc.svg' /></a>
+            <span style='vertical-align: middle;'> These notes by <a xmlns:cc='http://creativecommons.org/ns#' target='_blank' title = "Instructor's Home Page: Miriam Briskman (CUNY Brooklyn College Lecturer)" href='https://www.sci.brooklyn.cuny.edu/~briskman/' property='cc:attributionName' rel='cc:attributionURL'>Miriam Briskman</a> are licensed under <a rel='license' target='_blank' title = 'Creative Commons BY-NC 4.0 License: Attribution-NonCommercial 4.0 International' href='http://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC 4.0</a> and based on <a target='_blank' title = "List of sources and references used for this topic's lecture notes." href = "./sources.html">sources</a>.
+            </span>
+        </div></div>
+     </div>
+  </body>
+</html>
