@@ -9,11 +9,6 @@
       <link rel="stylesheet" href="..\static\styles\mystyles.css">
       <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
       <script src="..\static\scripts\myscripts.js"></script>
-      <style>
-          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial; margin: auto;}
-          th, td {padding-left: 10px; padding-right: 10px;}
-          th {text-align: center;}
-      </style>
   </head>
   <body>
      <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
@@ -27,50 +22,11 @@
      </div>
      <script type="text/javascript">getMode();</script>
      <script>enumSlide();</script>
-     <div class = 'slides slides-small'><div>
+     <div class = 'slides'>
         <h3>Basic Text Formatting</h3>
-        <h4>Letter-Casing</h4>
-        <p>The letter-casing (also known as Change Case) button, <a href="./casing.png" target="_blank" title="Change Case button."><img src="./casing.png" title = "Change Case button." alt = "Change Case button." class="inline-image"></a>, allows you to change a selected text to any of the following available casing types:</p>
-        <center>
-        <div style="margin: 0; padding: 0; overflow-x: auto;">
-        <table>
-            <tbody>
-                <tr>
-                    <th>Casing Type</th>
-                    <th>Effect on Text</th>
-                    <th>What happened</th>
-                </tr>
-                <tr>
-                    <td>Sentence Case</td>
-                    <td>Here is some text.</td>
-                    <td>The 1<sup>st</sup> letter of 1<sup>st</sup> word in the sentence was capitalized.</td>
-                </tr>
-                <tr>
-                    <td>Lowercase</td>
-                    <td>here is some text.</td>
-                    <td>All the letters became lowercase.</td>
-                </tr>
-                <tr>
-                    <td>Uppercase</td>
-                    <td>HERE IS SOME TEXT.</td>
-                    <td>All the letters became uppercase.</td>
-                </tr>
-                <tr>
-                    <td>Capitalize Each Word</td>
-                    <td>Here Is Some Text.</td>
-                    <td>The 1<sup>st</sup> letter of each word was capitalized.</td>
-                </tr>
-                <tr>
-                    <td>Toggle Case</td>
-                    <td>hERE iS sOME tEXT.</td>
-                    <td>Uppercase letters become lowercase, and vice versa.</td>
-                </tr>
-             </tbody>
-        </table>
-        </div>
-        </center>
+        <p class = 'questions'>Any questions so far?</p>
                 
-        </div><div class = 'footer'><div class = "buttons">
+        <div class = 'footer'><div class = "buttons">
             <a class="next" title = "Open the previous slide">&larr; Prev</a>
             <a class="next" title = "Open the next slide">Next &rarr;</a>
             <script>navigation();</script>
