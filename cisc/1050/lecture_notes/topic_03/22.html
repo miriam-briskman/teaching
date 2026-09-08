@@ -2,13 +2,19 @@
 <html lang="en">
   <head>
       <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" >
-      <meta name="description" content="Using Word">
+      <meta name="description" content="Basic Text Formatting">
       <title>Word, Basic Skills: Lecture Notes | CISC 1050</title>
       <link rel="stylesheet" href="..\static\styles\lightstyle.css" id="lightstyle">
       <link rel="stylesheet" href="..\static\styles\darkstyle.css" id="darkstyle">
       <link rel="stylesheet" href="..\static\styles\mystyles.css">
       <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
       <script src="..\static\scripts\myscripts.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/bitmaks/cm-web-fonts@latest/fonts.css">
+      <style>
+          table, th, td {border: 1px solid black; border-collapse: collapse; line-height: initial; margin: auto;}
+          th, td {padding-left: 10px; padding-right: 10px;}
+          th {text-align: center;}
+      </style>
   </head>
   <body>
      <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
@@ -23,19 +29,16 @@
      <script type="text/javascript">getMode();</script>
      <script>enumSlide();</script>
      <div class = 'slides slides-small'><div>
-        <h3>Using Word</h3>
-        <h4>Saving Word Documents</h4>
-        <p style="margin-top: -1.5ex;"><u>To save the document for the 1<sup>st</sup> time</u>:</p>
-        <ol>
-            <li>Go to File &rarr; Save As &rarr; This PC,</li>
-            <li>Type the name of the file in the name box,</li>
-            <li>Choose the file type to be &ldquo;Word Document (*.docx)&rdquo; from the given file choices,</li>
-            <li>Click the folder icon <a href="./open_folder.png" target="_blank" title="An icon of an open folder."><img src="./open_folder.png" title = "An icon of an open folder." alt = "An icon of an open folder." class="inline-image"></a> or name to choose the folder where to save the file,</li>
-            <li>Click <a href="./save_button.jpg" target="_blank" title="The Save button."><img src="./save_button.jpg" title = "The Save button." alt = "The Save button." class="inline-image"></a> to save the file.</li>
-        </ol>
-        <p><u>Alternative</u>: Click the <a href="./save.png" target="_blank" title="The Save button."><img src="./save.png" title = "The Save button." alt = "The Save button." class="inline-image"></a> Save button on the Quick Access Toolbar and do steps 2 &ndash; 5 above.</p>
-        <p><u>To save an existing document</u>, simply click the <a href="./save.png" target="_blank" title="The Save button."><img src="./save.png" title = "The Save button." alt = "The Save button." class="inline-image"></a> Save button on the Quick Access Toolbar or click <strong>Ctrl</strong> + <strong>S</strong> (Mac: <strong>Cmnd</strong> + <strong>S</strong>.)</p>
-                
+        <h3>Basic Text Formatting</h3>
+        <h4>Font Types</h4>
+        <ul>
+            <li><strong>Serif </strong>fonts = contain decorative spikes. Examples: <span style="font-family: 'Times New Roman', Times, serif;">this</span>, <span style="font-family: 'Bell MT', serif;">this</span>, and <span style="font-family: 'Calisto MT', serif;">this</span>.</li>
+            <li><strong>Sans Serif </strong>fonts = no such spikes. Examples: <span style="font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;">this</span>, <span style="font-family: Calibri, sans-serif;">this</span>, and <span style="font-family: 'Arial Rounded MT Bold', 'Arial Rounded MT', sans-serif;">this</span>.</li>
+            <li><strong>Monotone</strong> fonts = typesetting machine / robotic look. Examples: <span style="font-family: 'Courier New', Courier, monospace;">this</span>.</li>
+        </ul>
+        <p>Sans Serif fonts are easier to read on screens; serif fonts are easier to read on print text.</p>
+        <p>Monotone fonts are used in computer programming for simplicity and easier alignment.</p>
+
         </div><div class = 'footer'><div class = "buttons">
             <a class="next" title = "Open the previous slide">&larr; Prev</a>
             <a class="next" title = "Open the next slide">Next &rarr;</a>
