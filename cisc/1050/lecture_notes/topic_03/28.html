@@ -9,12 +9,6 @@
       <link rel="stylesheet" href="..\static\styles\mystyles.css">
       <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
       <script src="..\static\scripts\myscripts.js"></script>
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/bitmaks/cm-web-fonts@latest/fonts.css">
-      <style>
-          table, th, td {border: 1px solid; border-collapse: collapse; line-height: initial; margin: auto;}
-          th, td {padding-left: 10px; padding-right: 10px;}
-          th {text-align: center;}
-      </style>
   </head>
   <body>
      <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
@@ -28,14 +22,11 @@
      </div>
      <script type="text/javascript">getMode();</script>
      <script>enumSlide();</script>
-     <div class = 'slides slides-small'><div>
+     <div class = 'slides'>
         <h3>Paragraph Formatting</h3>
-        <p>The <strong>Align Right</strong> button (<a href="./right_align.png" target="_blank" title="The Align Right button."><img src="./right_align.png" title = "The Align Right button." alt = "The Align Right button." class="inline-image"></a>) aligns text to the right edge of the document window:</p>
-        <p style="border-left: 1pt solid; padding-left: 2pt; text-align: right;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae molestie metus. Cras rhoncus venenatis mauris ultricies tincidunt. In tristique, erat sit amet laoreet condimentum, est enim auctor enim, eget accumsan arcu sem sed nisi. Vestibulum sit amet vehicula neque. Mauris nec cursus ante, a aliquet lectus. Cras imperdiet vitae lorem eget facilisis. Duis sagittis dignissim suscipit. Praesent non malesuada nulla. Nulla mattis eu leo nec posuere. Sed a purus sit amet odio mollis vehicula in id massa.</p>
-        <p>The <strong>Justify</strong> button (<a href="./justify.png" target="_blank" title="The Justify button."><img src="./justify.png" title = "The Justify button." alt = "The Justify button." class="inline-image"></a>) distributes the text evenly between the margins of the document:</p>
-        <p style="border-left: 1pt solid; padding-left: 2pt; text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae molestie metus. Cras rhoncus venenatis mauris ultricies tincidunt. In tristique, erat sit amet laoreet condimentum, est enim auctor enim, eget accumsan arcu sem sed nisi. Vestibulum sit amet vehicula neque. Mauris nec cursus ante, a aliquet lectus. Cras imperdiet vitae lorem eget facilisis. Duis sagittis dignissim suscipit. Praesent non malesuada nulla. Nulla mattis eu leo nec posuere. Sed a purus sit amet odio mollis vehicula in id massa.</p>
-        
-        </div><div class = 'footer'><div class = "buttons">
+        <p class = 'questions'>Any questions so far?</p>
+                
+        <div class = 'footer'><div class = "buttons">
             <a class="next" title = "Open the previous slide">&larr; Prev</a>
             <a class="next" title = "Open the next slide">Next &rarr;</a>
             <script>navigation();</script>

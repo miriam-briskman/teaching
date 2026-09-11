@@ -84,7 +84,7 @@
     }
     img
     {
-        background-color: white;
+        background-color: transparent;
     }
     hr
     {
@@ -129,6 +129,10 @@
     ::-webkit-scrollbar, iframe
     {
         background-color: rgb(212, 212, 212);
+    }
+    .parblackcolor
+    {
+        color: rgb(25, 25, 25) !important;
     }
     /* Smaller Devices */
     @media screen and (min-width : 320px) and (max-width : 1200px) and (orientation : landscape)
