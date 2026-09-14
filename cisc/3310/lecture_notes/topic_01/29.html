@@ -9,6 +9,16 @@
       <link rel="stylesheet" href="..\static\styles\mystyles.css">
       <link rel="shortcut icon" href="https://miriam-briskman.github.io/poll-system-static-files/favicon.ico">
       <script src="..\static\scripts\myscripts.js"></script>
+      <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            messageStyle: 'none',
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+            }
+          });
+      </script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
   </head>
   <body>
      <button id="slideMenuButton" title = "Select a slide (menu)" alt = "emoji of a hamburger (3 stacked horizontal line segments) menu" tabindex="1">&#9776;</button>
@@ -27,7 +37,7 @@
         <ul>
             <li><b>3200 MHz</b> is the <b>speed of the bus</b> that carries data from the CPU to memory and vice versa. 3200 MHz is equal to 3200 megabytes transferred per second, but this rate might be even larger, as we explain further below.</li>
             <li><b>16GB</b> is the size of the RAM installed on the computer: 16 gigabytes. The greater the RAM size is, the more responsive the programs running on the computer will be. That is, a large app won't be lagging and won't crash the larger main memory is.</li>
-            <li><b>SDRAM</b>, standing for "synchronous dynamic RAM", was invented in 1988 and worked faster than conventional RAM by automatically synchronizing with the CPU clock, thus preventing the CPU from needlessly waiting between memory accesses. However, this tech, by itself, allows only 1 transfer per cycle. <b>DDR</b>, or "Double Data Rate", is a technique from 2000 that lets RAM transfer data <b>twice</b> per clock cycle (= 2 bits instead of 1.) <b>DDR2</b> (from 2003) is 2 times faster (4 bits) than DDR because of an enhanced input/output bus signal and uses less power. <b>DDR3</b> (from 2007) is 2 times faster (8 bit transfers) than DDR2 and features a 40% power use reduction. <b>DDR4</b> uses bank groups of memory, each of which can tranfser 8-bits independently. E.g., 8 groups means transfers of 8x8 = 64 bits = 8 bytes at a time. Finally, <b>DDR5</b> is 2 times faster (16 bits per bank) than DDR4 and features channel efficiency, improved power management, and optimized performance. If our DDR4 RAM has 8 groups, it means that our transfer speed is 3200 x 8 bytes = 51.2 gigabytes transferred per second!</li>
+            <li><b>SDRAM</b>, standing for "synchronous dynamic RAM", was invented in 1988 and worked faster than conventional RAM by automatically synchronizing with the CPU clock, thus preventing the CPU from needlessly waiting between memory accesses. However, this tech, by itself, allows only 1 transfer per cycle. <b>DDR</b>, or "Double Data Rate", is a technique from 2000 that lets RAM transfer data <b>twice</b> per clock cycle (= 2 bits instead of 1 per sec.) <b>DDR2</b> (from 2003) is 2 times faster (4 bits) than DDR because of an enhanced input/output bus signal and uses less power. <b>DDR3</b> (from 2007) is 2 times faster (8 bit transfers) than DDR2 and features a 40% power use reduction. <b>DDR4</b> uses bank groups of memory, each of which can manage data independently. E.g., 8 groups means servicing 8 data requests simultaneously and transfers of 8x8 = 64 bits = 8 bytes at a time. Finally, <b>DDR5</b> is 2 times faster (16 bits per bank) than DDR4 and features channel efficiency, improved power management, and optimized performance. If our 3200 MHz DDR4 RAM has 8 bank groups, its peak transfer speed is 3200 $\times$ 8 bytes = 25.6 gigabytes transferred per second.</li>
         </ul>
  
                
