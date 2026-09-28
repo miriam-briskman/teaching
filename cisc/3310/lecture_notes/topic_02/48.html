@@ -45,7 +45,7 @@
 | 0 |   | 0 | 1 | 1 | 1 | 0 |   | 1 | 0 | 0 | 1 | 0 |
 +---+   +---+---+---+---+---+   +---+---+---+---+---+</code></pre>
     
-        <p style = "margin-top: 1vh;">Analysis: (1) the number is positive since the sign bit is $0$. (2) to figure out what the exponent is, $01110$, subtract $15_{10}$ (the bias) from it. $01110$ in binary is $14_{10}$, so $14 - 15$ is $-1$, so the exponent is $-1$. (3) the significand is $10010$, which is $0.10010$ binary. Together, we get: $0.10010 \times 2^{-1} $$\;= 0.010010 $$\;= 0.01 $$\:+\:0.00001$, which is $\frac{1}{4} $$\:+\:\frac{1}{32} $$\;= 0.28125_{10}$.</p>
+        <p style = "margin-top: 1vh;">Analysis: (1) the number is positive since the sign bit is $0$. (2) to figure out what the exponent is, $01110$, subtract $15_{10}$ (the bias) from it. $01110$ in binary is $14_{10}$, so $14 - 15$ is $-1$, so the exponent is $-1$. (3) the significand is $10010$, which is $0.10010$ in binary. Together, we get: $0.10010 \times 2^{-1} $$\;= 0.010010 $$\;= 0.01 $$\:+\:0.00001$, which is $\frac{1}{4} $$\:+\:\frac{1}{32} $$\;= 0.28125_{10}$.</p>
         <p>Alternatively, note that the difference between the number $100100_2$ (which we figured out is $36_{10}$) and $0.010010_2$ is that the latter is reached from the former by <u>shifting</u> the former $7$ times to the right, which is <u>the same as dividing the number by $2$</u> seven times. Indeed: (1) $36/2 = 18$; (2) $18/2 = 9$; (3) $9/2 = 4.5$; (4) $4.5/2 = 2.25$; (5) $2.25/2 = 1.125$; (6) $1.125/2 = 0.5625$; and (7) $0.5625/2 = 0.28125_{10}$.</p>
                
         </div><div class = 'footer'><div class = "buttons">
