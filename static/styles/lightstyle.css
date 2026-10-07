@@ -55,3 +55,12 @@
        color: #242424;
        opacity: 1;
     }
+    #inst p, #inst table
+    {
+       color: black;
+       background-color: #f4f9fe;
+    }
+    .infolink
+    {
+       color: white;
+    }
