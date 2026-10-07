@@ -267,7 +267,12 @@ input:checked + .slider:before
   padding: 3pt;
   font-size: 18pt;
   border: 1pt solid;
-  border-radius: 2pt; 
+  border-radius: 2pt;
+  white-space: wrap;
+}
+#inst table, #inst table th, #inst table td
+{
+  white-space: wrap;
 }
 .infolink
 {
