@@ -38,7 +38,7 @@
     {
         color: white;
     }
-    table, th, td
+    table
     {
         border: 1pt solid white;
     }
@@ -76,4 +76,13 @@
     .infolink:hover + #inst
     {
        color: rgb(43, 43, 43);
+    }
+    .sticky-col
+    {
+        background-color: transparent;
+        border-left: 2pt solid white;
+    }
+    .sticky-col.is-pinned
+    {
+        background-color: rgb(16, 22, 42);
     }

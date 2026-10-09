@@ -38,7 +38,7 @@
     {
         color: black;
     }
-    table, th, td
+    table
     {
         border: 1pt solid black;
     }
@@ -63,4 +63,13 @@
     .infolink
     {
        color: white;
+    }
+    .sticky-col
+    {
+        background-color: transparent;
+        border-left: 2pt solid black;
+    }
+    .sticky-col.is-pinned
+    {
+        background-color: #f4f9fe;
     }

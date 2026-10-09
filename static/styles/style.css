@@ -1,3 +1,7 @@
+:root
+{
+    scrollbar-color: currentColor transparent !important;
+}
 body
 { 
     font-family: Arial, sans-serif;
@@ -32,6 +36,7 @@ hr
     white-space: nowrap;
     position: sticky;
     top: -1px;
+    z-index: 100;
     -webkit-transition: background-color 0.5s linear;
     transition: background-color 0.5s linear;
 }
@@ -109,11 +114,17 @@ th, td
 }
 table, th, td
 {
-    border-collapse: collapse;
+    /*border-collapse: collapse;*/
 }
 table
 {
     width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+.teaching-schedule
+{
+    border-left: none;
 }
 .switch-container
 {
@@ -305,4 +316,17 @@ input:checked + .slider:before
   transition: all 0.5s;
   visibility: visible;
   opacity: 1;
+}
+.sticky-col
+{
+  position: sticky;
+  left: 0;
+  z-index: 98 !important;
+  -webkit-transition: background-color 0.5s linear;
+  transition: background-color 0.5s linear;  
+}
+.sticky-col.is-pinned
+{
+  -webkit-transition: background-color 0.5s linear;
+  transition: background-color 0.5s linear;
 }
