@@ -40,7 +40,7 @@
     }
     table
     {
-        border: 1pt solid white;
+        border: 0.5pt solid white;
     }
     hr
     {
@@ -80,9 +80,18 @@
     .sticky-col
     {
         background-color: transparent;
-        border-left: 2pt solid white;
+        border-left: 1pt solid white !important;
+        border-right: 1pt solid white !important;
     }
     .sticky-col.is-pinned
     {
         background-color: rgb(16, 22, 42);
+    }
+    table, th, td
+    {
+        border: 1pt solid white;
+    }
+    .teaching-schedule, .teaching-schedule > tr > th, .teaching-schedule > tr > td
+    {
+        border: 0.5pt solid white;
     }
