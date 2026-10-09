@@ -26,18 +26,20 @@ hr
 }
 .tabs
 {
-    /*max-width: 100vw !important;*/
     max-width: fit-content !important;
     overflow-x: auto;
     display: flex;
     white-space: nowrap;
     position: sticky;
     top: -1px;
+    -webkit-transition: background-color 0.5s linear;
+    transition: background-color 0.5s linear;
 }
 .tabs.is-pinned
 {
-    background-color: gray;
     border-top: 1pt solid;
+    -webkit-transition: all 0.5s linear;
+    transition: all 0.5s linear;
 }
 .tab
 {
@@ -254,6 +256,7 @@ input:checked + .slider:before
 {
   display: block;
   position: absolute;
+  left: 5pt;
   margin: auto;
   width: 98%;
   -webkit-transition: all 0.5s;
