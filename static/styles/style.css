@@ -1,6 +1,6 @@
 :root
 {
-    scrollbar-color: currentColor transparent !important;
+    scrollbar-color: #969696 transparent !important;
 }
 body
 { 
@@ -269,9 +269,9 @@ input:checked + .slider:before
 {
   display: block;
   position: absolute;
-  left: 5pt;
+  left: 8px;
   margin: auto;
-  width: 98%;
+  width: 96.5vw;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   visibility: hidden;
@@ -280,14 +280,17 @@ input:checked + .slider:before
 }
 .inline-inst
 {
-    display: inline;
-    text-align: left;
-    margin-left: 2vw;
-    width: max-content;
-    line-height: normal;
+  display: inline !important;
+  left: unset !important;
+  margin-top: -0.5pt !important;
+  margin-left: 2vw !important;
+  width: max-content !important;
+  text-align: left;
+  line-height: normal;
 }
 #inst p
 {
+  margin: 0;
   padding: 3pt;
   font-size: 18pt;
   border: 1pt solid;

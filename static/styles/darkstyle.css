@@ -64,6 +64,11 @@
     {
        color: white;
        background-color: rgb(16, 22, 42);
+       border: 1pt solid rgb(235, 222, 86) !important;
+    }
+    #inst table > tbody > tr > th, #inst table > tbody > tr > td
+    {
+       border-color: rgb(235, 222, 86) !important;
     }
     .infolink
     {

@@ -59,6 +59,11 @@
     {
        color: black;
        background-color: #f4f9fe;
+       border-color: rgb(133, 0, 65) !important;
+    }
+    #inst table > tbody > tr > th, #inst table > tbody > tr > td
+    {
+       border-color: rgb(133, 0, 65) !important;
     }
     .infolink
     {
