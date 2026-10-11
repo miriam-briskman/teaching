@@ -351,3 +351,23 @@ input:checked + .slider:before
 {
   border: 0.5pt solid;
 }
+@media screen and (max-width: 900px), (orientation: portrait) 
+{
+    .sticky-col
+    {
+        position: static !important;
+        left: unset !important;
+    }
+
+    .sticky-col.is-pinned
+    {
+        background-color: unset !important;
+    }
+
+    .inline-inst
+    {
+        display: block !important;
+        left: 0 !important;
+        margin-top: -37px !important;
+    }
+}
