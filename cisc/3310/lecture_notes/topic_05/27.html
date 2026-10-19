@@ -40,7 +40,7 @@
                     <li><b><tt>SHL</tt></b>: shift bits to the left. <u>Example</u>: <tt>SHL R1, 2</tt> shifts <tt>R1</tt> twice to the left ($00111000$ becomes $11100000$).</li>
                     <li><b><tt>SHR</tt></b>: shift bits to the right. <u>Example</u>: <tt>SHR R1, 3</tt> shifts <tt>R1</tt> $3$ times to the right ($00111000$ becomes $00000111$).</li>
                     <li><b><tt>SAL</tt></b>: ("shift arithmetic left") same as <tt>SHL</tt>.</li>
-                    <li><b><tt>SAR</tt></b>: ("shift arithmetic right") similar to <tt>SHR</tt>, except that the sign bit remains the same. <u>Example</u>: with <tt>SHR R1, 3</tt>, $10111000$ becomes $10000111$ (the leftmost bit remains the same.)</li>
+                    <li><b><tt>SAR</tt></b>: ("shift arithmetic right") similar to <tt>SHR</tt>, except that the sign bit remains the same. <u>Example</u>: with <tt>SAR R1, 3</tt>, $10111000$ becomes $10000111$ (the leftmost bit remains the same.)</li>
                     <li><b><tt>ROL</tt></b>: wraps/rotates around to the left. <u>Example</u>: with <tt>ROL R1, 2</tt>, $01011100$ becomes $01110001$.</li>
                     <li><b><tt>ROR</tt></b>: wraps/rotates around to the right. <u>Example</u>: with <tt>ROR R1, 3</tt>, $00111101$ becomes $10100111$.</li>
                     <li><b><tt>RCL</tt></b>: wraps/rotates around to the left through the carry bit. <u>Example</u>: with <tt>RCL R1, 2</tt>, $01011100$ w/ carry $1$ becomes $01110010$ carry $1$.</li>
